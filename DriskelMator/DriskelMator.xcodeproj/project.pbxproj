@@ -1,0 +1,847 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A014E1818FBAA75004DD453 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A014E1718FBAA75004DD453 /* Foundation.framework */; };
+		3A014E1A18FBAA75004DD453 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A014E1918FBAA75004DD453 /* CoreGraphics.framework */; };
+		3A014E1C18FBAA75004DD453 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A014E1B18FBAA75004DD453 /* UIKit.framework */; };
+		3A014E1E18FBAA75004DD453 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A014E1D18FBAA75004DD453 /* GLKit.framework */; };
+		3A014E2018FBAA75004DD453 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A014E1F18FBAA75004DD453 /* OpenGLES.framework */; };
+		3A014E2618FBAA75004DD453 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A014E2418FBAA75004DD453 /* InfoPlist.strings */; };
+		3A014E2818FBAA75004DD453 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A014E2718FBAA75004DD453 /* main.m */; };
+		3A014E2C18FBAA75004DD453 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A014E2B18FBAA75004DD453 /* DMAppDelegate.m */; };
+		3A014E3218FBAA75004DD453 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A014E3018FBAA75004DD453 /* Main_iPad.storyboard */; };
+		3A014E3918FBAA75004DD453 /* DMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A014E3818FBAA75004DD453 /* DMViewController.m */; };
+		3A014E3B18FBAA75004DD453 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A014E3A18FBAA75004DD453 /* Images.xcassets */; };
+		3A014E4218FBAA75004DD453 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A014E4118FBAA75004DD453 /* XCTest.framework */; };
+		3A014E4318FBAA75004DD453 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A014E1718FBAA75004DD453 /* Foundation.framework */; };
+		3A014E4418FBAA75004DD453 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A014E1B18FBAA75004DD453 /* UIKit.framework */; };
+		3A014E4C18FBAA75004DD453 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A014E4A18FBAA75004DD453 /* InfoPlist.strings */; };
+		3A014E4E18FBAA75004DD453 /* DriskelMatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A014E4D18FBAA75004DD453 /* DriskelMatorTests.m */; };
+		3A014E6318FBB211004DD453 /* DMPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A014E6218FBB211004DD453 /* DMPath.m */; };
+		3A014E6618FBB222004DD453 /* DMException.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A014E6518FBB222004DD453 /* DMException.m */; };
+		3A014EB818FBC582004DD453 /* DMScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A014EB718FBC582004DD453 /* DMScreen.m */; };
+		3A014EC018FBDF7C004DD453 /* PrimitivesFragShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 3A014EBE18FBDF7C004DD453 /* PrimitivesFragShader.glsl */; };
+		3A014EC118FBDF7C004DD453 /* PrimitivesVertShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 3A014EBF18FBDF7C004DD453 /* PrimitivesVertShader.glsl */; };
+		3A4A0E14193108EE0086C25D /* DMNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4A0E13193108EE0086C25D /* DMNotifications.m */; };
+		3A86CC6619127E890049CB15 /* DMAbtractElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CC6519127E890049CB15 /* DMAbtractElement.m */; };
+		3A86CC6919127E9D0049CB15 /* DMRectElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CC6819127E9D0049CB15 /* DMRectElement.m */; };
+		3A86CC6C19127EB30049CB15 /* DMCircleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CC6B19127EB30049CB15 /* DMCircleElement.m */; };
+		3A86CC6F19127ED10049CB15 /* DMCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CC6E19127ED10049CB15 /* DMCanvas.m */; };
+		3A86CC7219127EE90049CB15 /* DMAbstarctState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CC7119127EE90049CB15 /* DMAbstarctState.m */; };
+		3A86CC751912853D0049CB15 /* DMCreateRectState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CC741912853D0049CB15 /* DMCreateRectState.m */; };
+		3A86CC7B191297DF0049CB15 /* DMAbsractTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CC7A191297DF0049CB15 /* DMAbsractTool.m */; };
+		3A86CC831912988E0049CB15 /* eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A86CC7D1912988E0049CB15 /* eraser.png */; };
+		3A86CC841912988E0049CB15 /* hand.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A86CC7E1912988E0049CB15 /* hand.png */; };
+		3A86CC851912988E0049CB15 /* magnet.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A86CC7F1912988E0049CB15 /* magnet.png */; };
+		3A86CC861912988E0049CB15 /* pusher.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A86CC801912988E0049CB15 /* pusher.png */; };
+		3A86CC871912988E0049CB15 /* rect.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A86CC811912988E0049CB15 /* rect.png */; };
+		3A86CC881912988E0049CB15 /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A86CC821912988E0049CB15 /* select.png */; };
+		3A86CC8B191299490049CB15 /* DMRectangleTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CC8A191299490049CB15 /* DMRectangleTool.m */; };
+		3A86CC901913475E0049CB15 /* DMToolsPalleteVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CC8F1913475E0049CB15 /* DMToolsPalleteVIew.m */; };
+		3A86CC93191348740049CB15 /* DMToolPalleteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CC92191348740049CB15 /* DMToolPalleteController.m */; };
+		3A86CC96191349970049CB15 /* DMToolInventory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CC95191349970049CB15 /* DMToolInventory.m */; };
+		3A86CC9D19139EBB0049CB15 /* DMTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CC9B19139EBB0049CB15 /* DMTestController.m */; };
+		3A86CC9E19139EBB0049CB15 /* DMTestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A86CC9C19139EBB0049CB15 /* DMTestController.xib */; };
+		3A86CCEC19149B060049CB15 /* oval.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A86CCEB19149B060049CB15 /* oval.png */; };
+		3A86CCEF19149B410049CB15 /* DMOvalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CCEE19149B410049CB15 /* DMOvalTool.m */; };
+		3A86CCF219149B680049CB15 /* DMOvalState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CCF119149B680049CB15 /* DMOvalState.m */; };
+		3A86CCF51914AFC40049CB15 /* DMSelectState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CCF41914AFC40049CB15 /* DMSelectState.m */; };
+		3A86CCF81914B0570049CB15 /* DMSelectTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CCF71914B0570049CB15 /* DMSelectTool.m */; };
+		3A86CCFB1914B87F0049CB15 /* DMMoveTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CCFA1914B87F0049CB15 /* DMMoveTool.m */; };
+		3A86CCFE1914B8A00049CB15 /* DMMoveState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CCFD1914B8A00049CB15 /* DMMoveState.m */; };
+		3A86CD011914CDE70049CB15 /* DMRotateState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CD001914CDE70049CB15 /* DMRotateState.m */; };
+		3A86CD041914CF070049CB15 /* DMRotateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CD031914CF070049CB15 /* DMRotateTool.m */; };
+		3A86CD061914CF520049CB15 /* rotate.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A86CD051914CF520049CB15 /* rotate.png */; };
+		3A86CD091914D1650049CB15 /* DMAbstractMoveGroupsState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CD081914D1650049CB15 /* DMAbstractMoveGroupsState.m */; };
+		3A86CD0C1914D1740049CB15 /* DMPusherState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CD0B1914D1740049CB15 /* DMPusherState.m */; };
+		3A86CD0F1914D38D0049CB15 /* DMPusherTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CD0E1914D38D0049CB15 /* DMPusherTool.m */; };
+		3A86CD111914D9D10049CB15 /* scissor.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A86CD101914D9D10049CB15 /* scissor.png */; };
+		3A86CD141914D9F10049CB15 /* DMTrashState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CD131914D9F10049CB15 /* DMTrashState.m */; };
+		3A86CD171914DA630049CB15 /* DMTrashTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CD161914DA630049CB15 /* DMTrashTool.m */; };
+		3A86CD2A19286E690049CB15 /* DMShaderProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CD2919286E690049CB15 /* DMShaderProgram.m */; };
+		3A86CD2D192882230049CB15 /* DMShaderUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CD2C192882230049CB15 /* DMShaderUtils.m */; };
+		3A86CD30192884880049CB15 /* DMShaderConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CD2F192884880049CB15 /* DMShaderConstants.m */; };
+		3A86CD33192886E70049CB15 /* DMGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A86CD32192886E70049CB15 /* DMGraphics.m */; };
+		3AC05566192899DF00688F2F /* DMShaderContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC05565192899DF00688F2F /* DMShaderContainer.m */; };
+		3AC0556A19289CCE00688F2F /* BackgroundFragShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 3AC0556819289CCE00688F2F /* BackgroundFragShader.glsl */; };
+		3AC0556B19289CCE00688F2F /* BackgroundVertShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 3AC0556919289CCE00688F2F /* BackgroundVertShader.glsl */; };
+		3AC0556E1928AB4400688F2F /* DMGeometryUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0556D1928AB4400688F2F /* DMGeometryUtils.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3A014E4518FBAA75004DD453 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A014E0C18FBAA75004DD453 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A014E1318FBAA75004DD453;
+			remoteInfo = DriskelMator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3A014E1418FBAA75004DD453 /* DriskelMator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DriskelMator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A014E1718FBAA75004DD453 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3A014E1918FBAA75004DD453 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3A014E1B18FBAA75004DD453 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3A014E1D18FBAA75004DD453 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		3A014E1F18FBAA75004DD453 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		3A014E2318FBAA75004DD453 /* DriskelMator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DriskelMator-Info.plist"; sourceTree = "<group>"; };
+		3A014E2518FBAA75004DD453 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3A014E2718FBAA75004DD453 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3A014E2918FBAA75004DD453 /* DriskelMator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DriskelMator-Prefix.pch"; sourceTree = "<group>"; };
+		3A014E2A18FBAA75004DD453 /* DMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMAppDelegate.h; sourceTree = "<group>"; };
+		3A014E2B18FBAA75004DD453 /* DMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMAppDelegate.m; sourceTree = "<group>"; };
+		3A014E3118FBAA75004DD453 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		3A014E3718FBAA75004DD453 /* DMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMViewController.h; sourceTree = "<group>"; };
+		3A014E3818FBAA75004DD453 /* DMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMViewController.m; sourceTree = "<group>"; };
+		3A014E3A18FBAA75004DD453 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3A014E4018FBAA75004DD453 /* DriskelMatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DriskelMatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A014E4118FBAA75004DD453 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3A014E4918FBAA75004DD453 /* DriskelMatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DriskelMatorTests-Info.plist"; sourceTree = "<group>"; };
+		3A014E4B18FBAA75004DD453 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3A014E4D18FBAA75004DD453 /* DriskelMatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DriskelMatorTests.m; sourceTree = "<group>"; };
+		3A014E6118FBB211004DD453 /* DMPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPath.h; sourceTree = "<group>"; };
+		3A014E6218FBB211004DD453 /* DMPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPath.m; sourceTree = "<group>"; };
+		3A014E6418FBB222004DD453 /* DMException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMException.h; sourceTree = "<group>"; };
+		3A014E6518FBB222004DD453 /* DMException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMException.m; sourceTree = "<group>"; };
+		3A014EB618FBC582004DD453 /* DMScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMScreen.h; sourceTree = "<group>"; };
+		3A014EB718FBC582004DD453 /* DMScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMScreen.m; sourceTree = "<group>"; };
+		3A014EBE18FBDF7C004DD453 /* PrimitivesFragShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PrimitivesFragShader.glsl; sourceTree = "<group>"; };
+		3A014EBF18FBDF7C004DD453 /* PrimitivesVertShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PrimitivesVertShader.glsl; sourceTree = "<group>"; };
+		3A4A0E12193108EE0086C25D /* DMNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNotifications.h; sourceTree = "<group>"; };
+		3A4A0E13193108EE0086C25D /* DMNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNotifications.m; sourceTree = "<group>"; };
+		3A86CC6419127E890049CB15 /* DMAbtractElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMAbtractElement.h; sourceTree = "<group>"; };
+		3A86CC6519127E890049CB15 /* DMAbtractElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMAbtractElement.m; sourceTree = "<group>"; };
+		3A86CC6719127E9D0049CB15 /* DMRectElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRectElement.h; sourceTree = "<group>"; };
+		3A86CC6819127E9D0049CB15 /* DMRectElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRectElement.m; sourceTree = "<group>"; };
+		3A86CC6A19127EB30049CB15 /* DMCircleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCircleElement.h; sourceTree = "<group>"; };
+		3A86CC6B19127EB30049CB15 /* DMCircleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCircleElement.m; sourceTree = "<group>"; };
+		3A86CC6D19127ED10049CB15 /* DMCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCanvas.h; sourceTree = "<group>"; };
+		3A86CC6E19127ED10049CB15 /* DMCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCanvas.m; sourceTree = "<group>"; };
+		3A86CC7019127EE90049CB15 /* DMAbstarctState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMAbstarctState.h; sourceTree = "<group>"; };
+		3A86CC7119127EE90049CB15 /* DMAbstarctState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMAbstarctState.m; sourceTree = "<group>"; };
+		3A86CC731912853D0049CB15 /* DMCreateRectState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCreateRectState.h; sourceTree = "<group>"; };
+		3A86CC741912853D0049CB15 /* DMCreateRectState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCreateRectState.m; sourceTree = "<group>"; };
+		3A86CC76191286BB0049CB15 /* DMUIProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DMUIProtocol.h; path = ../model/canvas/DMUIProtocol.h; sourceTree = "<group>"; };
+		3A86CC79191297DF0049CB15 /* DMAbsractTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMAbsractTool.h; sourceTree = "<group>"; };
+		3A86CC7A191297DF0049CB15 /* DMAbsractTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMAbsractTool.m; sourceTree = "<group>"; };
+		3A86CC7D1912988E0049CB15 /* eraser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eraser.png; sourceTree = "<group>"; };
+		3A86CC7E1912988E0049CB15 /* hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand.png; sourceTree = "<group>"; };
+		3A86CC7F1912988E0049CB15 /* magnet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnet.png; sourceTree = "<group>"; };
+		3A86CC801912988E0049CB15 /* pusher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pusher.png; sourceTree = "<group>"; };
+		3A86CC811912988E0049CB15 /* rect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rect.png; sourceTree = "<group>"; };
+		3A86CC821912988E0049CB15 /* select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select.png; sourceTree = "<group>"; };
+		3A86CC89191299490049CB15 /* DMRectangleTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRectangleTool.h; sourceTree = "<group>"; };
+		3A86CC8A191299490049CB15 /* DMRectangleTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRectangleTool.m; sourceTree = "<group>"; };
+		3A86CC8E1913475E0049CB15 /* DMToolsPalleteVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMToolsPalleteVIew.h; sourceTree = "<group>"; };
+		3A86CC8F1913475E0049CB15 /* DMToolsPalleteVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMToolsPalleteVIew.m; sourceTree = "<group>"; };
+		3A86CC91191348740049CB15 /* DMToolPalleteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMToolPalleteController.h; sourceTree = "<group>"; };
+		3A86CC92191348740049CB15 /* DMToolPalleteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMToolPalleteController.m; sourceTree = "<group>"; };
+		3A86CC94191349970049CB15 /* DMToolInventory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMToolInventory.h; sourceTree = "<group>"; };
+		3A86CC95191349970049CB15 /* DMToolInventory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMToolInventory.m; sourceTree = "<group>"; };
+		3A86CC9A19139EBB0049CB15 /* DMTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMTestController.h; path = ../DMTestController.h; sourceTree = "<group>"; };
+		3A86CC9B19139EBB0049CB15 /* DMTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DMTestController.m; path = ../DMTestController.m; sourceTree = "<group>"; };
+		3A86CC9C19139EBB0049CB15 /* DMTestController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DMTestController.xib; path = ../DMTestController.xib; sourceTree = "<group>"; };
+		3A86CCEB19149B060049CB15 /* oval.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oval.png; sourceTree = "<group>"; };
+		3A86CCED19149B410049CB15 /* DMOvalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMOvalTool.h; sourceTree = "<group>"; };
+		3A86CCEE19149B410049CB15 /* DMOvalTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMOvalTool.m; sourceTree = "<group>"; };
+		3A86CCF019149B680049CB15 /* DMOvalState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMOvalState.h; sourceTree = "<group>"; };
+		3A86CCF119149B680049CB15 /* DMOvalState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMOvalState.m; sourceTree = "<group>"; };
+		3A86CCF31914AFC40049CB15 /* DMSelectState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSelectState.h; sourceTree = "<group>"; };
+		3A86CCF41914AFC40049CB15 /* DMSelectState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSelectState.m; sourceTree = "<group>"; };
+		3A86CCF61914B0570049CB15 /* DMSelectTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSelectTool.h; sourceTree = "<group>"; };
+		3A86CCF71914B0570049CB15 /* DMSelectTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSelectTool.m; sourceTree = "<group>"; };
+		3A86CCF91914B87F0049CB15 /* DMMoveTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMoveTool.h; sourceTree = "<group>"; };
+		3A86CCFA1914B87F0049CB15 /* DMMoveTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMoveTool.m; sourceTree = "<group>"; };
+		3A86CCFC1914B8A00049CB15 /* DMMoveState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMoveState.h; sourceTree = "<group>"; };
+		3A86CCFD1914B8A00049CB15 /* DMMoveState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMoveState.m; sourceTree = "<group>"; };
+		3A86CCFF1914CDE70049CB15 /* DMRotateState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRotateState.h; sourceTree = "<group>"; };
+		3A86CD001914CDE70049CB15 /* DMRotateState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRotateState.m; sourceTree = "<group>"; };
+		3A86CD021914CF070049CB15 /* DMRotateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRotateTool.h; sourceTree = "<group>"; };
+		3A86CD031914CF070049CB15 /* DMRotateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRotateTool.m; sourceTree = "<group>"; };
+		3A86CD051914CF520049CB15 /* rotate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rotate.png; sourceTree = "<group>"; };
+		3A86CD071914D1650049CB15 /* DMAbstractMoveGroupsState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMAbstractMoveGroupsState.h; sourceTree = "<group>"; };
+		3A86CD081914D1650049CB15 /* DMAbstractMoveGroupsState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMAbstractMoveGroupsState.m; sourceTree = "<group>"; };
+		3A86CD0A1914D1740049CB15 /* DMPusherState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPusherState.h; sourceTree = "<group>"; };
+		3A86CD0B1914D1740049CB15 /* DMPusherState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPusherState.m; sourceTree = "<group>"; };
+		3A86CD0D1914D38D0049CB15 /* DMPusherTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPusherTool.h; sourceTree = "<group>"; };
+		3A86CD0E1914D38D0049CB15 /* DMPusherTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPusherTool.m; sourceTree = "<group>"; };
+		3A86CD101914D9D10049CB15 /* scissor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scissor.png; sourceTree = "<group>"; };
+		3A86CD121914D9F10049CB15 /* DMTrashState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTrashState.h; sourceTree = "<group>"; };
+		3A86CD131914D9F10049CB15 /* DMTrashState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTrashState.m; sourceTree = "<group>"; };
+		3A86CD151914DA630049CB15 /* DMTrashTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTrashTool.h; sourceTree = "<group>"; };
+		3A86CD161914DA630049CB15 /* DMTrashTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTrashTool.m; sourceTree = "<group>"; };
+		3A86CD2819286E690049CB15 /* DMShaderProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMShaderProgram.h; sourceTree = "<group>"; };
+		3A86CD2919286E690049CB15 /* DMShaderProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMShaderProgram.m; sourceTree = "<group>"; };
+		3A86CD2B192882230049CB15 /* DMShaderUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMShaderUtils.h; sourceTree = "<group>"; };
+		3A86CD2C192882230049CB15 /* DMShaderUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMShaderUtils.m; sourceTree = "<group>"; };
+		3A86CD2E192884880049CB15 /* DMShaderConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMShaderConstants.h; sourceTree = "<group>"; };
+		3A86CD2F192884880049CB15 /* DMShaderConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMShaderConstants.m; sourceTree = "<group>"; };
+		3A86CD31192886E70049CB15 /* DMGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMGraphics.h; sourceTree = "<group>"; };
+		3A86CD32192886E70049CB15 /* DMGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMGraphics.m; sourceTree = "<group>"; };
+		3AC05564192899DF00688F2F /* DMShaderContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMShaderContainer.h; sourceTree = "<group>"; };
+		3AC05565192899DF00688F2F /* DMShaderContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMShaderContainer.m; sourceTree = "<group>"; };
+		3AC0556719289A1E00688F2F /* DMSingletonProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMSingletonProtocol.h; sourceTree = "<group>"; };
+		3AC0556819289CCE00688F2F /* BackgroundFragShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BackgroundFragShader.glsl; sourceTree = "<group>"; };
+		3AC0556919289CCE00688F2F /* BackgroundVertShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BackgroundVertShader.glsl; sourceTree = "<group>"; };
+		3AC0556C1928AB4400688F2F /* DMGeometryUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMGeometryUtils.h; sourceTree = "<group>"; };
+		3AC0556D1928AB4400688F2F /* DMGeometryUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMGeometryUtils.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A014E1118FBAA75004DD453 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A014E2018FBAA75004DD453 /* OpenGLES.framework in Frameworks */,
+				3A014E1A18FBAA75004DD453 /* CoreGraphics.framework in Frameworks */,
+				3A014E1C18FBAA75004DD453 /* UIKit.framework in Frameworks */,
+				3A014E1E18FBAA75004DD453 /* GLKit.framework in Frameworks */,
+				3A014E1818FBAA75004DD453 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A014E3D18FBAA75004DD453 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A014E4218FBAA75004DD453 /* XCTest.framework in Frameworks */,
+				3A014E4418FBAA75004DD453 /* UIKit.framework in Frameworks */,
+				3A014E4318FBAA75004DD453 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A014E0B18FBAA75004DD453 = {
+			isa = PBXGroup;
+			children = (
+				3A014E2118FBAA75004DD453 /* DriskelMator */,
+				3A014E4718FBAA75004DD453 /* DriskelMatorTests */,
+				3A014E1618FBAA75004DD453 /* Frameworks */,
+				3A014E1518FBAA75004DD453 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3A014E1518FBAA75004DD453 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A014E1418FBAA75004DD453 /* DriskelMator.app */,
+				3A014E4018FBAA75004DD453 /* DriskelMatorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3A014E1618FBAA75004DD453 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A014E1718FBAA75004DD453 /* Foundation.framework */,
+				3A014E1918FBAA75004DD453 /* CoreGraphics.framework */,
+				3A014E1B18FBAA75004DD453 /* UIKit.framework */,
+				3A014E1D18FBAA75004DD453 /* GLKit.framework */,
+				3A014E1F18FBAA75004DD453 /* OpenGLES.framework */,
+				3A014E4118FBAA75004DD453 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A014E2118FBAA75004DD453 /* DriskelMator */ = {
+			isa = PBXGroup;
+			children = (
+				3A86CC9A19139EBB0049CB15 /* DMTestController.h */,
+				3A86CC9B19139EBB0049CB15 /* DMTestController.m */,
+				3A86CC8D19129A2E0049CB15 /* controller */,
+				3A86CC8C19129A060049CB15 /* view */,
+				3A86CC7C1912988E0049CB15 /* icons */,
+				3A86CC78191297CA0049CB15 /* tools */,
+				3A86CC7719128D400049CB15 /* protocols */,
+				3A86CC5C19127DC40049CB15 /* model */,
+				3A014E6018FBB201004DD453 /* common */,
+				3A014E5B18FBB1ED004DD453 /* shaders */,
+				3A014E5718FBAAAF004DD453 /* graphics */,
+				3A014E2A18FBAA75004DD453 /* DMAppDelegate.h */,
+				3A014E2B18FBAA75004DD453 /* DMAppDelegate.m */,
+				3A86CC9C19139EBB0049CB15 /* DMTestController.xib */,
+				3A014E3018FBAA75004DD453 /* Main_iPad.storyboard */,
+				3A014E3718FBAA75004DD453 /* DMViewController.h */,
+				3A014E3818FBAA75004DD453 /* DMViewController.m */,
+				3A014E3A18FBAA75004DD453 /* Images.xcassets */,
+				3A014E2218FBAA75004DD453 /* Supporting Files */,
+			);
+			path = DriskelMator;
+			sourceTree = "<group>";
+		};
+		3A014E2218FBAA75004DD453 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A014E2318FBAA75004DD453 /* DriskelMator-Info.plist */,
+				3A014E2418FBAA75004DD453 /* InfoPlist.strings */,
+				3A014E2718FBAA75004DD453 /* main.m */,
+				3A014E2918FBAA75004DD453 /* DriskelMator-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A014E4718FBAA75004DD453 /* DriskelMatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				3A014E4D18FBAA75004DD453 /* DriskelMatorTests.m */,
+				3A014E4818FBAA75004DD453 /* Supporting Files */,
+			);
+			path = DriskelMatorTests;
+			sourceTree = "<group>";
+		};
+		3A014E4818FBAA75004DD453 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A014E4918FBAA75004DD453 /* DriskelMatorTests-Info.plist */,
+				3A014E4A18FBAA75004DD453 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A014E5718FBAAAF004DD453 /* graphics */ = {
+			isa = PBXGroup;
+			children = (
+				3A014EB618FBC582004DD453 /* DMScreen.h */,
+				3A014EB718FBC582004DD453 /* DMScreen.m */,
+				3A86CD31192886E70049CB15 /* DMGraphics.h */,
+				3A86CD32192886E70049CB15 /* DMGraphics.m */,
+				3AC0556C1928AB4400688F2F /* DMGeometryUtils.h */,
+				3AC0556D1928AB4400688F2F /* DMGeometryUtils.m */,
+			);
+			path = graphics;
+			sourceTree = "<group>";
+		};
+		3A014E5B18FBB1ED004DD453 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				3AC0556819289CCE00688F2F /* BackgroundFragShader.glsl */,
+				3AC0556919289CCE00688F2F /* BackgroundVertShader.glsl */,
+				3A014EBE18FBDF7C004DD453 /* PrimitivesFragShader.glsl */,
+				3A014EBF18FBDF7C004DD453 /* PrimitivesVertShader.glsl */,
+				3A86CD2819286E690049CB15 /* DMShaderProgram.h */,
+				3A86CD2919286E690049CB15 /* DMShaderProgram.m */,
+				3A86CD2B192882230049CB15 /* DMShaderUtils.h */,
+				3A86CD2C192882230049CB15 /* DMShaderUtils.m */,
+				3A86CD2E192884880049CB15 /* DMShaderConstants.h */,
+				3A86CD2F192884880049CB15 /* DMShaderConstants.m */,
+				3AC05564192899DF00688F2F /* DMShaderContainer.h */,
+				3AC05565192899DF00688F2F /* DMShaderContainer.m */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		3A014E6018FBB201004DD453 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				3A014E6118FBB211004DD453 /* DMPath.h */,
+				3A014E6218FBB211004DD453 /* DMPath.m */,
+				3A014E6418FBB222004DD453 /* DMException.h */,
+				3A014E6518FBB222004DD453 /* DMException.m */,
+				3A4A0E12193108EE0086C25D /* DMNotifications.h */,
+				3A4A0E13193108EE0086C25D /* DMNotifications.m */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		3A86CC5C19127DC40049CB15 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				3A86CC6219127E720049CB15 /* canvas */,
+				3A86CC6319127E720049CB15 /* elements */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		3A86CC6219127E720049CB15 /* canvas */ = {
+			isa = PBXGroup;
+			children = (
+				3A86CC6D19127ED10049CB15 /* DMCanvas.h */,
+				3A86CC6E19127ED10049CB15 /* DMCanvas.m */,
+				3A86CC7019127EE90049CB15 /* DMAbstarctState.h */,
+				3A86CC7119127EE90049CB15 /* DMAbstarctState.m */,
+				3A86CC731912853D0049CB15 /* DMCreateRectState.h */,
+				3A86CC741912853D0049CB15 /* DMCreateRectState.m */,
+				3A86CCF019149B680049CB15 /* DMOvalState.h */,
+				3A86CCF119149B680049CB15 /* DMOvalState.m */,
+				3A86CCF31914AFC40049CB15 /* DMSelectState.h */,
+				3A86CCF41914AFC40049CB15 /* DMSelectState.m */,
+				3A86CCFC1914B8A00049CB15 /* DMMoveState.h */,
+				3A86CCFD1914B8A00049CB15 /* DMMoveState.m */,
+				3A86CCFF1914CDE70049CB15 /* DMRotateState.h */,
+				3A86CD001914CDE70049CB15 /* DMRotateState.m */,
+				3A86CD071914D1650049CB15 /* DMAbstractMoveGroupsState.h */,
+				3A86CD081914D1650049CB15 /* DMAbstractMoveGroupsState.m */,
+				3A86CD0A1914D1740049CB15 /* DMPusherState.h */,
+				3A86CD0B1914D1740049CB15 /* DMPusherState.m */,
+				3A86CD121914D9F10049CB15 /* DMTrashState.h */,
+				3A86CD131914D9F10049CB15 /* DMTrashState.m */,
+			);
+			path = canvas;
+			sourceTree = "<group>";
+		};
+		3A86CC6319127E720049CB15 /* elements */ = {
+			isa = PBXGroup;
+			children = (
+				3A86CC6419127E890049CB15 /* DMAbtractElement.h */,
+				3A86CC6519127E890049CB15 /* DMAbtractElement.m */,
+				3A86CC6719127E9D0049CB15 /* DMRectElement.h */,
+				3A86CC6819127E9D0049CB15 /* DMRectElement.m */,
+				3A86CC6A19127EB30049CB15 /* DMCircleElement.h */,
+				3A86CC6B19127EB30049CB15 /* DMCircleElement.m */,
+			);
+			path = elements;
+			sourceTree = "<group>";
+		};
+		3A86CC7719128D400049CB15 /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3A86CC76191286BB0049CB15 /* DMUIProtocol.h */,
+				3AC0556719289A1E00688F2F /* DMSingletonProtocol.h */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
+		3A86CC78191297CA0049CB15 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				3A86CC79191297DF0049CB15 /* DMAbsractTool.h */,
+				3A86CC7A191297DF0049CB15 /* DMAbsractTool.m */,
+				3A86CC89191299490049CB15 /* DMRectangleTool.h */,
+				3A86CC8A191299490049CB15 /* DMRectangleTool.m */,
+				3A86CC94191349970049CB15 /* DMToolInventory.h */,
+				3A86CC95191349970049CB15 /* DMToolInventory.m */,
+				3A86CCED19149B410049CB15 /* DMOvalTool.h */,
+				3A86CCEE19149B410049CB15 /* DMOvalTool.m */,
+				3A86CCF61914B0570049CB15 /* DMSelectTool.h */,
+				3A86CCF71914B0570049CB15 /* DMSelectTool.m */,
+				3A86CCF91914B87F0049CB15 /* DMMoveTool.h */,
+				3A86CCFA1914B87F0049CB15 /* DMMoveTool.m */,
+				3A86CD021914CF070049CB15 /* DMRotateTool.h */,
+				3A86CD031914CF070049CB15 /* DMRotateTool.m */,
+				3A86CD0D1914D38D0049CB15 /* DMPusherTool.h */,
+				3A86CD0E1914D38D0049CB15 /* DMPusherTool.m */,
+				3A86CD151914DA630049CB15 /* DMTrashTool.h */,
+				3A86CD161914DA630049CB15 /* DMTrashTool.m */,
+			);
+			name = tools;
+			path = model/tools;
+			sourceTree = "<group>";
+		};
+		3A86CC7C1912988E0049CB15 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				3A86CD101914D9D10049CB15 /* scissor.png */,
+				3A86CD051914CF520049CB15 /* rotate.png */,
+				3A86CCEB19149B060049CB15 /* oval.png */,
+				3A86CC7D1912988E0049CB15 /* eraser.png */,
+				3A86CC7E1912988E0049CB15 /* hand.png */,
+				3A86CC7F1912988E0049CB15 /* magnet.png */,
+				3A86CC801912988E0049CB15 /* pusher.png */,
+				3A86CC811912988E0049CB15 /* rect.png */,
+				3A86CC821912988E0049CB15 /* select.png */,
+			);
+			path = icons;
+			sourceTree = "<group>";
+		};
+		3A86CC8C19129A060049CB15 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				3A86CC8E1913475E0049CB15 /* DMToolsPalleteVIew.h */,
+				3A86CC8F1913475E0049CB15 /* DMToolsPalleteVIew.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		3A86CC8D19129A2E0049CB15 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				3A86CC91191348740049CB15 /* DMToolPalleteController.h */,
+				3A86CC92191348740049CB15 /* DMToolPalleteController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A014E1318FBAA75004DD453 /* DriskelMator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A014E5118FBAA75004DD453 /* Build configuration list for PBXNativeTarget "DriskelMator" */;
+			buildPhases = (
+				3A014E1018FBAA75004DD453 /* Sources */,
+				3A014E1118FBAA75004DD453 /* Frameworks */,
+				3A014E1218FBAA75004DD453 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DriskelMator;
+			productName = DriskelMator;
+			productReference = 3A014E1418FBAA75004DD453 /* DriskelMator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3A014E3F18FBAA75004DD453 /* DriskelMatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A014E5418FBAA75004DD453 /* Build configuration list for PBXNativeTarget "DriskelMatorTests" */;
+			buildPhases = (
+				3A014E3C18FBAA75004DD453 /* Sources */,
+				3A014E3D18FBAA75004DD453 /* Frameworks */,
+				3A014E3E18FBAA75004DD453 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A014E4618FBAA75004DD453 /* PBXTargetDependency */,
+			);
+			name = DriskelMatorTests;
+			productName = DriskelMatorTests;
+			productReference = 3A014E4018FBAA75004DD453 /* DriskelMatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3A014E0C18FBAA75004DD453 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DM;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = DM;
+				TargetAttributes = {
+					3A014E3F18FBAA75004DD453 = {
+						TestTargetID = 3A014E1318FBAA75004DD453;
+					};
+				};
+			};
+			buildConfigurationList = 3A014E0F18FBAA75004DD453 /* Build configuration list for PBXProject "DriskelMator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3A014E0B18FBAA75004DD453;
+			productRefGroup = 3A014E1518FBAA75004DD453 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3A014E1318FBAA75004DD453 /* DriskelMator */,
+				3A014E3F18FBAA75004DD453 /* DriskelMatorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A014E1218FBAA75004DD453 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AC0556A19289CCE00688F2F /* BackgroundFragShader.glsl in Resources */,
+				3A86CD061914CF520049CB15 /* rotate.png in Resources */,
+				3A014E3218FBAA75004DD453 /* Main_iPad.storyboard in Resources */,
+				3A86CD111914D9D10049CB15 /* scissor.png in Resources */,
+				3A86CC851912988E0049CB15 /* magnet.png in Resources */,
+				3A86CC841912988E0049CB15 /* hand.png in Resources */,
+				3A014EC118FBDF7C004DD453 /* PrimitivesVertShader.glsl in Resources */,
+				3A86CC871912988E0049CB15 /* rect.png in Resources */,
+				3A86CC861912988E0049CB15 /* pusher.png in Resources */,
+				3A86CC9E19139EBB0049CB15 /* DMTestController.xib in Resources */,
+				3AC0556B19289CCE00688F2F /* BackgroundVertShader.glsl in Resources */,
+				3A014E3B18FBAA75004DD453 /* Images.xcassets in Resources */,
+				3A86CC881912988E0049CB15 /* select.png in Resources */,
+				3A014E2618FBAA75004DD453 /* InfoPlist.strings in Resources */,
+				3A014EC018FBDF7C004DD453 /* PrimitivesFragShader.glsl in Resources */,
+				3A86CCEC19149B060049CB15 /* oval.png in Resources */,
+				3A86CC831912988E0049CB15 /* eraser.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A014E3E18FBAA75004DD453 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A014E4C18FBAA75004DD453 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3A014E1018FBAA75004DD453 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A86CCF81914B0570049CB15 /* DMSelectTool.m in Sources */,
+				3A86CC8B191299490049CB15 /* DMRectangleTool.m in Sources */,
+				3A86CCFB1914B87F0049CB15 /* DMMoveTool.m in Sources */,
+				3A86CCF51914AFC40049CB15 /* DMSelectState.m in Sources */,
+				3A86CC901913475E0049CB15 /* DMToolsPalleteVIew.m in Sources */,
+				3A014E6618FBB222004DD453 /* DMException.m in Sources */,
+				3A86CC7B191297DF0049CB15 /* DMAbsractTool.m in Sources */,
+				3A86CCF219149B680049CB15 /* DMOvalState.m in Sources */,
+				3A014E2818FBAA75004DD453 /* main.m in Sources */,
+				3A014E6318FBB211004DD453 /* DMPath.m in Sources */,
+				3A014E3918FBAA75004DD453 /* DMViewController.m in Sources */,
+				3A86CD0F1914D38D0049CB15 /* DMPusherTool.m in Sources */,
+				3A86CD33192886E70049CB15 /* DMGraphics.m in Sources */,
+				3A86CCFE1914B8A00049CB15 /* DMMoveState.m in Sources */,
+				3A86CD2D192882230049CB15 /* DMShaderUtils.m in Sources */,
+				3A86CC6C19127EB30049CB15 /* DMCircleElement.m in Sources */,
+				3A86CC6F19127ED10049CB15 /* DMCanvas.m in Sources */,
+				3A86CD2A19286E690049CB15 /* DMShaderProgram.m in Sources */,
+				3A86CC9D19139EBB0049CB15 /* DMTestController.m in Sources */,
+				3A86CC6919127E9D0049CB15 /* DMRectElement.m in Sources */,
+				3A86CD0C1914D1740049CB15 /* DMPusherState.m in Sources */,
+				3A014EB818FBC582004DD453 /* DMScreen.m in Sources */,
+				3A86CC93191348740049CB15 /* DMToolPalleteController.m in Sources */,
+				3A86CD041914CF070049CB15 /* DMRotateTool.m in Sources */,
+				3A86CC6619127E890049CB15 /* DMAbtractElement.m in Sources */,
+				3A86CCEF19149B410049CB15 /* DMOvalTool.m in Sources */,
+				3A86CD091914D1650049CB15 /* DMAbstractMoveGroupsState.m in Sources */,
+				3A86CD011914CDE70049CB15 /* DMRotateState.m in Sources */,
+				3A86CC751912853D0049CB15 /* DMCreateRectState.m in Sources */,
+				3A86CC96191349970049CB15 /* DMToolInventory.m in Sources */,
+				3A86CD171914DA630049CB15 /* DMTrashTool.m in Sources */,
+				3A86CD30192884880049CB15 /* DMShaderConstants.m in Sources */,
+				3AC05566192899DF00688F2F /* DMShaderContainer.m in Sources */,
+				3A4A0E14193108EE0086C25D /* DMNotifications.m in Sources */,
+				3AC0556E1928AB4400688F2F /* DMGeometryUtils.m in Sources */,
+				3A86CD141914D9F10049CB15 /* DMTrashState.m in Sources */,
+				3A86CC7219127EE90049CB15 /* DMAbstarctState.m in Sources */,
+				3A014E2C18FBAA75004DD453 /* DMAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A014E3C18FBAA75004DD453 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A014E4E18FBAA75004DD453 /* DriskelMatorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3A014E4618FBAA75004DD453 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A014E1318FBAA75004DD453 /* DriskelMator */;
+			targetProxy = 3A014E4518FBAA75004DD453 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3A014E2418FBAA75004DD453 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A014E2518FBAA75004DD453 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3A014E3018FBAA75004DD453 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A014E3118FBAA75004DD453 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		3A014E4A18FBAA75004DD453 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A014E4B18FBAA75004DD453 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3A014E4F18FBAA75004DD453 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3A014E5018FBAA75004DD453 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3A014E5218FBAA75004DD453 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DriskelMator/DriskelMator-Prefix.pch";
+				INFOPLIST_FILE = "DriskelMator/DriskelMator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3A014E5318FBAA75004DD453 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DriskelMator/DriskelMator-Prefix.pch";
+				INFOPLIST_FILE = "DriskelMator/DriskelMator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		3A014E5518FBAA75004DD453 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DriskelMator.app/DriskelMator";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DriskelMator/DriskelMator-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DriskelMatorTests/DriskelMatorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		3A014E5618FBAA75004DD453 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DriskelMator.app/DriskelMator";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DriskelMator/DriskelMator-Prefix.pch";
+				INFOPLIST_FILE = "DriskelMatorTests/DriskelMatorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A014E0F18FBAA75004DD453 /* Build configuration list for PBXProject "DriskelMator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A014E4F18FBAA75004DD453 /* Debug */,
+				3A014E5018FBAA75004DD453 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A014E5118FBAA75004DD453 /* Build configuration list for PBXNativeTarget "DriskelMator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A014E5218FBAA75004DD453 /* Debug */,
+				3A014E5318FBAA75004DD453 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A014E5418FBAA75004DD453 /* Build configuration list for PBXNativeTarget "DriskelMatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A014E5518FBAA75004DD453 /* Debug */,
+				3A014E5618FBAA75004DD453 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3A014E0C18FBAA75004DD453 /* Project object */;
+}

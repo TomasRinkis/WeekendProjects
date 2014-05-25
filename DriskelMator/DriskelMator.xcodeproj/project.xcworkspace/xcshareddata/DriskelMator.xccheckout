@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EDF7E1BA-1058-4680-A0DE-4C60A60823EE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DriskelMator</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1246F132-0E7E-47CE-8D99-AA7D3DD2E52D</key>
+		<string>https://github.com/TomasRinkis/WeekendProjects.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DriskelMator/DriskelMator.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1246F132-0E7E-47CE-8D99-AA7D3DD2E52D</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/TomasRinkis/WeekendProjects.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1246F132-0E7E-47CE-8D99-AA7D3DD2E52D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1246F132-0E7E-47CE-8D99-AA7D3DD2E52D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>WeekendProjects</string>
+		</dict>
+	</array>
+</dict>
+</plist>
