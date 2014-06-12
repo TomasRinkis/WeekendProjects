@@ -11,7 +11,7 @@
 
 #import "WDColorSlider.h"
 #import "WDUtilities.h"
-#import "WDColorIndicator.h"
+#import "WDColorIndicatorView.h"
 #import "WDColor.h"
 #import "UIView+Additions.h"
 
@@ -99,7 +99,7 @@ static void release(void *info) {
 
 - (void) awakeFromNib
 {
-    indicator_ = [WDColorIndicator colorIndicator];
+    indicator_ = [WDColorIndicatorView colorIndicator];
     indicator_.sharpCenter = WDCenterOfRect([self bounds]);
     [self addSubview:indicator_];
     

@@ -1,5 +1,5 @@
 //
-//  WDArrowheadCell.m
+//  WDArrowheadCellView.m
 //  Inkpad
 //
 //  Created by Steve Sprang on 10/16/13.
@@ -7,7 +7,7 @@
 //
 
 #import "WDArrowhead.h"
-#import "WDArrowheadCell.h"
+#import "WDArrowheadCellView.h"
 #import "WDDrawingController.h"
 #import "WDInspectableProperties.h"
 #import "WDPropertyManager.h"
@@ -28,7 +28,7 @@
     CGFloat         lengths[] = {2};
     float           y = floor(CGRectGetMidY(frame)) + 0.5f;
     
-    [[[WDArrowheadCell tintColor] colorWithAlphaComponent:0.5f] set];
+    [[[WDArrowheadCellView tintColor] colorWithAlphaComponent:0.5f] set];
     
     CGContextSetLineWidth(ctx, 1.0);
     CGContextSetLineDash(ctx, 0, lengths, 1);
@@ -39,7 +39,7 @@
 
 @end
 
-@implementation WDArrowheadCell
+@implementation WDArrowheadCellView
 
 @synthesize startArrowButton = startArrowButton_;
 @synthesize endArrowButton = endArrowButton_;
@@ -57,7 +57,7 @@
     startArrowButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
     startArrowButton_.frame = CGRectMake(0,0,kArrowWidth,kArrowHeight);
     [startArrowButton_ setBackgroundImage:[self selectedBackground] forState:UIControlStateSelected];
-    startArrowButton_.tintColor = [WDArrowheadCell tintColor];
+    startArrowButton_.tintColor = [WDArrowheadCellView tintColor];
     [startArrowButton_ addTarget:self action:@selector(leftArrowTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:startArrowButton_];
     
@@ -65,7 +65,7 @@
     endArrowButton_.frame = CGRectMake(self.contentView.frame.size.width - kArrowWidth,0,kArrowWidth,kArrowHeight);
     endArrowButton_.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     [endArrowButton_ setBackgroundImage:[self selectedBackground] forState:UIControlStateSelected];
-    endArrowButton_.tintColor = [WDArrowheadCell tintColor];
+    endArrowButton_.tintColor = [WDArrowheadCellView tintColor];
     [endArrowButton_ addTarget:self action:@selector(rightArrowTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:endArrowButton_];
     

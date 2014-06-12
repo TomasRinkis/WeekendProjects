@@ -12,7 +12,7 @@
 #import <CoreText/CoreText.h>
 #import "WDCanvasController.h"
 #import "WDDrawingController.h"
-#import "WDCoreTextLabel.h"
+#import "WDCoreTextLabelView.h"
 #import "WDFontController.h"
 #import "WDFontManager.h"
 #import "WDInspectableProperties.h"
@@ -223,7 +223,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         
-        WDCoreTextLabel *label = [[WDCoreTextLabel alloc] initWithFrame:cell.contentView.bounds];
+        WDCoreTextLabelView *label = [[WDCoreTextLabelView alloc] initWithFrame:cell.contentView.bounds];
         label.tag = kCoreTextLabelTag;
         [cell.contentView addSubview:label];
         
@@ -234,7 +234,7 @@
     
     NSString *fontName = nil;
     CGFloat fontSize = 18.0f;
-    WDCoreTextLabel *previewLabel = (WDCoreTextLabel *) [cell viewWithTag:kCoreTextLabelTag];
+    WDCoreTextLabelView *previewLabel = (WDCoreTextLabelView *) [cell viewWithTag:kCoreTextLabelTag];
     
     if (tableView == familyTable_) {
         // Set the text to the font family name
@@ -260,7 +260,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WDCoreTextLabel *previewLabel = (WDCoreTextLabel *) [cell viewWithTag:kCoreTextLabelTag];
+    WDCoreTextLabelView *previewLabel = (WDCoreTextLabelView *) [cell viewWithTag:kCoreTextLabelTag];
     previewLabel.frame = CGRectInset(cell.contentView.bounds, 10, 0);
 }
 

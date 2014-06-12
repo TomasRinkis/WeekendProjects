@@ -1,5 +1,5 @@
 //
-//  WDArrowheadCell.h
+//  WDArrowheadCellView.h
 //  Inkpad
 //
 //  Created by Steve Sprang on 10/16/13.
@@ -10,7 +10,7 @@
 
 @class WDDrawingController;
 
-@interface WDArrowheadCell : UITableViewCell
+@interface WDArrowheadCellView : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UIButton *startArrowButton;
 @property (nonatomic, strong) IBOutlet UIButton *endArrowButton;

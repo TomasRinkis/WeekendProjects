@@ -1,5 +1,5 @@
 //
-//  WDColorIndicator.h
+//  WDColorIndicatorView.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -13,11 +13,11 @@
 
 @class WDColor;
 
-@interface WDColorIndicator : UIView
+@interface WDColorIndicatorView : UIView
 
 @property (nonatomic, assign) BOOL alphaMode;
 @property (nonatomic, strong) WDColor *color;
 
-+ (WDColorIndicator *) colorIndicator;
++ (WDColorIndicatorView *) colorIndicator;
 
 @end

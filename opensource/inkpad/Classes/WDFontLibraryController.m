@@ -9,7 +9,7 @@
 //  Copyright (c) 2010-2013 Steve Sprang
 //
 
-#import "WDCoreTextLabel.h"
+#import "WDCoreTextLabelView.h"
 #import "WDFontLibraryController.h"
 #import "WDFontManager.h"
 
@@ -131,14 +131,14 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         
-        WDCoreTextLabel *label = [[WDCoreTextLabel alloc] initWithFrame:CGRectMake(10, 0, kCoreTextLabelWidth - 10, kCoreTextLabelHeight)];
+        WDCoreTextLabelView *label = [[WDCoreTextLabelView alloc] initWithFrame:CGRectMake(10, 0, kCoreTextLabelWidth - 10, kCoreTextLabelHeight)];
         label.tag = kCoreTextLabelTag;
         [cell.contentView addSubview:label];
     }
     
     NSString *fontName = [[WDFontManager sharedInstance] userFonts][indexPath.row];
     
-    WDCoreTextLabel *label = (WDCoreTextLabel *) [cell viewWithTag:kCoreTextLabelTag];
+    WDCoreTextLabelView *label = (WDCoreTextLabelView *) [cell viewWithTag:kCoreTextLabelTag];
     
     CTFontRef fontRef = [[WDFontManager sharedInstance] newFontRefForFont:fontName withSize:22];
     [label setFontRef:fontRef];

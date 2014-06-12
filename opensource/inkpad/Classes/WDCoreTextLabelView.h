@@ -1,5 +1,5 @@
 //
-//  WDCoreTextLabel.h
+//  WDCoreTextLabelView.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
 
-@interface WDCoreTextLabel : UIView
+@interface WDCoreTextLabelView : UIView
 
 @property (nonatomic, assign) CTFontRef fontRef;
 @property (nonatomic, strong) NSString *text;

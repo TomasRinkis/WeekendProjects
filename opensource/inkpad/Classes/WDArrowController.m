@@ -10,7 +10,7 @@
 //
 
 #import "WDArrowhead.h"
-#import "WDArrowheadCell.h"
+#import "WDArrowheadCellView.h"
 #import "WDArrowController.h"
 #import "WDDrawingController.h"
 #import "WDInspectableProperties.h"
@@ -81,13 +81,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString        *cellIdentifier = @"cellID";
-    WDArrowheadCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    WDArrowheadCellView *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     NSString        *arrowID = [self arrows][indexPath.row];
     WDStrokeStyle   *strokeStyle = [drawingController_.propertyManager defaultStrokeStyle];
     
     if (cell == nil) {
         UITableViewCellStyle cellStyle = UITableViewCellStyleDefault;
-        cell = [[WDArrowheadCell alloc] initWithStyle:cellStyle reuseIdentifier:cellIdentifier];
+        cell = [[WDArrowheadCellView alloc] initWithStyle:cellStyle reuseIdentifier:cellIdentifier];
         cell.drawingController = self.drawingController;
     }
     

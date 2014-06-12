@@ -1,5 +1,5 @@
 //
-//  WDCoreTextLabel.m
+//  WDCoreTextLabelView.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -9,9 +9,9 @@
 //  Copyright (c) 2011-2013 Steve Sprang
 //
 
-#import "WDCoreTextLabel.h"
+#import "WDCoreTextLabelView.h"
 
-@implementation WDCoreTextLabel
+@implementation WDCoreTextLabelView
 
 @synthesize fontRef;
 @synthesize text;

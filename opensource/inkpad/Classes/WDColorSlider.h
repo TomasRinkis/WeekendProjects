@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class WDColorIndicator;
+@class WDColorIndicatorView;
 @class WDColor;
 
 typedef enum {
@@ -31,7 +31,7 @@ typedef enum {
     CGImageRef          hueImage_;
     WDColor             *color_;
     float               value_;
-    WDColorIndicator    *indicator_;
+    WDColorIndicatorView    *indicator_;
     CGShadingRef        shadingRef_;
     WDColorSliderMode   mode_;
     BOOL                reversed_;
@@ -41,6 +41,6 @@ typedef enum {
 @property (nonatomic, readonly) float floatValue;
 @property (nonatomic, strong) WDColor *color;
 @property (nonatomic, assign) BOOL reversed;
-@property (nonatomic, strong, readonly) WDColorIndicator *indicator;
+@property (nonatomic, strong, readonly) WDColorIndicatorView *indicator;
 
 @end

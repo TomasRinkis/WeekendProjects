@@ -1,5 +1,5 @@
 //
-//  WDColorIndicator.m
+//  WDColorIndicatorView.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -9,18 +9,18 @@
 //  Copyright (c) 2008-2013 Steve Sprang
 //
 
-#import "WDColorIndicator.h"
+#import "WDColorIndicatorView.h"
 #import "WDColor.h"
 #import "WDUtilities.h"
 
-@implementation WDColorIndicator
+@implementation WDColorIndicatorView
 
 @synthesize alphaMode = alphaMode_;
 @synthesize color = color_;
 
-+ (WDColorIndicator *) colorIndicator
++ (WDColorIndicatorView *) colorIndicator
 {
-    WDColorIndicator *indicator = [[WDColorIndicator alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    WDColorIndicatorView *indicator = [[WDColorIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
     return indicator;
 }
 

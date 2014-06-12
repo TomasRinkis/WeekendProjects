@@ -169,7 +169,7 @@
 		6B87CA5F1312610D0027A482 /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 6B87CA5C1312610D0027A482 /* Help */; };
 		6B87EA3513FB2F7300CC07C3 /* dropbox_icon_font.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B87EA3313FB2F7300CC07C3 /* dropbox_icon_font.png */; };
 		6B87EA3613FB2F7300CC07C3 /* dropbox_icon_svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B87EA3413FB2F7300CC07C3 /* dropbox_icon_svg.png */; };
-		6B87EA3913FB3FD000CC07C3 /* WDCoreTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87EA3813FB3FD000CC07C3 /* WDCoreTextLabel.m */; };
+		6B87EA3913FB3FD000CC07C3 /* WDCoreTextLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87EA3813FB3FD000CC07C3 /* WDCoreTextLabelView.m */; };
 		6B8C537F182AEB4A00C102F7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B8C537D182AEB4A00C102F7 /* Localizable.strings */; };
 		6B8F091817FCE1DB00BB6F7E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B8F091617FCE1DB00BB6F7E /* Localizable.strings */; };
 		6B95752B183C52940094B7D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B957523183C52940094B7D5 /* Localizable.strings */; };
@@ -191,7 +191,7 @@
 		6B9A289118C1226800697BE7 /* OpenClipArt.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B9A288F18C1226800697BE7 /* OpenClipArt.strings */; };
 		6B9D976F136A2385006DCEA5 /* spark_knob_highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B9D976E136A2385006DCEA5 /* spark_knob_highlighted.png */; };
 		6BA45791180F2B9200B51D7A /* WDArrowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA45790180F2B9200B51D7A /* WDArrowController.m */; };
-		6BA45794180F778F00B51D7A /* WDArrowheadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA45793180F778F00B51D7A /* WDArrowheadCell.m */; };
+		6BA45794180F778F00B51D7A /* WDArrowheadCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA45793180F778F00B51D7A /* WDArrowheadCellView.m */; };
 		6BAACC7B1332A048000C6E74 /* WDSparkSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAACC7A1332A047000C6E74 /* WDSparkSlider.m */; };
 		6BABD96D141ED30100F7E0A9 /* NSArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD886141ED30100F7E0A9 /* NSArray+Additions.m */; };
 		6BABD96F141ED30100F7E0A9 /* NSData+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD88A141ED30100F7E0A9 /* NSData+Additions.m */; };
@@ -310,7 +310,7 @@
 		6BCD533212400017002FCB27 /* WDBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD52D912400017002FCB27 /* WDBrowserController.m */; };
 		6BCD533312400017002FCB27 /* WDCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD52DB12400017002FCB27 /* WDCanvas.m */; };
 		6BCD533412400017002FCB27 /* WDCanvasController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD52DD12400017002FCB27 /* WDCanvasController.m */; };
-		6BCD533612400017002FCB27 /* WDColorIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD52E112400017002FCB27 /* WDColorIndicator.m */; };
+		6BCD533612400017002FCB27 /* WDColorIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD52E112400017002FCB27 /* WDColorIndicatorView.m */; };
 		6BCD533712400017002FCB27 /* WDColorSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD52E312400017002FCB27 /* WDColorSlider.m */; };
 		6BCD533812400017002FCB27 /* WDColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD52E512400017002FCB27 /* WDColorWell.m */; };
 		6BCD533A12400017002FCB27 /* WDDrawingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD52E912400017002FCB27 /* WDDrawingManager.m */; };
@@ -572,8 +572,8 @@
 		6B87CA5C1312610D0027A482 /* Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Help; sourceTree = "<group>"; };
 		6B87EA3313FB2F7300CC07C3 /* dropbox_icon_font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dropbox_icon_font.png; path = Images/dropbox_icon_font.png; sourceTree = "<group>"; };
 		6B87EA3413FB2F7300CC07C3 /* dropbox_icon_svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dropbox_icon_svg.png; path = Images/dropbox_icon_svg.png; sourceTree = "<group>"; };
-		6B87EA3713FB3FD000CC07C3 /* WDCoreTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDCoreTextLabel.h; sourceTree = "<group>"; };
-		6B87EA3813FB3FD000CC07C3 /* WDCoreTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDCoreTextLabel.m; sourceTree = "<group>"; };
+		6B87EA3713FB3FD000CC07C3 /* WDCoreTextLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDCoreTextLabelView.h; sourceTree = "<group>"; };
+		6B87EA3813FB3FD000CC07C3 /* WDCoreTextLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDCoreTextLabelView.m; sourceTree = "<group>"; };
 		6B8C537E182AEB4A00C102F7 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Localizable.strings; sourceTree = "<group>"; };
 		6B8F091717FCE1DB00BB6F7E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		6B957524183C52940094B7D5 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = Localizable.strings; sourceTree = "<group>"; };
@@ -614,8 +614,8 @@
 		6B9D976E136A2385006DCEA5 /* spark_knob_highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark_knob_highlighted.png; path = Images/spark_knob_highlighted.png; sourceTree = "<group>"; };
 		6BA4578F180F2B9200B51D7A /* WDArrowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDArrowController.h; sourceTree = "<group>"; };
 		6BA45790180F2B9200B51D7A /* WDArrowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDArrowController.m; sourceTree = "<group>"; };
-		6BA45792180F778F00B51D7A /* WDArrowheadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDArrowheadCell.h; sourceTree = "<group>"; };
-		6BA45793180F778F00B51D7A /* WDArrowheadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDArrowheadCell.m; sourceTree = "<group>"; };
+		6BA45792180F778F00B51D7A /* WDArrowheadCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDArrowheadCellView.h; sourceTree = "<group>"; };
+		6BA45793180F778F00B51D7A /* WDArrowheadCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDArrowheadCellView.m; sourceTree = "<group>"; };
 		6BAACC791332A047000C6E74 /* WDSparkSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDSparkSlider.h; sourceTree = "<group>"; };
 		6BAACC7A1332A047000C6E74 /* WDSparkSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDSparkSlider.m; sourceTree = "<group>"; };
 		6BABD885141ED30100F7E0A9 /* NSArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Additions.h"; sourceTree = "<group>"; };
@@ -814,8 +814,8 @@
 		6BCD52DB12400017002FCB27 /* WDCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDCanvas.m; sourceTree = "<group>"; };
 		6BCD52DC12400017002FCB27 /* WDCanvasController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDCanvasController.h; sourceTree = "<group>"; };
 		6BCD52DD12400017002FCB27 /* WDCanvasController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WDCanvasController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		6BCD52E012400017002FCB27 /* WDColorIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDColorIndicator.h; sourceTree = "<group>"; };
-		6BCD52E112400017002FCB27 /* WDColorIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDColorIndicator.m; sourceTree = "<group>"; };
+		6BCD52E012400017002FCB27 /* WDColorIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDColorIndicatorView.h; sourceTree = "<group>"; };
+		6BCD52E112400017002FCB27 /* WDColorIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDColorIndicatorView.m; sourceTree = "<group>"; };
 		6BCD52E212400017002FCB27 /* WDColorSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDColorSlider.h; sourceTree = "<group>"; };
 		6BCD52E312400017002FCB27 /* WDColorSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDColorSlider.m; sourceTree = "<group>"; };
 		6BCD52E412400017002FCB27 /* WDColorWell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDColorWell.h; sourceTree = "<group>"; };
@@ -1654,22 +1654,22 @@
 			children = (
 				6B356057136026AA007D8DBB /* WDAnglePicker.h */,
 				6B356058136026AA007D8DBB /* WDAnglePicker.m */,
-				6BA45792180F778F00B51D7A /* WDArrowheadCell.h */,
-				6BA45793180F778F00B51D7A /* WDArrowheadCell.m */,
+				6BA45792180F778F00B51D7A /* WDArrowheadCellView.h */,
+				6BA45793180F778F00B51D7A /* WDArrowheadCellView.m */,
 				6B6DC1A012403DA000A98FCE /* WDBlockingView.h */,
 				6B6DC1A112403DA000A98FCE /* WDBlockingView.m */,
 				6B51BCEE126522B6000F6BF3 /* WDButton.h */,
 				6B51BCEF126522B6000F6BF3 /* WDButton.m */,
 				6BCD52DA12400017002FCB27 /* WDCanvas.h */,
 				6BCD52DB12400017002FCB27 /* WDCanvas.m */,
-				6BCD52E012400017002FCB27 /* WDColorIndicator.h */,
-				6BCD52E112400017002FCB27 /* WDColorIndicator.m */,
+				6BCD52E012400017002FCB27 /* WDColorIndicatorView.h */,
+				6BCD52E112400017002FCB27 /* WDColorIndicatorView.m */,
 				6BCD52E212400017002FCB27 /* WDColorSlider.h */,
 				6BCD52E312400017002FCB27 /* WDColorSlider.m */,
 				6BCD52E412400017002FCB27 /* WDColorWell.h */,
 				6BCD52E512400017002FCB27 /* WDColorWell.m */,
-				6B87EA3713FB3FD000CC07C3 /* WDCoreTextLabel.h */,
-				6B87EA3813FB3FD000CC07C3 /* WDCoreTextLabel.m */,
+				6B87EA3713FB3FD000CC07C3 /* WDCoreTextLabelView.h */,
+				6B87EA3813FB3FD000CC07C3 /* WDCoreTextLabelView.m */,
 				6BE2F52D136782CE006BBF5E /* WDEraserPreviewView.h */,
 				6BE2F52E136782CE006BBF5E /* WDEraserPreviewView.m */,
 				6BDBC489130D1A6F00BC3BCA /* WDEtchedLine.h */,
@@ -2069,7 +2069,7 @@
 				6BCD533212400017002FCB27 /* WDBrowserController.m in Sources */,
 				6BCD533312400017002FCB27 /* WDCanvas.m in Sources */,
 				6BCD533412400017002FCB27 /* WDCanvasController.m in Sources */,
-				6BCD533612400017002FCB27 /* WDColorIndicator.m in Sources */,
+				6BCD533612400017002FCB27 /* WDColorIndicatorView.m in Sources */,
 				6BCD533712400017002FCB27 /* WDColorSlider.m in Sources */,
 				6BCD533812400017002FCB27 /* WDColorWell.m in Sources */,
 				6BCD533A12400017002FCB27 /* WDDrawingManager.m in Sources */,
@@ -2123,7 +2123,7 @@
 				6B0D8CD613E01C4400DDFDC7 /* WDFontManager.m in Sources */,
 				6B1760F513E15D61007016D9 /* WDFontLibraryController.m in Sources */,
 				5D27FE8F13EC992D00EEEFF7 /* WDSamplesController.m in Sources */,
-				6B87EA3913FB3FD000CC07C3 /* WDCoreTextLabel.m in Sources */,
+				6B87EA3913FB3FD000CC07C3 /* WDCoreTextLabelView.m in Sources */,
 				6B83971118A36253001D5985 /* OCAViewController.m in Sources */,
 				6B83970D18A36253001D5985 /* OCADownloader.m in Sources */,
 				6B963452140359060096A349 /* WDUserFont.m in Sources */,
@@ -2189,7 +2189,7 @@
 				6BABD9D3141ED30100F7E0A9 /* WDEyedropperTool.m in Sources */,
 				6BABD9D4141ED30100F7E0A9 /* WDFreehandTool.m in Sources */,
 				6BABD9D5141ED30100F7E0A9 /* WDHandTool.m in Sources */,
-				6BA45794180F778F00B51D7A /* WDArrowheadCell.m in Sources */,
+				6BA45794180F778F00B51D7A /* WDArrowheadCellView.m in Sources */,
 				6BABD9D6141ED30100F7E0A9 /* WDPenTool.m in Sources */,
 				6BABD9D7141ED30100F7E0A9 /* WDRotateTool.m in Sources */,
 				6BABD9D8141ED30100F7E0A9 /* WDScaleTool.m in Sources */,
