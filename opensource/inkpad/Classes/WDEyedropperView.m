@@ -1,5 +1,5 @@
 //
-//  WDEyedropper.m
+//  WDEyedropperView.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -9,11 +9,11 @@
 //  Copyright (c) 2008-2013 Steve Sprang
 //
 
-#import "WDEyedropper.h"
+#import "WDEyedropperView.h"
 #import "WDColor.h"
 #import "WDUtilities.h"
 
-@implementation WDEyedropper
+@implementation WDEyedropperView
 
 @synthesize fill = fill_;
 

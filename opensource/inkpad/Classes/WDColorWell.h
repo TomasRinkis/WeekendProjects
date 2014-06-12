@@ -12,10 +12,10 @@
 #import <UIKit/UIKit.h>
 #import "WDPathPainter.h"
 
-@class WDGradientStopIndicator;
+@class WDGradientStopIndicatorView;
 
 @interface WDColorWell : UIButton {
-    WDGradientStopIndicator     *gradientStop_;
+    WDGradientStopIndicatorView     *gradientStop_;
     UIView                      *shadowView_;
 }
 

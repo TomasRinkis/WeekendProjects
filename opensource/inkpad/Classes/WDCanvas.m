@@ -15,8 +15,8 @@
 #import "WDDrawingController.h"
 #import "WDColor.h"
 #import "WDEraserPreviewView.h"
-#import "WDEtchedLine.h"
-#import "WDEyedropper.h"
+#import "WDEtchedLineView.h"
+#import "WDEyedropperView.h"
 #import "WDLayer.h"
 #import "WDPalette.h"
 #import "WDPath.h"
@@ -281,7 +281,7 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
         return;
     }
     
-    eyedropper_ = [[WDEyedropper alloc] initWithFrame:CGRectMake(0, 0, kDropperRadius * 2, kDropperRadius * 2)];
+    eyedropper_ = [[WDEyedropperView alloc] initWithFrame:CGRectMake(0, 0, kDropperRadius * 2, kDropperRadius * 2)];
     
     pt = [self convertPointFromDocumentSpace:pt];
     eyedropper_.center = WDRoundPoint(pt);
@@ -868,7 +868,7 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
     [paletteView addSubview:tools];
     
     // add a separator
-    WDEtchedLine *line = [[WDEtchedLine alloc] initWithFrame:CGRectMake(2, bottom + 1, CGRectGetWidth(frame) - 4, 2)];
+    WDEtchedLineView *line = [[WDEtchedLineView alloc] initWithFrame:CGRectMake(2, bottom + 1, CGRectGetWidth(frame) - 4, 2)];
     [paletteView addSubview:line];
     
     // add a "delete" buttton

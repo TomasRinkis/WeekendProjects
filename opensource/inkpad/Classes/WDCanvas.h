@@ -17,7 +17,7 @@
 @class WDDrawing;
 @class WDDrawingController;
 @class WDEraserPreviewView;
-@class WDEyedropper;
+@class WDEyedropperView;
 @class WDPalette;
 @class WDPath;
 @class WDRulerCornerView;
@@ -51,7 +51,7 @@
     
     // adornments
     UIImageView             *pivotView_;
-    WDEyedropper            *eyedropper_;
+    WDEyedropperView            *eyedropper_;
     
     // rulers
     WDRulerView             *horizontalRuler_;
@@ -85,7 +85,7 @@
 @property (nonatomic, weak) WDCanvasController *controller;
 @property (weak, nonatomic, readonly) WDDrawingController *drawingController;
 @property (nonatomic, strong, readonly) WDPalette *toolPalette;
-@property (nonatomic, readonly) WDEyedropper *eyedropper;
+@property (nonatomic, readonly) WDEyedropperView *eyedropper;
 @property (nonatomic, readonly) WDRulerView *horizontalRuler;
 @property (nonatomic, readonly) WDRulerView *verticalRuler;
 @property (nonatomic, weak) UIView *toolOptionsView;

@@ -1,5 +1,5 @@
 //
-//  WDGradientStopIndicator.m
+//  WDGradientStopIndicatorView.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -10,13 +10,13 @@
 //
 
 #import "WDColor.h"
-#import "WDGradientStopIndicator.h"
+#import "WDGradientStopIndicatorView.h"
 #import "WDGradientStop.h"
 #import "WDUtilities.h"
 
 const float kColorRectInset = 10;
 
-@implementation WDGradientStopOverlay
+@implementation WDGradientStopOverlayView
 @synthesize indicator;
 
 - (id)initWithFrame:(CGRect)frame
@@ -76,7 +76,7 @@ const float kColorRectInset = 10;
 @end
 
 
-@implementation WDGradientStopIndicator
+@implementation WDGradientStopIndicatorView
 
 @synthesize stop = stop_;
 @synthesize selected = selected_;
@@ -106,7 +106,7 @@ const float kColorRectInset = 10;
     
     self.stop = stop;
     
-    overlay_ = [[WDGradientStopOverlay alloc] initWithFrame:self.bounds];
+    overlay_ = [[WDGradientStopOverlayView alloc] initWithFrame:self.bounds];
     overlay_.indicator = self;
     [self addSubview:overlay_];
     

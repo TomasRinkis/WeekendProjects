@@ -12,7 +12,7 @@
 #import "WDColor.h"
 #import "WDColorWell.h"
 #import "WDGradient.h"
-#import "WDGradientStopIndicator.h"
+#import "WDGradientStopIndicatorView.h"
 #import "WDGradientStop.h"
 #import "WDUtilities.h"
 #import "UIView+Additions.h"
@@ -137,7 +137,7 @@
 - (void) setGradientStopMode:(BOOL)gradient
 {
     if (gradient && !gradientStop_) {
-        gradientStop_ = [[WDGradientStopIndicator alloc] initWithStop:[WDGradientStop stopWithColor:(WDColor *)self.painter andRatio:0]];
+        gradientStop_ = [[WDGradientStopIndicatorView alloc] initWithStop:[WDGradientStop stopWithColor:(WDColor *)self.painter andRatio:0]];
         gradientStop_.selected = YES;
         [self addSubview:gradientStop_];
         

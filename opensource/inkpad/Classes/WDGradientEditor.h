@@ -14,13 +14,13 @@
 @class WDColor;
 @class WDGradient;
 @class WDGradientController;
-@class WDGradientStopIndicator;
+@class WDGradientStopIndicatorView;
 
 @interface WDGradientEditor : UIControl {
     NSMutableArray              *indicators_;
-    WDGradientStopIndicator     *activeIndicator_;
-    WDGradientStopIndicator     *indicatorToRemove_;
-    WDGradientStopIndicator     *indicatorToDrag_;
+    WDGradientStopIndicatorView     *activeIndicator_;
+    WDGradientStopIndicatorView     *indicatorToRemove_;
+    WDGradientStopIndicatorView     *indicatorToDrag_;
     BOOL                        moved_;
 }
 
@@ -31,7 +31,7 @@
 @property (nonatomic, assign) BOOL inactive;
 
 - (void) setColor:(WDColor *)color;
-- (void) setActiveIndicator:(WDGradientStopIndicator *)indicator;
-- (WDGradientStopIndicator *) stopIndicatorWithRatio:(float)ratio;
+- (void) setActiveIndicator:(WDGradientStopIndicatorView *)indicator;
+- (WDGradientStopIndicatorView *) stopIndicatorWithRatio:(float)ratio;
 
 @end

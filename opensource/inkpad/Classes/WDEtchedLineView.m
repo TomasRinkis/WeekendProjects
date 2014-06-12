@@ -1,5 +1,5 @@
 //
-//  WDEtchedLine.m
+//  WDEtchedLineView.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -9,9 +9,9 @@
 //  Copyright (c) 2011-2013 Steve Sprang
 //
 
-#import "WDEtchedLine.h"
+#import "WDEtchedLineView.h"
 
-@implementation WDEtchedLine
+@implementation WDEtchedLineView
 
 - (id) initWithFrame:(CGRect)frame
 {

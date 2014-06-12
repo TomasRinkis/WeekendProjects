@@ -1,5 +1,5 @@
 //
-//  WDGradientStopIndicator.h
+//  WDGradientStopIndicatorView.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -12,17 +12,17 @@
 #import <UIKit/UIKit.h>
 
 @class WDGradientStop;
-@class WDGradientStopIndicator;
+@class WDGradientStopIndicatorView;
 
-@interface WDGradientStopOverlay : UIView
-@property (nonatomic, weak) WDGradientStopIndicator *indicator;
+@interface WDGradientStopOverlayView : UIView
+@property (nonatomic, weak) WDGradientStopIndicatorView *indicator;
 @end
 
-@interface WDGradientStopIndicator : UIView
+@interface WDGradientStopIndicatorView : UIView
 
 @property (nonatomic, strong) WDGradientStop *stop;
 @property (nonatomic, assign) BOOL selected;
-@property (nonatomic, strong) WDGradientStopOverlay *overlay;
+@property (nonatomic, strong) WDGradientStopOverlayView *overlay;
 
 - (id) initWithStop:(WDGradientStop *)stop;
 - (CGRect) colorRect;

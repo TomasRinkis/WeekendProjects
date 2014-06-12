@@ -17,7 +17,7 @@
 #import "WDPickResult.h"
 
 #if TARGET_OS_IPHONE
-#import "WDEyedropper.h"
+#import "WDEyedropperView.h"
 #endif
 
 @implementation WDEyedropperTool

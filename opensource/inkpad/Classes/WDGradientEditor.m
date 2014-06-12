@@ -13,7 +13,7 @@
 #import "WDGradient.h"
 #import "WDGradientController.h"
 #import "WDGradientStop.h"
-#import "WDGradientStopIndicator.h"
+#import "WDGradientStopIndicatorView.h"
 #import "WDUtilities.h"
 #import "UIView+Additions.h"
 
@@ -76,7 +76,7 @@
     }
 }
 
-- (void) positionIndicator:(WDGradientStopIndicator *)indicator
+- (void) positionIndicator:(WDGradientStopIndicatorView *)indicator
 {
     CGRect  bounds = CGRectInset(self.bounds, 1, 0);
     
@@ -106,7 +106,7 @@
     [indicators_ removeAllObjects];
     
     for (WDGradientStop *stop in gradient.stops) {
-        WDGradientStopIndicator *indicator = [[WDGradientStopIndicator alloc] initWithStop:stop];
+        WDGradientStopIndicatorView *indicator = [[WDGradientStopIndicatorView alloc] initWithStop:stop];
         [indicators_ addObject:indicator];
         [self addSubview:indicator];
         
@@ -151,7 +151,7 @@
 {
     inactive_ = inactive;
     
-    for (WDGradientStopIndicator *indicator in indicators_) {
+    for (WDGradientStopIndicatorView *indicator in indicators_) {
         indicator.hidden = inactive;
     }
     
@@ -164,16 +164,16 @@
 {
     NSMutableArray *stops = [NSMutableArray array];
     
-    for (WDGradientStopIndicator *indicator in indicators_) {
+    for (WDGradientStopIndicatorView *indicator in indicators_) {
         [stops addObject:indicator.stop];
     }
     
     return stops;
 }
 
-- (WDGradientStopIndicator *) stopIndicatorWithRatio:(float)ratio
+- (WDGradientStopIndicatorView *) stopIndicatorWithRatio:(float)ratio
 {
-    for (WDGradientStopIndicator *indicator in indicators_) {
+    for (WDGradientStopIndicatorView *indicator in indicators_) {
         if (indicator.stop.ratio == ratio) {
             return indicator;
         }
@@ -188,7 +188,7 @@
     [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
-- (void) setActiveIndicator:(WDGradientStopIndicator *)indicator
+- (void) setActiveIndicator:(WDGradientStopIndicatorView *)indicator
 {
     activeIndicator_.selected = NO;
     activeIndicator_ = nil;
@@ -212,7 +212,7 @@
     moved_ = NO;
     indicatorToDrag_ = indicatorToRemove_ = nil;
     
-    for (WDGradientStopIndicator *indicator in [indicators_ reverseObjectEnumerator]) {
+    for (WDGradientStopIndicatorView *indicator in [indicators_ reverseObjectEnumerator]) {
         if (CGRectContainsPoint(indicator.frame, pt)) {
             [self setActiveIndicator:indicator];
             indicatorToDrag_ = indicator;

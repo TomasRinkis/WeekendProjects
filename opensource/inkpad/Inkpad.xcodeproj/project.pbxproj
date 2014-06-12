@@ -284,7 +284,7 @@
 		6BABDA03141F163C00F7E0A9 /* WDSVGStyleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD9F7141F163C00F7E0A9 /* WDSVGStyleParser.m */; };
 		6BABDA04141F163C00F7E0A9 /* WDSVGThumbnailExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD9F9141F163C00F7E0A9 /* WDSVGThumbnailExtractor.m */; };
 		6BABDA05141F163C00F7E0A9 /* WDSVGTransformParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD9FB141F163C00F7E0A9 /* WDSVGTransformParser.m */; };
-		6BB1D0FD1309E9A300F0C22E /* WDEyedropper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1D0FC1309E9A300F0C22E /* WDEyedropper.m */; };
+		6BB1D0FD1309E9A300F0C22E /* WDEyedropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1D0FC1309E9A300F0C22E /* WDEyedropperView.m */; };
 		6BB7F94513AB1F5A004081B3 /* WDHueShifter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB7F94413AB1F5A004081B3 /* WDHueShifter.m */; };
 		6BBB7CDA18B32C240018954B /* ColorBalance.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BBB7CD018B32C240018954B /* ColorBalance.strings */; };
 		6BBB7CDB18B32C240018954B /* HueSaturation.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BBB7CD218B32C240018954B /* HueSaturation.strings */; };
@@ -332,7 +332,7 @@
 		6BD7072512AD011F004E07C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD7071D12AD011F004E07C9 /* QuartzCore.framework */; };
 		6BD7072612AD011F004E07C9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD7071E12AD011F004E07C9 /* Security.framework */; };
 		6BD7072712AD011F004E07C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD7071F12AD011F004E07C9 /* UIKit.framework */; };
-		6BDBC48B130D1A6F00BC3BCA /* WDEtchedLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBC48A130D1A6F00BC3BCA /* WDEtchedLine.m */; };
+		6BDBC48B130D1A6F00BC3BCA /* WDEtchedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBC48A130D1A6F00BC3BCA /* WDEtchedLineView.m */; };
 		6BDD92E413DE744F0005F55D /* hue_shifter_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BDD92E313DE744F0005F55D /* hue_shifter_overlay.png */; };
 		6BDDFA6C13E7924600B10774 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BDDFA6B13E7924600B10774 /* MobileCoreServices.framework */; };
 		6BE1875418FEE947006FC619 /* ColorBalance.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BE1874818FEE947006FC619 /* ColorBalance.strings */; };
@@ -346,7 +346,7 @@
 		6BF0C250125F9F63009BB05C /* WDStrokeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF0C24F125F9F63009BB05C /* WDStrokeController.m */; };
 		6BF0C307125FB46A009BB05C /* WDGradientEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF0C306125FB46A009BB05C /* WDGradientEditor.m */; };
 		6BF0C329125FB905009BB05C /* WDGradientController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF0C328125FB905009BB05C /* WDGradientController.m */; };
-		6BF0C469125FDFF9009BB05C /* WDGradientStopIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF0C468125FDFF9009BB05C /* WDGradientStopIndicator.m */; };
+		6BF0C469125FDFF9009BB05C /* WDGradientStopIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF0C468125FDFF9009BB05C /* WDGradientStopIndicatorView.m */; };
 		6BF0C5681262598A009BB05C /* radial.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BF0C5671262598A009BB05C /* radial.png */; };
 		6BF0C57D12625C4D009BB05C /* linear.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BF0C57C12625C4D009BB05C /* linear.png */; };
 		6BF1CEC012497B9700BDD909 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1CEBF12497B9700BDD909 /* UIView+Additions.m */; };
@@ -781,8 +781,8 @@
 		6BABD9F9141F163C00F7E0A9 /* WDSVGThumbnailExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WDSVGThumbnailExtractor.m; path = "Inkpad-Core/SVG/WDSVGThumbnailExtractor.m"; sourceTree = SOURCE_ROOT; };
 		6BABD9FA141F163C00F7E0A9 /* WDSVGTransformParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WDSVGTransformParser.h; path = "Inkpad-Core/SVG/WDSVGTransformParser.h"; sourceTree = SOURCE_ROOT; };
 		6BABD9FB141F163C00F7E0A9 /* WDSVGTransformParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WDSVGTransformParser.m; path = "Inkpad-Core/SVG/WDSVGTransformParser.m"; sourceTree = SOURCE_ROOT; };
-		6BB1D0FB1309E9A300F0C22E /* WDEyedropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDEyedropper.h; sourceTree = "<group>"; };
-		6BB1D0FC1309E9A300F0C22E /* WDEyedropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDEyedropper.m; sourceTree = "<group>"; };
+		6BB1D0FB1309E9A300F0C22E /* WDEyedropperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDEyedropperView.h; sourceTree = "<group>"; };
+		6BB1D0FC1309E9A300F0C22E /* WDEyedropperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDEyedropperView.m; sourceTree = "<group>"; };
 		6BB7F94313AB1F5A004081B3 /* WDHueShifter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDHueShifter.h; sourceTree = "<group>"; };
 		6BB7F94413AB1F5A004081B3 /* WDHueShifter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDHueShifter.m; sourceTree = "<group>"; };
 		6BBB7CD118B32C240018954B /* pt_PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt_PT; path = ColorBalance.strings; sourceTree = "<group>"; };
@@ -848,8 +848,8 @@
 		6BD7071D12AD011F004E07C9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6BD7071E12AD011F004E07C9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6BD7071F12AD011F004E07C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		6BDBC489130D1A6F00BC3BCA /* WDEtchedLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDEtchedLine.h; sourceTree = "<group>"; };
-		6BDBC48A130D1A6F00BC3BCA /* WDEtchedLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDEtchedLine.m; sourceTree = "<group>"; };
+		6BDBC489130D1A6F00BC3BCA /* WDEtchedLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDEtchedLineView.h; sourceTree = "<group>"; };
+		6BDBC48A130D1A6F00BC3BCA /* WDEtchedLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDEtchedLineView.m; sourceTree = "<group>"; };
 		6BDD92E313DE744F0005F55D /* hue_shifter_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hue_shifter_overlay.png; path = Images/hue_shifter_overlay.png; sourceTree = "<group>"; };
 		6BDDFA6B13E7924600B10774 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		6BE1874918FEE947006FC619 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ColorBalance.strings; sourceTree = "<group>"; };
@@ -868,8 +868,8 @@
 		6BF0C306125FB46A009BB05C /* WDGradientEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDGradientEditor.m; sourceTree = "<group>"; };
 		6BF0C327125FB905009BB05C /* WDGradientController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDGradientController.h; sourceTree = "<group>"; };
 		6BF0C328125FB905009BB05C /* WDGradientController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDGradientController.m; sourceTree = "<group>"; };
-		6BF0C467125FDFF9009BB05C /* WDGradientStopIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDGradientStopIndicator.h; sourceTree = "<group>"; };
-		6BF0C468125FDFF9009BB05C /* WDGradientStopIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDGradientStopIndicator.m; sourceTree = "<group>"; };
+		6BF0C467125FDFF9009BB05C /* WDGradientStopIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDGradientStopIndicatorView.h; sourceTree = "<group>"; };
+		6BF0C468125FDFF9009BB05C /* WDGradientStopIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDGradientStopIndicatorView.m; sourceTree = "<group>"; };
 		6BF0C5671262598A009BB05C /* radial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = radial.png; path = Images/radial.png; sourceTree = "<group>"; };
 		6BF0C57C12625C4D009BB05C /* linear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = linear.png; path = Images/linear.png; sourceTree = "<group>"; };
 		6BF1CEBE12497B9700BDD909 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
@@ -1672,16 +1672,16 @@
 				6B87EA3813FB3FD000CC07C3 /* WDCoreTextLabelView.m */,
 				6BE2F52D136782CE006BBF5E /* WDEraserPreviewView.h */,
 				6BE2F52E136782CE006BBF5E /* WDEraserPreviewView.m */,
-				6BDBC489130D1A6F00BC3BCA /* WDEtchedLine.h */,
-				6BDBC48A130D1A6F00BC3BCA /* WDEtchedLine.m */,
+				6BDBC489130D1A6F00BC3BCA /* WDEtchedLineView.h */,
+				6BDBC48A130D1A6F00BC3BCA /* WDEtchedLineView.m */,
 				6BCD52EC12400017002FCB27 /* WDEventForwardingView.h */,
 				6BCD52ED12400017002FCB27 /* WDEventForwardingView.m */,
-				6BB1D0FB1309E9A300F0C22E /* WDEyedropper.h */,
-				6BB1D0FC1309E9A300F0C22E /* WDEyedropper.m */,
+				6BB1D0FB1309E9A300F0C22E /* WDEyedropperView.h */,
+				6BB1D0FC1309E9A300F0C22E /* WDEyedropperView.m */,
 				6BF0C305125FB46A009BB05C /* WDGradientEditor.h */,
 				6BF0C306125FB46A009BB05C /* WDGradientEditor.m */,
-				6BF0C467125FDFF9009BB05C /* WDGradientStopIndicator.h */,
-				6BF0C468125FDFF9009BB05C /* WDGradientStopIndicator.m */,
+				6BF0C467125FDFF9009BB05C /* WDGradientStopIndicatorView.h */,
+				6BF0C468125FDFF9009BB05C /* WDGradientStopIndicatorView.m */,
 				6BB7F94313AB1F5A004081B3 /* WDHueShifter.h */,
 				6BB7F94413AB1F5A004081B3 /* WDHueShifter.m */,
 				6B6749C417F6270000E9A627 /* WDImageView.h */,
@@ -2094,14 +2094,14 @@
 				6BF0C250125F9F63009BB05C /* WDStrokeController.m in Sources */,
 				6BF0C307125FB46A009BB05C /* WDGradientEditor.m in Sources */,
 				6BF0C329125FB905009BB05C /* WDGradientController.m in Sources */,
-				6BF0C469125FDFF9009BB05C /* WDGradientStopIndicator.m in Sources */,
+				6BF0C469125FDFF9009BB05C /* WDGradientStopIndicatorView.m in Sources */,
 				6B95E6AF12618DAC00E54B56 /* WDFillController.m in Sources */,
 				6B95E7651261B63400E54B56 /* WDSwatchController.m in Sources */,
 				6B51BC3912650D3F000F6BF3 /* WDSwatchCell.m in Sources */,
 				6B51BCF0126522B6000F6BF3 /* WDButton.m in Sources */,
 				6B1E328C126CA0D900E89FA1 /* WDExportController.m in Sources */,
-				6BB1D0FD1309E9A300F0C22E /* WDEyedropper.m in Sources */,
-				6BDBC48B130D1A6F00BC3BCA /* WDEtchedLine.m in Sources */,
+				6BB1D0FD1309E9A300F0C22E /* WDEyedropperView.m in Sources */,
+				6BDBC48B130D1A6F00BC3BCA /* WDEtchedLineView.m in Sources */,
 				6B87C94A131258660027A482 /* WDHelpController.m in Sources */,
 				6BAACC7B1332A048000C6E74 /* WDSparkSlider.m in Sources */,
 				6B65D553133AF075004053D5 /* WDRulerView.m in Sources */,
