@@ -10,7 +10,7 @@
 //
 
 #import "WDLayer.h"
-#import "WDLayerCell.h"
+#import "WDLayerCellView.h"
 #import "WDLayerController.h"
 
 #define kTextFieldTag       1
@@ -158,7 +158,7 @@
     WDLayer *layer = [aNotification userInfo][@"layer"];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self flipIndex_:[drawing_.layers indexOfObject:layer]] inSection:0];
     
-    WDLayerCell *layerCell = (WDLayerCell *) [layerTable_ cellForRowAtIndexPath:indexPath];
+    WDLayerCellView *layerCell = (WDLayerCellView *) [layerTable_ cellForRowAtIndexPath:indexPath];
     [layerCell updateVisibilityButton];
     
     [self updateOpacity];
@@ -169,7 +169,7 @@
     WDLayer *layer = [aNotification userInfo][@"layer"];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self flipIndex_:[drawing_.layers indexOfObject:layer]] inSection:0];
     
-    WDLayerCell *layerCell = (WDLayerCell *) [layerTable_ cellForRowAtIndexPath:indexPath];
+    WDLayerCellView *layerCell = (WDLayerCellView *) [layerTable_ cellForRowAtIndexPath:indexPath];
     [layerCell updateLockedStatusButton];
     
     [self updateOpacity];
@@ -180,7 +180,7 @@
     WDLayer *layer = [aNotification userInfo][@"layer"];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self flipIndex_:[drawing_.layers indexOfObject:layer]] inSection:0];
     
-    WDLayerCell *layerCell = (WDLayerCell *) [layerTable_ cellForRowAtIndexPath:indexPath];
+    WDLayerCellView *layerCell = (WDLayerCellView *) [layerTable_ cellForRowAtIndexPath:indexPath];
     [layerCell updateOpacity];
     
     [self updateOpacity];
@@ -191,7 +191,7 @@
     WDLayer *layer = [aNotification userInfo][@"layer"];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self flipIndex_:[drawing_.layers indexOfObject:layer]] inSection:0];
     
-    WDLayerCell *layerCell = (WDLayerCell *) [layerTable_ cellForRowAtIndexPath:indexPath];
+    WDLayerCellView *layerCell = (WDLayerCellView *) [layerTable_ cellForRowAtIndexPath:indexPath];
     [layerCell updateThumbnail];
 }
 
@@ -200,7 +200,7 @@
     WDLayer *layer = [aNotification userInfo][@"layer"];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self flipIndex_:[drawing_.layers indexOfObject:layer]] inSection:0];
     
-    WDLayerCell *layerCell = (WDLayerCell *) [layerTable_ cellForRowAtIndexPath:indexPath];
+    WDLayerCellView *layerCell = (WDLayerCellView *) [layerTable_ cellForRowAtIndexPath:indexPath];
     [layerCell updateLayerName];
 }
 
@@ -209,7 +209,7 @@
     static NSString *cellIdentifier = @"LayerCell";
     WDLayer         *layer = (drawing_.layers)[[self flipIndex_:indexPath.row]];
     
-    WDLayerCell *cell = (WDLayerCell *) [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    WDLayerCellView *cell = (WDLayerCellView *) [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (cell == nil) {
         [[NSBundle mainBundle] loadNibNamed:@"LayerCell" owner:self options:nil];

@@ -16,7 +16,7 @@
 
 #define kHueImageHeight 15
 
-@implementation WDHueIndicatorOverlay
+@implementation WDHueIndicatorOverlayView
 
 @synthesize indicator;
 
@@ -67,15 +67,15 @@
 
 @end
 
-@implementation WDHueIndicator
+@implementation WDHueIndicatorView
 @synthesize color = color_;
 
-+ (WDHueIndicator *) hueIndicator
++ (WDHueIndicatorView *) hueIndicator
 {
     CGRect frame = CGRectZero;
     frame.size = CGSizeMake(32, 32);
     
-    WDHueIndicator *indicator = [[WDHueIndicator alloc] initWithFrame:frame];
+    WDHueIndicatorView *indicator = [[WDHueIndicatorView alloc] initWithFrame:frame];
     indicator.color = [WDColor whiteColor];
     
     return indicator;
@@ -93,7 +93,7 @@
     self.backgroundColor = nil;
     self.userInteractionEnabled = NO;
     
-    WDHueIndicatorOverlay *overlay = [[WDHueIndicatorOverlay alloc] initWithFrame:self.bounds];
+    WDHueIndicatorOverlayView *overlay = [[WDHueIndicatorOverlayView alloc] initWithFrame:self.bounds];
     overlay.indicator = self;
     [self addSubview:overlay];
     
@@ -153,7 +153,7 @@
     self.backgroundColor = nil;
     self.clearsContextBeforeDrawing = YES;
     
-    indicator_ = [WDHueIndicator hueIndicator];
+    indicator_ = [WDHueIndicatorView hueIndicator];
     [self addSubview:indicator_];
     
     indicator_.color = [WDColor colorWithHue:0.5 saturation:1 brightness:1 alpha:1];

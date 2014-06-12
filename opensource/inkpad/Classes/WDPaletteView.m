@@ -1,5 +1,5 @@
 //
-//  WDPalette.m
+//  WDPaletteView.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -9,7 +9,7 @@
 //  Copyright (c) 2010-2013 Steve Sprang
 //
 
-#import "WDPalette.h"
+#import "WDPaletteView.h"
 #import "WDUtilities.h"
 #import "UIView+Additions.h"
 
@@ -19,7 +19,7 @@
 
 NSString *WDPaletteMovedNotification = @"WDPaletteMovedNotification";
 
-@implementation WDPalette
+@implementation WDPaletteView
 
 @synthesize defaultsName = defaultsName_;
 
@@ -123,7 +123,7 @@ NSString *WDPaletteMovedNotification = @"WDPaletteMovedNotification";
     [self constrainOriginToSuperview:self.frame.origin];
 }
 
-+ (WDPalette *) paletteWithBaseView:(UIView *)view defaultsName:(NSString *)name
++ (WDPaletteView *) paletteWithBaseView:(UIView *)view defaultsName:(NSString *)name
 {
     NSString *originString = [[NSUserDefaults standardUserDefaults] objectForKey:name];
     CGPoint origin = CGPointMake(20,20);
@@ -136,7 +136,7 @@ NSString *WDPaletteMovedNotification = @"WDPaletteMovedNotification";
     CGRect frame = view.frame;
     frame.origin = origin;
     
-    WDPalette *palette = [[WDPalette alloc] initWithFrame:frame];
+    WDPaletteView *palette = [[WDPaletteView alloc] initWithFrame:frame];
     palette.defaultsName = name;
     [palette addSubview:view];
     

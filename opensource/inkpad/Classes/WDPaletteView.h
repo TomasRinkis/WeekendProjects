@@ -1,5 +1,5 @@
 //
-//  WDPalette.h
+//  WDPaletteView.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -12,11 +12,11 @@
 #import <UIKit/UIKit.h>
 
 
-@interface WDPalette : UIView <UIGestureRecognizerDelegate> 
+@interface WDPaletteView : UIView <UIGestureRecognizerDelegate> 
 
 @property (nonatomic, strong) NSString *defaultsName;
 
-+ (WDPalette *) paletteWithBaseView:(UIView *)view defaultsName:(NSString *)name;
++ (WDPaletteView *) paletteWithBaseView:(UIView *)view defaultsName:(NSString *)name;
 - (void) bringOnScreen;
 
 @end

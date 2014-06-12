@@ -18,7 +18,7 @@
 @class WDDrawingController;
 @class WDEraserPreviewView;
 @class WDEyedropperView;
-@class WDPalette;
+@class WDPaletteView;
 @class WDPath;
 @class WDRulerCornerView;
 @class WDRulerView;
@@ -58,7 +58,7 @@
     WDRulerView             *verticalRuler_;
     WDRulerCornerView       *cornerView_;
     
-    WDPalette               *toolPalette_;
+    WDPaletteView               *toolPalette_;
     UIButton                *deleteButton_; // pseudo delete tool
     CGPoint                 cachedCenter_;
     
@@ -84,7 +84,7 @@
 @property (nonatomic, strong) WDPath *eraserPath;
 @property (nonatomic, weak) WDCanvasController *controller;
 @property (weak, nonatomic, readonly) WDDrawingController *drawingController;
-@property (nonatomic, strong, readonly) WDPalette *toolPalette;
+@property (nonatomic, strong, readonly) WDPaletteView *toolPalette;
 @property (nonatomic, readonly) WDEyedropperView *eyedropper;
 @property (nonatomic, readonly) WDRulerView *horizontalRuler;
 @property (nonatomic, readonly) WDRulerView *verticalRuler;

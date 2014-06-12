@@ -318,7 +318,7 @@
 		6BCD534412400017002FCB27 /* WDLineAttributePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD52FD12400017002FCB27 /* WDLineAttributePicker.m */; };
 		6BCD534512400017002FCB27 /* WDMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD52FF12400017002FCB27 /* WDMenu.m */; };
 		6BCD534612400017002FCB27 /* WDMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD530112400017002FCB27 /* WDMenuItem.m */; };
-		6BCD534712400017002FCB27 /* WDPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD530312400017002FCB27 /* WDPalette.m */; };
+		6BCD534712400017002FCB27 /* WDPaletteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD530312400017002FCB27 /* WDPaletteView.m */; };
 		6BCD535612400017002FCB27 /* WDThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD532112400017002FCB27 /* WDThumbnailView.m */; };
 		6BCF3AD713BA2E6400A95E0D /* dropbox_icon_inkpad.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BCF3AD613BA2E6400A95E0D /* dropbox_icon_inkpad.png */; };
 		6BCF3AD913BA2F9F00A95E0D /* dropbox_icon_unsupported.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BCF3AD813BA2F9F00A95E0D /* dropbox_icon_unsupported.png */; };
@@ -351,7 +351,7 @@
 		6BF0C57D12625C4D009BB05C /* linear.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BF0C57C12625C4D009BB05C /* linear.png */; };
 		6BF1CEC012497B9700BDD909 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1CEBF12497B9700BDD909 /* UIView+Additions.m */; };
 		6BF747931311C399000D9344 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BF747921311C399000D9344 /* Entitlements.plist */; };
-		6BFA802C1249CEDB00D1749C /* WDLayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFA802B1249CEDB00D1749C /* WDLayerCell.m */; };
+		6BFA802C1249CEDB00D1749C /* WDLayerCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFA802B1249CEDB00D1749C /* WDLayerCellView.m */; };
 		6BFBC4EB1335F4A000D5877F /* zoom_to_fit.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BFBC4EA1335F4A000D5877F /* zoom_to_fit.png */; };
 		F43A1D76183557770032933E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F43A1D6E183557770032933E /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -830,8 +830,8 @@
 		6BCD52FF12400017002FCB27 /* WDMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDMenu.m; sourceTree = "<group>"; };
 		6BCD530012400017002FCB27 /* WDMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDMenuItem.h; sourceTree = "<group>"; };
 		6BCD530112400017002FCB27 /* WDMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDMenuItem.m; sourceTree = "<group>"; };
-		6BCD530212400017002FCB27 /* WDPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDPalette.h; sourceTree = "<group>"; };
-		6BCD530312400017002FCB27 /* WDPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDPalette.m; sourceTree = "<group>"; };
+		6BCD530212400017002FCB27 /* WDPaletteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDPaletteView.h; sourceTree = "<group>"; };
+		6BCD530312400017002FCB27 /* WDPaletteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDPaletteView.m; sourceTree = "<group>"; };
 		6BCD532012400017002FCB27 /* WDThumbnailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDThumbnailView.h; sourceTree = "<group>"; };
 		6BCD532112400017002FCB27 /* WDThumbnailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDThumbnailView.m; sourceTree = "<group>"; };
 		6BCF3AD613BA2E6400A95E0D /* dropbox_icon_inkpad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dropbox_icon_inkpad.png; path = Images/dropbox_icon_inkpad.png; sourceTree = "<group>"; };
@@ -875,8 +875,8 @@
 		6BF1CEBE12497B9700BDD909 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		6BF1CEBF12497B9700BDD909 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		6BF747921311C399000D9344 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
-		6BFA802A1249CEDB00D1749C /* WDLayerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDLayerCell.h; sourceTree = "<group>"; };
-		6BFA802B1249CEDB00D1749C /* WDLayerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDLayerCell.m; sourceTree = "<group>"; };
+		6BFA802A1249CEDB00D1749C /* WDLayerCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDLayerCellView.h; sourceTree = "<group>"; };
+		6BFA802B1249CEDB00D1749C /* WDLayerCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDLayerCellView.m; sourceTree = "<group>"; };
 		6BFBC4EA1335F4A000D5877F /* zoom_to_fit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zoom_to_fit.png; path = Images/zoom_to_fit.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Inkpad-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Inkpad-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		AE661E2118D684040096EAF3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ColorBalance.strings"; sourceTree = "<group>"; };
@@ -1686,8 +1686,8 @@
 				6BB7F94413AB1F5A004081B3 /* WDHueShifter.m */,
 				6B6749C417F6270000E9A627 /* WDImageView.h */,
 				6B6749C517F6270000E9A627 /* WDImageView.m */,
-				6BFA802A1249CEDB00D1749C /* WDLayerCell.h */,
-				6BFA802B1249CEDB00D1749C /* WDLayerCell.m */,
+				6BFA802A1249CEDB00D1749C /* WDLayerCellView.h */,
+				6BFA802B1249CEDB00D1749C /* WDLayerCellView.m */,
 				6BCD52FC12400017002FCB27 /* WDLineAttributePicker.h */,
 				6BCD52FD12400017002FCB27 /* WDLineAttributePicker.m */,
 				6BCD52FE12400017002FCB27 /* WDMenu.h */,
@@ -1696,8 +1696,8 @@
 				6BCD530112400017002FCB27 /* WDMenuItem.m */,
 				6B23AA5D13BBECD800C9B5F0 /* WDModalTitleBar.h */,
 				6B23AA5E13BBECD800C9B5F0 /* WDModalTitleBar.m */,
-				6BCD530212400017002FCB27 /* WDPalette.h */,
-				6BCD530312400017002FCB27 /* WDPalette.m */,
+				6BCD530212400017002FCB27 /* WDPaletteView.h */,
+				6BCD530312400017002FCB27 /* WDPaletteView.m */,
 				6BD34E2C1248C53B0040C383 /* WDPaletteBackgroundView.h */,
 				6BD34E2D1248C53B0040C383 /* WDPaletteBackgroundView.m */,
 				6B741829140617F100A00C76 /* WDProgressView.h */,
@@ -2077,14 +2077,14 @@
 				6BCD534412400017002FCB27 /* WDLineAttributePicker.m in Sources */,
 				6BCD534512400017002FCB27 /* WDMenu.m in Sources */,
 				6BCD534612400017002FCB27 /* WDMenuItem.m in Sources */,
-				6BCD534712400017002FCB27 /* WDPalette.m in Sources */,
+				6BCD534712400017002FCB27 /* WDPaletteView.m in Sources */,
 				6BCD535612400017002FCB27 /* WDThumbnailView.m in Sources */,
 				6B6DC1A212403DA000A98FCE /* WDBlockingView.m in Sources */,
 				6B197E121243611E006C5C3A /* WDSettingsController.m in Sources */,
 				6BD34C7C124826D00040C383 /* WDLayerController.m in Sources */,
 				6BD34E2E1248C53B0040C383 /* WDPaletteBackgroundView.m in Sources */,
 				6BF1CEC012497B9700BDD909 /* UIView+Additions.m in Sources */,
-				6BFA802C1249CEDB00D1749C /* WDLayerCell.m in Sources */,
+				6BFA802C1249CEDB00D1749C /* WDLayerCellView.m in Sources */,
 				6B98BFBC124C827D008FB8E1 /* WDSelectionView.m in Sources */,
 				6B98C11F124D5FBE008FB8E1 /* WDFontController.m in Sources */,
 				6B98C140124D63B1008FB8E1 /* WDTextController.m in Sources */,

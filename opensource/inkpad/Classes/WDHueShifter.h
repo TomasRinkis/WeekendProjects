@@ -11,13 +11,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class WDHueIndicator;
+@class WDHueIndicatorView;
 
-@interface WDHueIndicatorOverlay : UIView
-@property (nonatomic, weak) WDHueIndicator *indicator;
+@interface WDHueIndicatorOverlayView : UIView
+@property (nonatomic, weak) WDHueIndicatorView *indicator;
 @end
 
-@interface WDHueIndicator : UIView
+@interface WDHueIndicatorView : UIView
 
 @property (nonatomic, strong) WDColor *color;
 
@@ -32,7 +32,7 @@
     float           initialValue_;
     CGPoint         initialPt_;
     
-    WDHueIndicator  *indicator_;
+    WDHueIndicatorView  *indicator_;
     
 }
 

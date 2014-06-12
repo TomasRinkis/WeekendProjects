@@ -18,7 +18,7 @@
 #import "WDEtchedLineView.h"
 #import "WDEyedropperView.h"
 #import "WDLayer.h"
-#import "WDPalette.h"
+#import "WDPaletteView.h"
 #import "WDPath.h"
 #import "WDPenTool.h"
 #import "WDRulerView.h"
@@ -881,7 +881,7 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
     deleteButton_.enabled = NO;
     [paletteView addSubview:deleteButton_];
     
-    toolPalette_ = [WDPalette paletteWithBaseView:paletteView defaultsName:@"tools palette"];
+    toolPalette_ = [WDPaletteView paletteWithBaseView:paletteView defaultsName:@"tools palette"];
     [self addSubview:toolPalette_];
     
     [self ensureToolPaletteIsOnScreen];

@@ -1,5 +1,5 @@
 //
-//  WDLayerCell.h
+//  WDLayerCellView.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -14,7 +14,7 @@
 @class WDLayer;
 @class WDSimpleColorView;
 
-@interface WDLayerCell : UITableViewCell
+@interface WDLayerCellView : UITableViewCell
 
 @property (nonatomic, weak) WDLayer *drawingLayer;
 @property (nonatomic, strong) IBOutlet WDSimpleColorView *colorView;
