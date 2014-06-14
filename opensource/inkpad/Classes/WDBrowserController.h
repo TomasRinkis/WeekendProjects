@@ -44,13 +44,14 @@
     UIBarButtonItem         *dropboxExportItem_;
     UIBarButtonItem         *activityItem_;
     UIBarButtonItem         *deleteItem_;
+    UIBarButtonItem         *copyItem_;
     
     UIActivityIndicatorView *activityIndicator_;
     
     
     UIActionSheet           *deleteSheet_;
     
-    NSMutableSet            *selectedDrawings_;
+    NSMutableSet            *selectedDrawings_;//Contains file names not documents you document code you baster
     
     UIPopoverController     *popoverController_;
     WDPageSizeController    *pageSizeController_;

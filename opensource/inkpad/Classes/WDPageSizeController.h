@@ -11,7 +11,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WDPageSizeController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface WDPageSizeController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+{
     IBOutlet UITableView    *table_;
     NSArray                 *configuration_;
     UITableViewCell         *customCell_;

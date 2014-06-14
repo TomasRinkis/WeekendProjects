@@ -14,11 +14,12 @@
 @class WDDrawing;
 @class WDDocument;
 
-@interface WDDrawingManager : NSObject {
+@interface WDDrawingManager : NSObject
+{
     NSMutableArray  *drawingNames_;
 }
 
-+ (WDDrawingManager *) sharedInstance;
++ (instancetype) sharedInstance;
 
 + (NSString *) documentDirectory;
 + (NSString *) drawingPath;
@@ -40,6 +41,7 @@
 
 - (NSString *) fileAtIndex:(NSUInteger)ix;
 - (WDDocument *) duplicateDrawing:(WDDocument *)document;
+- (WDDocument *) duplicateDrawingWithSourceFileName:(NSString*)sourceFileName destinationFileName:(NSString*)destinationFileName andClonedImageName:(NSString*) clonedImageName;
 
 - (void) installSamples:(NSArray *)urls;
 
@@ -50,6 +52,7 @@
 - (void) renameDrawing:(NSString *)drawing newName:(NSString *)newName;
 
 - (UIImage *) getThumbnail:(NSString *)name;
+- (WDDocument *) installDrawing:(WDDrawing *)drawing withName:(NSString *)drawingName closeAfterSaving:(BOOL)shouldClose;
 
 @end
 

@@ -45,7 +45,7 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
 
 @implementation WDDrawingManager
 
-+ (WDDrawingManager *) sharedInstance
++ (instancetype) sharedInstance
 {
     static WDDrawingManager *shared = nil;
     
@@ -77,7 +77,7 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
     return filtered;
 }
 
-- (id) init
+- (instancetype) init
 {
     self = [super init];
     
@@ -94,13 +94,16 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
     
     files = [self filterFiles:files];
     
-    if (data) {
+    if (data)
+    {
         NSMutableArray  *finalNames = [NSMutableArray array];
         NSArray         *names = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListMutableContainersAndLeaves format:NULL error:NULL];
         
         // strip out duplicates
-        for (NSString *name in names) {
-            if (![finalNames containsObject:name]) {
+        for (NSString *name in names)
+        {
+            if (![finalNames containsObject:name])
+            {
                 [finalNames addObject:name];
             }
         }
@@ -145,8 +148,8 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
 
 + (NSString *) documentDirectory
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
-    NSString *documentsDirectory = paths[0]; 
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = paths[0];
     return documentsDirectory;
 }
 
@@ -224,14 +227,14 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
     }
     
     prefix = [self cleanPrefix:prefix];
-
+    
     NSString    *unique = nil;
     int         uniqueIx = 1;
     
     do {
         unique = [NSString stringWithFormat:@"%@ %d.%@", prefix, uniqueIx, extension];
         uniqueIx++;
-    
+        
     } while ([WDDrawingManager drawingExists:unique]);
     
     return unique;
@@ -247,18 +250,22 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
     
     WDDocument *document = [[WDDocument alloc] initWithFileURL:url];
     document.drawing = drawing;
-    [document saveToURL:url forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:WDDrawingAdded object:drawingName];
-        if (shouldClose) {
-            [document closeWithCompletionHandler:nil];
-        }
-    }];
-
+    
+    [document saveToURL:url forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success)
+     {
+         [[NSNotificationCenter defaultCenter] postNotificationName:WDDrawingAdded object:drawingName];
+         
+         if (shouldClose)
+         {
+             [document closeWithCompletionHandler:nil];
+         }
+     }];
+    
     return document;
 }
 
 - (WDDocument *) createNewDrawingWithSize:(CGSize)size andUnits:(NSString *)units
-{   
+{
     WDDrawing *drawing = [[WDDrawing alloc] initWithSize:size andUnits:units];
     return [self installDrawing:drawing withName:[self uniqueFilename] closeAfterSaving:NO];
 }
@@ -315,13 +322,13 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
 
 - (NSData *) dataForFilename:(NSString *)name
 {
-    NSString *archivePath = [[WDDrawingManager drawingPath] stringByAppendingPathComponent:name]; 
-    return [NSData dataWithContentsOfFile:archivePath]; 
+    NSString *archivePath = [[WDDrawingManager drawingPath] stringByAppendingPathComponent:name];
+    return [NSData dataWithContentsOfFile:archivePath];
 }
 
 - (WDDocument *) openDocumentWithName:(NSString *)name withCompletionHandler:(void (^)(WDDocument *document))completionHandler
 {
-    return [self openDocumentAtIndex:[drawingNames_ indexOfObject:name] withCompletionHandler:completionHandler];    
+    return [self openDocumentAtIndex:[drawingNames_ indexOfObject:name] withCompletionHandler:completionHandler];
 }
 
 - (WDDocument *) openDocumentAtIndex:(NSUInteger)ix withCompletionHandler:(void (^)(WDDocument *document))completionHandler
@@ -339,8 +346,16 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
     return document;
 }
 
+- (WDDocument *) duplicateDrawingWithSourceFileName:(NSString*)sourceFileName destinationFileName:(NSString*)destinationFileName andClonedImageName:(NSString*) clonedImageName
+{
+    UIImage     *image = [self getThumbnail:sourceFileName];
+    WDDrawing   *drawing = [[WDDrawing alloc] initWithImage:image imageName:clonedImageName];
+    WDDocument  *document= [self installDrawing:drawing withName:destinationFileName closeAfterSaving:NO];
+    return document;
+}
+
 - (WDDocument *) duplicateDrawing:(WDDocument *)document
-{ 
+{
     NSString *unique = [self uniqueFilenameWithPrefix:[document.filename stringByDeletingPathExtension]
                                             extension:[document.filename pathExtension]];
     
@@ -358,7 +373,7 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
                 doc.fileTypeOverride = @"com.taptrix.inkpad";
                 NSString *svgName = [[url lastPathComponent] stringByDeletingPathExtension];
                 NSString *drawingName = [self uniqueFilenameWithPrefix:svgName extension:WDDefaultDrawingExtension];
-                NSString *path = [[WDDrawingManager drawingPath] stringByAppendingPathComponent:drawingName]; 
+                NSString *path = [[WDDrawingManager drawingPath] stringByAppendingPathComponent:drawingName];
                 NSURL *newUrl = [NSURL fileURLWithPath:path];
                 [doc saveToURL:newUrl forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
                     dispatch_sync(dispatch_get_main_queue(), ^{
@@ -367,7 +382,7 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
                         [[NSNotificationCenter defaultCenter] postNotificationName:WDDrawingAdded object:drawingName];
                         
                         if (completionBlock) {
-                           completionBlock(doc);
+                            completionBlock(doc);
                         }
                         
                         [doc closeWithCompletionHandler:nil];
@@ -413,14 +428,17 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
 
 - (void) deleteDrawings:(NSMutableSet *)set
 {
-    NSFileManager   *fm = [NSFileManager defaultManager];
+    NSFileManager *fm = [NSFileManager defaultManager];
     
     NSMutableArray *indexPaths = [NSMutableArray array];
-    for (NSString *filename in set) {
-       [indexPaths addObject:[NSIndexPath indexPathForItem:[drawingNames_ indexOfObject:filename] inSection:0]];
+    
+    for (NSString *filename in set)
+    {
+        [indexPaths addObject:[NSIndexPath indexPathForItem:[drawingNames_ indexOfObject:filename] inSection:0]];
     }
     
-    for (NSString *filename in set) {
+    for (NSString *filename in set)
+    {
         [fm removeItemAtPath:[[WDDrawingManager drawingPath] stringByAppendingPathComponent:filename] error:NULL];
         [drawingNames_ removeObject:filename];
     }
@@ -447,16 +465,16 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
 
 - (UIImage *) getThumbnail:(NSString *)name
 {
-    NSString            *archivePath = [[WDDrawingManager drawingPath] stringByAppendingPathComponent:name]; 
+    NSString            *archivePath = [[WDDrawingManager drawingPath] stringByAppendingPathComponent:name];
     NSData              *thumbData = nil;
     
     if ([name hasSuffix:WDDrawingFileExtension]) {
-        NSData              *data = [NSData dataWithContentsOfFile:archivePath]; 
+        NSData              *data = [NSData dataWithContentsOfFile:archivePath];
         NSKeyedUnarchiver   *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
         
         thumbData = [unarchiver decodeObjectForKey:WDThumbnailKey];
         
-        [unarchiver finishDecoding]; 
+        [unarchiver finishDecoding];
     } else if ([name hasSuffix:WDSVGFileExtension]) {
         NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL fileURLWithPath:archivePath]];
         WDSVGThumbnailExtractor *extractor = [[WDSVGThumbnailExtractor alloc] init];

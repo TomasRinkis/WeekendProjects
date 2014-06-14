@@ -269,10 +269,12 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    if (!everLoaded_) {
+    if (!everLoaded_)
+    {
         if ([[WDDrawingManager sharedInstance] numberOfDrawings] > 0) {
             // scroll to bottom
             NSUInteger count = [[WDDrawingManager sharedInstance] numberOfDrawings] - 1;
+            
             [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:count inSection:0]
                                         atScrollPosition:UICollectionViewScrollPositionTop
                                                 animated:NO];
@@ -413,6 +415,22 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
     [self properlyEnableToolbarItems];
 }
 
+#pragma mark - Copying Drawing
+-(void) copySelectedDrawing:(id)sender
+{
+    NSArray *selectedObjectArray = [selectedDrawings_ allObjects];
+    NSString *seletedDocumentName = [selectedObjectArray objectAtIndex:0];
+    NSUInteger index = [[WDDrawingManager sharedInstance] indexPathForFilename:seletedDocumentName].item;
+    WDDocument *document = [[WDDrawingManager sharedInstance] openDocumentAtIndex:index withCompletionHandler:nil];
+    
+    NSString *destinationFileName = [NSString stringWithFormat:@"%s_clone.inkpad", [seletedDocumentName UTF8String]];
+    NSString *clonedImageName = [NSString stringWithFormat:@"%s_clone", [seletedDocumentName UTF8String]];
+    
+    WDDocument *clonedDocument = [[WDDrawingManager sharedInstance]  duplicateDrawingWithSourceFileName:document.filename destinationFileName:destinationFileName andClonedImageName:clonedImageName];
+    
+    [self startEditingDrawing:clonedDocument];
+}
+
 #pragma mark - Deleting Drawings
 
 - (void) deleteSelectedDrawings
@@ -423,9 +441,12 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
     
     NSString *message;
     
-    if (selectedDrawings_.count == 1) {
+    if (selectedDrawings_.count == 1)
+    {
         message = NSLocalizedString(@"Once deleted, this drawing cannot be recovered.", @"Alert text when deleting 1 drawing");
-    } else {
+    }
+    else
+    {
         message = NSLocalizedString(@"Once deleted, these drawings cannot be recovered.", @"Alert text when deleting multiple drawings");
     }
     
@@ -453,7 +474,8 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
 
 - (void) showDeleteMenu:(id)sender
 {
-    if (deleteSheet_) {
+    if (deleteSheet_)
+    {
         [self dismissPopover];
         return;
     }
@@ -461,20 +483,23 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
     [self dismissPopover];
     
     NSString *format = NSLocalizedString(@"Delete %d Drawings", @"Delete %d Drawings");
-    NSString *title = (selectedDrawings_.count) == 1 ?
-    NSLocalizedString(@"Delete Drawing", @"Delete Drawing") :
-    [NSString stringWithFormat:format, selectedDrawings_.count];
+    NSString *title = (selectedDrawings_.count) == 1 ? NSLocalizedString(@"Delete Drawing", @"Delete Drawing") : [NSString stringWithFormat:format, selectedDrawings_.count];
     
-	deleteSheet_ = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@""
-                                 destructiveButtonTitle:title otherButtonTitles:nil];
+	deleteSheet_ = [[UIActionSheet alloc] initWithTitle:nil
+                                               delegate:self
+                                      cancelButtonTitle:@""
+                                 destructiveButtonTitle:title
+                                      otherButtonTitles:nil];
     
     [deleteSheet_ showFromBarButtonItem:sender animated:YES];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if (actionSheet == deleteSheet_) {
-        if (buttonIndex == actionSheet.destructiveButtonIndex) {
+    if (actionSheet == deleteSheet_)
+    {
+        if (buttonIndex == actionSheet.destructiveButtonIndex)
+        {
             [self deleteSelectedDrawings];
         }
     }
@@ -500,11 +525,14 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
     
     [super setEditing:editing animated:animated];
     
-    if (editing) {
+    if (editing)
+    {
         self.title = NSLocalizedString(@"Select Drawings", @"Select Drawings");
         [self setToolbarItems:[self editingToolbarItems] animated:NO];
         [self properlyEnableToolbarItems];
-    } else {
+    }
+    else
+    {
         self.title = NSLocalizedString(@"Gallery", @"Gallery");
         
         self.collectionView.allowsSelection = NO;
@@ -522,12 +550,17 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
 - (void) properlyEnableToolbarItems
 {
     deleteItem_.enabled = [selectedDrawings_ count] == 0 ? NO : YES;
+    copyItem_.enabled = selectedDrawings_.count == 1 ? YES : NO;
+    
     emailItem_.enabled = ([selectedDrawings_ count] > 0 && [selectedDrawings_ count] < 6) ? YES : NO;
     dropboxExportItem_.enabled = [selectedDrawings_ count] == 0 ? NO : (filesBeingUploaded_.count == 0 ? YES : NO);
     
-    if (filesBeingUploaded_.count) {
+    if (filesBeingUploaded_.count)
+    {
         dropboxExportItem_.title = NSLocalizedString(@"Uploading...", @"Uploading...");
-    } else {
+    }
+    else
+    {
         dropboxExportItem_.title = NSLocalizedString(@"Dropbox", @"Dropbox");
     }
 }
@@ -539,8 +572,10 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
     UIBarButtonItem *fixedItem = [UIBarButtonItem fixedItemWithWidth:10];
 	UIBarButtonItem *flexibleItem = [UIBarButtonItem flexibleItem];
     
-    if ([MFMailComposeViewController canSendMail]) {
-        if (!emailItem_) {
+    if ([MFMailComposeViewController canSendMail])
+    {
+        if (!emailItem_)
+        {
             emailItem_ = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Email", @"Email")
                                                           style:UIBarButtonItemStyleBordered
                                                          target:self
@@ -550,26 +585,34 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
         [items addObject:fixedItem];
     }
     
-    if (!dropboxExportItem_) {
+    if (!dropboxExportItem_)
+    {
         dropboxExportItem_ = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Dropbox", @"Dropbox")
                                                               style:UIBarButtonItemStyleBordered
                                                              target:self
                                                              action:@selector(showDropboxExportPanel:)];
     }
     
-    if (!deleteItem_) {
+    if (!deleteItem_)
+    {
         deleteItem_ = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
                                                                     target:self
                                                                     action:@selector(showDeleteMenu:)];
     }
     
+    copyItem_ = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks
+                                                              target:self
+                                                              action:@selector(copySelectedDrawing:)];
+    
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                               target:self
                                                                               action:@selector(stopEditing:)];
     
+    
     [items addObject:dropboxExportItem_];
     [items addObject:flexibleItem];
     [items addObject:deleteItem_];
+    [items addObject:copyItem_];
     [items addObject:fixedItem];
     [items addObject:doneItem];
     
@@ -585,12 +628,12 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
                                                                  style:UIBarButtonItemStyleBordered
                                                                 target:self
                                                                 action:@selector(showHelp:)];
-
+    
     UIBarButtonItem *aboutMeItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"About Me", @"About Me")
-                                                                 style:UIBarButtonItemStylePlain
-                                                                target:self
-                                                                action:@selector(showAboutMe:)];
-
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:self
+                                                                   action:@selector(showAboutMe:)];
+    
     [leftBarButtonItems addObject:helpItem];
     [leftBarButtonItems addObject:aboutMeItem];
     
@@ -947,7 +990,8 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
 {
     [self dismissPopover];
     
-    if (!restClient_) {
+    if (!restClient_)
+    {
         restClient_ = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
         restClient_.delegate = self;
         
@@ -956,7 +1000,8 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
     
     NSString *format = [[NSUserDefaults standardUserDefaults] objectForKey:WDDropboxFormatDefault];
     
-    for (NSString *filename in selectedDrawings_) {
+    for (NSString *filename in selectedDrawings_)
+    {
         [[WDDrawingManager sharedInstance] openDocumentWithName:filename withCompletionHandler:^(WDDocument *document) {
             @autoreleasepool {
                 NSData      *data = nil;
@@ -1250,7 +1295,8 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"editDrawing"]) {
+    if ([[segue identifier] isEqualToString:@"editDrawing"])
+    {
         WDCanvasController *canvasController = [segue destinationViewController];
         NSUInteger index = [[WDDrawingManager sharedInstance] indexPathForFilename:((WDThumbnailView *)sender).filename].item;
         WDDocument *document = [[WDDrawingManager sharedInstance] openDocumentAtIndex:index withCompletionHandler:nil];
@@ -1271,11 +1317,15 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
     NSUInteger  count = selectedDrawings_.count;
     NSString    *format;
     
-    if (count == 0) {
+    if (count == 0)
+    {
         self.title = NSLocalizedString(@"Select Drawings", @"Select Drawings");
-    } else if (count == 1) {
+    } else if (count == 1)
+    {
         self.title = NSLocalizedString(@"1 Drawing Selected", @"1 Drawing Selected");
-    } else {
+    }
+    else
+    {
         format = NSLocalizedString(@"%lu Drawings Selected", @"%lu Drawings Selected");
         self.title = [NSString stringWithFormat:format, count];
     }
@@ -1285,12 +1335,15 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
 {
     NSString    *filename = [[WDDrawingManager sharedInstance] fileAtIndex:indexPath.item];
     
-    if (self.isEditing) {
+    if (self.isEditing)
+    {
         [selectedDrawings_ addObject:filename];
         
         [self updateSelectionTitle];
         [self properlyEnableToolbarItems];
-    } else {
+    }
+    else
+    {
         [self getThumbnail:filename].selected = NO;
     }
 }
@@ -1320,7 +1373,8 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
     thumbnail.tag = indexPath.item;
     thumbnail.delegate = self;
     
-    if (self.isEditing) {
+    if (self.isEditing)
+    {
         thumbnail.shouldShowSelectionIndicator = YES;
         thumbnail.selected = [selectedDrawings_ containsObject:thumbnail.filename] ? YES : NO;
     }
