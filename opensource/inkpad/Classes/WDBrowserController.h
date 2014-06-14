@@ -12,7 +12,6 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MFMailComposeViewController.h>
 #import "OCADownloader.h"
-#import "WDHelpController.h"
 #import "WDImportController.h"
 #import "WDSamplesController.h"
 

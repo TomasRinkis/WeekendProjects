@@ -20,6 +20,8 @@
 #import "WDBlockingView.h"
 #import "WDBrowserController.h"
 #import "WDCanvasController.h"
+#import "WDHelpController.h"
+#import "WDAboutMeController.h"
 #import "WDDocument.h"
 #import "WDDrawing.h"
 #import "WDDrawingManager.h"
@@ -52,6 +54,23 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
     filesBeingUploaded_ = [[NSMutableSet alloc] init];
     activities_ = [[WDActivityManager alloc] init];
     
+    [self initNotifications];
+    
+    self.navigationItem.title = NSLocalizedString(@"Gallery", @"Gallery");
+    self.navigationItem.leftBarButtonItems = [self createLeftNavigationBarItemsArray];
+    self.navigationItem.rightBarButtonItems = [self createRightNavigationBarItemsArray];
+    self.toolbarItems = [self defaultToolbarItems]; // bot bar
+    
+    return self;
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void) initNotifications
+{
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(drawingChanged:)
                                                  name:UIDocumentStateChangedNotification
@@ -96,18 +115,6 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
                                              selector:@selector(emailAttached:)
                                                  name:WDAttachmentNotification
                                                object:nil];
-    
-    self.navigationItem.title = NSLocalizedString(@"Gallery", @"Gallery");
-    self.navigationItem.leftBarButtonItems = [self createLeftNavigationBarItemsArray];
-    self.navigationItem.rightBarButtonItems = [self createRightNavigationBarItemsArray];
-    self.toolbarItems = [self defaultToolbarItems]; // bot bar
-    
-    return self;
-}
-
-- (void) dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark -
@@ -578,7 +585,14 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
                                                                  style:UIBarButtonItemStyleBordered
                                                                 target:self
                                                                 action:@selector(showHelp:)];
+
+    UIBarButtonItem *aboutMeItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"About Me", @"About Me")
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:self
+                                                                action:@selector(showAboutMe:)];
+
     [leftBarButtonItems addObject:helpItem];
+    [leftBarButtonItems addObject:aboutMeItem];
     
     return leftBarButtonItems;
 }
@@ -759,6 +773,18 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
             [self setToolbarItems:[NSArray arrayWithArray:[self defaultToolbarItems]] animated:YES];
         }
     }
+}
+
+- (void) showAboutMe:(id)sender
+{
+    WDAboutMeController *aboutMeController = [WDAboutMeController createWithNibName:nil andBundle:nil];
+    
+    // Create a Navigation controller for getting navigation.bar.items
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:aboutMeController];
+    navController.modalPresentationStyle = UIModalPresentationPageSheet;
+    
+    // show the navigation controller modally
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void) showHelp:(id)sender
