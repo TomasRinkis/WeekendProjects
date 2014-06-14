@@ -11,8 +11,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class WDCanvas;
+@class WDCanvasView;
 
 @interface WDEraserPreviewView : UIView
-@property (nonatomic, weak) WDCanvas *canvas;
+@property (nonatomic, weak) WDCanvasView *canvas;
 @end

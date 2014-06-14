@@ -9,7 +9,7 @@
 //  Copyright (c) 2014 Steve Sprang
 //
 
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDDrawingController.h"
 #import "WDDynamicGuide.h"
 #import "WDDynamicGuideController.h"

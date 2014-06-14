@@ -10,7 +10,7 @@
 //
 #import "WDScissorTool.h"
 #import "WDBezierNode.h"
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDDrawingController.h"
 #import "WDPath.h"
 
@@ -21,7 +21,7 @@
     return @"scissor.png";
 }
 
-- (void) beginWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) beginWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     WDPickResult *result = [canvas.drawingController snappedPoint:theEvent.location
                                                         viewScale:canvas.viewScale

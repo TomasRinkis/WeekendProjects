@@ -10,7 +10,7 @@
 //
 
 #import "WDBezierNode.h"
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDColor.h"
 #import "WDCurveFit.h"
 #import "WDDrawingController.h"
@@ -46,7 +46,7 @@ NSString *WDEraserToolSize = @"WDEraserToolSize";
     return self;
 }
 
-- (void) beginWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) beginWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     tempPath_ = [[WDPath alloc] initWithNode:[WDBezierNode bezierNodeWithAnchorPoint:theEvent.location]];
     
@@ -57,7 +57,7 @@ NSString *WDEraserToolSize = @"WDEraserToolSize";
     canvas.eraserPath = tempPath_;
 }
 
-- (void) moveWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) moveWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     if (WDDistance(theEvent.location, [tempPath_ lastNode].anchorPoint) < (3.0f / canvas.viewScale)) {
         return;
@@ -70,7 +70,7 @@ NSString *WDEraserToolSize = @"WDEraserToolSize";
     [canvas invalidateSelectionView];
 }
 
-- (void) endWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) endWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     canvas.eraserPath = nil;
     

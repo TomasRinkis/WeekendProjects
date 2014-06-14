@@ -10,7 +10,7 @@
 //
 
 #import "WDBezierNode.h"
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDCanvasController.h"
 #import "WDCompoundPath.h"
 #import "WDDynamicGuide.h"
@@ -49,7 +49,7 @@
     return transformingNodes_ || transformingHandles_;
 }
 
-- (void) flagsChangedInCanvas:(WDCanvas *)canvas
+- (void) flagsChangedInCanvas:(WDCanvasView *)canvas
 {
     if (!marqueeMode_) {
         return;
@@ -70,7 +70,7 @@
     [canvas.drawingController selectObjectsInRect:selectionRect];
 }
 
-- (void) selectWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) selectWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     WDDrawingController *controller = canvas.drawingController;
     
@@ -182,7 +182,7 @@
     }
 }
 
-- (void) beginWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) beginWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     [self selectWithEvent:event inCanvas:canvas];
 
@@ -190,7 +190,7 @@
     transform_ = CGAffineTransformIdentity;
 }
 
-- (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     WDDynamicGuideController *guideController = canvas.drawingController.dynamicGuideController;
     CGPoint initialPt = self.initialEvent.location;
@@ -312,7 +312,7 @@
     }
 }
 
-- (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     if (marqueeMode_) {
         marqueeMode_ = NO;
@@ -389,7 +389,7 @@
 
 #pragma mark - Grid Snapping
 
-- (NSValue *) snapCorner:(CGPoint)pt inCanvas:(WDCanvas *)canvas
+- (NSValue *) snapCorner:(CGPoint)pt inCanvas:(WDCanvasView *)canvas
 {
     WDPickResult *result = [canvas.drawingController snappedPoint:pt viewScale:canvas.viewScale snapFlags:kWDSnapGrid];
     
@@ -401,7 +401,7 @@
     return nil;
 }
 
-- (CGPoint) offsetSelection:(CGPoint)originalDelta inCanvas:(WDCanvas *)canvas
+- (CGPoint) offsetSelection:(CGPoint)originalDelta inCanvas:(WDCanvasView *)canvas
 {
     CGRect          selectionBounds = CGRectOffset([canvas.drawingController selectionBounds], originalDelta.x, originalDelta.y);
     NSMutableArray  *deltas = [NSMutableArray array];

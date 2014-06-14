@@ -10,7 +10,7 @@
 //
 
 #import "WDBezierNode.h"
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDColor.h"
 #import "WDCurveFit.h"
 #import "WDDrawingController.h"
@@ -49,7 +49,7 @@ NSString *WDDefaultFreehandTool = @"WDDefaultFreehandTool";
     [[NSUserDefaults standardUserDefaults] setValue:@(closeShape_) forKey:WDDefaultFreehandTool];
 }
 
-- (void) beginWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) beginWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     [canvas.drawingController selectNone:nil];
     
@@ -61,13 +61,13 @@ NSString *WDDefaultFreehandTool = @"WDDefaultFreehandTool";
     [self moveWithEvent:theEvent inCanvas:canvas];
 }
 
-- (void) moveWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) moveWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     [tempPath_.nodes addObject:[WDBezierNode bezierNodeWithAnchorPoint:theEvent.location]];
     [canvas invalidateSelectionView];
 }
 
-- (void) endWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) endWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     if (pathStarted_ && [tempPath_.nodes count] > 1) {
         float maxError = (kMaxError / canvas.viewScale);

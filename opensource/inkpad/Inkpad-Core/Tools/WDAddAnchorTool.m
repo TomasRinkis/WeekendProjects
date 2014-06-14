@@ -11,7 +11,7 @@
 
 #import "WDAddAnchorTool.h"
 #import "WDBezierNode.h"
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDDrawingController.h"
 #import "WDPath.h"
 
@@ -22,7 +22,7 @@
     return @"add_anchor.png";
 }
 
-- (void) beginWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) beginWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     WDPickResult *result = [canvas.drawingController snappedPoint:event.location
                                                         viewScale:canvas.viewScale

@@ -39,11 +39,12 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
 
 #pragma mark -
 
-- (id) initWithCoder:(NSCoder *)aDecoder
+- (instancetype) initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     
-    if (!self) {
+    if (!self)
+    {
         return nil;
     }
     
@@ -97,44 +98,9 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
                                                object:nil];
     
     self.navigationItem.title = NSLocalizedString(@"Gallery", @"Gallery");
-    
-    NSMutableArray *rightBarButtonItems = [NSMutableArray array];
-
-    // Create an "add new drawing" button
-    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                             target:self
-                                                                             action:@selector(addDrawing:)];
-    [rightBarButtonItems addObject:addItem];
-    
-    // create an album import button
-    UIBarButtonItem *albumItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"album_centered.png"]
-                                                                  style:UIBarButtonItemStylePlain
-                                                                 target:self
-                                                                 action:@selector(importFromAlbum:)];
-    [rightBarButtonItems addObject:albumItem];
-    
-    // add a camera import item if we have a camera (I think this will always be true from now on)
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIBarButtonItem *cameraItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
-                                                                                    target:self
-                                                                                    action:@selector(importFromCamera:)];
-        [rightBarButtonItems addObject:cameraItem];
-    }
-    
-    UIBarButtonItem *openClipArtItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"openclipart.png"]
-                                                                        style:UIBarButtonItemStylePlain
-                                                                       target:self
-                                                                       action:@selector(showOpenClipArt:)];
-    [rightBarButtonItems addObject:openClipArtItem];
-
-    // Create a help button to display in the top left corner.
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Help", @"Help")
-                                                                 style:UIBarButtonItemStyleBordered
-                                                                target:self
-                                                                action:@selector(showHelp:)];
-    self.navigationItem.leftBarButtonItem = leftItem;
-    self.navigationItem.rightBarButtonItems = rightBarButtonItems;
-    self.toolbarItems = [self defaultToolbarItems];
+    self.navigationItem.leftBarButtonItems = [self createLeftNavigationBarItemsArray];
+    self.navigationItem.rightBarButtonItems = [self createRightNavigationBarItemsArray];
+    self.toolbarItems = [self defaultToolbarItems]; // bot bar
     
     return self;
 }
@@ -160,7 +126,7 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
 {
     WDDocument *document = [[WDDrawingManager sharedInstance] createNewDrawingWithSize:pageSizeController_.size
                                                                               andUnits:pageSizeController_.units];
-
+    
     [self startEditingDrawing:document];
     
     [self dismissPopover];
@@ -168,9 +134,12 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
 
 - (void) addDrawing:(id)sender
 {
-    if (popoverController_) {
+    if (popoverController_)
+    {
         [self dismissPopover];
-    } else {
+    }
+    else
+    {
         pageSizeController_ = [[WDPageSizeController alloc] initWithNibName:nil bundle:nil];
         UINavigationController  *navController = [[UINavigationController alloc] initWithRootViewController:pageSizeController_];
         
@@ -455,7 +424,7 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
     
     NSString *deleteButtonTitle = NSLocalizedString(@"Delete", @"Delete");
     NSString *cancelButtonTitle = NSLocalizedString(@"Cancel", @"Cancel");
-
+    
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
                                                         message:message
                                                        delegate:self
@@ -486,16 +455,16 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
     
     NSString *format = NSLocalizedString(@"Delete %d Drawings", @"Delete %d Drawings");
     NSString *title = (selectedDrawings_.count) == 1 ?
-        NSLocalizedString(@"Delete Drawing", @"Delete Drawing") :
-        [NSString stringWithFormat:format, selectedDrawings_.count];
+    NSLocalizedString(@"Delete Drawing", @"Delete Drawing") :
+    [NSString stringWithFormat:format, selectedDrawings_.count];
     
 	deleteSheet_ = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@""
                                  destructiveButtonTitle:title otherButtonTitles:nil];
-
+    
     [deleteSheet_ showFromBarButtonItem:sender animated:YES];
 }
-     
- - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (actionSheet == deleteSheet_) {
         if (buttonIndex == actionSheet.destructiveButtonIndex) {
@@ -530,7 +499,7 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
         [self properlyEnableToolbarItems];
     } else {
         self.title = NSLocalizedString(@"Gallery", @"Gallery");
-
+        
         self.collectionView.allowsSelection = NO;
         self.collectionView.allowsSelection = YES;
         
@@ -600,9 +569,58 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
     return items;
 }
 
+-(NSArray*) createLeftNavigationBarItemsArray;
+{
+    NSMutableArray *leftBarButtonItems = [NSMutableArray array];
+    
+    // Create a help button to display in the top left corner.
+    UIBarButtonItem *helpItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Help", @"Help")
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:self
+                                                                action:@selector(showHelp:)];
+    [leftBarButtonItems addObject:helpItem];
+    
+    return leftBarButtonItems;
+}
+
+-(NSArray*) createRightNavigationBarItemsArray;
+{
+    //<Right top bar nanigation items
+    NSMutableArray *rightBarButtonItems = [NSMutableArray array];
+    
+    // Create an "add new drawing" button
+    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                             target:self
+                                                                             action:@selector(addDrawing:)];
+    [rightBarButtonItems addObject:addItem];
+    
+    // create an album import button
+    UIBarButtonItem *albumItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"album_centered.png"]
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(importFromAlbum:)];
+    [rightBarButtonItems addObject:albumItem];
+    
+    // add a camera import item if we have a camera (I think this will always be true from now on)
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIBarButtonItem *cameraItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
+                                                                                    target:self
+                                                                                    action:@selector(importFromCamera:)];
+        [rightBarButtonItems addObject:cameraItem];
+    }
+    
+    UIBarButtonItem *openClipArtItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"openclipart.png"]
+                                                                        style:UIBarButtonItemStylePlain
+                                                                       target:self
+                                                                       action:@selector(showOpenClipArt:)];
+    [rightBarButtonItems addObject:openClipArtItem];
+    
+    return rightBarButtonItems;
+}
 - (NSArray *) defaultToolbarItems
 {
-    if (!toolbarItems_) {
+    if (!toolbarItems_)
+    {
         toolbarItems_ = [[NSMutableArray alloc] init];
         
         UIBarButtonItem *importItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Import", @"Import")
@@ -660,7 +678,7 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
     [self dismissPopover];
     
     fontLibraryController_ = [[WDFontLibraryController alloc] initWithNibName:nil bundle:nil];
-
+    
     UINavigationController  *navController = [[UINavigationController alloc] initWithRootViewController:fontLibraryController_];
     
     popoverController_ = [[UIPopoverController alloc] initWithContentViewController:navController];

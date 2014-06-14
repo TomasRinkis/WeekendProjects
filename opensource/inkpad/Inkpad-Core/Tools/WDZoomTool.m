@@ -10,7 +10,7 @@
 //
 
 #import "WDZoomTool.h"
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDUtilities.h"
 
 #if TARGET_OS_MAC
@@ -24,13 +24,13 @@
     return @"zoom.png";
 }
 
-- (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {   
     canvas.marquee = [NSValue valueWithCGRect:WDRectWithPoints(self.initialEvent.location, event.location)];
 }
 
 #if !TARGET_OS_IPHONE
-- (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {    
     CGPoint pt = event.location;
     

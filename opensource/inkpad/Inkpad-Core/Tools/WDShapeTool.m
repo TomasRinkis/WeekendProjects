@@ -11,7 +11,7 @@
 
 
 #import "WDBezierNode.h"
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDDrawingController.h"
 #import "WDDynamicGuideController.h"
 #import "WDInspectableProperties.h"
@@ -215,7 +215,7 @@ NSString *WDShapeToolSpiralDecay = @"WDShapeToolSpiralDecay";
     return YES;
 }
 
-- (void)moveWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void)moveWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     if (!self.moved) {
         [canvas.drawingController selectNone:nil];
@@ -241,7 +241,7 @@ NSString *WDShapeToolSpiralDecay = @"WDShapeToolSpiralDecay";
     canvas.shapeUnderConstruction = temp;
 }
 
-- (void)endWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void)endWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {    
     if (self.moved) {
         if (!CGPointEqualToPoint(self.initialEvent.snappedLocation, theEvent.snappedLocation)) {
@@ -270,7 +270,7 @@ NSString *WDShapeToolSpiralDecay = @"WDShapeToolSpiralDecay";
     }
 }
 
-- (void) flagsChangedInCanvas:(WDCanvas *)canvas
+- (void) flagsChangedInCanvas:(WDCanvasView *)canvas
 {
     WDPath  *temp = [self pathWithPoint:self.previousEvent.snappedLocation constrain:[self constrain]];
     canvas.shapeUnderConstruction = temp;

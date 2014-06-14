@@ -45,7 +45,7 @@
 
 @property (nonatomic, assign) BOOL groupSelect;
 
-- (NSValue *) snapCorner:(CGPoint)pt inCanvas:(WDCanvas *)canvas;
-- (CGPoint) offsetSelection:(CGPoint)originalDelta inCanvas:(WDCanvas *)canvas;
+- (NSValue *) snapCorner:(CGPoint)pt inCanvas:(WDCanvasView *)canvas;
+- (CGPoint) offsetSelection:(CGPoint)originalDelta inCanvas:(WDCanvasView *)canvas;
 
 @end

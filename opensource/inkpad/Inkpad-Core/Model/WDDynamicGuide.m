@@ -9,7 +9,7 @@
 //  Copyright (c) 2014 Steve Sprang
 //
 
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDColor.h"
 #import "WDDynamicGuide.h"
 #import "WDGLUtilities.h"
@@ -147,7 +147,7 @@ const float kWDMinimumExtent = 120.0f;
     return [@(self.offset) compare:@(guide.offset)];
 }
 
-- (void) render:(WDCanvas *)canvas
+- (void) render:(WDCanvasView *)canvas
 {
     CGPoint     a, b;
     float       outset;

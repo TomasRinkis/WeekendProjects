@@ -9,7 +9,7 @@
 //  Copyright (c) 2011-2013 Steve Sprang
 //
 
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDEraserPreviewView.h"
 #import "WDPath.h"
 

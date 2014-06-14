@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-@class WDCanvas;
+@class WDCanvasView;
 @class WDDrawing;
 
 typedef enum {
@@ -55,29 +55,29 @@ typedef enum {
 - (void) configureOptionsView:(UIView *)options;
 
 #if TARGET_OS_IPHONE
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvas *)canvas;
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvas *)canvas;
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvas *)canvas;
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvas *)canvas;
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvasView *)canvas;
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvasView *)canvas;
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvasView *)canvas;
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvasView *)canvas;
 #else
-- (void) mouseDown:(NSEvent *)theEvent inCanvas:(WDCanvas *)canvas;
-- (void) mouseDragged:(NSEvent *)theEvent inCanvas:(WDCanvas *)canvas;
-- (void) mouseUp:(NSEvent *)theEvent inCanvas:(WDCanvas *)canvas;
-- (void) flagsChanged:(NSEvent *)theEvent inCanvas:(WDCanvas *)canvas;
+- (void) mouseDown:(NSEvent *)theEvent inCanvas:(WDCanvasView *)canvas;
+- (void) mouseDragged:(NSEvent *)theEvent inCanvas:(WDCanvasView *)canvas;
+- (void) mouseUp:(NSEvent *)theEvent inCanvas:(WDCanvasView *)canvas;
+- (void) flagsChanged:(NSEvent *)theEvent inCanvas:(WDCanvasView *)canvas;
 #endif
 
 // generic event handling code
 
-- (void) beginWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas;
-- (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas;
-- (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas;
+- (void) beginWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas;
+- (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas;
+- (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas;
 
-- (void) setFlags:(WDToolFlags)flags inCanvas:(WDCanvas *)canvas;
-- (void) flagsChangedInCanvas:(WDCanvas *)canvas;
+- (void) setFlags:(WDToolFlags)flags inCanvas:(WDCanvasView *)canvas;
+- (void) flagsChangedInCanvas:(WDCanvasView *)canvas;
 
 - (void) buttonDoubleTapped;
 
 // raw drawing coordinate -> snapped drawing coordinate
-- (CGPoint) snappedPointForPoint:(CGPoint)pt inCanvas:(WDCanvas *)canvas;
+- (CGPoint) snappedPointForPoint:(CGPoint)pt inCanvas:(WDCanvasView *)canvas;
 
 @end

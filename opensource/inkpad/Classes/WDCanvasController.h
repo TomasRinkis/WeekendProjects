@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class WDCanvas;
+@class WDCanvasView;
 @class WDColorBalanceController;
 @class WDColorWell;
 @class WDDocument;
@@ -40,7 +40,7 @@ enum {
                                                     UIPopoverControllerDelegate, UIDocumentInteractionControllerDelegate>
 {
     WDDocument          *document_;
-    WDCanvas            *canvas_;
+    WDCanvasView            *canvas_;
     NSArray             *editingItems_;
     
     UIBarButtonItem     *albumItem_;
@@ -80,7 +80,7 @@ enum {
 
 @property (nonatomic, strong) WDDocument *document;
 @property (weak, nonatomic, readonly) WDDrawing *drawing;
-@property (nonatomic, readonly) WDCanvas *canvas;
+@property (nonatomic, readonly) WDCanvasView *canvas;
 @property (nonatomic, readonly, strong) WDDrawingController *drawingController;
 @property (strong, nonatomic) UIDocumentInteractionController *documentInteractionController;
 

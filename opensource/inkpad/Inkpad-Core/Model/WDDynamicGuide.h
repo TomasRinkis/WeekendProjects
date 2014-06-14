@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class WDCanvas;
+@class WDCanvasView;
 
 //
 // WDExtent
@@ -58,6 +58,6 @@ static NSComparator guideCompare = ^(id a, id b){
 - (void) addExtent:(WDExtent *)extent;
 - (void) addExtentsFromSet:(NSSet *)extents;
 
-- (void) render:(WDCanvas *)canvas;
+- (void) render:(WDCanvasView *)canvas;
 
 @end

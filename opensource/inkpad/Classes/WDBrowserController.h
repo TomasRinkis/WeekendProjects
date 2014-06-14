@@ -40,11 +40,15 @@
                                                              OCADownloaderDelegate>
 {
     NSMutableArray          *toolbarItems_;
+    
     UIBarButtonItem         *emailItem_;
     UIBarButtonItem         *dropboxExportItem_;
-    UIActivityIndicatorView *activityIndicator_;
     UIBarButtonItem         *activityItem_;
     UIBarButtonItem         *deleteItem_;
+    
+    UIActivityIndicatorView *activityIndicator_;
+    
+    
     UIActionSheet           *deleteSheet_;
     
     NSMutableSet            *selectedDrawings_;

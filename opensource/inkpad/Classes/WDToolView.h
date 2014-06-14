@@ -11,13 +11,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class WDCanvas;
+@class WDCanvasView;
 @class WDToolButton;
 
 @interface WDToolView : UIView
 
 @property (nonatomic, strong) NSArray *tools;
-@property (nonatomic, weak) WDCanvas *canvas;
+@property (nonatomic, weak) WDCanvasView *canvas;
 @property (nonatomic, weak) WDToolButton *owner;
 
 - (id) initWithTools:(NSArray *)tools;

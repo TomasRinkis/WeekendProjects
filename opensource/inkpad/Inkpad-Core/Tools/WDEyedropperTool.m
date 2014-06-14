@@ -10,7 +10,7 @@
 //
 
 #import "WDEyedropperTool.h"
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDDrawingController.h"
 #import "WDImage.h"
 #import "WDInspectableProperties.h"
@@ -30,7 +30,7 @@
     return @"eyedropper.png";
 }
 
-- (void) beginWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) beginWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
 #if TARGET_OS_IPHONE
     CGPoint pt = theEvent.location;
@@ -42,7 +42,7 @@
 #endif
 }
 
-- (void) moveWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) moveWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {   
 #if TARGET_OS_IPHONE
     CGPoint pt = theEvent.location;
@@ -54,7 +54,7 @@
 #endif
 }
 
-- (void) endWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) endWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {    
 #if TARGET_OS_IPHONE
     WDElement *element = self.lastPickResult.element;

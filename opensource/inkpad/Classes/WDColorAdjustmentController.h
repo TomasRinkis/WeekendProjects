@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 @class WDBlockingView;
-@class WDCanvas;
+@class WDCanvasView;
 @class WDDrawingController;
 @class WDModalTitleBar;
 @class WDPaletteBackgroundView;
@@ -27,7 +27,7 @@
 }
 
 @property (nonatomic, weak) WDDrawingController *drawingController;
-@property (nonatomic, weak) WDCanvas *canvas;
+@property (nonatomic, weak) WDCanvasView *canvas;
 @property (nonatomic, strong) NSString *defaultsName;
 @property (nonatomic, readonly) NSNumberFormatter *formatter;
 

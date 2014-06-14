@@ -26,13 +26,13 @@
 
 #if !TARGET_OS_IPHONE
 
-- (void) mouseDown:(NSEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) mouseDown:(NSEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     [canvas beginGestureMode];
     lastWindowLocation_ = [theEvent locationInWindow];
 }
 
-- (void) mouseDragged:(NSEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) mouseDragged:(NSEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     CGPoint delta = WDSubtractPoints([canvas convertPointFromBase:[theEvent locationInWindow]],
                                      [canvas convertPointFromBase:lastWindowLocation_]);
@@ -43,7 +43,7 @@
     [canvas scrollPoint:newOrigin];
 }
 
-- (void) mouseUp:(NSEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) mouseUp:(NSEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     [canvas endGestureMode];
 }

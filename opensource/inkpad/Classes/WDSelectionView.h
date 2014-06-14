@@ -14,7 +14,7 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
-@class WDCanvas;
+@class WDCanvasView;
 @class WDDrawing;
 
 @interface WDSelectionView : UIView {
@@ -28,7 +28,7 @@
     GLuint colorRenderbuffer, defaultFramebuffer;
 }
 
-@property (nonatomic, weak) WDCanvas *canvas;
+@property (nonatomic, weak) WDCanvasView *canvas;
 @property (nonatomic, strong) EAGLContext *context;
 @property (weak, nonatomic, readonly) WDDrawing *drawing;
 

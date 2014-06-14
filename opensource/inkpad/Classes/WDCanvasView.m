@@ -1,5 +1,5 @@
 //
-//  WDCanvas.m
+//  WDCanvasView.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -10,7 +10,7 @@
 //
 
 #import "UIView+Additions.h"
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDCanvasController.h"
 #import "WDDrawingController.h"
 #import "WDColor.h"
@@ -39,12 +39,12 @@
 
 NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
 
-@interface WDCanvas (Private)
+@interface WDCanvasView (Private)
 - (void) setTrueViewScale_:(float)scale;
 - (void) rebuildViewTransform_;
 @end
 
-@implementation WDCanvas
+@implementation WDCanvasView
 
 @synthesize selectionView = selectionView_;
 @synthesize eraserPreview = eraserPreview_;

@@ -1,5 +1,5 @@
 //
-//  WDCanvas.h
+//  WDCanvasView.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@class WDCanvas;
+@class WDCanvasView;
 @class WDCanvasController;
 @class WDDrawing;
 @class WDDrawingController;
@@ -24,7 +24,7 @@
 @class WDRulerView;
 @class WDSelectionView;
 
-@interface WDCanvas : UIView {
+@interface WDCanvasView : UIView {
     WDSelectionView         *selectionView_;
     WDEraserPreviewView     *eraserPreview_;
     

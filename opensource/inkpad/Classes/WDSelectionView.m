@@ -10,7 +10,7 @@
 //
 
 #import "WDBezierNode.h"
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDDrawingController.h"
 #import "WDGLUtilities.h"
 #import "WDLayer.h"

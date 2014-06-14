@@ -9,7 +9,7 @@
 //  Copyright (c) 2009-2013 Steve Sprang
 //
 
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDDrawingController.h"
 #import "WDPickResult.h"
 #import "WDTool.h"
@@ -100,7 +100,7 @@
     return NO;
 }
 
-- (CGPoint) snappedPointForPoint:(CGPoint)pt inCanvas:(WDCanvas *)canvas
+- (CGPoint) snappedPointForPoint:(CGPoint)pt inCanvas:(WDCanvasView *)canvas
 {
     NSUInteger snapFlags = [canvas.drawing snapFlags] | kWDSnapLocked | kWDSnapSubelement;
     
@@ -117,7 +117,7 @@
 #pragma mark iOS Event Handling
 #if TARGET_OS_IPHONE
 
-- (WDEvent *) genericEventForTouch:(UITouch *)touch inCanvas:(WDCanvas *)canvas
+- (WDEvent *) genericEventForTouch:(UITouch *)touch inCanvas:(WDCanvasView *)canvas
 {
     WDEvent *event = [[WDEvent alloc] init];
     
@@ -128,7 +128,7 @@
     return event;
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvas *)canvas
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     if ([event allTouches].count == 1) {
         primaryTouch_ = [touches anyObject];
@@ -157,7 +157,7 @@
     }
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvas *)canvas
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvasView *)canvas
 {   
     if (self.primaryTouchEnded) {
         return;
@@ -170,7 +170,7 @@
     moved_ = YES;
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvas *)canvas
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     if (self.primaryTouchEnded) {
         return;
@@ -197,7 +197,7 @@
     }
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvas *)canvas
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     [self touchesEnded:touches withEvent:event inCanvas:canvas];
 }
@@ -223,7 +223,7 @@
     return flags;
 }
 
-- (WDEvent *) genericEventForEvent:(NSEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (WDEvent *) genericEventForEvent:(NSEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     WDEvent *genericEvent = [[WDEvent alloc] init];
     
@@ -234,7 +234,7 @@
     return [genericEvent autorelease];
 }
 
-- (void) mouseDown:(NSEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) mouseDown:(NSEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     moved_ = NO;
     flags_ = [self flagsForEvent:theEvent];
@@ -247,7 +247,7 @@
     self.previousEvent = genericEvent;
 }
 
-- (void) mouseDragged:(NSEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) mouseDragged:(NSEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     WDEvent *genericEvent = [self genericEventForEvent:theEvent inCanvas:canvas];
     [self moveWithEvent:genericEvent inCanvas:canvas];
@@ -256,7 +256,7 @@
     moved_ = YES;
 }
 
-- (void) mouseUp:(NSEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) mouseUp:(NSEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     WDEvent *genericEvent = [self genericEventForEvent:theEvent inCanvas:canvas];
     [self endWithEvent:genericEvent inCanvas:canvas];
@@ -265,7 +265,7 @@
     self.previousEvent = nil;
 }
 
-- (void) flagsChanged:(NSEvent *)theEvent inCanvas:(WDCanvas *)canvas
+- (void) flagsChanged:(NSEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
     [self setFlags:[self flagsForEvent:theEvent] inCanvas:canvas];
 }
@@ -275,7 +275,7 @@
 #pragma mark -
 #pragma mark Generic Event Handling
 
-- (void) setFlags:(WDToolFlags)flags inCanvas:(WDCanvas *)canvas
+- (void) setFlags:(WDToolFlags)flags inCanvas:(WDCanvasView *)canvas
 {
     if (flags != flags_) {
         flags_ = flags;
@@ -283,22 +283,22 @@
     }
 }
 
-- (void) beginWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) beginWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     // IMPLEMENTED BY SUBCLASS
 }
 
-- (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     // IMPLEMENTED BY SUBCLASS
 }
 
-- (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     // IMPLEMENTED BY SUBCLASS
 }
 
-- (void) flagsChangedInCanvas:(WDCanvas *)canvas
+- (void) flagsChangedInCanvas:(WDCanvasView *)canvas
 {
     // IMPLEMENTED BY SUBCLASS
 }

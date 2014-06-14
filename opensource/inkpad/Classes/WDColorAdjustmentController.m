@@ -11,7 +11,7 @@
 
 #import "WDAppDelegate.h"
 #import "WDBlockingView.h"
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDDrawingController.h"
 #import "WDColorAdjustmentController.h"
 #import "WDModalTitleBar.h"

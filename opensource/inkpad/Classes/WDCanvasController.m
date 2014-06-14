@@ -12,7 +12,7 @@
 #import <Twitter/Twitter.h>
 #import <MessageUI/MessageUI.h>
 #import "WDButton.h"
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDCanvasController.h"
 #import "WDColor.h"
 #import "WDColorBalanceController.h"
@@ -1177,7 +1177,7 @@
 
 - (void)loadView
 {
-    canvas_ = [[WDCanvas alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    canvas_ = [[WDCanvasView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     canvas_.controller = self;
     self.view = canvas_;
     

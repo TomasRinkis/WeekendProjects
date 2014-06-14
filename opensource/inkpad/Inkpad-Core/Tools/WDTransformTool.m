@@ -9,7 +9,7 @@
 //  Copyright (c) 2009-2013 Steve Sprang
 //
 
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDDrawingController.h"
 #import "WDTransformTool.h"
 
@@ -24,13 +24,13 @@
     return CGAffineTransformIdentity;
 }
 
-- (void) beginWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) beginWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     // reset the transform
     transform_ = CGAffineTransformIdentity;
 }
 
-- (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     canvas.transforming = YES;
     
@@ -39,7 +39,7 @@
     [canvas transformSelection:transform_];
 }
 
-- (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     if (self.moved) {
         // apply the transform to the drawing
@@ -53,7 +53,7 @@
     transform_ = CGAffineTransformIdentity;
 }
 
-- (void) flagsChangedInCanvas:(WDCanvas *)canvas
+- (void) flagsChangedInCanvas:(WDCanvasView *)canvas
 {
     if (self.moved) {
         transform_ = [self computeTransform:self.previousEvent.snappedLocation pivot:canvas.pivot constrain:self.flags];

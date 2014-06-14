@@ -13,7 +13,7 @@
 
 @class WDDynamicGuide;
 @class WDDrawingController;
-@class WDCanvas;
+@class WDCanvasView;
 
 @interface WDDynamicGuideController : NSObject
 

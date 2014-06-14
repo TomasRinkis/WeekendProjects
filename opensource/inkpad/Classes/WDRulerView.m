@@ -11,7 +11,7 @@
 
 #import "WDRulerView.h"
 #import "WDRulerUnit.h"
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 
 #define kLabelMarkEnd   0
 #define kBigMarkEnd     11
@@ -123,7 +123,7 @@ static NSMutableDictionary *registeredUnits_ = nil;
 
 - (void) computeMarkValues
 {
-    CGAffineTransform   canvasTransform = ((WDCanvas *) clientView_).canvasTransform;
+    CGAffineTransform   canvasTransform = ((WDCanvasView *) clientView_).canvasTransform;
     WDRulerUnit         *unit = [self rulerUnit];
     
     // convert unit in document space into ruler space
@@ -171,7 +171,7 @@ static NSMutableDictionary *registeredUnits_ = nil;
     
     CGPoint zero = CGPointZero;
     
-    CGAffineTransform   canvasTransform = ((WDCanvas *) clientView_).canvasTransform;
+    CGAffineTransform   canvasTransform = ((WDCanvasView *) clientView_).canvasTransform;
     zero = CGPointApplyAffineTransform(zero, canvasTransform);
     
     if (orientation_ == WDHorizontalRuler) {

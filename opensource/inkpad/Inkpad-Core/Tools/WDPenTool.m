@@ -10,7 +10,7 @@
 //
 
 #import "WDBezierNode.h"
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDDrawingController.h"
 #import "WDFillTransform.h"
 #import "WDInspectableProperties.h"
@@ -37,7 +37,7 @@
     return (self.flags & WDToolOptionKey) || (self.flags & WDToolSecondaryTouch);
 }
 
-- (void) beginWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas;
+- (void) beginWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas;
 {
     CGPoint tap = event.snappedLocation;
     
@@ -101,7 +101,7 @@
     shouldResetFillTransform_ = activePath.fillTransform && [activePath.fillTransform isDefaultInRect:activePath.bounds centered:centered];
 }
 
-- (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     canvas.transforming = canvas.transformingNode = YES;
     
@@ -137,7 +137,7 @@
     [canvas invalidateSelectionView];
 }
 
-- (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     WDPath *activePath = canvas.drawingController.activePath;
     

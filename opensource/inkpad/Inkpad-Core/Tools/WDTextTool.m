@@ -10,7 +10,7 @@
 //
 
 
-#import "WDCanvas.h"
+#import "WDCanvasView.h"
 #import "WDCanvasController.h"
 #import "WDColor.h"
 #import "WDDrawingController.h"
@@ -31,7 +31,7 @@
     return YES;
 }
 
-- (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     if (!self.moved) {
         [canvas.drawingController selectNone:nil];
@@ -41,7 +41,7 @@
     canvas.shapeUnderConstruction = temp;
 }
 
-- (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvas *)canvas
+- (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
     WDText  *textObj = nil;
     
