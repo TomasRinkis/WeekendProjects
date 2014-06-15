@@ -9,13 +9,13 @@
 //  Copyright (c) 2011-2013 Steve Sprang
 //
 
-#import "WDTool.h"
+#import "WDGenericTool.h"
 #import "WDText.h"
 
 @class WDBezierNode;
 @class WDTextPath;
 
-@interface WDSelectionTool : WDTool {
+@interface WDSelectionTool : WDGenericTool {
     CGAffineTransform       transform_;
     BOOL                    marqueeMode_;
     BOOL                    groupSelect_;

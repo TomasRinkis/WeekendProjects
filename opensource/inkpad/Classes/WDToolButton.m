@@ -11,7 +11,7 @@
 
 #import "WDCanvasView.h"
 #import "WDPaletteView.h"
-#import "WDTool.h"
+#import "WDGenericTool.h"
 #import "WDToolButton.h"
 #import "WDToolManager.h"
 #import "WDToolView.h"
@@ -65,7 +65,7 @@
 - (void) activeToolChanged:(NSNotification *)aNotification
 {
     if (tools_) {
-        WDTool *tool = [[WDToolManager sharedInstance] activeTool];
+        WDGenericTool *tool = [[WDToolManager sharedInstance] activeTool];
         
         if (![tools_ containsObject:tool]) {
             [self dismissSubtoolsAnimated:NO];
@@ -146,7 +146,7 @@
     }];
 }
 
-- (void) setTool:(WDTool *)tool
+- (void) setTool:(WDGenericTool *)tool
 {
     tool_ = tool;
     
@@ -198,7 +198,7 @@
 {
     tools_ = tools;
     
-    for (WDTool *tool in tools) {
+    for (WDGenericTool *tool in tools) {
         if ([tool isDefaultForKind]) {
             self.tool = tool;
             break;

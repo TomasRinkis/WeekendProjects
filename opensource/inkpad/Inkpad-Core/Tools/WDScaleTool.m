@@ -21,12 +21,12 @@
     return @"scale.png";
 }
 
-- (CGAffineTransform) computeTransform:(CGPoint)pt pivot:(CGPoint)pivot constrain:(WDToolFlags)flags
+- (CGAffineTransform) computeTransform:(CGPoint)pt pivot:(CGPoint)pivot constrain:(WDGenericToolFlags)flags
 {
     CGPoint delta = WDSubtractPoints(self.initialEvent.location, pivot);
     CGPoint newDelta = WDSubtractPoints(pt, pivot);
     float   scaleX = 1, scaleY = 1;
-    BOOL    constrain = ((flags & WDToolShiftKey) || (flags & WDToolSecondaryTouch)) ? YES : NO;
+    BOOL    constrain = ((flags & WDGenericToolShiftKey) || (flags & WDGenericToolSecondaryTouch)) ? YES : NO;
     
     if (INVERTED_CONSTRAIN) {
         constrain = !constrain;

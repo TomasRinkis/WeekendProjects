@@ -60,7 +60,7 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
 @synthesize shapeUnderConstruction = shapeUnderConstruction_;
 @synthesize eraserPath = eraserPath_;
 @synthesize controller = controller_;
-@synthesize toolPalette = toolPalette_;
+@synthesize toolPalette = toolPaletteView_;
 @synthesize eyedropper = eyedropper_;
 @synthesize horizontalRuler = horizontalRuler_;
 @synthesize verticalRuler = verticalRuler_;
@@ -216,8 +216,8 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
         horizontalRuler_.orientation = WDHorizontalRuler;
         horizontalRuler_.units = drawing_.units;
         
-        if (toolPalette_) {
-            [self insertSubview:horizontalRuler_ belowSubview:toolPalette_];
+        if (toolPaletteView_) {
+            [self insertSubview:horizontalRuler_ belowSubview:toolPaletteView_];
         } else {
             [self addSubview:horizontalRuler_];
         }
@@ -232,15 +232,15 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
         verticalRuler_.orientation = WDVerticalRuler;
         verticalRuler_.units = drawing_.units;
         
-        if (toolPalette_) {
-            [self insertSubview:verticalRuler_ belowSubview:toolPalette_];
+        if (toolPaletteView_) {
+            [self insertSubview:verticalRuler_ belowSubview:toolPaletteView_];
         } else {
             [self addSubview:verticalRuler_];
         }
         
         cornerView_ = [[WDRulerCornerView alloc] initWithFrame:CGRectMake(0,0,kWDRulerThickness,kWDRulerThickness)];
-        if (toolPalette_) {
-            [self insertSubview:cornerView_ belowSubview:toolPalette_];
+        if (toolPaletteView_) {
+            [self insertSubview:cornerView_ belowSubview:toolPaletteView_];
         } else {
             [self addSubview:cornerView_];
         }
@@ -287,7 +287,7 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
     eyedropper_.center = WDRoundPoint(pt);
     [eyedropper_ setBorderWidth:20];
     
-    [self insertSubview:eyedropper_ belowSubview:toolPalette_];
+    [self insertSubview:eyedropper_ belowSubview:toolPaletteView_];
 }
 
 - (void) moveEyedropperToPoint:(CGPoint)pt
@@ -708,7 +708,7 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
 
 - (BOOL) canSendTouchToActiveTool
 {
-    WDTool *activeTool = [WDToolManager sharedInstance].activeTool;
+    WDGenericTool *activeTool = [WDToolManager sharedInstance].activeTool;
     BOOL    locked = drawing_.activeLayer.locked;
     BOOL    hidden = drawing_.activeLayer.hidden;
     
@@ -842,30 +842,31 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
 
 - (void) hideTools
 {
-    if (!toolPalette_) {
+    if (!toolPaletteView_) {
         return;
     }
     
-    toolPalette_.hidden = YES;
+    toolPaletteView_.hidden = YES;
 }
 
 - (void) showTools
 {
-    if (toolPalette_) {
-        toolPalette_.hidden = NO;
+    if (toolPaletteView_)
+    {
+        toolPaletteView_.hidden = NO;
         return;
     }
     
-    WDToolView *tools = [[WDToolView alloc] initWithTools:[WDToolManager sharedInstance].tools];
-    tools.canvas = self;
+    WDToolView *toolsView = [[WDToolView alloc] initWithTools:[WDToolManager sharedInstance].tools];
+    toolsView.canvas = self;
     
-    CGRect frame = tools.frame;
+    CGRect frame = toolsView.frame;
     frame.size.height += [WDToolButton dimension] + 4;
-    float bottom = CGRectGetHeight(tools.frame);
+    float bottom = CGRectGetHeight(toolsView.frame);
     
     // create a base view for all the palette elements
     UIView *paletteView = [[UIView alloc] initWithFrame:frame];
-    [paletteView addSubview:tools];
+    [paletteView addSubview:toolsView];
     
     // add a separator
     WDEtchedLineView *line = [[WDEtchedLineView alloc] initWithFrame:CGRectMake(2, bottom + 1, CGRectGetWidth(frame) - 4, 2)];
@@ -881,8 +882,8 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
     deleteButton_.enabled = NO;
     [paletteView addSubview:deleteButton_];
     
-    toolPalette_ = [WDPaletteView paletteWithBaseView:paletteView defaultsName:@"tools palette"];
-    [self addSubview:toolPalette_];
+    toolPaletteView_ = [WDPaletteView paletteWithBaseView:paletteView defaultsName:@"tools palette"];
+    [self addSubview:toolPaletteView_];
     
     [self ensureToolPaletteIsOnScreen];
 }
@@ -988,7 +989,7 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
     toolOptionsView_ = toolOptionsView;
     [self positionToolOptionsView];
     
-    [self insertSubview:toolOptionsView_ belowSubview:toolPalette_];
+    [self insertSubview:toolOptionsView_ belowSubview:toolPaletteView_];
 }
 
 - (void) setMarquee:(NSValue *)marquee
@@ -1031,7 +1032,8 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
 
 - (void) startActivity
 {
-    if (!activityView_) {
+    if (!activityView_)
+    {
         [[NSBundle mainBundle] loadNibNamed:@"Activity" owner:self options:nil];
     }
     
@@ -1063,7 +1065,7 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
 
 - (void) ensureToolPaletteIsOnScreen
 {
-    [toolPalette_ bringOnScreen];
+    [toolPaletteView_ bringOnScreen];
 }
 
 - (void) keyboardWillShow:(NSNotification *)aNotification
@@ -1130,7 +1132,7 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
     messageLabel_.sharpCenter = WDCenterOfRect(self.bounds);
     
     if (messageLabel_.superview != self) {
-        [self insertSubview:messageLabel_ belowSubview:toolPalette_];
+        [self insertSubview:messageLabel_ belowSubview:toolPaletteView_];
     }
     
     // start message dismissal timer

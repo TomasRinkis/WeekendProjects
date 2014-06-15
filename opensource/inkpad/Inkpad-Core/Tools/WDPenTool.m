@@ -34,7 +34,7 @@
 
 - (BOOL) optionKeyDown
 {
-    return (self.flags & WDToolOptionKey) || (self.flags & WDToolSecondaryTouch);
+    return (self.flags & WDGenericToolOptionKey) || (self.flags & WDGenericToolSecondaryTouch);
 }
 
 - (void) beginWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas;

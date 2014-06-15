@@ -9,9 +9,9 @@
 //  Copyright (c) 2011-2013 Steve Sprang
 //
 
-#import "WDTool.h"
+#import "WDGenericTool.h"
 
-@interface WDHandTool : WDTool
+@interface WDHandTool : WDGenericTool
 
 @property (nonatomic, assign) CGPoint lastWindowLocation;
 

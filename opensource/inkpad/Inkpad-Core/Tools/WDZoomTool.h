@@ -9,7 +9,7 @@
 //  Copyright (c) 2009-2013 Steve Sprang
 //
 
-#import "WDTool.h"
+#import "WDGenericTool.h"
 
-@interface WDZoomTool : WDTool
+@interface WDZoomTool : WDGenericTool
 @end

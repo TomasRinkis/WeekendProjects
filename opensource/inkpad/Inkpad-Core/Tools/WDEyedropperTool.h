@@ -9,11 +9,11 @@
 //  Copyright (c) 2011-2013 Steve Sprang
 //
 
-#import "WDTool.h"
+#import "WDGenericTool.h"
 
 @class WDPickResult;
 
-@interface WDEyedropperTool : WDTool
+@interface WDEyedropperTool : WDGenericTool
 
 @property (nonatomic, strong) WDPickResult *lastPickResult;
 @property (nonatomic, strong) id lastFill;

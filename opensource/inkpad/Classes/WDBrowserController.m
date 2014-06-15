@@ -123,7 +123,7 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
 {
     [self setEditing:NO animated:NO];
     
-    WDCanvasController *canvasController = [[WDCanvasController alloc] init];
+    WDCanvasController *canvasController = [WDCanvasController create];
     [canvasController setDocument:document];
     
     [self.navigationController pushViewController:canvasController animated:YES];
@@ -600,14 +600,15 @@ NSString *WDAttachmentNotification = @"WDAttachmentNotification";
                                                                     action:@selector(showDeleteMenu:)];
     }
     
-    copyItem_ = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks
-                                                              target:self
-                                                              action:@selector(copySelectedDrawing:)];
+    
+    copyItem_ = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"duplicate.png"]
+                                                 style:UIBarButtonItemStylePlain
+                                                target:self
+                                                action:@selector(copySelectedDrawing:)];
     
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                               target:self
                                                                               action:@selector(stopEditing:)];
-    
     
     [items addObject:dropboxExportItem_];
     [items addObject:flexibleItem];

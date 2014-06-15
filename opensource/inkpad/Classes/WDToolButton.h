@@ -11,14 +11,14 @@
 
 #import <Foundation/Foundation.h>
 
-@class WDTool;
+@class WDGenericTool;
 @class WDToolView;
 
 @interface WDToolButton : UIButton <UIPopoverControllerDelegate> {
     UIPopoverController             *subtoolsPopover_;
 }
 
-@property (nonatomic, weak) WDTool  *tool;
+@property (nonatomic, weak) WDGenericTool  *tool;
 @property (nonatomic, weak) NSArray  *tools;
 
 + (float) dimension;

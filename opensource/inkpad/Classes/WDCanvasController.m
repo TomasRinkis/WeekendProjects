@@ -52,7 +52,24 @@
 @synthesize canvas = canvas_;
 @synthesize drawingController = drawingController_;
 
-- (WDDrawing *) drawing 
+-(instancetype) init
+{
+    self = [super init];
+    
+    if(self)
+    {
+    }
+    
+    return self;
+}
+
+
++(instancetype) create
+{
+    return [[WDCanvasController alloc] init];
+}
+
+- (WDDrawing *) drawing
 {
     return self.document.drawing;
 }
@@ -117,7 +134,8 @@
 
 - (BOOL) shouldDismissPopoverForClassController:(Class)controllerClass insideNavController:(BOOL)insideNav
 {
-    if (!popoverController_) {
+    if (!popoverController_)
+    {
         return NO;
     }
     
@@ -242,11 +260,11 @@
         item = [WDMenuItem itemWithTitle:NSLocalizedString(@"Export as PNG", @"Export as PNG")
                                   action:@selector(exportAsPNG:) target:self];
         [menus addObject:item];
-
+        
         item = [WDMenuItem itemWithTitle:NSLocalizedString(@"Export as PDF", @"Export as PDF")
                                   action:@selector(exportAsPDF:) target:self];
         [menus addObject:item];
-
+        
         item = [WDMenuItem itemWithTitle:NSLocalizedString(@"Export as SVG", @"Export as SVG")
                                   action:@selector(exportAsSVG:) target:self];
         [menus addObject:item];
@@ -270,12 +288,14 @@
 
 - (void) showObjectMenu:(id)sender
 {
-    if (popoverController_ && (popoverController_.contentViewController.view == objectMenu_)) {
+    if (popoverController_ && (popoverController_.contentViewController.view == objectMenu_))
+    {
         [self hidePopovers];
         return;
     }
     
-    if (!objectMenu_) {
+    if (!objectMenu_)
+    {
         NSMutableArray  *menus = [NSMutableArray array];
         WDMenuItem      *item;
         
@@ -402,7 +422,7 @@
         
         item = [WDMenuItem itemWithTitle:NSLocalizedString(@"Ungroup", @"Ungroup") action:@selector(ungroup:) target:self];
         [menus addObject:item];
-
+        
         
         [menus addObject:[WDMenuItem separatorItem]];
         
@@ -627,11 +647,11 @@
     }
     // OBJECT
     else if (item.action == @selector(cut:) ||
-        item.action == @selector(copy:) ||
-        item.action == @selector(duplicate:) ||
-        item.action == @selector(duplicateInPlace:) ||
-        item.action == @selector(delete:) ||
-        item.action == @selector(selectNone:))
+             item.action == @selector(copy:) ||
+             item.action == @selector(duplicate:) ||
+             item.action == @selector(duplicateInPlace:) ||
+             item.action == @selector(delete:) ||
+             item.action == @selector(selectNone:))
     {
         item.enabled = hasSelection;
     }
@@ -745,9 +765,9 @@
             
             item.enabled = [[first fill] isKindOfClass:[WDColor class]] && [[last fill] isKindOfClass:[WDColor class]];
         } else if (item.action == @selector(desaturate:) ||
-               item.action == @selector(invertColors:) ||
-               item.action == @selector(showColorBalance:) ||
-               item.action == @selector(showHueAndSaturation:))
+                   item.action == @selector(invertColors:) ||
+                   item.action == @selector(showColorBalance:) ||
+                   item.action == @selector(showHueAndSaturation:))
         {
             item.enabled = canAdjustColor;
         }
@@ -848,7 +868,8 @@
         return;
     }
     
-    if (!swatchController_) {
+    if (!swatchController_)
+    {
         swatchController_ = [[WDSwatchController alloc] initWithNibName:nil bundle:nil];
         swatchController_.drawingController = self.drawingController;
     }
@@ -861,12 +882,14 @@
 
 - (void) showLayers:(id)sender
 {
-    if ([self shouldDismissPopoverForClassController:[WDLayerController class] insideNavController:YES]) {
+    if ([self shouldDismissPopoverForClassController:[WDLayerController class] insideNavController:YES])
+    {
         [self hidePopovers];
         return;
     }
     
-    if (!layerController_) {
+    if (!layerController_)
+    {
         layerController_ = [[WDLayerController alloc] initWithNibName:nil bundle:nil];
         layerController_.drawing = self.drawing;
     }
@@ -875,6 +898,7 @@
     navController.toolbarHidden = NO;
     
     [self runPopoverWithController:navController from:sender];
+    
 }
 
 - (void) showHueAndSaturation:(id)sender
@@ -919,8 +943,8 @@
     popoverController_ = [[UIPopoverController alloc] initWithContentViewController:controller];
 	popoverController_.delegate = self;
     popoverController_.passthroughViews = @[self.navigationController.toolbar,
-                                           self.navigationController.navigationBar,
-                                           self.canvas];
+                                            self.navigationController.navigationBar,
+                                            self.canvas];
     [popoverController_ presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     
     return popoverController_;
@@ -960,24 +984,25 @@
 
 - (NSArray *) editingItems
 {
-    if (editingItems_) {
+    if (editingItems_)
+    {
         return editingItems_;
-    } 
-
+    }
+    
     UIBarButtonItem *objectItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", @"Edit")
-                                                 style:UIBarButtonItemStyleBordered
-                                                target:self
-                                                action:@selector(showObjectMenu:)];
-    
-    UIBarButtonItem *arrangeItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Arrange", @"Arrange")
-                                                                 style:UIBarButtonItemStyleBordered
-                                                                target:self
-                                                                action:@selector(showArrangeMenu:)];
-    
-    UIBarButtonItem *pathItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Path", @"Path")
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:self
-                                                                  action:@selector(showPathMenu:)];
+                                                                  action:@selector(showObjectMenu:)];
+    
+    UIBarButtonItem *arrangeItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Arrange", @"Arrange")
+                                                                    style:UIBarButtonItemStyleBordered
+                                                                   target:self
+                                                                   action:@selector(showArrangeMenu:)];
+    
+    UIBarButtonItem *pathItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Path", @"Path")
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:self
+                                                                action:@selector(showPathMenu:)];
     
     WDButton *imageButton = [WDButton buttonWithType:UIButtonTypeCustom];
     imageButton.showsTouchWhenHighlighted = YES;
@@ -992,9 +1017,9 @@
     
     
     UIBarButtonItem *fontItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"font.png"]
-                                                 style:UIBarButtonItemStylePlain
-                                                target:self
-                                                action:@selector(showFontPanel:)];
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:self
+                                                                action:@selector(showFontPanel:)];
     
 	undoItem_ = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"undo.png"]
                                                  style:UIBarButtonItemStylePlain
@@ -1048,17 +1073,17 @@
     
     
 	editingItems_ = @[objectItem, smallFixedItem,
-                     arrangeItem, smallFixedItem,
-                     pathItem, fixedItem,
-                     colorItem_, fixedItem,
-                     undoItem_, fixedItem,
-                     redoItem_, flexibleItem, 
-                     fontItem, fixedItem,
-                     shadowItem, fixedItem,
-                     strokeItem, fixedItem,
-                     fillItem, fixedItem,
-                     swatchItem, fixedItem,
-                     layerItem_];
+                      arrangeItem, smallFixedItem,
+                      pathItem, fixedItem,
+                      colorItem_, fixedItem,
+                      undoItem_, fixedItem,
+                      redoItem_, flexibleItem,
+                      fontItem, fixedItem,
+                      shadowItem, fixedItem,
+                      strokeItem, fixedItem,
+                      fillItem, fixedItem,
+                      swatchItem, fixedItem,
+                      layerItem_];
     
     return editingItems_;
 }
@@ -1067,8 +1092,8 @@
 {
     
     actionItem_ = [[UIBarButtonItem alloc]
-                                   initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                   target:self action:@selector(showActionMenu:)];
+                   initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                   target:self action:@selector(showActionMenu:)];
     
     gearItem_ = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"gear.png"]
                                                  style:UIBarButtonItemStylePlain
@@ -1090,7 +1115,7 @@
     // make sure the album item has the proper enabled state
     albumItem_.enabled = self.drawing.activeLayer.editable;
     
-    return items;    
+    return items;
 }
 
 - (void) enableDocumentItems
@@ -1117,7 +1142,7 @@
     
     [canvas_ invalidateSelectionView];
 }
- 
+
 - (void) fillChanged:(NSNotification *)aNotification
 {
     [fillWell_ setPainter:[self.drawingController.propertyManager activeFillStyle]];
@@ -1143,7 +1168,7 @@
 
 - (void) undoStatusDidChange:(NSNotification *)aNotification
 {
-    dispatch_async(dispatch_get_main_queue(), ^{ 
+    dispatch_async(dispatch_get_main_queue(), ^{
         undoItem_.enabled = [document_.undoManager canUndo];
         redoItem_.enabled = [document_.undoManager canRedo];
         
@@ -1188,7 +1213,7 @@
 - (void) didEnterBackground:(NSNotification *)aNotification
 {
     if ([self.document hasUnsavedChanges]) {
-        // might get terminated while backgrounded, so save now        
+        // might get terminated while backgrounded, so save now
         UIApplication              *app = [UIApplication sharedApplication];
         
         __block UIBackgroundTaskIdentifier task = [app beginBackgroundTaskWithExpirationHandler:^{
@@ -1220,7 +1245,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    if (canvas_.drawing) {
+    if (canvas_.drawing)
+    {
         return;
     }
     
@@ -1236,12 +1262,15 @@
     [UIApplication sharedApplication].keyWindow.backgroundColor = [UIColor colorWithWhite:0.92 alpha:1];
     
     self.navigationItem.rightBarButtonItems = [self upperRightToolbarItems];
-
-    if (self.drawing) {
+    
+    if (self.drawing)
+    {
         canvas_.drawing = self.drawing;
         [canvas_ scaleDocumentToFit];
         [canvas_ showRulers:self.drawing.rulersVisible];
-    } else {
+    }
+    else
+    {
         [canvas_ startActivity];
     }
     
@@ -1251,7 +1280,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
+    
     if (document_.documentState != UIDocumentStateClosed) {
         [document_ closeWithCompletionHandler:nil];
     }
@@ -1336,11 +1365,13 @@
 
 - (void) setDocument:(WDDocument *)document
 {
-    if (document != self.document) {
+    if (document != self.document)
+    {
         [canvas_ startActivity];
         [CATransaction flush];
         
-        if (document_ && (document_.documentState != UIDocumentStateClosed)) {
+        if (document_ && (document_.documentState != UIDocumentStateClosed))
+        {
             [document_ closeWithCompletionHandler:nil];
         }
         
@@ -1353,7 +1384,8 @@
     document_ = document;
     
     // see if we need to create a new drawing controller
-    if (!drawingController_ || (self.drawing && (self.drawing != drawingController_.drawing))) {
+    if (!drawingController_ || (self.drawing && (self.drawing != drawingController_.drawing)))
+    {
         drawingController_ = [[WDDrawingController alloc] init];
         
         // update sub controllers if they've been created
@@ -1365,9 +1397,12 @@
         balanceController_.drawingController = drawingController_;
     }
     
-    if (document_.documentState == UIDocumentStateNormal) {
+    if (document_.documentState == UIDocumentStateNormal)
+    {
         [self documentStateChanged:nil];
-    } else {
+    }
+    else
+    {
         // listen for this document to load
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentStateChanged:)
                                                      name:UIDocumentStateChangedNotification object:document_];
@@ -1424,7 +1459,7 @@
     
     [tweetSheet addImage:self.drawing.image];
     [tweetSheet setInitialText:NSLocalizedString(@"Check out my Inkpad drawing!", @"Check out my Inkpad drawing!")];
-
+    
     [self hidePopovers];
     
     [self presentViewController:tweetSheet animated:YES completion:nil];
@@ -1449,7 +1484,7 @@
 {
     NSString *baseFilename = [self.document.filename stringByDeletingPathExtension];
     NSString *filename = nil;
-
+    
     // Generates export file in requested format
     if ([format isEqualToString:@"PDF"]) {
         filename = [NSTemporaryDirectory() stringByAppendingPathComponent:[baseFilename stringByAppendingPathExtension:@"pdf"]];
@@ -1461,7 +1496,7 @@
         filename = [NSTemporaryDirectory() stringByAppendingPathComponent:[baseFilename stringByAppendingPathExtension:@"svg"]];
         [[self.drawing SVGRepresentation] writeToFile:filename atomically:YES];
     }
-
+    
     // Passes exported file to UIDocumentInteractionController
     exportFileUrl = [NSURL fileURLWithPath:filename];
     if(exportFileUrl) {

@@ -207,7 +207,7 @@ NSString *WDShapeToolSpiralDecay = @"WDShapeToolSpiralDecay";
 
 - (BOOL) constrain
 {
-    return ((self.flags & WDToolShiftKey) || (self.flags & WDToolSecondaryTouch)) ? YES : NO;
+    return ((self.flags & WDGenericToolShiftKey) || (self.flags & WDGenericToolSecondaryTouch)) ? YES : NO;
 }
 
 - (BOOL) shouldSnapPointsToGuides

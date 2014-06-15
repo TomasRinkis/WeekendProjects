@@ -9,11 +9,11 @@
 //  Copyright (c) 2011-2013 Steve Sprang
 //
 
-#import "WDTool.h"
+#import "WDGenericTool.h"
 
 @class WDPath;
 
-@interface WDFreehandTool : WDTool {
+@interface WDFreehandTool : WDGenericTool {
     WDPath          *tempPath_;
     BOOL            pathStarted_;
 }

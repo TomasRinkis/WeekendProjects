@@ -19,7 +19,7 @@
     return @"rotate.png";
 }
 
-- (CGAffineTransform) computeTransform:(CGPoint)pt pivot:(CGPoint)pivot constrain:(WDToolFlags)flags
+- (CGAffineTransform) computeTransform:(CGPoint)pt pivot:(CGPoint)pivot constrain:(WDGenericToolFlags)flags
 {
     CGPoint delta = WDSubtractPoints(self.initialEvent.location, pivot);
     double offsetAngle = atan2(delta.y, delta.x);
@@ -28,7 +28,7 @@
     double angle = atan2(delta.y, delta.x);
     double diff = angle - offsetAngle;
     
-    if ((flags & WDToolShiftKey) || (flags & WDToolSecondaryTouch)) {
+    if ((flags & WDGenericToolShiftKey) || (flags & WDGenericToolSecondaryTouch)) {
         float degrees = diff * 180 / M_PI;
         degrees = round(degrees / 45) * 45;
         diff = degrees * M_PI / 180.0f;

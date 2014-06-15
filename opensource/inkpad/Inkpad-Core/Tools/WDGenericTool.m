@@ -1,5 +1,5 @@
 //
-//  WDTool.m
+//  WDGenericTool.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -12,7 +12,7 @@
 #import "WDCanvasView.h"
 #import "WDDrawingController.h"
 #import "WDPickResult.h"
-#import "WDTool.h"
+#import "WDGenericTool.h"
 #import "UIView+Additions.h"
 
 #define kOptionsViewCornerRadius    9
@@ -23,7 +23,7 @@
 @synthesize count;
 @end
 
-@implementation WDTool
+@implementation WDGenericTool
 
 @synthesize primaryTouchEnded = primaryTouchEnded_;
 @synthesize primaryTouch = primaryTouch_;
@@ -32,7 +32,7 @@
 @synthesize initialEvent = initialEvent_;
 @synthesize previousEvent = previousEvent_;
 
-+ (WDTool *) tool
++ (instancetype) create
 {
     return [[[self class] alloc] init];
 }
@@ -135,7 +135,7 @@
         
         primaryTouchEnded_ = NO;
         moved_ = NO;
-        flags_ = WDToolDefault;
+        flags_ = WDGenericToolDefault;
         
         // the primary touch has begun
         WDEvent *genericEvent = [self genericEventForTouch:primaryTouch_ inCanvas:canvas];
@@ -152,7 +152,7 @@
     
     if ([event allTouches].count > 1) {
         // if we have a new touch, we need to constrain
-        flags_ = WDToolSecondaryTouch;
+        flags_ = WDGenericToolSecondaryTouch;
         [self flagsChangedInCanvas:canvas];
     }
 }
@@ -190,7 +190,7 @@
     if (!self.primaryTouchEnded) {
         // reflect the modifier touch immediately
         NSInteger   remainingTouchCount = [event allTouches].count - touches.count;
-        WDToolFlags newFlags = (remainingTouchCount > 1 ? WDToolSecondaryTouch : WDToolDefault);
+        WDGenericToolFlags newFlags = (remainingTouchCount > 1 ? WDGenericToolSecondaryTouch : WDGenericToolDefault);
         
         [self setFlags:newFlags inCanvas:canvas];
         return;
@@ -208,16 +208,16 @@
 #pragma mark iOS Event Handling
 #if !TARGET_OS_IPHONE
 
-- (WDToolFlags) flagsForEvent:(NSEvent *)theEvent
+- (WDGenericToolFlags) flagsForEvent:(NSEvent *)theEvent
 {
-    WDToolFlags flags = WDToolDefault;
+    WDGenericToolFlags flags = WDGenericToolDefault;
     
     if (theEvent.modifierFlags & NSShiftKeyMask) {
-        flags |= WDToolShiftKey;
+        flags |= WDGenericToolShiftKey;
     }
     
     if (theEvent.modifierFlags & NSAlternateKeyMask) {
-        flags |= WDToolOptionKey;
+        flags |= WDGenericToolOptionKey;
     }
     
     return flags;
@@ -275,7 +275,7 @@
 #pragma mark -
 #pragma mark Generic Event Handling
 
-- (void) setFlags:(WDToolFlags)flags inCanvas:(WDCanvasView *)canvas
+- (void) setFlags:(WDGenericToolFlags)flags inCanvas:(WDCanvasView *)canvas
 {
     if (flags != flags_) {
         flags_ = flags;

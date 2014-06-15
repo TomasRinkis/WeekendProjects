@@ -39,8 +39,8 @@ enum {
 @interface WDCanvasController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,
                                                     UIPopoverControllerDelegate, UIDocumentInteractionControllerDelegate>
 {
-    WDDocument          *document_;
-    WDCanvasView            *canvas_;
+    WDDocument          *document_;//<passed from WDBrowserController
+    WDCanvasView        *canvas_;
     NSArray             *editingItems_;
     
     UIBarButtonItem     *albumItem_;
@@ -96,6 +96,8 @@ enum {
 
 - (void) editTextObject:(WDText *)text selectAll:(BOOL)selectAll;
 - (void) undoStatusDidChange:(NSNotification *)aNotification;
+
++(instancetype) create;
 
 @end
 

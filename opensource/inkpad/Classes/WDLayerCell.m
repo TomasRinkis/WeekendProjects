@@ -1,5 +1,5 @@
 //
-//  WDLayerCellView.m
+//  WDLayerCell.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -9,13 +9,13 @@
 //  Copyright (c) 2010-2013 Steve Sprang
 //
 
-#import "WDLayerCellView.h"
+#import "WDLayerCell.h"
 #import "WDLayer.h"
 #import "WDSimpleColorView.h"
 
 #define kFontSize       19.0f
 
-@implementation WDLayerCellView
+@implementation WDLayerCell
 
 @synthesize drawingLayer = layer_;
 @synthesize colorView;

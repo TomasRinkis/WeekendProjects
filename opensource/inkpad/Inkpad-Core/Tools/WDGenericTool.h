@@ -1,5 +1,5 @@
 //
-//  WDTool.h
+//  WDGenericTool.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -16,12 +16,12 @@
 @class WDDrawing;
 
 typedef enum {
-    WDToolDefault           = 0,
-    WDToolShiftKey          = 1 << 0,
-    WDToolOptionKey         = 1 << 1,
-    WDToolControlKey        = 1 << 2,
-    WDToolSecondaryTouch    = 1 << 3
-} WDToolFlags;
+    WDGenericToolDefault           = 0,
+    WDGenericToolShiftKey          = 1 << 0,
+    WDGenericToolOptionKey         = 1 << 1,
+    WDGenericToolControlKey        = 1 << 2,
+    WDGenericToolSecondaryTouch    = 1 << 3
+} WDGenericToolFlags;
 
 // Generic event object to abstract touches and clicks
 @interface WDEvent : NSObject
@@ -30,7 +30,7 @@ typedef enum {
 @property (nonatomic, assign) NSUInteger count; // tap or click count
 @end
 
-@interface WDTool : NSObject
+@interface WDGenericTool : NSObject
 
 @property (weak, nonatomic, readonly) id icon;
 @property (weak, nonatomic, readonly) NSString *iconName;
@@ -43,10 +43,10 @@ typedef enum {
 
 @property (nonatomic, strong) WDEvent *initialEvent;
 @property (nonatomic, strong) WDEvent *previousEvent;
-@property (nonatomic, readonly) WDToolFlags flags;
+@property (nonatomic, readonly) WDGenericToolFlags flags;
 @property (nonatomic, readonly) BOOL shouldSnapPointsToGuides;
 
-+ (WDTool *) tool;
++ (instancetype) create;
 - (void) activated;
 - (void) deactivated;
 - (BOOL) isDefaultForKind;
@@ -72,7 +72,7 @@ typedef enum {
 - (void) moveWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas;
 - (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas;
 
-- (void) setFlags:(WDToolFlags)flags inCanvas:(WDCanvasView *)canvas;
+- (void) setFlags:(WDGenericToolFlags)flags inCanvas:(WDCanvasView *)canvas;
 - (void) flagsChangedInCanvas:(WDCanvasView *)canvas;
 
 - (void) buttonDoubleTapped;

@@ -58,7 +58,7 @@
     WDRulerView             *verticalRuler_;
     WDRulerCornerView       *cornerView_;
     
-    WDPaletteView               *toolPalette_;
+    WDPaletteView               *toolPaletteView_;
     UIButton                *deleteButton_; // pseudo delete tool
     CGPoint                 cachedCenter_;
     

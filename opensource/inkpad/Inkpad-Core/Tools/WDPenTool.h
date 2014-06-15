@@ -9,10 +9,10 @@
 //  Copyright (c) 2011-2013 Steve Sprang
 //
 
-#import "WDTool.h"
+#import "WDGenericTool.h"
 #import "WDBezierNode.h"
 
-@interface WDPenTool : WDTool {
+@interface WDPenTool : WDGenericTool {
     WDBezierNode                *replacementNode_;
     BOOL                        updatingOldNode_;
     WDBezierNodeReflectionMode  oldNodeMode_;

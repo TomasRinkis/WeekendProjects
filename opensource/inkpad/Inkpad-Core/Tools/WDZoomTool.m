@@ -35,7 +35,7 @@
     CGPoint pt = event.location;
     
     if (!self.moved) {
-        (self.flags & WDToolOptionKey) ? [canvas zoomOutAtPoint:pt] : [canvas zoomInAtPoint:pt];
+        (self.flags & WDGenericToolOptionKey) ? [canvas zoomOutAtPoint:pt] : [canvas zoomInAtPoint:pt];
     } else {
         [canvas zoomInToRect:WDRectWithPoints(self.initialEvent.location, pt)];
         canvas.marquee = nil;

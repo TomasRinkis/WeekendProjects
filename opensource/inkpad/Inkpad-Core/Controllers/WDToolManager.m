@@ -29,11 +29,12 @@ NSString *WDActiveToolDidChange = @"WDActiveToolDidChange";
 @synthesize activeTool = activeTool_;
 @synthesize tools = tools_;
 
-+ (WDToolManager *) sharedInstance
++ (instancetype) sharedInstance
 {
     static WDToolManager *toolManager_ = nil;
     
-    if (!toolManager_) {
+    if (!toolManager_)
+    {
         toolManager_ = [[WDToolManager alloc] init];
         toolManager_.activeTool = (toolManager_.tools)[0];
     }
@@ -43,49 +44,50 @@ NSString *WDActiveToolDidChange = @"WDActiveToolDidChange";
 
 - (NSArray *) tools
 {
-    if (!tools_) {
-        WDSelectionTool *groupSelect = (WDSelectionTool *) [WDSelectionTool tool];
+    if (!tools_)
+    {
+        WDSelectionTool *groupSelect = (WDSelectionTool *) [WDSelectionTool create];
         groupSelect.groupSelect = YES;
         
-        WDFreehandTool *closedFreehand = (WDFreehandTool *) [WDFreehandTool tool];
+        WDFreehandTool *closedFreehand = (WDFreehandTool *) [WDFreehandTool create];
         closedFreehand.closeShape = YES;
         
-        WDShapeTool *oval = (WDShapeTool *) [WDShapeTool tool];
+        WDShapeTool *oval = (WDShapeTool *) [WDShapeTool create];
         oval.shapeMode = WDShapeOval;
         
-        WDShapeTool *rect = (WDShapeTool *) [WDShapeTool tool];
+        WDShapeTool *rect = (WDShapeTool *) [WDShapeTool create];
         rect.shapeMode = WDShapeRectangle;
         
-        WDShapeTool *star = (WDShapeTool *) [WDShapeTool tool];
+        WDShapeTool *star = (WDShapeTool *) [WDShapeTool create];
         star.shapeMode = WDShapeStar;
         
-        WDShapeTool *poly = (WDShapeTool *) [WDShapeTool tool];
+        WDShapeTool *poly = (WDShapeTool *) [WDShapeTool create];
         poly.shapeMode = WDShapePolygon;
         
-        WDShapeTool *line = (WDShapeTool *) [WDShapeTool tool];
+        WDShapeTool *line = (WDShapeTool *) [WDShapeTool create];
         line.shapeMode = WDShapeLine;
         
-        WDShapeTool *spiral = (WDShapeTool *) [WDShapeTool tool];
+        WDShapeTool *spiral = (WDShapeTool *) [WDShapeTool create];
         spiral.shapeMode = WDShapeSpiral;
         
-        tools_ = @[[WDSelectionTool tool],
+        tools_ = @[[WDSelectionTool create],
                    groupSelect,
-                   [WDPenTool tool],
-                   [WDAddAnchorTool tool],
-                   [WDScissorTool tool],
-                   @[[WDFreehandTool tool], closedFreehand],
-                   [WDEraserTool tool],
+                   [WDPenTool create],
+                   [WDAddAnchorTool create],
+                   [WDScissorTool create],
+                   @[[WDFreehandTool create], closedFreehand],
+                   [WDEraserTool create],
                    @[rect, oval, star, poly, spiral, line],
-                   [WDTextTool tool],
-                   [WDEyedropperTool tool],
-                   [WDScaleTool tool],
-                   [WDRotateTool tool]];
+                   [WDTextTool create],
+                   [WDEyedropperTool create],
+                   [WDScaleTool create],
+                   [WDRotateTool create]];
     }
     
     return tools_;
 }
 
-- (void) setActiveTool:(WDTool *)activeTool
+- (void) setActiveTool:(WDGenericTool *)activeTool
 {
     [activeTool_ deactivated];
     activeTool_ = activeTool;

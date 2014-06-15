@@ -59,7 +59,7 @@
     CGPoint currentPt = self.previousEvent.location;
     CGPoint initialPt = self.initialEvent.location;
     
-    if (self.flags & WDToolOptionKey || self.flags & WDToolSecondaryTouch) {
+    if (self.flags & WDGenericToolOptionKey || self.flags & WDGenericToolSecondaryTouch) {
         CGPoint delta = WDSubtractPoints(initialPt, currentPt);
         selectionRect = WDRectWithPoints(WDAddPoints(initialPt, delta), WDSubtractPoints(initialPt, delta));
     } else {
@@ -202,7 +202,7 @@
     if (marqueeMode_) {
         CGRect selectionRect;
         
-        if (self.flags & WDToolSecondaryTouch || self.flags & WDToolOptionKey) {
+        if (self.flags & WDGenericToolSecondaryTouch || self.flags & WDGenericToolOptionKey) {
             delta = WDSubtractPoints(initialPt, currentPt);
             selectionRect = WDRectWithPoints(WDAddPoints(initialPt, delta), WDSubtractPoints(initialPt, delta));
         } else {
@@ -215,7 +215,7 @@
         canvas.transforming = canvas.transformingNode = YES;
         delta = WDSubtractPoints(snapped, initialSnapped);
     
-        if (self.flags & WDToolShiftKey || self.flags & WDToolSecondaryTouch) {
+        if (self.flags & WDGenericToolShiftKey || self.flags & WDGenericToolSecondaryTouch) {
             delta = WDConstrainPoint(delta);
         }
         
@@ -230,7 +230,7 @@
         canvas.transforming = canvas.transformingNode = YES;
         
         WDPath *path = (WDPath *) [canvas.drawingController singleSelection];
-        WDBezierNodeReflectionMode reflect = (self.flags & WDToolOptionKey || self.flags & WDToolSecondaryTouch) ? WDIndependent : originalReflectionMode_;
+        WDBezierNodeReflectionMode reflect = (self.flags & WDGenericToolOptionKey || self.flags & WDGenericToolSecondaryTouch) ? WDIndependent : originalReflectionMode_;
         
         replacementNode_ = [activeNode_ moveControlHandle:(int)pointToMove_ toPoint:snapped reflectionMode:reflect];
         replacementNode_.selected = YES; 
@@ -283,7 +283,7 @@
         
         delta = WDSubtractPoints(currentPt, initialSnapped);
         
-        if (self.flags & WDToolShiftKey || self.flags & WDToolSecondaryTouch) {
+        if (self.flags & WDGenericToolShiftKey || self.flags & WDGenericToolSecondaryTouch) {
             delta = WDConstrainPoint(delta);
         }
         

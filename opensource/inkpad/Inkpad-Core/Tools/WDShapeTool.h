@@ -9,7 +9,7 @@
 //  Copyright (c) 2011-2013 Steve Sprang
 //
 
-#import "WDTool.h"
+#import "WDGenericTool.h"
 
 enum {
     WDShapeRectangle = 0,
@@ -20,7 +20,7 @@ enum {
     WDShapeSpiral
 };
 
-@interface WDShapeTool : WDTool {
+@interface WDShapeTool : WDGenericTool {
     int                 shapeMode_;
     
 #if TARGET_OS_IPHONE

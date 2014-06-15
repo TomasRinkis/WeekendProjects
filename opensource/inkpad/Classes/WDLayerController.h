@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 @class WDDrawing;
-@class WDLayerCellView;
+@class WDLayerCell;
 
 @interface WDLayerController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
     IBOutlet UITableView        *layerTable_;
@@ -27,7 +27,7 @@
 }
 
 @property (nonatomic, weak) WDDrawing *drawing;
-@property (nonatomic, weak) IBOutlet WDLayerCellView *layerCell;
+@property (nonatomic, weak) IBOutlet WDLayerCell *layerCell;
 
 - (void) selectActiveLayer;
 - (void) updateOpacity;

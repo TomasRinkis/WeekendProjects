@@ -9,12 +9,12 @@
 //  Copyright (c) 2009-2013 Steve Sprang
 //
 
-#import "WDTool.h"
+#import "WDGenericTool.h"
 
-@interface WDTransformTool : WDTool {
+@interface WDTransformTool : WDGenericTool {
     CGAffineTransform   transform_;
 }
 
-- (CGAffineTransform) computeTransform:(CGPoint)pt pivot:(CGPoint)pivot constrain:(WDToolFlags)flags;
+- (CGAffineTransform) computeTransform:(CGPoint)pt pivot:(CGPoint)pivot constrain:(WDGenericToolFlags)flags;
 
 @end

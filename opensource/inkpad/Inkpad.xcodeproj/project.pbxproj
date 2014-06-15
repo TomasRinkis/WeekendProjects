@@ -268,7 +268,7 @@
 		6BABD9DA141ED30100F7E0A9 /* WDSelectionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD946141ED30100F7E0A9 /* WDSelectionTool.m */; };
 		6BABD9DB141ED30100F7E0A9 /* WDShapeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD948141ED30100F7E0A9 /* WDShapeTool.m */; };
 		6BABD9DC141ED30100F7E0A9 /* WDTextTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD94A141ED30100F7E0A9 /* WDTextTool.m */; };
-		6BABD9DD141ED30100F7E0A9 /* WDTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD94C141ED30100F7E0A9 /* WDTool.m */; };
+		6BABD9DD141ED30100F7E0A9 /* WDGenericTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD94C141ED30100F7E0A9 /* WDGenericTool.m */; };
 		6BABD9DE141ED30100F7E0A9 /* WDTransformTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD94E141ED30100F7E0A9 /* WDTransformTool.m */; };
 		6BABD9DF141ED30100F7E0A9 /* WDZoomTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD950141ED30100F7E0A9 /* WDZoomTool.m */; };
 		6BABD9E0141ED30100F7E0A9 /* WDGLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD953141ED30100F7E0A9 /* WDGLUtilities.m */; };
@@ -352,7 +352,7 @@
 		6BF0C57D12625C4D009BB05C /* linear.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BF0C57C12625C4D009BB05C /* linear.png */; };
 		6BF1CEC012497B9700BDD909 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF1CEBF12497B9700BDD909 /* UIView+Additions.m */; };
 		6BF747931311C399000D9344 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BF747921311C399000D9344 /* Entitlements.plist */; };
-		6BFA802C1249CEDB00D1749C /* WDLayerCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFA802B1249CEDB00D1749C /* WDLayerCellView.m */; };
+		6BFA802C1249CEDB00D1749C /* WDLayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFA802B1249CEDB00D1749C /* WDLayerCell.m */; };
 		6BFBC4EB1335F4A000D5877F /* zoom_to_fit.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BFBC4EA1335F4A000D5877F /* zoom_to_fit.png */; };
 		F43A1D76183557770032933E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F43A1D6E183557770032933E /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -751,8 +751,8 @@
 		6BABD948141ED30100F7E0A9 /* WDShapeTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDShapeTool.m; sourceTree = "<group>"; };
 		6BABD949141ED30100F7E0A9 /* WDTextTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDTextTool.h; sourceTree = "<group>"; };
 		6BABD94A141ED30100F7E0A9 /* WDTextTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDTextTool.m; sourceTree = "<group>"; };
-		6BABD94B141ED30100F7E0A9 /* WDTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDTool.h; sourceTree = "<group>"; };
-		6BABD94C141ED30100F7E0A9 /* WDTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDTool.m; sourceTree = "<group>"; };
+		6BABD94B141ED30100F7E0A9 /* WDGenericTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDGenericTool.h; sourceTree = "<group>"; };
+		6BABD94C141ED30100F7E0A9 /* WDGenericTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDGenericTool.m; sourceTree = "<group>"; };
 		6BABD94D141ED30100F7E0A9 /* WDTransformTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDTransformTool.h; sourceTree = "<group>"; };
 		6BABD94E141ED30100F7E0A9 /* WDTransformTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDTransformTool.m; sourceTree = "<group>"; };
 		6BABD94F141ED30100F7E0A9 /* WDZoomTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDZoomTool.h; sourceTree = "<group>"; };
@@ -878,8 +878,8 @@
 		6BF1CEBE12497B9700BDD909 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		6BF1CEBF12497B9700BDD909 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		6BF747921311C399000D9344 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
-		6BFA802A1249CEDB00D1749C /* WDLayerCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDLayerCellView.h; sourceTree = "<group>"; };
-		6BFA802B1249CEDB00D1749C /* WDLayerCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDLayerCellView.m; sourceTree = "<group>"; };
+		6BFA802A1249CEDB00D1749C /* WDLayerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDLayerCell.h; sourceTree = "<group>"; };
+		6BFA802B1249CEDB00D1749C /* WDLayerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDLayerCell.m; sourceTree = "<group>"; };
 		6BFBC4EA1335F4A000D5877F /* zoom_to_fit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zoom_to_fit.png; path = Images/zoom_to_fit.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Inkpad-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Inkpad-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		AE661E2118D684040096EAF3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ColorBalance.strings"; sourceTree = "<group>"; };
@@ -1492,8 +1492,8 @@
 				6BABD948141ED30100F7E0A9 /* WDShapeTool.m */,
 				6BABD949141ED30100F7E0A9 /* WDTextTool.h */,
 				6BABD94A141ED30100F7E0A9 /* WDTextTool.m */,
-				6BABD94B141ED30100F7E0A9 /* WDTool.h */,
-				6BABD94C141ED30100F7E0A9 /* WDTool.m */,
+				6BABD94B141ED30100F7E0A9 /* WDGenericTool.h */,
+				6BABD94C141ED30100F7E0A9 /* WDGenericTool.m */,
 				6BABD94D141ED30100F7E0A9 /* WDTransformTool.h */,
 				6BABD94E141ED30100F7E0A9 /* WDTransformTool.m */,
 				6BABD94F141ED30100F7E0A9 /* WDZoomTool.h */,
@@ -1691,8 +1691,8 @@
 				6BB7F94413AB1F5A004081B3 /* WDHueShifter.m */,
 				6B6749C417F6270000E9A627 /* WDImageView.h */,
 				6B6749C517F6270000E9A627 /* WDImageView.m */,
-				6BFA802A1249CEDB00D1749C /* WDLayerCellView.h */,
-				6BFA802B1249CEDB00D1749C /* WDLayerCellView.m */,
+				6BFA802A1249CEDB00D1749C /* WDLayerCell.h */,
+				6BFA802B1249CEDB00D1749C /* WDLayerCell.m */,
 				6BCD52FC12400017002FCB27 /* WDLineAttributePicker.h */,
 				6BCD52FD12400017002FCB27 /* WDLineAttributePicker.m */,
 				6BCD52FE12400017002FCB27 /* WDMenu.h */,
@@ -2089,7 +2089,7 @@
 				6BD34C7C124826D00040C383 /* WDLayerController.m in Sources */,
 				6BD34E2E1248C53B0040C383 /* WDPaletteBackgroundView.m in Sources */,
 				6BF1CEC012497B9700BDD909 /* UIView+Additions.m in Sources */,
-				6BFA802C1249CEDB00D1749C /* WDLayerCellView.m in Sources */,
+				6BFA802C1249CEDB00D1749C /* WDLayerCell.m in Sources */,
 				6B98BFBC124C827D008FB8E1 /* WDSelectionView.m in Sources */,
 				6B98C11F124D5FBE008FB8E1 /* WDFontController.m in Sources */,
 				6B98C140124D63B1008FB8E1 /* WDTextController.m in Sources */,
@@ -2203,7 +2203,7 @@
 				6BABD9DA141ED30100F7E0A9 /* WDSelectionTool.m in Sources */,
 				6BABD9DB141ED30100F7E0A9 /* WDShapeTool.m in Sources */,
 				6BABD9DC141ED30100F7E0A9 /* WDTextTool.m in Sources */,
-				6BABD9DD141ED30100F7E0A9 /* WDTool.m in Sources */,
+				6BABD9DD141ED30100F7E0A9 /* WDGenericTool.m in Sources */,
 				6BABD9DE141ED30100F7E0A9 /* WDTransformTool.m in Sources */,
 				6BABD9DF141ED30100F7E0A9 /* WDZoomTool.m in Sources */,
 				6BABD9E0141ED30100F7E0A9 /* WDGLUtilities.m in Sources */,

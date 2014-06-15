@@ -11,14 +11,14 @@
 
 #import <Foundation/Foundation.h>
 
-@class WDTool;
+@class WDGenericTool;
 
 @interface WDToolManager : NSObject
 
-@property (nonatomic, weak) WDTool *activeTool;
+@property (nonatomic, weak) WDGenericTool *activeTool;
 @property (nonatomic, strong, readonly) NSArray *tools;
 
-+ (WDToolManager *) sharedInstance;
++ (instancetype) sharedInstance;
 
 @end
 
