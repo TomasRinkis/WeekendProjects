@@ -18,6 +18,7 @@
 		29E28F8415115F68007D36DE /* WDEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E28F8315115F68007D36DE /* WDEmail.m */; };
 		29E41AC213F9B229000C3305 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E41AC113F9B229000C3305 /* libz.dylib */; };
 		3A845EEE194C9E90007E0598 /* WDAboutMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A845EED194C9E90007E0598 /* WDAboutMeController.m */; };
+		3A84AE22194D8C9200D83D54 /* WDCloneTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84AE21194D8C9200D83D54 /* WDCloneTool.m */; };
 		5D1CF74D138C7BAB008979B3 /* DBMetadata+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1CF74C138C7BAB008979B3 /* DBMetadata+Additions.m */; };
 		5D27FE8F13EC992D00EEEFF7 /* WDSamplesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D27FE8D13EC992D00EEEFF7 /* WDSamplesController.m */; };
 		5D348D891386FDA200BB0047 /* WDImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D348D881386FDA200BB0047 /* WDImportController.m */; };
@@ -375,6 +376,8 @@
 		29E41AC113F9B229000C3305 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3A845EEC194C9E90007E0598 /* WDAboutMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDAboutMeController.h; sourceTree = "<group>"; };
 		3A845EED194C9E90007E0598 /* WDAboutMeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDAboutMeController.m; sourceTree = "<group>"; };
+		3A84AE20194D8C9200D83D54 /* WDCloneTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDCloneTool.h; sourceTree = "<group>"; };
+		3A84AE21194D8C9200D83D54 /* WDCloneTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDCloneTool.m; sourceTree = "<group>"; };
 		5D1CF74B138C7BAB008979B3 /* DBMetadata+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBMetadata+Additions.h"; sourceTree = "<group>"; };
 		5D1CF74C138C7BAB008979B3 /* DBMetadata+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBMetadata+Additions.m"; sourceTree = "<group>"; };
 		5D27FE8C13EC992D00EEEFF7 /* WDSamplesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDSamplesController.h; sourceTree = "<group>"; };
@@ -1498,6 +1501,8 @@
 				6BABD94E141ED30100F7E0A9 /* WDTransformTool.m */,
 				6BABD94F141ED30100F7E0A9 /* WDZoomTool.h */,
 				6BABD950141ED30100F7E0A9 /* WDZoomTool.m */,
+				3A84AE20194D8C9200D83D54 /* WDCloneTool.h */,
+				3A84AE21194D8C9200D83D54 /* WDCloneTool.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -2183,6 +2188,7 @@
 				6BABD9BF141ED30100F7E0A9 /* WDPickResult.m in Sources */,
 				6BABD9C0141ED30100F7E0A9 /* WDRulerUnit.m in Sources */,
 				6BA45791180F2B9200B51D7A /* WDArrowController.m in Sources */,
+				3A84AE22194D8C9200D83D54 /* WDCloneTool.m in Sources */,
 				6BABD9C1141ED30100F7E0A9 /* WDShadow.m in Sources */,
 				6BABD9C2141ED30100F7E0A9 /* WDStrokeStyle.m in Sources */,
 				6BABD9C3141ED30100F7E0A9 /* WDStylable.m in Sources */,

@@ -12,7 +12,8 @@
 #import "WDGenericTool.h"
 #import "WDBezierNode.h"
 
-@interface WDPenTool : WDGenericTool {
+@interface WDPenTool : WDGenericTool
+{
     WDBezierNode                *replacementNode_;
     BOOL                        updatingOldNode_;
     WDBezierNodeReflectionMode  oldNodeMode_;

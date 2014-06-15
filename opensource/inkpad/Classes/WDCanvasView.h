@@ -24,7 +24,8 @@
 @class WDRulerView;
 @class WDSelectionView;
 
-@interface WDCanvasView : UIView {
+@interface WDCanvasView : UIView
+{
     WDSelectionView         *selectionView_;
     WDEraserPreviewView     *eraserPreview_;
     

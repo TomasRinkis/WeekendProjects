@@ -12,7 +12,8 @@
 #import <UIKit/UIKit.h>
 
 
-@interface WDMenu : UIControl {
+@interface WDMenu : UIControl
+{
     NSMutableArray          *rects_;
     NSMutableArray          *items_;
     BOOL                    visible_;

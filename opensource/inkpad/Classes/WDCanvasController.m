@@ -219,12 +219,14 @@
 
 - (void) showActionMenu:(id)sender
 {
-    if (popoverController_ && (popoverController_.contentViewController.view == actionMenu_)) {
+    if (popoverController_ && (popoverController_.contentViewController.view == actionMenu_))
+    {
         [self hidePopovers];
         return;
     }
     
-    if (!actionMenu_) {
+    if (!actionMenu_)
+    {
         NSMutableArray  *menus = [NSMutableArray array];
         WDMenuItem      *item;
         
@@ -355,7 +357,8 @@
         objectMenu_.delegate = self;
     }
     
-    for (WDMenuItem *item in objectMenu_.items) {
+    for (WDMenuItem *item in objectMenu_.items)
+    {
         [self validateMenuItem:item];
     }
     
@@ -642,7 +645,8 @@
     WDDrawingController *dc = self.drawingController;
     
     if (item.action == @selector(selectAll:) ||
-        item.action == @selector(selectAllOnActiveLayer:)) {
+        item.action == @selector(selectAllOnActiveLayer:))
+    {
         item.enabled = self.drawing ? YES : NO;
     }
     // OBJECT
@@ -655,13 +659,16 @@
     {
         item.enabled = hasSelection;
     }
-    else if (item.action == @selector(duplicateAndTransformAgain:) || item.action == @selector(transformAgain:)) {
+    else if (item.action == @selector(duplicateAndTransformAgain:) || item.action == @selector(transformAgain:))
+    {
         item.enabled = hasSelection && !dc.activePath && !CGAffineTransformEqualToTransform(dc.lastAppliedTransform, CGAffineTransformIdentity);
     }
-    else if (item.action == @selector(selectAllOnActiveLayer:)) {
+    else if (item.action == @selector(selectAllOnActiveLayer:))
+    {
         item.enabled = !(self.drawing.activeLayer.locked || self.drawing.activeLayer.hidden);
     }
-    else if (item.action == @selector(paste:)) {
+    else if (item.action == @selector(paste:))
+    {
         item.enabled = [dc canPaste];
     }
     
@@ -671,7 +678,8 @@
              item.action == @selector(flipVertically:))
     {
         item.enabled = hasSelection && !dc.activePath;
-    } else if (item.action == @selector(sendToBack:) ||
+    }
+    else if (item.action == @selector(sendToBack:) ||
                item.action == @selector(sendBackward:) ||
                item.action == @selector(bringForward:) ||
                item.action == @selector(bringToFront:))
@@ -687,42 +695,65 @@
     }
     
     // PATH
-    else if (item.action == @selector(addAnchors:)) {
+    else if (item.action == @selector(addAnchors:))
+    {
         item.enabled = [dc canAddAnchors];
-    } else if (item.action == @selector(deleteAnchors:)) {
+    }
+    else if (item.action == @selector(deleteAnchors:))
+    {
         item.enabled = [dc canDeleteAnchors];
-    } else if (item.action == @selector(joinPaths:)) {
+    }
+    else if (item.action == @selector(joinPaths:))
+    {
         item.enabled = [dc canJoinPaths];
-    } else if (item.action == @selector(makeCompoundPath:) ||
+    }
+    else if (item.action == @selector(makeCompoundPath:) ||
                item.action == @selector(unitePaths:) ||
                item.action == @selector(intersectPaths:) ||
                item.action == @selector(subtractPaths:) ||
                item.action == @selector(excludePaths:))
     {
         item.enabled = [dc canMakeCompoundPath];
-    } else if (item.action == @selector(releaseCompoundPath:)) {
+    }
+    else if (item.action == @selector(releaseCompoundPath:))
+    {
         item.enabled = [dc canReleaseCompoundPath];
-    } else if (item.action == @selector(reversePathDirection:)) {
+    }
+    else if (item.action == @selector(reversePathDirection:))
+    {
         item.enabled = [dc canReversePathDirection];
-    } else if (item.action == @selector(outlineStroke:)) {
+    }
+    else if (item.action == @selector(outlineStroke:))
+    {
         item.enabled = [dc canOutlineStroke];
-    } else if (item.action == @selector(makeMask:)) {
+    }
+    else if (item.action == @selector(makeMask:))
+    {
         item.enabled = [dc canMakeMask];
-    } else if (item.action == @selector(releaseMask:)) {
+    }
+    else if (item.action == @selector(releaseMask:))
+    {
         item.enabled = [dc canReleaseMask];
-    } else if (item.action == @selector(createTextOutlines:)) {
+    }
+    else if (item.action == @selector(createTextOutlines:))
+    {
+     
         item.enabled = [dc canCreateTextOutlines];
-    } else if (item.action == @selector(placeTextOnPath:)) {
+    }
+    else if (item.action == @selector(placeTextOnPath:))
+    {
         item.enabled = [dc canPlaceTextOnPath];
     }
     
     // ACTION
-    else if (item.action == @selector(printDrawing:)) {
+    else if (item.action == @selector(printDrawing:))
+    {
         item.enabled = [UIPrintInteractionController isPrintingAvailable];
     }
     
     // GENERIC CASE
-    else {
+    else
+    {
         item.enabled = [self respondsToSelector:item.action];
     }
 }

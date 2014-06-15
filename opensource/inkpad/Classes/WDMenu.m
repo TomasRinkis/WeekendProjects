@@ -39,7 +39,8 @@
     float   maxWidth = 0;
     float   height = 0;
     
-    for (WDMenuItem *item in items) {
+    for (WDMenuItem *item in items)
+    {
         int imageWidth = [item imageWidth] ? [item imageWidth] + kImageBuffer : 0;
         
         NSDictionary *attrs = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:kFontSize]};
@@ -51,7 +52,8 @@
     CGRect frame = CGRectMake(0, 0, floor(maxWidth + kInset * 2), height);
     self = [super initWithFrame:frame];
     
-    if (!self) {
+    if (!self)
+    {
         return nil;
     }
     
@@ -74,7 +76,8 @@
 {
     CGContextRef    ctx = UIGraphicsGetCurrentContext();
     
-    if (selectedIndex_ >= 0) {
+    if (selectedIndex_ >= 0)
+    {
         [[UIColor colorWithRed:(193.0f / 255) green:(220.0f / 255) blue:1.0f alpha:1.0f] set];
         CGContextFillRect(ctx, [rects_[selectedIndex_] CGRectValue]);
     }
@@ -91,12 +94,16 @@
     int currentIndex = selectedIndex_;
     
     // stop tracking if the touch leaves the view entirely
-    if (!CGRectContainsPoint(self.bounds, pt)) {
+    if (!CGRectContainsPoint(self.bounds, pt))
+    {
         selectedIndex_ = -1;
-    } else {
+    }
+    else
+    {
         int ix = 0;
         for (NSValue *rect in rects_) {
-            if (CGRectContainsPoint([rect CGRectValue], pt)) {
+            if (CGRectContainsPoint([rect CGRectValue], pt))
+            {
                 WDMenuItem *item = items_[ix];
                 selectedIndex_ = (item.separator || !item.enabled) ? -1 : (int) [rects_ indexOfObject:rect];
                 break;
@@ -105,7 +112,8 @@
         }
     }
         
-    if (selectedIndex_ != currentIndex) {
+    if (selectedIndex_ != currentIndex)
+    {
         [self setNeedsDisplay];
     }
 }
@@ -131,9 +139,11 @@
     CGPoint pt = [touch locationInView:self];
     [self handlePoint:pt];
     
-    if (selectedIndex_ >= 0) {
+    if (selectedIndex_ >= 0)
+    {
         WDMenuItem *item = items_[selectedIndex_];
-        if (!item.separator && item.enabled) {
+        if (!item.separator && item.enabled)
+        {
             [[UIApplication sharedApplication] sendAction:item.action to:item.target from:item forEvent:event];
         }
     }
@@ -163,11 +173,13 @@
     CGRect  frame = self.bounds;
     frame.size.height = kMenuHeight;
     
-    for (WDMenuItem *item in items_) {
+    for (WDMenuItem *item in items_)
+    {
         frame.size.height = (item.separator ? kSeparatorHeight : kMenuHeight);
         frame = CGRectIntegral(frame);
         
-        if (!item.separator) {
+        if (!item.separator)
+        {
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectOffset(frame, kInset, 0.0f)];
             label.opaque = NO;
             label.backgroundColor = nil;
@@ -178,7 +190,9 @@
             
             [self addSubview:label];
             item.label = label;
-        } else {
+        }
+        else
+        {
             float scale = [UIScreen mainScreen].scale;
             CGRect lineRect = frame;
             
@@ -199,7 +213,8 @@
         [rects_ addObject:[NSValue valueWithCGRect:highlightRect]];
         frame.origin.y += frame.size.height;
         
-        if (item.image) {
+        if (item.image)
+        {
             UIImage *templateImage = [item.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             UIImageView *imageView = [[UIImageView alloc] initWithImage:templateImage];
             CGRect imageFrame = imageView.frame;

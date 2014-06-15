@@ -48,7 +48,8 @@
 {
     self = [super init];
     
-    if (!self) {
+    if (!self)
+    {
         return nil;
     }
     

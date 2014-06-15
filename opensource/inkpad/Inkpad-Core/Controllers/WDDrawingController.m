@@ -693,7 +693,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     NSArray             *selection = [self orderedSelectedObjects];
     NSMutableDictionary  *pbItems = [NSMutableDictionary dictionary];
     
-    if ([pb isEqual:[UIPasteboard generalPasteboard]]) {
+    if ([pb isEqual:[UIPasteboard generalPasteboard]])
+    {
         UIImage *image = [WDDrawing imageForElements:selection scale:2];
         pbItems[(NSString *)kUTTypePNG] = UIImagePNGRepresentation(image);
     }
@@ -707,7 +708,9 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 #else
     [pb clearContents];
     [pb declareTypes:pbItems.allKeys owner:nil];
-    for (NSString *key in pbItems.allKeys) {
+    
+    for (NSString *key in pbItems.allKeys)
+    {
         [pb setData:[pbItems objectForKey:key] forType:key];
     }
 #endif    
@@ -718,7 +721,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     id          pb = [self pasteboardWithUniqueName];
     WDLayer     *layer = drawing_.activeLayer;
     
-    if (!layer.editable) {
+    if (!layer.editable)
+    {
         WDElement *element = (WDElement *) [[self orderedSelectedObjects] lastObject];
         layer = element.layer;
     }

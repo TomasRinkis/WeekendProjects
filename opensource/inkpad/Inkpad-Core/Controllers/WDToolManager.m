@@ -20,6 +20,7 @@
 #import "WDSelectionTool.h"
 #import "WDShapeTool.h"
 #import "WDTextTool.h"
+#import "WDCloneTool.h"
 #import "WDToolManager.h"
 
 NSString *WDActiveToolDidChange = @"WDActiveToolDidChange";
@@ -81,6 +82,7 @@ NSString *WDActiveToolDidChange = @"WDActiveToolDidChange";
                    [WDTextTool create],
                    [WDEyedropperTool create],
                    [WDScaleTool create],
+                   [WDCloneTool create],
                    [WDRotateTool create]];
     }
     
