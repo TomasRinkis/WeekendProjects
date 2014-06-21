@@ -151,7 +151,7 @@
             if (event.count == 2 && [element conformsToProtocol:@protocol(WDTextRenderer)]) {
                 [canvas.controller editTextObject:(WDText *)element selectAll:NO];
             }
-        } else if ([element isKindOfClass:[WDStylable class]] && (result.type == kWDFillEndPoint || result.type == kWDFillStartPoint)) {
+        } else if ([element isKindOfClass:[WDStylableElement class]] && (result.type == kWDFillEndPoint || result.type == kWDFillStartPoint)) {
             activeGradientHandle_ = result.type;
             transformingGradient_ = YES;
         } else if ([element isKindOfClass:[WDTextPath class]] && (result.type == kWDTextPathStartKnob)) {

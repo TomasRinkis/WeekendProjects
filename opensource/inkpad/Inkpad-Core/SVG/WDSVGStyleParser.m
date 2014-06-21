@@ -129,9 +129,9 @@ static int charHexValue(unichar c)
     if (source == nil || [source isEqualToString:@"none"]) {
         return nil;
     } else if (painters_[source] != nil) {
-        WDStylable *painter = painters_[source];
-        if ([painter isKindOfClass:[WDStylable class]]) {
-            WDStylable *prototype = [[WDStylable alloc] init];
+        WDStylableElement *painter = painters_[source];
+        if ([painter isKindOfClass:[WDStylableElement class]]) {
+            WDStylableElement *prototype = [[WDStylableElement alloc] init];
             prototype.fill = painter.fill;
             prototype.fillTransform = [painter.fillTransform transform:stack_.transform];
             prototype.opacity = alpha;
@@ -326,7 +326,7 @@ NSArray *tokenizeStyle(NSString *source)
     return scaleRadially([stack_ lengthFromString:source withBound:[stack_ viewHeight] andDefault:0], stack_.viewBoxTransform);
 }
 
-- (void) styleStroke:(WDStylable *)stylable
+- (void) styleStroke:(WDStylableElement *)stylable
 {
     NSString *strokeSource = [stack_ style:kWDPropertyStroke];
     float strokeOpacity = [[stack_ style:kWDPropertyStrokeOpacity] floatValue];
@@ -368,8 +368,8 @@ NSArray *tokenizeStyle(NSString *source)
         }
 
         [stylable setStrokeStyleQuiet:[WDStrokeStyle strokeStyleWithWidth:width cap:cap join:join color:strokeStyle dashPattern:dashPattern]];
-    } else if ([strokeStyle isKindOfClass:[WDStylable class]]) {
-        WDStylable *strokePrototype = strokeStyle;
+    } else if ([strokeStyle isKindOfClass:[WDStylableElement class]]) {
+        WDStylableElement *strokePrototype = strokeStyle;
         [stylable setStrokeStyleQuiet:strokePrototype.strokeStyle];
     } else {
         [stylable setStrokeStyleQuiet:nil];
@@ -377,13 +377,13 @@ NSArray *tokenizeStyle(NSString *source)
     styleLog(@"Stroke: %@ %@", strokeSource, stylable.strokeStyle);
 }
 
-- (void) styleFill:(WDStylable *)stylable
+- (void) styleFill:(WDStylableElement *)stylable
 {
     NSString *fillSource = [stack_ style:kWDPropertyFill];
     float fillOpacity = [[stack_ style:kWDPropertyFillOpacity] floatValue];
     id fill = [self resolvePainter:fillSource alpha:fillOpacity];
-    if ([fill isKindOfClass:[WDStylable class]]) {
-        WDStylable *prototype = (WDStylable *) fill;
+    if ([fill isKindOfClass:[WDStylableElement class]]) {
+        WDStylableElement *prototype = (WDStylableElement *) fill;
         [stylable setFillQuiet:prototype.fill];
         stylable.fillTransform = prototype.fillTransform;
     } else if ([fill isKindOfClass:[WDColor class]]) {
@@ -425,7 +425,7 @@ NSArray *tokenizeStyle(NSString *source)
     }
 }
 
-- (void) style:(WDStylable *)stylable
+- (void) style:(WDStylableElement *)stylable
 {
     [self styleStroke:stylable];
     [self styleFill:stylable];
@@ -468,7 +468,7 @@ NSArray *tokenizeStyle(NSString *source)
                    forId:referrer];
     }
     
-    WDStylable *prototype = [[WDStylable alloc] init];
+    WDStylableElement *prototype = [[WDStylableElement alloc] init];
     // TODO pick a stroke style here    
     prototype.fill = painter;
     prototype.fillTransform = transform;
@@ -477,13 +477,13 @@ NSArray *tokenizeStyle(NSString *source)
 
 - (id<WDPathPainter>) painterForId:(NSString *)painterId
 {
-    WDStylable *painter = painters_[[@"#" stringByAppendingString:painterId]];
+    WDStylableElement *painter = painters_[[@"#" stringByAppendingString:painterId]];
     return painter.fill;
 }
 
 - (WDFillTransform *) transformForId:(NSString *)painterId
 {
-    WDStylable *painter = painters_[[@"#" stringByAppendingString:painterId]];
+    WDStylableElement *painter = painters_[[@"#" stringByAppendingString:painterId]];
     return painter.fillTransform;
 }
     

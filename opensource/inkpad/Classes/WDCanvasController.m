@@ -791,8 +791,8 @@
                 sorted = blendables;
             }
             
-            WDStylable *first = sorted[0];
-            WDStylable *last = [sorted lastObject];
+            WDStylableElement *first = sorted[0];
+            WDStylableElement *last = [sorted lastObject];
             
             item.enabled = [[first fill] isKindOfClass:[WDColor class]] && [[last fill] isKindOfClass:[WDColor class]];
         } else if (item.action == @selector(desaturate:) ||

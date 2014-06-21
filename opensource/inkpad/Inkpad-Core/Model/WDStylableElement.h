@@ -1,5 +1,5 @@
 //
-//  WDStylable.h
+//  WDStylableElement.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -18,7 +18,7 @@
 
 @protocol WDPathPainter;
 
-@interface WDStylable : WDElement <NSCoding, NSCopying>
+@interface WDStylableElement : WDElement <NSCoding, NSCopying>
 
 @property (nonatomic, strong) id<WDPathPainter> fill;
 @property (nonatomic, strong) WDFillTransform *fillTransform;
@@ -37,7 +37,7 @@
 - (NSSet *) changedStrokePropertiesFrom:(WDStrokeStyle *)from to:(WDStrokeStyle *)to;
 - (void) strokeStyleChanged;
 
-- (void) takeStylePropertiesFrom:(WDStylable *)obj;
+- (void) takeStylePropertiesFrom:(WDStylableElement *)obj;
 
 - (void) addSVGFillAndStrokeAttributes:(WDXMLElement *)element;
 - (void) addSVGFillAttributes:(WDXMLElement *)element;

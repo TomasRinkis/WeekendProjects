@@ -12,7 +12,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WDStylable.h"
+#import "WDStylableElement.h"
 #import "WDSVGParserStateStack.h"
 
 // SVG properties. All properties should be accessed via one of these constants, and each of these constants should have a defined default value.
@@ -49,7 +49,7 @@ extern NSString * const kWDPropertyVisibility;
 - (id) resolvePainter:(NSString *)source alpha:(float)alpha;
 - (NSDictionary *) parseStyles:(NSString *)source;
 - (void) styleOpacityBlendAndShadow:(WDElement *)element;
-- (void) style:(WDStylable *)stylable;
+- (void) style:(WDStylableElement *)stylable;
 - (NSDictionary *) defaultStyle;
 
 - (void) setPainter:(id<WDPathPainter>)painter withTransform:(WDFillTransform *)transform forId:(NSString *)painterId;

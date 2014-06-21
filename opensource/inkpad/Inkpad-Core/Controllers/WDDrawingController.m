@@ -1041,7 +1041,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     [self selectObject:maskingPath];
 }
 
-- (void) releaseMaskedObject:(WDStylable *)mask
+- (void) releaseMaskedObject:(WDStylableElement *)mask
 {
     NSArray *elements = mask.maskedElements;
     
@@ -1061,7 +1061,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     
     for (WDElement *element in objects) {
         if ([element canMaskElements]) {
-            WDStylable *stylable = (WDStylable *) element;
+            WDStylableElement *stylable = (WDStylableElement *) element;
             
             if (stylable.maskedElements) {
                 [self releaseMaskedObject:stylable];
@@ -1697,8 +1697,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         return;
     }
     
-    WDStylable *firstObj = (WDStylable *) blendables[0];
-    WDStylable *lastObj = (WDStylable *) [blendables lastObject];
+    WDStylableElement *firstObj = (WDStylableElement *) blendables[0];
+    WDStylableElement *lastObj = (WDStylableElement *) [blendables lastObject];
     
     WDColor *first = (WDColor *) firstObj.fill;
     WDColor *last =  (WDColor *) lastObj.fill;
@@ -1706,7 +1706,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     float step = 1.0f / (blendables.count - 1);
     float fraction = 0.0f;
     
-    for (WDStylable *obj in blendables) {
+    for (WDStylableElement *obj in blendables) {
         obj.fill = [first blendedColorWithFraction:fraction ofColor:last];
         fraction += step;
     }
@@ -1728,8 +1728,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         return result;
     }];
     
-    WDStylable *firstObj = (WDStylable *) blendables[0];
-    WDStylable *lastObj = (WDStylable *) [blendables lastObject];
+    WDStylableElement *firstObj = (WDStylableElement *) blendables[0];
+    WDStylableElement *lastObj = (WDStylableElement *) [blendables lastObject];
     
     WDColor *first = (WDColor *) firstObj.fill;
     WDColor *last =  (WDColor *) lastObj.fill;
@@ -1743,7 +1743,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         return;
     }
     
-    for (WDStylable *obj in blendables) {
+    for (WDStylableElement *obj in blendables) {
         float fraction = (WDCenterOfRect(obj.bounds).x - startX) / distance;
         obj.fill = [first blendedColorWithFraction:fraction ofColor:last];
     }
@@ -1765,8 +1765,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         return result;
     }];
     
-    WDStylable *firstObj = (WDStylable *) blendables[0];
-    WDStylable *lastObj = (WDStylable *) [blendables lastObject];
+    WDStylableElement *firstObj = (WDStylableElement *) blendables[0];
+    WDStylableElement *lastObj = (WDStylableElement *) [blendables lastObject];
     
     WDColor *first = (WDColor *) firstObj.fill;
     WDColor *last =  (WDColor *) lastObj.fill;
@@ -1780,7 +1780,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         return;
     }
     
-    for (WDStylable *obj in blendables) {
+    for (WDStylableElement *obj in blendables) {
         float fraction = (WDCenterOfRect(obj.bounds).y - startY) / distance;
         obj.fill = [first blendedColorWithFraction:fraction ofColor:last];
     }
@@ -2070,7 +2070,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 {
     for (WDElement *element in selectedObjects_) {
         if ([element canMaskElements]) {
-            WDStylable *stylable = (WDStylable *) element;
+            WDStylableElement *stylable = (WDStylableElement *) element;
             
             if (stylable.isMasking) {
                 return YES;

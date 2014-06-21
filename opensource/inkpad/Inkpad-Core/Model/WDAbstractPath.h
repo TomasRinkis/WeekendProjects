@@ -10,7 +10,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WDStylable.h"
+#import "WDStylableElement.h"
 
 @protocol WDPathPainter;
 
@@ -23,7 +23,7 @@ typedef enum {
     kWDEvenOddFillRule          = 1
 } WDFillRule;
 
-@interface WDAbstractPath : WDStylable <NSCoding, NSCopying>
+@interface WDAbstractPath : WDStylableElement <NSCoding, NSCopying>
 
 @property (nonatomic, assign) WDFillRule fillRule;
 @property (nonatomic, readonly) CGPathRef pathRef;

@@ -219,7 +219,7 @@
         return path;
     } else if ([elements count] == 1) {
         id element = [elements lastObject];
-        if ([element isKindOfClass:[WDStylable class]]) {
+        if ([element isKindOfClass:[WDStylableElement class]]) {
             ((WDElement *) element).group = nil;
             return element;
         } else {
@@ -256,11 +256,11 @@
         WDElement *clipCopy = [self svgCopy:clipPathId];
         WDElement *combinedClipPath = [self combineClippingPaths:clipCopy];
         if (clipCopy) {
-            if (![combinedClipPath isKindOfClass:[WDStylable class]]) {
+            if (![combinedClipPath isKindOfClass:[WDStylableElement class]]) {
                 [state_ reportError:@"clip-path not stylable: %@", clipPathId];
                 return element;
             } else {
-                WDStylable *stylableClipPath = (WDStylable *) combinedClipPath;
+                WDStylableElement *stylableClipPath = (WDStylableElement *) combinedClipPath;
                 stylableClipPath.maskedElements = [NSMutableArray arrayWithObject:element];
                 [stylableClipPath setFillQuiet:nil];
                 [stylableClipPath setStrokeStyleQuiet:nil];
@@ -284,7 +284,7 @@
     return clippedElement;
 }
 
-- (WDElement *) styleClipAndGroup:(WDStylable *)stylable
+- (WDElement *) styleClipAndGroup:(WDStylableElement *)stylable
 {
     [styleParser_ style:stylable];
     return [self clipAndGroup:stylable];
@@ -675,8 +675,8 @@
         if (mask) {
             NSMutableArray *maskedElements = nil;
             for (WDElement *element in elements) {
-                if ([element isKindOfClass:[WDStylable class]]) {
-                    maskedElements = [((WDStylable *) element).maskedElements mutableCopy];
+                if ([element isKindOfClass:[WDStylableElement class]]) {
+                    maskedElements = [((WDStylableElement *) element).maskedElements mutableCopy];
                     while ([maskedElements count] == 1 && [[maskedElements lastObject] isKindOfClass:[WDGroup class]]) {
                         // if the list contains a single group, just unwrap it
                         maskedElements = ((WDGroup *) [maskedElements lastObject]).elements;
@@ -688,8 +688,8 @@
             }
             if (maskedElements) {
                 id elementMask = [self svgCopy:mask];
-                if ([elementMask isKindOfClass:[WDStylable class]]) {
-                    WDStylable *stylableMask = elementMask;
+                if ([elementMask isKindOfClass:[WDStylableElement class]]) {
+                    WDStylableElement *stylableMask = elementMask;
                     stylableMask.maskedElements = maskedElements;
                     state_.wdElement = stylableMask;
                     [state_.group addObject:stylableMask];

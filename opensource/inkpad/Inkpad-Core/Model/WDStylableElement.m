@@ -1,5 +1,5 @@
 //
-//  WDStylable.m
+//  WDStylableElement.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -17,7 +17,7 @@
 #import "WDInspectableProperties.h"
 #import "WDLayer.h"
 #import "WDPropertyManager.h"
-#import "WDStylable.h"
+#import "WDStylableElement.h"
 #import "WDSVGHelper.h"
 #import "WDUtilities.h"
 
@@ -25,7 +25,7 @@
 
 NSString *WDMaskedElementsKey = @"WDMaskedElementsKey";
 
-@implementation WDStylable
+@implementation WDStylableElement
 
 @synthesize fill = fill_;
 @synthesize fillTransform = fillTransform_;
@@ -86,7 +86,7 @@ NSString *WDMaskedElementsKey = @"WDMaskedElementsKey";
 
 - (id) copyWithZone:(NSZone *)zone
 {       
-    WDStylable *stylable = [super copyWithZone:zone];
+    WDStylableElement *stylable = [super copyWithZone:zone];
     
     stylable->fill_ = [(id)fill_ copy];
     stylable->fillTransform_ = [fillTransform_ copy];
@@ -536,7 +536,7 @@ NSString *WDMaskedElementsKey = @"WDMaskedElementsKey";
     return YES;
 }
 
-- (void) takeStylePropertiesFrom:(WDStylable *)obj
+- (void) takeStylePropertiesFrom:(WDStylableElement *)obj
 {
     self.fill = obj.fill;
     self.fillTransform = obj.fillTransform;
