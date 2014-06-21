@@ -90,7 +90,7 @@ NSString *WDShadowAngleKey = @"WDShadowAngleKey";
     y *= -1;
 #endif
     
-    if (metaData.flags & WDRenderFlipped) {
+    if (metaData.flags & WDRenderFlippedFlag) {
         y *= -1;
     }
     

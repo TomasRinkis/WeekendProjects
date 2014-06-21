@@ -40,7 +40,7 @@
     CGContextConcatCTM(ctx, canvas_.canvasTransform);
     CGContextSetShouldAntialias(ctx, NO);
     
-    [canvas_.eraserPath renderInContext:ctx metaData:WDRenderingMetaDataMake(canvas_.viewScale, WDRenderDefault)];
+    [canvas_.eraserPath renderInContext:ctx metaData:WDRenderingMetaDataMake(canvas_.viewScale, WDRenderDefaultFlag)];
     
     CGContextRestoreGState(ctx);
 }

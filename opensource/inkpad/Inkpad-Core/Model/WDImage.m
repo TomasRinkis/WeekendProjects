@@ -157,7 +157,7 @@ NSString *WDImageDataKey = @"WDImageDataKey";
 
 - (void) renderInContext:(CGContextRef)ctx metaData:(WDRenderingMetaData)metaData
 {
-    if (metaData.flags & WDRenderOutlineOnly) {
+    if (metaData.flags & WDRenderOutlineOnlyFlag) {
         CGContextAddPath(ctx, self.pathRef);
         
         // draw an X to mark the spot
@@ -183,7 +183,7 @@ NSString *WDImageDataKey = @"WDImageDataKey";
         
         CGContextConcatCTM(ctx, transform_);
         UIGraphicsPushContext(ctx);
-        [((metaData.flags & WDRenderThumbnail) ? imageData_.thumbnailImage : imageData_.image) drawInRect:imageData_.naturalBounds
+        [((metaData.flags & WDRenderThumbnailFlag) ? imageData_.thumbnailImage : imageData_.image) drawInRect:imageData_.naturalBounds
                                                                                                 blendMode:self.blendMode
                                                                                                     alpha:self.opacity];
         UIGraphicsPopContext();

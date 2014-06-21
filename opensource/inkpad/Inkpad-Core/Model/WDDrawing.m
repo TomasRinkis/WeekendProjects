@@ -33,8 +33,8 @@ const float kMaximumThumbnailDimension = 120;
 // encoder keys
 NSString *WDDrawingKey = @"WDDrawingKey";
 NSString *WDThumbnailKey = @"WDThumbnailKey";
-NSString *WDLayersKey = @"WDLayersKey"; 
-NSString *WDDimensionsKey = @"WDDimensionsKey"; 
+NSString *WDLayersKey = @"WDLayersKey";
+NSString *WDDimensionsKey = @"WDDimensionsKey";
 NSString *WDImageDatasKey = @"WDImageDatasKey";
 NSString *WDSettingsKey = @"WDSettingsKey";
 NSString *WDActiveLayerKey = @"WDActiveLayerKey";
@@ -80,8 +80,16 @@ WDRenderingMetaData WDRenderingMetaDataMake(float scale, UInt32 flags)
 
 BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData)
 {
-    return (metaData.flags & WDRenderOutlineOnly) ? YES : NO;
+    return (metaData.flags & WDRenderOutlineOnlyFlag) ? YES : NO;
 }
+
+@interface WDDrawing()
+{
+    NSMutableDictionary *imageDatas_;
+    NSInteger           suppressNotifications_;
+}
+@end
+
 
 @implementation WDDrawing
 
@@ -127,7 +135,7 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData)
     if (!self) {
         return nil;
     }
-
+    
     // we don't want to notify when we're initing
     [self beginSuppressingNotifications];
     
@@ -209,7 +217,7 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData)
     self = [super init];
     
     layers_ = [coder decodeObjectForKey:WDLayersKey];
-    dimensions_ = [coder decodeCGSizeForKey:WDDimensionsKey]; 
+    dimensions_ = [coder decodeCGSizeForKey:WDDimensionsKey];
     imageDatas_ = [coder decodeObjectForKey:WDImageDatasKey];
     settings_ = [coder decodeObjectForKey:WDSettingsKey];
     
@@ -225,10 +233,10 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData)
     undoManager_ = [[NSUndoManager alloc] init];
     
 #ifdef WD_DEBUG
-NSLog(@"Elements in drawing: %lu", (unsigned long)[self allElements].count);
+    NSLog(@"Elements in drawing: %lu", (unsigned long)[self allElements].count);
 #endif
     
-    return self; 
+    return self;
 }
 
 - (id) copyWithZone:(NSZone *)zone
@@ -544,7 +552,7 @@ NSLog(@"Elements in drawing: %lu", (unsigned long)[self allElements].count);
     CGContextBeginTransparencyLayer(ctx, NULL);
     
     for (WDLayer *layer in layers_) {
-        if (!layer.hidden) {        
+        if (!layer.hidden) {
             [layer renderInContext:ctx clipRect:clip metaData:metaData];
         }
     }
@@ -565,15 +573,15 @@ NSLog(@"Elements in drawing: %lu", (unsigned long)[self allElements].count);
         // whole pixel size
         dimensions = WDRoundSize(dimensions);
     }
-
+    
     UIGraphicsBeginImageContext(dimensions);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextScaleCTM(ctx, scale, scale);
-    [self renderInContext:ctx clipRect:self.bounds metaData:WDRenderingMetaDataMake(1, WDRenderDefault)];
+    [self renderInContext:ctx clipRect:self.bounds metaData:WDRenderingMetaDataMake(1, WDRenderDefaultFlag)];
     UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    return result; 
+    return result;
 }
 
 - (UIImage *) image
@@ -604,7 +612,7 @@ NSLog(@"Elements in drawing: %lu", (unsigned long)[self allElements].count);
         dimensions = WDMultiplySizeScalar(dimensions, shrink);
         // whole pixel size
         dimensions = WDRoundSize(dimensions);
-
+        
         // update the scale since it will have changed (approximately the same as scale *= shrink)
         scale = dimensions.width / styleBounds.size.width;
     }
@@ -614,7 +622,7 @@ NSLog(@"Elements in drawing: %lu", (unsigned long)[self allElements].count);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextScaleCTM(ctx, scale, scale);
     CGContextTranslateCTM(ctx, -styleBounds.origin.x, -styleBounds.origin.y);
-    [self renderInContext:ctx clipRect:self.bounds metaData:WDRenderingMetaDataMake(scale, WDRenderDefault)];
+    [self renderInContext:ctx clipRect:self.bounds metaData:WDRenderingMetaDataMake(scale, WDRenderDefaultFlag)];
     
     UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -649,7 +657,7 @@ NSLog(@"Elements in drawing: %lu", (unsigned long)[self allElements].count);
     CGContextTranslateCTM(ctx, origin.x, origin.y);
     CGContextScaleCTM(ctx, scaleFactor, scaleFactor);
     for (WDElement *element in elements) {
-        [element renderInContext:ctx metaData:WDRenderingMetaDataMake(scaleFactor, WDRenderDefault)];   
+        [element renderInContext:ctx metaData:WDRenderingMetaDataMake(scaleFactor, WDRenderDefaultFlag)];
     }
     
     UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
@@ -663,7 +671,7 @@ NSLog(@"Elements in drawing: %lu", (unsigned long)[self allElements].count);
     CGRect              mediaBox = CGRectMake(0, 0, dimensions_.width, dimensions_.height);
     CFMutableDataRef	data = CFDataCreateMutable(NULL, 0);
     CGDataConsumerRef	consumer = CGDataConsumerCreateWithCFData(data);
-    CGContextRef        pdfContext = CGPDFContextCreate(consumer, &mediaBox, NULL);	
+    CGContextRef        pdfContext = CGPDFContextCreate(consumer, &mediaBox, NULL);
     
     CGDataConsumerRelease(consumer);
     CGPDFContextBeginPage(pdfContext, NULL);
@@ -672,11 +680,11 @@ NSLog(@"Elements in drawing: %lu", (unsigned long)[self allElements].count);
     CGContextTranslateCTM(pdfContext, 0, dimensions_.height);
     CGContextScaleCTM(pdfContext, 1, -1);
     
-    [self renderInContext:pdfContext clipRect:self.bounds metaData:WDRenderingMetaDataMake(1, WDRenderFlipped)];
+    [self renderInContext:pdfContext clipRect:self.bounds metaData:WDRenderingMetaDataMake(1, WDRenderFlippedFlag)];
     CGPDFContextEndPage(pdfContext);
     
     CGContextRelease(pdfContext);
-
+    
     NSData *nsdata = (NSData *)CFBridgingRelease(data);
     return nsdata;
 }
@@ -775,7 +783,7 @@ NSLog(@"Elements in drawing: %lu", (unsigned long)[self allElements].count);
     
     float scale = width / dimensions_.width;
     CGContextScaleCTM(ctx, scale, scale);
-    [self renderInContext:ctx clipRect:self.bounds metaData:WDRenderingMetaDataMake(scale, WDRenderThumbnail)];
+    [self renderInContext:ctx clipRect:self.bounds metaData:WDRenderingMetaDataMake(scale, WDRenderThumbnailFlag)];
     
     UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

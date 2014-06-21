@@ -70,7 +70,7 @@ NSString *WDFillRuleKey = @"WDFillRuleKey";
 
 - (void) renderInContext:(CGContextRef)ctx metaData:(WDRenderingMetaData)metaData
 {
-    if (metaData.flags & WDRenderOutlineOnly) {
+    if (metaData.flags & WDRenderOutlineOnlyFlag) {
         CGContextAddPath(ctx, self.pathRef);
         CGContextStrokePath(ctx);
     } else if ([self.strokeStyle willRender] || self.fill || self.maskedElements) {

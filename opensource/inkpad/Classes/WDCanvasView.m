@@ -530,7 +530,7 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
             
             [layer renderInContext:ctx
                           clipRect:rect
-                          metaData:WDRenderingMetaDataMake(viewScale_, outlineMode ? WDRenderOutlineOnly : WDRenderDefault)];
+                          metaData:WDRenderingMetaDataMake(viewScale_, outlineMode ? WDRenderOutlineOnlyFlag : WDRenderDefaultFlag)];
         }
         
         if (drawingIsolatedLayer) {
@@ -550,7 +550,7 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
                 
                 [activeLayer renderInContext:ctx
                                     clipRect:rect
-                                    metaData:WDRenderingMetaDataMake(viewScale_, outlineMode ? WDRenderOutlineOnly : WDRenderDefault)];
+                                    metaData:WDRenderingMetaDataMake(viewScale_, outlineMode ? WDRenderOutlineOnlyFlag : WDRenderDefaultFlag)];
             }
         }
         

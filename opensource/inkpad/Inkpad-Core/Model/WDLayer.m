@@ -411,7 +411,7 @@ NSString *WDOpacityKey = @"WDOpacityKey";
     CGContextTranslateCTM(ctx, -contentBounds.origin.x, -contentBounds.origin.y);
     
     for (WDElement *element in elements_) {
-        [element renderInContext:ctx metaData:WDRenderingMetaDataMake(scaleFactor, WDRenderThumbnail)];   
+        [element renderInContext:ctx metaData:WDRenderingMetaDataMake(scaleFactor, WDRenderThumbnailFlag)];   
     }
     CGContextRestoreGState(ctx);
     

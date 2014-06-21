@@ -27,14 +27,16 @@
 extern const float kMinimumDrawingDimension;
 extern const float kMaximumDrawingDimension;
 
-enum {
-    WDRenderDefault      = 0x0,
-    WDRenderOutlineOnly  = 0x1,
-    WDRenderThumbnail    = 0x1 << 1,
-    WDRenderFlipped      = 0x1 << 2
+enum
+{
+    WDRenderDefaultFlag      = 0x0,
+    WDRenderOutlineOnlyFlag  = 0x1,
+    WDRenderThumbnailFlag    = 0x1 << 1,
+    WDRenderFlippedFlag      = 0x1 << 2
 };
 
-typedef struct {
+typedef struct
+{
     float   scale;
     UInt32  flags;
 } WDRenderingMetaData;
@@ -45,10 +47,7 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData);
 @protocol WDDocumentProtocol;
 @protocol WDPathPainter;
 
-@interface WDDrawing : NSObject <NSCoding, NSCopying> {    
-    NSMutableDictionary     *imageDatas_;
-    NSInteger               suppressNotifications_;
-}
+@interface WDDrawing : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, readonly) CGSize dimensions;
 @property (nonatomic, readonly) NSMutableArray *layers;
