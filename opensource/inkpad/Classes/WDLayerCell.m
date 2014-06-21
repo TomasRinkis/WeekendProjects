@@ -13,7 +13,10 @@
 #import "WDLayer.h"
 #import "WDSimpleColorView.h"
 
-#define kFontSize       19.0f
+enum
+{
+    kFontSize = 19
+};
 
 @implementation WDLayerCell
 
@@ -24,11 +27,17 @@
 @synthesize thumbnail;
 @synthesize lockButton;
 @synthesize opacityField;
+@synthesize infoButton;
 
 - (void) awakeFromNib
 {
     [visibleButton addTarget:self action:@selector(toggleVisibility:) forControlEvents:UIControlEventTouchUpInside];
     [lockButton addTarget:self action:@selector(toggleLocked:) forControlEvents:UIControlEventTouchUpInside];
+    [infoButton addTarget:self action:@selector(showLayerInfo:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIImage *image = [[UIImage imageNamed:(@"star.png")] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [infoButton setImage:image forState:UIControlStateNormal];
+
     
     UIImageView *selectionView = [[UIImageView alloc] init];
     self.selectedBackgroundView = selectionView;
@@ -49,17 +58,33 @@
     [self updateOpacity];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
 
     [super setSelected:selected animated:animated];
     
-    if (selected) {
+    if (selected)
+    {
         titleField.font = [UIFont boldSystemFontOfSize:kFontSize];
-    } else {
+    }
+    else
+    {
         titleField.font = [UIFont systemFontOfSize:kFontSize];
     }
     
     titleField.userInteractionEnabled = selected;
+}
+
+-(void) showLayerInfo:(id)sender
+{
+    NSString *layerInfoMessage = [NSString stringWithFormat:@"name: %@ \n elements: %i", layer_.name, layer_.elements.count];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Layer Info"
+                                                        message:layerInfoMessage
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+    [alertView show];
 }
 
 - (void) updateLayerName

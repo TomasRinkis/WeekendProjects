@@ -23,6 +23,7 @@
 @property (nonatomic, strong) IBOutlet UIImageView *thumbnail;
 @property (nonatomic, strong) IBOutlet UIButton *lockButton;
 @property (nonatomic, strong) IBOutlet UITextField *opacityField;
+@property (nonatomic, strong) IBOutlet UIButton *infoButton;
 
 - (void) updateLayerName;
 - (void) updateVisibilityButton;
