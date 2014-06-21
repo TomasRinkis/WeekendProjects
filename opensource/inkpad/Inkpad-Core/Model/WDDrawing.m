@@ -104,11 +104,12 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData)
 #pragma mark - Setup
 
 // for use with SVG import only
-- (id) initWithUnits:(NSString *)units
+- (instancetype) initWithUnits:(NSString *)units
 {
     self = [super init];
     
-    if (!self) {
+    if (!self)
+    {
         return nil;
     }
     
@@ -128,11 +129,12 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData)
     return self;
 }
 
-- (id) initWithSize:(CGSize)size andUnits:(NSString *)units
+- (instancetype) initWithSize:(CGSize)size andUnits:(NSString *)units
 {
     self = [super init];
     
-    if (!self) {
+    if (!self)
+    {
         return nil;
     }
     
@@ -174,7 +176,7 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData)
     return self;
 }
 
-- (id) initWithImage:(UIImage *)image imageName:(NSString *)imageName
+- (instancetype) initWithImage:(UIImage *)image imageName:(NSString *)imageName
 {
     self = [self initWithSize:image.size andUnits:@"Pixels"];
     
@@ -198,6 +200,22 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData)
     
     return self;
 }
+
++ (instancetype) createWithUnits:(NSString *)units
+{
+  return [[WDDrawing alloc] initWithUnits:units];
+}
+
++ (instancetype) createWithSize:(CGSize)size andUnits:(NSString *)units
+{
+    return [[WDDrawing alloc] initWithSize:size andUnits:units];
+}
+
++ (instancetype)createWithImage:(UIImage *)image imageName:(NSString *)imageName
+{
+    return [[WDDrawing alloc] initWithImage:image imageName:imageName];
+}
+
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
@@ -633,7 +651,7 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData)
 //
 // Used for copying an image of the selection to the clipboard
 //
-+ (UIImage *) imageForElements:(NSArray *)elements scale:(float)scaleFactor
++ (UIImage *) createImageForElements:(NSArray *)elements scale:(float)scaleFactor
 {
     CGRect contentBounds = CGRectNull;
     for (WDElement *element in elements) {

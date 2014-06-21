@@ -266,7 +266,7 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
 
 - (WDDocument *) createNewDrawingWithSize:(CGSize)size andUnits:(NSString *)units
 {
-    WDDrawing *drawing = [[WDDrawing alloc] initWithSize:size andUnits:units];
+    WDDrawing *drawing = [WDDrawing createWithSize:size andUnits:units];
     return [self installDrawing:drawing withName:[self uniqueFilename] closeAfterSaving:NO];
 }
 
@@ -278,7 +278,7 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
     
     image = [image downsampleWithMaxArea:4096*4096];
     
-    WDDrawing *drawing = [[WDDrawing alloc] initWithImage:image imageName:imageName];
+    WDDrawing *drawing = [WDDrawing createWithImage:image imageName:imageName];
     return [self installDrawing:drawing withName:drawingName closeAfterSaving:YES] ? YES : NO;
 }
 
@@ -349,7 +349,7 @@ NSString *WDDrawingNewFilenameKey = @"WDDrawingNewFilenameKey";
 - (WDDocument *) duplicateDrawingWithSourceFileName:(NSString*)sourceFileName destinationFileName:(NSString*)destinationFileName andClonedImageName:(NSString*) clonedImageName
 {
     UIImage     *image = [self getThumbnail:sourceFileName];
-    WDDrawing   *drawing = [[WDDrawing alloc] initWithImage:image imageName:clonedImageName];
+    WDDrawing   *drawing = [WDDrawing createWithImage:image imageName:clonedImageName];
     WDDocument  *document= [self installDrawing:drawing withName:destinationFileName closeAfterSaving:NO];
     return document;
 }

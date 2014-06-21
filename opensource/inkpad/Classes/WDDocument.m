@@ -94,7 +94,7 @@ static NSString *errorDomain = @"WDDocument";
     }
     // load the whole drawing if we are either asked to or we failed to find a thumbnail
     if (!self.thumbnail) {
-        WDDrawing   *drawing = [[WDDrawing alloc] initWithUnits:@"Points"];
+        WDDrawing   *drawing = [WDDrawing createWithUnits:@"Points"];
         [drawing beginSuppressingNotifications];
         WDSVGParser *svgParser = [[WDSVGParser alloc] initWithDrawing:drawing];
         [xmlParser setDelegate:svgParser];

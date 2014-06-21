@@ -74,8 +74,9 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData);
 @property (nonatomic, assign) float gridSpacing;
 @property (nonatomic, readonly) BOOL isSuppressingNotifications;
 
-- (id) initWithUnits:(NSString *)units; // for use with SVG import only
-- (id) initWithSize:(CGSize)size andUnits:(NSString *)units;
++ (instancetype) createWithUnits:(NSString *)units;
++ (instancetype) createWithSize:(CGSize)size andUnits:(NSString *)units;
++ (instancetype)createWithImage:(UIImage *)image imageName:(NSString *)imageName;
 
 - (void) beginSuppressingNotifications;
 - (void) endSuppressingNotifications;
@@ -99,9 +100,9 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData);
 
 - (NSUInteger) snapFlags;
 
-- (id) initWithImage:(UIImage *)image imageName:(NSString *)imageName;
+
 - (WDImageData *) imageDataForUIImage:(UIImage *)image;
-+ (UIImage *) imageForElements:(NSArray *)elements scale:(float)scale;
++ (UIImage *) createImageForElements:(NSArray *)elements scale:(float)scale;
 - (UIImage *) image;
 
 - (NSData *) inkpadRepresentation;
@@ -111,7 +112,6 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData);
 - (UIImage *) thumbnailImage;
 
 - (void) setSetting:(NSString *)name value:(NSString *)value;
-
 @end
 
 // Setting keys
