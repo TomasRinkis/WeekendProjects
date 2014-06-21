@@ -301,45 +301,55 @@ NSString *WDPointArrayKey = @"WDPointArrayKey";
     CGRect anchorRect = CGRectMake(anchor.x - kAnchorRadius, anchor.y - kAnchorRadius, kAnchorRadius * 2, kAnchorRadius * 2);
     
     // draw the control handles
-    if (mode == kWDBezierNodeRenderSelected) {
+    if (mode == kWDBezierNodeRenderSelected)
+    {
         [color openGLSet];
         
-        if ([self hasInPoint]) {
+        if ([self hasInPoint])
+        {
             WDGLLineFromPointToPoint(inPoint, anchor);
         }
         
-        if ([self hasOutPoint]) {
+        if ([self hasOutPoint])
+        {
             WDGLLineFromPointToPoint(outPoint, anchor);
         }
     }
     
     // draw the anchor
-    if (mode == kWDBezierNodeRenderClosed) {
-        [color openGLSet];
+    if (mode == kWDBezierNodeRenderClosed)
+    {
         anchorRect = CGRectInset(anchorRect, 1, 1);
-        WDGLFillRect(anchorRect);
-    } else if (mode == kWDBezierNodeRenderSelected) {
-        [color openGLSet];
-        WDGLFillRect(anchorRect);
+        WDGLFillRect(anchorRect, RGBAFromUIColor(color));
+    }
+    else if (mode == kWDBezierNodeRenderSelected)
+    {
+        WDGLFillRect(anchorRect, RGBAFromUIColor(color));
+        
         glColor4f(1, 1, 1, 1);
         WDGLStrokeRect(anchorRect);
-    } else {
-        glColor4f(1, 1, 1, 1);
-        WDGLFillRect(anchorRect);
+    }
+    else
+    {
+        WDGLFillRect(anchorRect, RGBA(1, 1, 1, 1));
+    
         [color openGLSet];
         WDGLStrokeRect(anchorRect);
     }
     
     // draw the control handle knobs
-    if (mode == kWDBezierNodeRenderSelected) {
+    if (mode == kWDBezierNodeRenderSelected)
+    {
         [color openGLSet];
         
-        if ([self hasInPoint]) {
+        if ([self hasInPoint])
+        {
             inPoint = WDRoundPoint(inPoint);
             WDGLFillCircle(inPoint, kControlPointRadius, 10);
         }
         
-        if ([self hasOutPoint]) {
+        if ([self hasOutPoint])
+        {
             outPoint = WDRoundPoint(outPoint);
             WDGLFillCircle(outPoint, kControlPointRadius, 10);
         }

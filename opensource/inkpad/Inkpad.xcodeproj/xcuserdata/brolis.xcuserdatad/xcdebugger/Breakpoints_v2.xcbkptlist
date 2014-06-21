@@ -41,7 +41,7 @@
                   symbolName = "-[WDAppDelegate application:openURL:sourceApplication:annotation:]"
                   moduleName = "Inkpad"
                   urlString = "file://localhost/Users/brolis/Documents/WeekendProjects/opensource/inkpad/Classes/WDAppDelegate.m"
-                  timestampString = "424515606.374811"
+                  timestampString = "425059996.12656"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "102"
@@ -55,7 +55,7 @@
                   symbolName = "__66-[WDAppDelegate application:openURL:sourceApplication:annotation:]_block_invoke"
                   moduleName = "Inkpad"
                   urlString = "file://localhost/Users/brolis/Documents/WeekendProjects/opensource/inkpad/Classes/WDAppDelegate.m"
-                  timestampString = "424515606.375038"
+                  timestampString = "425059996.12692"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "109"
@@ -286,22 +286,6 @@
             startingLineNumber = "72"
             endingLineNumber = "72"
             landmarkName = "-setEnabled:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Inkpad-Core/Tools/WDPenTool.m"
-            timestampString = "424514815.988468"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "-beginWithEvent:inCanvas:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

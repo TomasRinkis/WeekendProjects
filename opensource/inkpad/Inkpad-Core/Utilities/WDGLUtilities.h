@@ -20,7 +20,19 @@
 
 #import "WDBezierSegment.h"
 
-void WDGLFillRect(CGRect rect);
+typedef struct
+{
+    float r, g, b, a;
+    
+}WDGLColor;
+
+extern WDGLColor RGBA(float r, float g, float b, float a);
+extern WDGLColor RGBAFromUIColor(UIColor *color);
+
+
+
+
+void WDGLFillRect(CGRect rect, WDGLColor color);
 void WDGLStrokeRect(CGRect rect);
 void WDGLFillCircle(CGPoint center, float radius, int sides);
 void WDGLStrokeCircle(CGPoint center, float radius, int sides);

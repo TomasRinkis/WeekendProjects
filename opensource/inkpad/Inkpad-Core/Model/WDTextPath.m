@@ -737,14 +737,15 @@ done:
     
     overflowRect = CGRectMake(overflowPoint.x - kOverflowRadius, overflowPoint.y - kOverflowRadius,
                                      kOverflowRadius * 2, kOverflowRadius * 2);
-    if (selected) {
-        [color openGLSet];
-        WDGLFillRect(overflowRect);
+    if (selected)
+    {
+        WDGLFillRect(overflowRect, RGBAFromUIColor(color));
         glColor4f(1, 1, 1, 1);
         WDGLStrokeRect(overflowRect);
-    } else {
-        glColor4f(1, 1, 1, 1);
-        WDGLFillRect(overflowRect);
+    }
+    else
+    {
+        WDGLFillRect(overflowRect, RGBA(1, 1, 1, 1));
         [color openGLSet];
         WDGLStrokeRect(overflowRect);
     }

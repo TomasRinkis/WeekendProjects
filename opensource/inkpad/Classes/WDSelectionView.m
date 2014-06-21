@@ -91,8 +91,7 @@
     marquee = CGRectIntegral(marquee);
     marquee = WDFlipRectWithinRect(marquee, self.frame);
     
-    glColor4f(0, 0, 0, 0.333f);
-    WDGLFillRect(marquee);
+    WDGLFillRect(marquee, RGBA(0, 0, 0, 0.333f));
     
     glColor4f(0, 0, 0, 0.75f);
     WDGLStrokeRect(marquee);
@@ -110,8 +109,7 @@
     glClear(GL_COLOR_BUFFER_BIT);
     glClearColor(0, 0, 0, 0);
     
-    glColor4f(1, 1, 1, 1);
-    WDGLFillRect(docBounds);
+    WDGLFillRect(docBounds, RGBA(1, 1, 1, 1));
     
     glColor4f(0, 0, 0, 1);
     WDGLStrokeRect(docBounds);

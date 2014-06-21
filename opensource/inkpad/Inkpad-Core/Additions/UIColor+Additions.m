@@ -42,9 +42,12 @@
 {
     CGFloat w, r, g, b, a;
     
-    if ([self getRed:&r green:&g blue:&b alpha:&a]) {
+    if ([self getRed:&r green:&g blue:&b alpha:&a])
+    {
         glColor4f(r, g, b, a);
-    } else {
+    }
+    else
+    {
         [self getWhite:&w alpha:&a];
         glColor4f(w, w, w, a);
     }

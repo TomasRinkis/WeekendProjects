@@ -464,17 +464,21 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (void) selectObject:(WDElement *)element
 {
-    if ([element isKindOfClass:[WDCompoundPath class]]) {
+    if ([element isKindOfClass:[WDCompoundPath class]])
+    {
         // if the compound path is selected, its subpaths ain't
-        for (WDPath *path in ((WDCompoundPath *)element).subpaths) {
+        for (WDPath *path in ((WDCompoundPath *)element).subpaths)
+        {
             [selectedObjects_ removeObject:path];
         }
-    } else if ([element isKindOfClass:[WDPath class]] && [self allSiblingsSelected:(WDPath *)element]) {
+    } else if ([element isKindOfClass:[WDPath class]] && [self allSiblingsSelected:(WDPath *)element])
+    {
         // We're selecting the final path in a compound path, which means the compound path should be selected
         // and not its subpaths. This is similar to the above case...
         element = ((WDPath *) element).superpath;
         
-        for (WDPath *path in ((WDCompoundPath *)element).subpaths) {
+        for (WDPath *path in ((WDCompoundPath *)element).subpaths)
+        {
             [selectedObjects_ removeObject:path];
         }
     }
