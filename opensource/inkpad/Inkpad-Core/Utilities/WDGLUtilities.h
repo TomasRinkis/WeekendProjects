@@ -33,7 +33,7 @@ extern WDGLColor RGBAFromUIColor(UIColor *color);
 
 
 void WDGLFillRect(CGRect rect, WDGLColor color);
-void WDGLStrokeRect(CGRect rect);
+void WDGLStrokeRect(CGRect rect, WDGLColor color);
 void WDGLFillCircle(CGPoint center, float radius, int sides);
 void WDGLStrokeCircle(CGPoint center, float radius, int sides);
 void WDGLLineFromPointToPoint(CGPoint a, CGPoint b);

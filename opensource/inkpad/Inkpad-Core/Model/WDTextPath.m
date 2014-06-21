@@ -740,14 +740,12 @@ done:
     if (selected)
     {
         WDGLFillRect(overflowRect, RGBAFromUIColor(color));
-        glColor4f(1, 1, 1, 1);
-        WDGLStrokeRect(overflowRect);
+        WDGLStrokeRect(overflowRect, RGBA(1, 1, 1, 1));
     }
     else
     {
         WDGLFillRect(overflowRect, RGBA(1, 1, 1, 1));
-        [color openGLSet];
-        WDGLStrokeRect(overflowRect);
+        WDGLStrokeRect(overflowRect, RGBAFromUIColor(color));
     }
     
     // draw +

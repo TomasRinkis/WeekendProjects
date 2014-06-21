@@ -67,8 +67,10 @@ inline void WDGLFillRect(CGRect rect, WDGLColor color)
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-inline void WDGLStrokeRect(CGRect rect)
+inline void WDGLStrokeRect(CGRect rect, WDGLColor color)
 {
+    glColor4f(color.r, color.g, color.b, color.a);
+    
     rect.origin = WDRoundPoint(rect.origin);
     rect.size = WDRoundSize(rect.size);
     

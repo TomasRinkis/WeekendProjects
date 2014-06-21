@@ -92,9 +92,7 @@
     marquee = WDFlipRectWithinRect(marquee, self.frame);
     
     WDGLFillRect(marquee, RGBA(0, 0, 0, 0.333f));
-    
-    glColor4f(0, 0, 0, 0.75f);
-    WDGLStrokeRect(marquee);
+    WDGLStrokeRect(marquee,  RGBA(0, 0, 0, 0.75f));
 }
 
 - (void) renderDocumentBorder
@@ -110,9 +108,7 @@
     glClearColor(0, 0, 0, 0);
     
     WDGLFillRect(docBounds, RGBA(1, 1, 1, 1));
-    
-    glColor4f(0, 0, 0, 1);
-    WDGLStrokeRect(docBounds);
+    WDGLStrokeRect(docBounds, RGBA(0, 0, 0, 1));
 }
 
 - (float) effectiveGridSpacing

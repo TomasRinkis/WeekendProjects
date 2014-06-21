@@ -248,9 +248,7 @@ NSString *WDShadowKey = @"WDShadowKey";
     if (!selected)
     {
         WDGLFillRect(anchorRect, RGBA(1, 1, 1, 1));
-        
-        [self.layer.highlightColor openGLSet];
-        WDGLStrokeRect(anchorRect);
+        WDGLStrokeRect(anchorRect, RGBAFromUIColor(self.layer.highlightColor ));
     }
     else
     {

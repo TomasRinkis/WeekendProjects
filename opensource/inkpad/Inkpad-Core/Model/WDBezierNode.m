@@ -325,16 +325,12 @@ NSString *WDPointArrayKey = @"WDPointArrayKey";
     else if (mode == kWDBezierNodeRenderSelected)
     {
         WDGLFillRect(anchorRect, RGBAFromUIColor(color));
-        
-        glColor4f(1, 1, 1, 1);
-        WDGLStrokeRect(anchorRect);
+        WDGLStrokeRect(anchorRect, RGBA(1, 1, 1, 1));
     }
     else
     {
         WDGLFillRect(anchorRect, RGBA(1, 1, 1, 1));
-    
-        [color openGLSet];
-        WDGLStrokeRect(anchorRect);
+        WDGLStrokeRect(anchorRect, RGBAFromUIColor(color));
     }
     
     // draw the control handle knobs
