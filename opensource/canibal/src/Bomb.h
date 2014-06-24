@@ -16,7 +16,7 @@
 #import <Foundation/Foundation.h>
 
 @class CNBPlayer;
-@class Sequence;
+@class CNBSequence;
 
 @interface Bomb : FlxSprite
 {
@@ -24,11 +24,11 @@
   CNBPlayer * p;
   FlxEmitter * e;
   NSArray * en;
-  Sequence * s;
+  CNBSequence * s;
 }
 
-+ (id) bombWithOrigin:(CGPoint)origin player:(CNBPlayer *)player gibs:(NSArray *)entry sequence:(Sequence *)sequence;
-- (id) initWithOrigin:(CGPoint)origin player:(CNBPlayer *)player gibs:(NSArray *)entry sequence:(Sequence *)sequence;
++ (id) bombWithOrigin:(CGPoint)origin player:(CNBPlayer *)player gibs:(NSArray *)entry sequence:(CNBSequence *)sequence;
+- (id) initWithOrigin:(CGPoint)origin player:(CNBPlayer *)player gibs:(NSArray *)entry sequence:(CNBSequence *)sequence;
 
 - (void) add:(FlxEmitter *)gibs;
 

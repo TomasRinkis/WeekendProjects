@@ -15,7 +15,7 @@
 
 #import "Bomb.h"
 #import "CNBPlayer.h"
-#import "Sequence.h"
+#import "CNBSequence.h"
 
 static NSString * ImgBomb = @"bomb.png";
 static NSString * SndBombLaunch = @"bomb_launch.caf";
@@ -25,12 +25,12 @@ static NSString * SndBombExplode = @"bomb_explode.caf";
 
 @implementation Bomb
 
-+ (id) bombWithOrigin:(CGPoint)origin player:(CNBPlayer *)player gibs:(NSArray *)entry sequence:(Sequence *)sequence
++ (id) bombWithOrigin:(CGPoint)origin player:(CNBPlayer *)player gibs:(NSArray *)entry sequence:(CNBSequence *)sequence
 {
   return [[[self alloc] initWithOrigin:origin player:player gibs:entry sequence:sequence] autorelease];
 }
 
-- (id) initWithOrigin:(CGPoint)Origin player:(CNBPlayer *)player gibs:(NSArray *)entry sequence:(Sequence *)sequence
+- (id) initWithOrigin:(CGPoint)Origin player:(CNBPlayer *)player gibs:(NSArray *)entry sequence:(CNBSequence *)sequence
 {
   if ((self = [super initWithX:0 y:0 graphic:ImgBomb])) {
 

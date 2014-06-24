@@ -1,5 +1,5 @@
 //
-//  Building.h
+//  CNBBuilding.h
 //  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
@@ -13,19 +13,7 @@
 // THE SOFTWARE.
 //
 
-@interface Building : FlxObject
-{
-  FlxTileblock * leftEdge;
-  FlxTileblock * rightEdge;
-  FlxTileblock * topEdge;
-  FlxSprite * leftCorner;
-  FlxSprite * rightCorner;
-  NSMutableArray * windows;
-  NSMutableArray * walls;
-  //NSMutableArray * cracks;
-  NSMutableArray * extraWindows;
-  NSMutableArray * extraWalls;
-}
+@interface CNBBuilding : FlxObject
 - (id) initWithMaxWidth:(float)maxWidth;
 - (void) createWithX:(float)X y:(float)Y width:(float)Width height:(float)Height
 	tileSize:(float)tileSize

@@ -1,5 +1,5 @@
 //
-//  BG.h
+//  CNBBG.h
 //  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
@@ -13,11 +13,8 @@
 // THE SOFTWARE.
 //
 
-@interface BG : FlxSprite
-{
-  BOOL random;
-}
-+ (id) bgWithImage:(NSString *)image;
-- (id) initWithX:(float)X y:(float)Y graphic:(NSString *)graphic;
+@interface CNBBG : FlxSprite
++ (instancetype) bgWithImage:(NSString *)image;
+- (instancetype) initWithX:(float)X y:(float)Y graphic:(NSString *)graphic;
 @property BOOL random;
 @end

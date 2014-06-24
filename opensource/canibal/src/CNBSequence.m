@@ -1,5 +1,5 @@
 //
-//  Sequence.m
+//  CNBSequence.m
 //  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
@@ -13,7 +13,7 @@
 // THE SOFTWARE.
 //
 
-#import "Sequence.h"
+#import "CNBSequence.h"
 #import "CNBPlayer.h"
 #import "CraneTrigger.h"
 #import "CBlock.h"
@@ -27,7 +27,7 @@
 #import "Crane.h"
 #import "Billboard.h"
 #import "Trapezoid.h"
-#import "Building.h"
+#import "CNBBuilding.h"
 #import "Hall.h"
 #import "RepeatBlock.h"
 #import "GibEmitter.h"
@@ -84,7 +84,7 @@ static int curIndex;
 static int lastType;
 static int thisType;
 
-@interface Sequence (Private)
+@interface CNBSequence (Private)
 - (void) decorateSeqX:(CGFloat)seqX seqY:(CGFloat)seqY seqWidth:(CGFloat)seqWidth;
 - (void) setPlayer:(CNBPlayer *)plr;
 - (CNBPlayer *) player;
@@ -94,8 +94,8 @@ static int thisType;
 - (FlxEmitter *)shardsB;
 @end
 
-static Sequence * sequence1 = nil;
-static Sequence * sequence2 = nil;
+static CNBSequence * sequence1 = nil;
+static CNBSequence * sequence2 = nil;
 static int sequenceIndex = 0;
 
 static GibEmitter * collapseEmitter = nil;
@@ -106,7 +106,7 @@ static Crane * crane = nil;
 static Hall * hall = nil;
 static Billboard * billboard = nil;
 
-@implementation Sequence
+@implementation CNBSequence
 
 @synthesize blocks;
 
@@ -158,9 +158,9 @@ static Billboard * billboard = nil;
 
 + (void) initialize
 {
-  if (self == [Sequence class]) {
-    sequence1 = [[Sequence alloc] initWithPlayer:nil shardsA:nil shardsB:nil];
-    sequence2 = [[Sequence alloc] initWithPlayer:nil shardsA:nil shardsB:nil];
+  if (self == [CNBSequence class]) {
+    sequence1 = [[CNBSequence alloc] initWithPlayer:nil shardsA:nil shardsB:nil];
+    sequence2 = [[CNBSequence alloc] initWithPlayer:nil shardsA:nil shardsB:nil];
 
     GibEmitter * ge;
 
@@ -257,7 +257,7 @@ static Billboard * billboard = nil;
 + (id) sequenceWithPlayer:(CNBPlayer *)plr shardsA:(FlxEmitter *)shardsa shardsB:(FlxEmitter *)shardsb
 {
   //return [[[self alloc] initWithPlayer:plr shardsA:shardsa shardsB:shardsb] autorelease];
-  Sequence * ret = nil;
+  CNBSequence * ret = nil;
   if (sequenceIndex == 0)
     ret = sequence1;
   else
@@ -295,7 +295,7 @@ static Billboard * billboard = nil;
     float maxWidth = 1344.0;
     if (FlxG.iPad)
       maxWidth = 1440.0;
-    building = [[Building alloc] initWithMaxWidth:maxWidth];
+    building = [[CNBBuilding alloc] initWithMaxWidth:maxWidth];
     
     fence = [[FlxTileblock tileblockWithX:0 y:0 width:0 height:0] retain];
     escape = [[RepeatBlock repeatBlockWithX:0 y:0 width:0 height:0] retain];
@@ -335,7 +335,7 @@ static Billboard * billboard = nil;
   [super dealloc];
 }
 
-- (void) initSequence:(Sequence *)sequence
+- (void) initSequence:(CNBSequence *)sequence
 {
   seq = sequence; //don't retain, otherwise we'll get a loop...
   [self reset];

@@ -16,7 +16,8 @@
 
 @class CNBPlayer;
 
-typedef struct {
+typedef struct
+{
   GLshort p0[2];
   GLshort t0[2];
   GLshort p1[2];

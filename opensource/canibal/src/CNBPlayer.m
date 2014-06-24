@@ -120,42 +120,22 @@ static NSString * ImgPlayer = @"player2.png";
     [super dealloc];
 }
 
-// - (void) play:(NSString *)string
-// {
-//   NSLog(@"CNBPlayer play:%@", string);
-//   [super play:string];
-// }
-
 - (void) update
 {
-    
-    //   CGPoint screen = self.screenPosition;
-    //   NSLog(@"player.x:%f, player.y:%f, screen.x:%f, screen.y:%f", self.x, self.y, screen.x, screen.y);
-    if (self.y > 484) {
+    if (self.y > 484)
+    {
         self.dead = YES;
         return;
     }
-    
-    
-    //   if (self.x >= 1000) {
-    //     NSLog(@"turning debug on");
-    //     self.debug = YES;
-    //   }
-    
-    //   if (acceleration.x <= 0 && self.debug == NO) {
-    //     NSLog(@"x position: %f", self.x);
-    //     self.debug = YES;
-    //   }
-    
-    //  NSLog(@"jump:%f, onFloor:%d", jump, onFloor);
-    
-    //   NSLog(@"update -> jump:%f, onFloor:%d, v:(%f,%f), position:(%f,%f)", jump, onFloor, velocity.x, velocity.y, self.x, self.y);
-    
+
     //walldeath
     if (acceleration.x <= 0)
+    {
         return [super update];
+    }
     
     //speed & acceleration
+#warning will this work?
     if (velocity.x < 0) velocity.x = 0;
     else if (velocity.x < 100) acceleration.x = 60;
     else if (velocity.x < 250) acceleration.x = 36;
@@ -167,11 +147,14 @@ static NSString * ImgPlayer = @"player2.png";
     jumpLimit = velocity.x / (maxVelocity.x * 2.5);
     if (jumpLimit > 0.35) jumpLimit = 0.35;
     
-    if (jump >= 0 && FlxG.touches.touching && !pause) {
-        if (jump == 0) {
+    if (jump >= 0 && FlxG.touches.touching && !pause)
+    {
+        if (jump == 0)
+        {
             //NSLog(@"starting a jump");
             int rs = FlxU.random * 4;
-            switch (rs) {
+            switch (rs)
+            {
                 case 0: [FlxG play:@"jump1.caf"]; break;
                 case 1: [FlxG play:@"jump2.caf"]; break;
                 case 2: [FlxG play:@"jump3.caf"]; break;
@@ -195,7 +178,8 @@ static NSString * ImgPlayer = @"player2.png";
             velocity.y = -maxVelocity.y;
     }
     
-    if (onFloor) {
+    if (onFloor)
+    {
         ft = (1-velocity.x/maxVelocity.x)*0.35;
         if (ft < 0.15) ft = 0.15;
         fc += FlxG.elapsed;
@@ -208,7 +192,9 @@ static NSString * ImgPlayer = @"player2.png";
                 [FlxG play:[feet getRandom]];
         }
         if (stumble && finished) stumble = NO;
-        if (!stumble) {
+        
+        if (!stumble)
+        {
             if (velocity.x < 150) [self play:@"run1"];
             else if (velocity.x < 300) [self play:@"run2"];
             else if (velocity.x < 550) [self play:@"run3"];
@@ -271,7 +257,9 @@ static NSString * ImgPlayer = @"player2.png";
 {
     [FlxG play:@"tumble.caf"];
     stumble = stumbleValue;
-    if (stumble) {
+    
+    if (stumble)
+    {
         if (velocity.x > 500) [self playWithParam1:@"stumble4" param2:YES];
         else if (velocity.x > 300) [self playWithParam1:@"stumble3" param2:YES];
         else if (velocity.x > 150) [self playWithParam1:@"stumble2" param2:YES];

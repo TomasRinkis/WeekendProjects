@@ -91,9 +91,9 @@
 		075430E811873B70004B03B0 /* Jet.m in Sources */ = {isa = PBXBuildFile; fileRef = 075430E711873B70004B03B0 /* Jet.m */; };
 		075430F1118741A0004B03B0 /* Shard.m in Sources */ = {isa = PBXBuildFile; fileRef = 075430F0118741A0004B03B0 /* Shard.m */; };
 		075430FE11874343004B03B0 /* Smoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 075430FD11874343004B03B0 /* Smoke.m */; };
-		07543105118744F3004B03B0 /* HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 07543104118744F3004B03B0 /* HUD.m */; };
-		0754310C118745C9004B03B0 /* BG.m in Sources */ = {isa = PBXBuildFile; fileRef = 0754310B118745C9004B03B0 /* BG.m */; };
-		075431251187514A004B03B0 /* Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 075431241187514A004B03B0 /* Sequence.m */; };
+		07543105118744F3004B03B0 /* CNBHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 07543104118744F3004B03B0 /* CNBHUD.m */; };
+		0754310C118745C9004B03B0 /* CNBBG.m in Sources */ = {isa = PBXBuildFile; fileRef = 0754310B118745C9004B03B0 /* CNBBG.m */; };
+		075431251187514A004B03B0 /* CNBSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 075431241187514A004B03B0 /* CNBSequence.m */; };
 		0754318F118789EF004B03B0 /* Leg.m in Sources */ = {isa = PBXBuildFile; fileRef = 0754318E118789EF004B03B0 /* Leg.m */; };
 		0754319611878AD3004B03B0 /* Bomb.m in Sources */ = {isa = PBXBuildFile; fileRef = 0754319511878AD3004B03B0 /* Bomb.m */; };
 		0755F81212B0161D00924A4F /* high_scores_forever_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0755F80E12B0161D00924A4F /* high_scores_forever_off.png */; };
@@ -157,7 +157,7 @@
 		07BE0109119C837C0021EBD9 /* Crane.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BE0108119C837C0021EBD9 /* Crane.m */; };
 		07BE012B119CA2A60021EBD9 /* Billboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BE012A119CA2A60021EBD9 /* Billboard.m */; };
 		07BE0146119CAE480021EBD9 /* RepeatBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BE0145119CAE480021EBD9 /* RepeatBlock.m */; };
-		07BE01C211A1DD4F0021EBD9 /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BE01C111A1DD4F0021EBD9 /* Building.m */; };
+		07BE01C211A1DD4F0021EBD9 /* CNBBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BE01C111A1DD4F0021EBD9 /* CNBBuilding.m */; };
 		07BE029911A22DA90021EBD9 /* Hall.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BE029811A22DA90021EBD9 /* Hall.m */; };
 		07FBBF5511AC63B000D6852A /* bestruns.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07FBBF5111AC63B000D6852A /* bestruns.xcdatamodeld */; };
 		1D3623260D0F684500981E51 /* CanabaltAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* CanabaltAppDelegate.m */; };
@@ -268,12 +268,12 @@
 		075430F0118741A0004B03B0 /* Shard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Shard.m; path = src/Shard.m; sourceTree = SOURCE_ROOT; };
 		075430FC11874343004B03B0 /* Smoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Smoke.h; path = src/Smoke.h; sourceTree = SOURCE_ROOT; };
 		075430FD11874343004B03B0 /* Smoke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Smoke.m; path = src/Smoke.m; sourceTree = SOURCE_ROOT; };
-		07543103118744F3004B03B0 /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HUD.h; path = src/HUD.h; sourceTree = SOURCE_ROOT; };
-		07543104118744F3004B03B0 /* HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HUD.m; path = src/HUD.m; sourceTree = SOURCE_ROOT; };
-		0754310A118745C9004B03B0 /* BG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BG.h; path = src/BG.h; sourceTree = SOURCE_ROOT; };
-		0754310B118745C9004B03B0 /* BG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BG.m; path = src/BG.m; sourceTree = SOURCE_ROOT; };
-		075431231187514A004B03B0 /* Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sequence.h; path = src/Sequence.h; sourceTree = SOURCE_ROOT; };
-		075431241187514A004B03B0 /* Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sequence.m; path = src/Sequence.m; sourceTree = SOURCE_ROOT; };
+		07543103118744F3004B03B0 /* CNBHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CNBHUD.h; path = src/CNBHUD.h; sourceTree = SOURCE_ROOT; };
+		07543104118744F3004B03B0 /* CNBHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CNBHUD.m; path = src/CNBHUD.m; sourceTree = SOURCE_ROOT; };
+		0754310A118745C9004B03B0 /* CNBBG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CNBBG.h; path = src/CNBBG.h; sourceTree = SOURCE_ROOT; };
+		0754310B118745C9004B03B0 /* CNBBG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CNBBG.m; path = src/CNBBG.m; sourceTree = SOURCE_ROOT; };
+		075431231187514A004B03B0 /* CNBSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CNBSequence.h; path = src/CNBSequence.h; sourceTree = SOURCE_ROOT; };
+		075431241187514A004B03B0 /* CNBSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CNBSequence.m; path = src/CNBSequence.m; sourceTree = SOURCE_ROOT; };
 		0754318D118789EF004B03B0 /* Leg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Leg.h; path = src/Leg.h; sourceTree = SOURCE_ROOT; };
 		0754318E118789EF004B03B0 /* Leg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Leg.m; path = src/Leg.m; sourceTree = SOURCE_ROOT; };
 		0754319411878AD3004B03B0 /* Bomb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bomb.h; path = src/Bomb.h; sourceTree = SOURCE_ROOT; };
@@ -345,8 +345,8 @@
 		07BE012A119CA2A60021EBD9 /* Billboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Billboard.m; path = src/Billboard.m; sourceTree = SOURCE_ROOT; };
 		07BE0144119CAE480021EBD9 /* RepeatBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RepeatBlock.h; path = src/RepeatBlock.h; sourceTree = SOURCE_ROOT; };
 		07BE0145119CAE480021EBD9 /* RepeatBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RepeatBlock.m; path = src/RepeatBlock.m; sourceTree = SOURCE_ROOT; };
-		07BE01C011A1DD4F0021EBD9 /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Building.h; path = src/Building.h; sourceTree = SOURCE_ROOT; };
-		07BE01C111A1DD4F0021EBD9 /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Building.m; path = src/Building.m; sourceTree = SOURCE_ROOT; };
+		07BE01C011A1DD4F0021EBD9 /* CNBBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CNBBuilding.h; path = src/CNBBuilding.h; sourceTree = SOURCE_ROOT; };
+		07BE01C111A1DD4F0021EBD9 /* CNBBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CNBBuilding.m; path = src/CNBBuilding.m; sourceTree = SOURCE_ROOT; };
 		07BE029711A22DA90021EBD9 /* Hall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hall.h; path = src/Hall.h; sourceTree = SOURCE_ROOT; };
 		07BE029811A22DA90021EBD9 /* Hall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hall.m; path = src/Hall.m; sourceTree = SOURCE_ROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -495,8 +495,6 @@
 				0714D84012B6C25B002601AB /* Dove.m */,
 				07BE029711A22DA90021EBD9 /* Hall.h */,
 				07BE029811A22DA90021EBD9 /* Hall.m */,
-				07BE01C011A1DD4F0021EBD9 /* Building.h */,
-				07BE01C111A1DD4F0021EBD9 /* Building.m */,
 				07BE0144119CAE480021EBD9 /* RepeatBlock.h */,
 				07BE0145119CAE480021EBD9 /* RepeatBlock.m */,
 				07BE0129119CA2A60021EBD9 /* Billboard.h */,
@@ -507,12 +505,6 @@
 				0754319511878AD3004B03B0 /* Bomb.m */,
 				0754318D118789EF004B03B0 /* Leg.h */,
 				0754318E118789EF004B03B0 /* Leg.m */,
-				075431231187514A004B03B0 /* Sequence.h */,
-				075431241187514A004B03B0 /* Sequence.m */,
-				0754310A118745C9004B03B0 /* BG.h */,
-				0754310B118745C9004B03B0 /* BG.m */,
-				07543103118744F3004B03B0 /* HUD.h */,
-				07543104118744F3004B03B0 /* HUD.m */,
 				075430FC11874343004B03B0 /* Smoke.h */,
 				075430FD11874343004B03B0 /* Smoke.m */,
 				075430EF118741A0004B03B0 /* Shard.h */,
@@ -754,10 +746,14 @@
 		3AF84DE01959384A009DDE88 /* PlayState */ = {
 			isa = PBXGroup;
 			children = (
+				07BE01C011A1DD4F0021EBD9 /* CNBBuilding.h */,
+				07BE01C111A1DD4F0021EBD9 /* CNBBuilding.m */,
 				0754305D11862F9A004B03B0 /* CNBPlayer.h */,
 				0754305E11862F9A004B03B0 /* CNBPlayer.m */,
 				0754305611861DC8004B03B0 /* CNBPlayState.h */,
 				0754305711861DC8004B03B0 /* CNBPlayState.m */,
+				075431231187514A004B03B0 /* CNBSequence.h */,
+				075431241187514A004B03B0 /* CNBSequence.m */,
 			);
 			name = PlayState;
 			sourceTree = "<group>";
@@ -765,6 +761,10 @@
 		3AF84DE119593A63009DDE88 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				07543103118744F3004B03B0 /* CNBHUD.h */,
+				07543104118744F3004B03B0 /* CNBHUD.m */,
+				0754310A118745C9004B03B0 /* CNBBG.h */,
+				0754310B118745C9004B03B0 /* CNBBG.m */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -965,15 +965,15 @@
 				075430E811873B70004B03B0 /* Jet.m in Sources */,
 				075430F1118741A0004B03B0 /* Shard.m in Sources */,
 				075430FE11874343004B03B0 /* Smoke.m in Sources */,
-				07543105118744F3004B03B0 /* HUD.m in Sources */,
-				0754310C118745C9004B03B0 /* BG.m in Sources */,
-				075431251187514A004B03B0 /* Sequence.m in Sources */,
+				07543105118744F3004B03B0 /* CNBHUD.m in Sources */,
+				0754310C118745C9004B03B0 /* CNBBG.m in Sources */,
+				075431251187514A004B03B0 /* CNBSequence.m in Sources */,
 				0754318F118789EF004B03B0 /* Leg.m in Sources */,
 				0754319611878AD3004B03B0 /* Bomb.m in Sources */,
 				07BE0109119C837C0021EBD9 /* Crane.m in Sources */,
 				07BE012B119CA2A60021EBD9 /* Billboard.m in Sources */,
 				07BE0146119CAE480021EBD9 /* RepeatBlock.m in Sources */,
-				07BE01C211A1DD4F0021EBD9 /* Building.m in Sources */,
+				07BE01C211A1DD4F0021EBD9 /* CNBBuilding.m in Sources */,
 				07BE029911A22DA90021EBD9 /* Hall.m in Sources */,
 				07FBBF5511AC63B000D6852A /* bestruns.xcdatamodeld in Sources */,
 				07205DA41288705800FCC229 /* UIImage+RIFAddition.m in Sources */,

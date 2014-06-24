@@ -15,16 +15,16 @@
 
 #import "CNBPlayState.h"
 
-#import "Sequence.h"
+#import "CNBSequence.h"
 #import "Walker.h"
-#import "BG.h"
+#import "CNBBG.h"
 #import "Jet.h"
 #import "CNBPlayer.h"
 #import "Shard.h"
 #import "Smoke.h"
-#import "BG.h"
+#import "CNBBG.h"
 
-#import "HUD.h"
+#import "CNBHud.h"
 
 #import "CNBMenuState.h"
 
@@ -59,14 +59,14 @@ static CGRect pauseRect = { .origin = { .x = 0, .y = 0 },
 {
     CNBPlayer * player;
     FlxSprite * focus;
-    HUD * dist;
-    BG * midground;
-    BG * background;
+    CNBHud * dist;
+    CNBBG * midground;
+    CNBBG * background;
     FlxSprite * backgroundRect;
     FlxEmitter * shardsA;
     FlxEmitter * shardsB;
-    Sequence * seqA;
-    Sequence * seqB;
+    CNBSequence * seqA;
+    CNBSequence * seqB;
     NSMutableArray * smoke;
     CGFloat gameover;
     NSString * epitaph;
@@ -177,7 +177,7 @@ static CGRect pauseRect = { .origin = { .x = 0, .y = 0 },
     int i;
     FlxSprite * s;
     
-    //Far BG 'Easter Egg' objects
+    //Far CNBBG 'Easter Egg' objects
     s = [FlxSprite spriteWithGraphic:ImgMothership];
     s.enableBlend = NO;
     s.x = 900;
@@ -239,12 +239,12 @@ static CGRect pauseRect = { .origin = { .x = 0, .y = 0 },
     }
 #endif
     
-    BG * mg;
+    CNBBG * mg;
     FlxSprite * bg; //for solid background rectangle...
     if (FlxG.iPad)
-        mg = [BG bgWithImage:ImgBackgroundIPad];
+        mg = [CNBBG bgWithImage:ImgBackgroundIPad];
     else
-        mg = [BG bgWithImage:ImgBackground];
+        mg = [CNBBG bgWithImage:ImgBackground];
     
     mg.x = 0;
     mg.y = 30;
@@ -253,9 +253,9 @@ static CGRect pauseRect = { .origin = { .x = 0, .y = 0 },
     [self add:mg];
     background = mg;
     if (FlxG.iPad)
-        mg = [BG bgWithImage:ImgBackgroundIPad];
+        mg = [CNBBG bgWithImage:ImgBackgroundIPad];
     else
-        mg = [BG bgWithImage:ImgBackground];
+        mg = [CNBBG bgWithImage:ImgBackground];
     mg.x = FlxG.width;
     mg.y = 30;
     mg.y += 36;
@@ -273,18 +273,18 @@ static CGRect pauseRect = { .origin = { .x = 0, .y = 0 },
     backgroundRect = bg;
     
     if (FlxG.iPad)
-        mg = [BG bgWithImage:ImgMidground1IPad];
+        mg = [CNBBG bgWithImage:ImgMidground1IPad];
     else
-        mg = [BG bgWithImage:ImgMidground1];
+        mg = [CNBBG bgWithImage:ImgMidground1];
     mg.x = 0;
     mg.y = 104+8;
     mg.scrollFactor = CGPointMake(0.4, 0.5);
     [self add:mg];
     midground = mg;
     if (FlxG.iPad)
-        mg = [BG bgWithImage:ImgMidground2IPad];
+        mg = [CNBBG bgWithImage:ImgMidground2IPad];
     else
-        mg = [BG bgWithImage:ImgMidground2];
+        mg = [CNBBG bgWithImage:ImgMidground2];
     if (FlxG.iPad)
         mg.x = 512;
     else
@@ -321,12 +321,12 @@ static CGRect pauseRect = { .origin = { .x = 0, .y = 0 },
     shardsA = [ShardEmitter shardEmitterWithShardCount:numShards];
     shardsB = [ShardEmitter shardEmitterWithShardCount:numShards];
     
-    [Sequence setCurIndex:0];
-    [Sequence setNextIndex:(int)([FlxU random]*3+3)];
-    [Sequence setNextType:1];
+    [CNBSequence setCurIndex:0];
+    [CNBSequence setNextIndex:(int)([FlxU random]*3+3)];
+    [CNBSequence setNextType:1];
     
-    seqA = [Sequence sequenceWithPlayer:player shardsA:shardsA shardsB:shardsB];
-    seqB = [Sequence sequenceWithPlayer:player shardsA:shardsA shardsB:shardsB];
+    seqA = [CNBSequence sequenceWithPlayer:player shardsA:shardsA shardsB:shardsB];
+    seqB = [CNBSequence sequenceWithPlayer:player shardsA:shardsA shardsB:shardsB];
     [self add:seqA];
     [self add:seqB];
     [seqA initSequence:seqB];
@@ -338,14 +338,14 @@ static CGRect pauseRect = { .origin = { .x = 0, .y = 0 },
     [self add:player];
     
     if (!([FlxG iPhone3G] || [FlxG iPhone1G] || [FlxG iPodTouch1G])) {
-        mg = [BG bgWithImage:ImgGirder1];
+        mg = [CNBBG bgWithImage:ImgGirder1];
         mg.random = YES;
         mg.x = 3000;
         mg.y = 0;
         mg.scrollFactor = CGPointMake(3, 0);
         [self add:mg];
     }
-    mg = [BG bgWithImage:nil];
+    mg = [CNBBG bgWithImage:nil];
     [mg createGraphicWithWidth:32 height:FlxG.height color:0x35353d];
     mg.enableBlend = NO;
     mg.random = YES;
@@ -354,7 +354,7 @@ static CGRect pauseRect = { .origin = { .x = 0, .y = 0 },
     mg.scrollFactor = CGPointMake(4, 0);
     [self add:mg];
     
-    dist = [HUD hudWithFrame:CGRectMake(FlxG.width-80-5,2+3,80,16)];
+    dist = [CNBHud hudWithFrame:CGRectMake(FlxG.width-80-5,2+3,80,16)];
     dist.scrollFactor = CGPointMake(0, 0);
     dist.distance = 0;
     [self add:dist];
@@ -492,7 +492,7 @@ static CGRect pauseRect = { .origin = { .x = 0, .y = 0 },
     }
     else
     {
-        Sequence* sq = (seqA.x < seqB.x)?seqA:seqB;
+        CNBSequence* sq = (seqA.x < seqB.x)?seqA:seqB;
         FlxEmitter* sh;
         if(shardsA.exists && shardsB.exists)
             sh = (shardsA.x > shardsB.x)?shardsA:shardsB;
@@ -524,7 +524,7 @@ static CGRect pauseRect = { .origin = { .x = 0, .y = 0 },
             }
             else {
                 //ran into the front of the sequence in question
-                Sequence * s;
+                CNBSequence * s;
                 if(seqA.x < seqB.x) s = seqA;
                 else s = seqB;
                 int type = [s getType];

@@ -1,5 +1,5 @@
 //
-//  HUD.h
+//  CNBHud.h
 //  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
@@ -13,16 +13,7 @@
 // THE SOFTWARE.
 //
 
-
-#define DIGITS (6)
-#define VERTEX_COUNT ((DIGITS+1)*4)
-
-@interface HUD : FlxSprite
-{
-  NSUInteger distance;
-  GLshort hudVerticesUVs[VERTEX_COUNT*4];
-}
-+ (id) hudWithFrame:(CGRect)frame;
-- (id) initWithFrame:(CGRect)frame;
+@interface CNBHud : FlxSprite
++ (instancetype) hudWithFrame:(CGRect)frame;
 @property NSUInteger distance;
 @end

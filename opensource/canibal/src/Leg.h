@@ -16,7 +16,7 @@
 #import <Foundation/Foundation.h>
 
 @class CNBPlayer;
-@class Sequence;
+@class CNBSequence;
 
 @interface Leg : FlxSprite
 {
@@ -24,12 +24,12 @@
   CNBPlayer * p;
   FlxEmitter * e;
   NSArray * en;
-  Sequence * s;
+  CNBSequence * s;
   FlxSprite * top;
 }
 
-+ (id) legWithOrigin:(CGPoint)origin player:(CNBPlayer *)player sequence:(Sequence *)sequence;
-- (id) initWithOrigin:(CGPoint)origin player:(CNBPlayer *)player sequence:(Sequence *)sequence;
++ (id) legWithOrigin:(CGPoint)origin player:(CNBPlayer *)player sequence:(CNBSequence *)sequence;
+- (id) initWithOrigin:(CGPoint)origin player:(CNBPlayer *)player sequence:(CNBSequence *)sequence;
 
 - (void) add:(FlxEmitter *)gibs;
 

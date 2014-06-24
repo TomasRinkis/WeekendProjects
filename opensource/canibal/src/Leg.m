@@ -15,7 +15,7 @@
 
 #import "Leg.h"
 #import "CNBPlayer.h"
-#import "Sequence.h"
+#import "CNBSequence.h"
 
 static NSString * ImgLeg = @"giant_leg_bottom.png";
 static NSString * ImgLegTop = @"giant_leg_top.png";
@@ -28,12 +28,12 @@ static NSString * SndBombExplode = @"bomb_explode.caf";
 
 @implementation Leg
 
-+ (id) legWithOrigin:(CGPoint)origin player:(CNBPlayer *)player sequence:(Sequence *)sequence
++ (id) legWithOrigin:(CGPoint)origin player:(CNBPlayer *)player sequence:(CNBSequence *)sequence
 {
   return [[[self alloc] initWithOrigin:origin player:player sequence:sequence] autorelease];
 }
 
-- (id) initWithOrigin:(CGPoint)Origin player:(CNBPlayer *)player sequence:(Sequence *)sequence
+- (id) initWithOrigin:(CGPoint)Origin player:(CNBPlayer *)player sequence:(CNBSequence *)sequence
 {
   if ([super initWithX:0 y:0 graphic:ImgLeg] == nil)
     return nil;

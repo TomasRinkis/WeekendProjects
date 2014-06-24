@@ -1,5 +1,5 @@
 //
-//  Sequence.h
+//  CNBSequence.h
 //  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
@@ -14,18 +14,18 @@
 //
 
 
-@class Sequence;
+@class CNBSequence;
 @class CNBPlayer;
 //@class RenderTexture;
 
 @class Crane;
-@class Building;
+@class CNBBuilding;
 @class Hall;
 @class Billboard;
 @class GibEmitter;
 @class DoveGroup;
 
-@interface Sequence : FlxObject
+@interface CNBSequence : FlxObject
 {
   //NSMutableArray * mBlocks;
   FlxGroup * blocks;
@@ -37,7 +37,7 @@
   FlxGroup * renderLayer;
   FlxGroup * backgroundRenderLayer;
   FlxGroup * layerLeg;
-  Sequence * seq;
+  CNBSequence * seq;
   CNBPlayer * player;
 //   NSArray * shardsA;
 //   NSArray * shardsB;
@@ -53,7 +53,7 @@
   NSArray * windows;
   NSArray * antennas;
 
-  Building * building;
+  CNBBuilding * building;
   
   FlxTileblock * escape;
   FlxTileblock * fence;
@@ -83,7 +83,7 @@
 - (void) aftermath;
 - (void) stomp;
 
-- (void) initSequence:(Sequence *)sequence;
+- (void) initSequence:(CNBSequence *)sequence;
 
 //@property (readonly) NSArray * blocks;
 @property (readonly) FlxGroup * blocks;
