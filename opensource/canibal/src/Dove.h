@@ -1,6 +1,6 @@
 //
 //  Dove.h
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -14,7 +14,7 @@
 //
 
 
-@class Player;
+@class CNBPlayer;
 
 typedef struct {
   GLshort p0[2];
@@ -47,7 +47,7 @@ typedef struct {
 
 @interface Dove : FlxObject
 {
-  Player * player;
+  CNBPlayer * player;
   CGFloat trigger;
   DoveGLData * glData;
   SemiSecretTexture * texture;
@@ -61,7 +61,7 @@ typedef struct {
   float frameTimer;
   BOOL finished;
 }
-@property (nonatomic,retain) Player * player;
+@property (nonatomic,retain) CNBPlayer * player;
 @property (nonatomic,assign) CGFloat trigger;
 - (void) play:(NSString *)animation;
 @end

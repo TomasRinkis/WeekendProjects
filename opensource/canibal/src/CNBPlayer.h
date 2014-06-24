@@ -1,6 +1,6 @@
 //
-//  MenuState.h
-//  Canabalt
+//  CNBPlayer.h
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -13,35 +13,14 @@
 // THE SOFTWARE.
 //
 
+@interface CNBPlayer : FlxSprite
 
-@interface MenuState : FlxState
-{
-  FlxSprite * title;
-  FlxSprite * title2;
-  FlxButton * about;
-  FlxButton * play;
-  int state;
-  int scoreState;
-  
-  FlxButton * back;
-  FlxSprite * bar;
-  FlxText * aboutTitle;
++ (instancetype) player;
 
-  FlxText * aboutText;
-
-  FlxText * thanksText;
-  NSArray * peopleTexts;
-  NSArray * reasonTexts;
-
-  FlxText * nowPlaying;
-  FlxText * danny;
-
-  NSMutableDictionary * moving;
-
-  BOOL touchBeganInMusic;
-  BOOL touchEndedInMusic;
-
-}
+@property CGFloat jumpLimit;
+@property BOOL stumble;
+@property BOOL craneFeet;
+@property (copy) NSString * epitaph;
+@property BOOL pause;
 
 @end
-

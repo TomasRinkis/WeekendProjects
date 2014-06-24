@@ -1,6 +1,6 @@
 //
 //  Sequence.m
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -14,7 +14,7 @@
 //
 
 #import "Sequence.h"
-#import "Player.h"
+#import "CNBPlayer.h"
 #import "CraneTrigger.h"
 #import "CBlock.h"
 #import "Dove.h"
@@ -86,8 +86,8 @@ static int thisType;
 
 @interface Sequence (Private)
 - (void) decorateSeqX:(CGFloat)seqX seqY:(CGFloat)seqY seqWidth:(CGFloat)seqWidth;
-- (void) setPlayer:(Player *)plr;
-- (Player *) player;
+- (void) setPlayer:(CNBPlayer *)plr;
+- (CNBPlayer *) player;
 - (void) setShardsA:(FlxEmitter *)shardsa;
 - (FlxEmitter *)shardsA;
 - (void) setShardsB:(FlxEmitter *)shardsb;
@@ -123,13 +123,13 @@ static Billboard * billboard = nil;
 - (int) lastType { return lastType; }
 - (int) thisType { return thisType; }
 
-- (void) setPlayer:(Player *)plr;
+- (void) setPlayer:(CNBPlayer *)plr;
 {
   [player autorelease];
   player = [plr retain];
 }
 
-- (Player *) player;
+- (CNBPlayer *) player;
 {
   return player;
 }
@@ -254,7 +254,7 @@ static Billboard * billboard = nil;
   }
 }
 
-+ (id) sequenceWithPlayer:(Player *)plr shardsA:(FlxEmitter *)shardsa shardsB:(FlxEmitter *)shardsb
++ (id) sequenceWithPlayer:(CNBPlayer *)plr shardsA:(FlxEmitter *)shardsa shardsB:(FlxEmitter *)shardsb
 {
   //return [[[self alloc] initWithPlayer:plr shardsA:shardsa shardsB:shardsb] autorelease];
   Sequence * ret = nil;
@@ -274,7 +274,7 @@ static Billboard * billboard = nil;
   return ret;
 }
 
-- (id) initWithPlayer:(Player *)plr shardsA:(FlxEmitter *)shardsa shardsB:(FlxEmitter *)shardsb
+- (id) initWithPlayer:(CNBPlayer *)plr shardsA:(FlxEmitter *)shardsa shardsB:(FlxEmitter *)shardsb
 {
   thisType = 0;
   lastType = 0;

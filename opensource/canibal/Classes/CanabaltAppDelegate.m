@@ -1,6 +1,6 @@
 //
 //  CanabaltAppDelegate.m
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -14,37 +14,44 @@
 //
 
 #import "CanabaltAppDelegate.h"
-#import "Canabalt.h"
+#import "CNBCanabaltGame.h"
 
 #import <SemiSecret/SemiSecretTexture.h>
 
 void preloadTextureAtlases()
 {
-  NSDictionary * infoDictionary = nil;
-  if (FlxG.iPad)
-    infoDictionary = [NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"iPadTextureAtlas.atlas"]];
-  else
-    infoDictionary = [NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"textureAtlas.atlas"]];
-
-  //can only contain NSData, NSDate, NSNumber, NSString, NSArray, and NSDictionary
-
-  NSDictionary * images = [infoDictionary objectForKey:@"images"];
-
-  for (NSString * image in images) {
-    NSDictionary * imageInfo = [images objectForKey:image];
-    CGRect placement;
-    placement.origin.x = [[imageInfo objectForKey:@"placement.origin.x"] floatValue];
-    placement.origin.y = [[imageInfo objectForKey:@"placement.origin.y"] floatValue];
-    placement.size.width = [[imageInfo objectForKey:@"placement.size.width"] floatValue];
-    placement.size.height = [[imageInfo objectForKey:@"placement.size.height"] floatValue];
-    NSString * atlas = [imageInfo objectForKey:@"atlas"];
-    SemiSecretTexture * textureAtlas = [FlxG addTextureWithParam1:atlas param2:NO];
-    SemiSecretTexture * texture = [SemiSecretTexture textureWithAtlasTexture:textureAtlas
-						     offset:placement.origin
-						     size:placement.size];
-    [FlxG setTexture:texture forKey:image];
-  }
-
+    NSDictionary * infoDictionary = nil;
+    
+    if (FlxG.iPad)
+    {
+        infoDictionary = [NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"iPadTextureAtlas.atlas"]];
+    }
+    else
+    {
+        infoDictionary = [NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"textureAtlas.atlas"]];
+    }
+    
+    //can only contain NSData, NSDate, NSNumber, NSString, NSArray, and NSDictionary
+    
+    NSDictionary * images = [infoDictionary objectForKey:@"images"];
+    
+    for (NSString * image in images)
+    {
+        NSDictionary * imageInfo = [images objectForKey:image];
+        CGRect placement;
+        placement.origin.x      = [[imageInfo objectForKey:@"placement.origin.x"] floatValue];
+        placement.origin.y      = [[imageInfo objectForKey:@"placement.origin.y"] floatValue];
+        placement.size.width    = [[imageInfo objectForKey:@"placement.size.width"] floatValue];
+        placement.size.height   = [[imageInfo objectForKey:@"placement.size.height"] floatValue];
+        NSString * atlas        = [imageInfo objectForKey:@"atlas"];
+        
+        SemiSecretTexture * textureAtlas = [FlxG addTextureWithParam1:atlas param2:NO];
+        
+        SemiSecretTexture * texture = [SemiSecretTexture textureWithAtlasTexture:textureAtlas
+                                                                          offset:placement.origin
+                                                                            size:placement.size];
+        [FlxG setTexture:texture forKey:image];
+    }
 }
 
 @implementation CanabaltAppDelegate
@@ -52,39 +59,39 @@ void preloadTextureAtlases()
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  
-  //in canabalt, we never want linear filtering (not even on ipad)
-  [SemiSecretTexture setTextureFilteringMode:SSTextureFilteringNearest];
-  
-  [application setStatusBarOrientation:UIInterfaceOrientationLandscapeRight
-	       animated:NO];
-
-  game = [[Canabalt alloc] init];
-
-  //preload textures here, now that opengl stuff should be created
-  preloadTextureAtlases();
-  
-  return YES;
+    
+    //in canabalt, we never want linear filtering (not even on ipad)
+    [SemiSecretTexture setTextureFilteringMode:SSTextureFilteringNearest];
+    
+    [application setStatusBarOrientation:UIInterfaceOrientationLandscapeRight
+                                animated:NO];
+    
+    game = [CNBCanabaltGame create];
+    
+    //preload textures here, now that opengl stuff should be created
+    preloadTextureAtlases();
+    
+    return YES;
 }
 
 - (void) applicationDidEnterBackground:(UIApplication *)application
 {
-  [FlxG didEnterBackground];
+    [FlxG didEnterBackground];
 }
 
 - (void) applicationWillEnterForeground:(UIApplication *)application
 {
-  [FlxG willEnterForeground];
+    [FlxG willEnterForeground];
 }
 
 - (void) applicationWillResignActive:(UIApplication *)application
 {
-  [FlxG willResignActive];
+    [FlxG willResignActive];
 }
 
 - (void) applicationDidBecomeActive:(UIApplication *)application
 {
-  [FlxG didBecomeActive];
+    [FlxG didBecomeActive];
 }
 
 - (void) applicationWillTerminate:(UIApplication *)application
@@ -93,8 +100,8 @@ void preloadTextureAtlases()
 
 - (void) dealloc
 {
-  [game release];
-  [super dealloc];
+    [game release];
+    [super dealloc];
 }
 
 @end

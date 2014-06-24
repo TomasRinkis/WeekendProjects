@@ -1,6 +1,6 @@
 //
 //  Dove.m
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -14,7 +14,7 @@
 //
 
 #import "Dove.h"
-#import "Player.h"
+#import "CNBPlayer.h"
 #import <SemiSecret/SemiSecretTexture.h>
 
 static NSString * ImgDove = @"dove.png";

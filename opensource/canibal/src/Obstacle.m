@@ -1,6 +1,6 @@
 //
 //  Obstacle.m
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -14,7 +14,7 @@
 //
 
 #import "Obstacle.h"
-#import "Player.h"
+#import "CNBPlayer.h"
 
 static NSString * ImgObstacles1 = @"obstacles.png";
 static NSString * ImgObstacles2 = @"obstacles2.png";
@@ -24,19 +24,19 @@ static NSString * SndOb3 = @"obstacle3.caf";
 
 @implementation Obstacle
 
-+ (id) obstacleWithOrigin:(CGPoint)Origin player:(Player *)player
++ (id) obstacleWithOrigin:(CGPoint)Origin player:(CNBPlayer *)player
 {
   return [[[self alloc] initWithOrigin:Origin player:player] autorelease];
 }
-+ (id) obstacleWithOrigin:(CGPoint)Origin player:(Player *)player alt:(BOOL)alt
++ (id) obstacleWithOrigin:(CGPoint)Origin player:(CNBPlayer *)player alt:(BOOL)alt
 {
   return [[[self alloc] initWithOrigin:Origin player:player alt:alt] autorelease];
 }
-- (id) initWithOrigin:(CGPoint)Origin player:(Player *)player
+- (id) initWithOrigin:(CGPoint)Origin player:(CNBPlayer *)player
 {
   return [self initWithOrigin:Origin player:player alt:NO];
 }
-- (id) initWithOrigin:(CGPoint)Origin player:(Player *)player alt:(BOOL)alt
+- (id) initWithOrigin:(CGPoint)Origin player:(CNBPlayer *)player alt:(BOOL)alt
 {
   if ((self = [super initWithX:Origin.x y:Origin.y graphic:nil])) {
 

@@ -1,6 +1,6 @@
 //
 //  Window.h
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -14,26 +14,26 @@
 //
 
 
-@class Player;
+@class CNBPlayer;
 
 extern const CGFloat WindowW;
 
 @interface Window : FlxSprite
 {
   FlxEmitter * shards;
-  Player * player;
+  CNBPlayer * player;
 }
 
 + (id) windowAtPoint:(CGPoint)point
 	      height:(CGFloat)height
 	       group:(FlxGroup *)group
-	      player:(Player *)plr
+	      player:(CNBPlayer *)plr
 	      shards:(FlxEmitter *)glassShards;
 //shards:(NSArray *)glassShards;
 - (id) initAtPoint:(CGPoint)point
 	    height:(CGFloat)height
 	     group:(FlxGroup *)group
-	    player:(Player *)plr
+	    player:(CNBPlayer *)plr
 	    shards:(FlxEmitter *)glassShards;
 //shards:(NSArray *)glassShards;
 

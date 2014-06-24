@@ -1,6 +1,6 @@
 //
-//  Player.h
-//  Canabalt
+//  CNBPlayState.h
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -13,29 +13,5 @@
 // THE SOFTWARE.
 //
 
-@interface Player : FlxSprite
-{
-  CGFloat jump;
-  CGFloat jumpLimit;
-  BOOL stumble;
-  CGFloat my;
-
-  CGFloat ft;
-  CGFloat fc;
-  NSArray * feet;
-  NSArray * feetC;
-  BOOL craneFeet;
-  NSString * epitaph;
-  BOOL pause;
-}
-
-+ (id) player;
-- (id) init;
-
-@property CGFloat jumpLimit;
-@property BOOL stumble;
-@property BOOL craneFeet;
-@property (copy) NSString * epitaph;
-@property BOOL pause;
-
+@interface CNBPlayState : FlxState
 @end

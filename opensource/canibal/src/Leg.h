@@ -1,6 +1,6 @@
 //
 //  Leg.h
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -15,21 +15,21 @@
 
 #import <Foundation/Foundation.h>
 
-@class Player;
+@class CNBPlayer;
 @class Sequence;
 
 @interface Leg : FlxSprite
 {
   CGFloat myY;
-  Player * p;
+  CNBPlayer * p;
   FlxEmitter * e;
   NSArray * en;
   Sequence * s;
   FlxSprite * top;
 }
 
-+ (id) legWithOrigin:(CGPoint)origin player:(Player *)player sequence:(Sequence *)sequence;
-- (id) initWithOrigin:(CGPoint)origin player:(Player *)player sequence:(Sequence *)sequence;
++ (id) legWithOrigin:(CGPoint)origin player:(CNBPlayer *)player sequence:(Sequence *)sequence;
+- (id) initWithOrigin:(CGPoint)origin player:(CNBPlayer *)player sequence:(Sequence *)sequence;
 
 - (void) add:(FlxEmitter *)gibs;
 

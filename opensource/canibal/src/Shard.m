@@ -1,6 +1,6 @@
 //
 //  Shard.m
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //

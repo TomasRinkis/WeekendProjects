@@ -1,6 +1,6 @@
 //
 //  Crane.m
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -72,7 +72,7 @@ static NSString * ImgCrane5 = @"crane5.png"; //pulley
   [super dealloc];
 }
 
-- (void) createWithX:(float)X y:(float)Y width:(float)Width height:(float)Height player:(Player *)player
+- (void) createWithX:(float)X y:(float)Y width:(float)Width height:(float)Height player:(CNBPlayer *)player
 {
   self.x = X;
   self.y = Y;

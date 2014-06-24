@@ -1,6 +1,6 @@
 //
 //  DemoMgr.m
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -14,18 +14,18 @@
 //
 
 #import "DemoMgr.h"
-#import "Player.h"
+#import "CNBPlayer.h"
 
 static NSString * SndCrumble = @"crumble.caf";
 
 @implementation DemoMgr
 
-+ (id) demoMgrWithX:(CGFloat)X player:(Player *)player children:(NSArray *)children
++ (id) demoMgrWithX:(CGFloat)X player:(CNBPlayer *)player children:(NSArray *)children
 {
   return [[[self alloc] initWithX:X player:player children:children] autorelease];
 }
 
-- (id) initWithX:(CGFloat)X player:(Player *)player children:(NSArray *)children
+- (id) initWithX:(CGFloat)X player:(CNBPlayer *)player children:(NSArray *)children
 {
   if ((self = [super initWithX:X y:0 width:0 height:0])) {
     p = [player retain];

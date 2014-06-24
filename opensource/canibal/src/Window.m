@@ -1,6 +1,6 @@
 //
 //  Window.m
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -14,7 +14,7 @@
 //
 
 #import "Window.h"
-#import "Player.h"
+#import "CNBPlayer.h"
 
 const CGFloat WindowW = 3.0;
 //static const CGFloat w = 3.0;
@@ -28,7 +28,7 @@ static NSString * SndWindow2 = @"window2.caf";
 + (id) windowAtPoint:(CGPoint)point
 	      height:(CGFloat)height
 	       group:(FlxGroup *)group
-	      player:(Player *)plr
+	      player:(CNBPlayer *)plr
 	      shards:(FlxEmitter *)glassShards;
 {
   return [[[self alloc] initAtPoint:point height:height group:group player:plr shards:glassShards] autorelease];
@@ -37,7 +37,7 @@ static NSString * SndWindow2 = @"window2.caf";
 - (id) initAtPoint:(CGPoint)point
 	    height:(CGFloat)Height
 	     group:(FlxGroup *)group
-	    player:(Player *)plr
+	    player:(CNBPlayer *)plr
 	    shards:(FlxEmitter *)glassShards;
 {
   if ((self = [super initWithX:point.x y:point.y-Height graphic:nil])) {

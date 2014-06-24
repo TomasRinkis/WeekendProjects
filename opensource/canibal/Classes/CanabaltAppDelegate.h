@@ -1,6 +1,6 @@
 //
 //  CanabaltAppDelegate.h
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -16,11 +16,11 @@
 #import <UIKit/UIKit.h>
 #import <Flixel/Flixel.h>
 
-@class Canabalt;
+@class CNBCanabaltGame;
 
 @interface CanabaltAppDelegate : NSObject <UIApplicationDelegate>
 {
-  Canabalt * game;
+  CNBCanabaltGame * game;
 }
 
 @end

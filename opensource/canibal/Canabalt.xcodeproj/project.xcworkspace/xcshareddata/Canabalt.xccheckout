@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>45C1F6FB-D8A4-419F-A090-65521BE86987</string>
+	<string>C9181DA5-53E7-4803-A05F-494BFCCC8144</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Canabalt</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>5B848AEB-F7D8-461E-AB60-25CD76BEE316</key>
-		<string>https://github.com/ericjohnson/canabalt-ios.git</string>
+		<key>2E94BEBE-4F27-493B-AB44-BEB714D26141</key>
+		<string>https://github.com/TomasRinkis/WeekendProjects.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Canabalt.xcodeproj/project.xcworkspace</string>
+	<string>opensource/canibal/Canabalt.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>5B848AEB-F7D8-461E-AB60-25CD76BEE316</key>
-		<string>../..</string>
+		<key>2E94BEBE-4F27-493B-AB44-BEB714D26141</key>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/ericjohnson/canabalt-ios.git</string>
+	<string>https://github.com/TomasRinkis/WeekendProjects.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>5B848AEB-F7D8-461E-AB60-25CD76BEE316</string>
+	<string>2E94BEBE-4F27-493B-AB44-BEB714D26141</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>5B848AEB-F7D8-461E-AB60-25CD76BEE316</string>
+			<string>2E94BEBE-4F27-493B-AB44-BEB714D26141</string>
 			<key>IDESourceControlWCCName</key>
-			<string>canibal</string>
+			<string>WeekendProjects</string>
 		</dict>
 	</array>
 </dict>

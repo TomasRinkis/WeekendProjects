@@ -1,6 +1,6 @@
 //
 //  Leg.m
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -14,7 +14,7 @@
 //
 
 #import "Leg.h"
-#import "Player.h"
+#import "CNBPlayer.h"
 #import "Sequence.h"
 
 static NSString * ImgLeg = @"giant_leg_bottom.png";
@@ -28,12 +28,12 @@ static NSString * SndBombExplode = @"bomb_explode.caf";
 
 @implementation Leg
 
-+ (id) legWithOrigin:(CGPoint)origin player:(Player *)player sequence:(Sequence *)sequence
++ (id) legWithOrigin:(CGPoint)origin player:(CNBPlayer *)player sequence:(Sequence *)sequence
 {
   return [[[self alloc] initWithOrigin:origin player:player sequence:sequence] autorelease];
 }
 
-- (id) initWithOrigin:(CGPoint)Origin player:(Player *)player sequence:(Sequence *)sequence
+- (id) initWithOrigin:(CGPoint)Origin player:(CNBPlayer *)player sequence:(Sequence *)sequence
 {
   if ([super initWithX:0 y:0 graphic:ImgLeg] == nil)
     return nil;

@@ -1,6 +1,6 @@
 //
 //  Bomb.m
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -14,7 +14,7 @@
 //
 
 #import "Bomb.h"
-#import "Player.h"
+#import "CNBPlayer.h"
 #import "Sequence.h"
 
 static NSString * ImgBomb = @"bomb.png";
@@ -25,12 +25,12 @@ static NSString * SndBombExplode = @"bomb_explode.caf";
 
 @implementation Bomb
 
-+ (id) bombWithOrigin:(CGPoint)origin player:(Player *)player gibs:(NSArray *)entry sequence:(Sequence *)sequence
++ (id) bombWithOrigin:(CGPoint)origin player:(CNBPlayer *)player gibs:(NSArray *)entry sequence:(Sequence *)sequence
 {
   return [[[self alloc] initWithOrigin:origin player:player gibs:entry sequence:sequence] autorelease];
 }
 
-- (id) initWithOrigin:(CGPoint)Origin player:(Player *)player gibs:(NSArray *)entry sequence:(Sequence *)sequence
+- (id) initWithOrigin:(CGPoint)Origin player:(CNBPlayer *)player gibs:(NSArray *)entry sequence:(Sequence *)sequence
 {
   if ((self = [super initWithX:0 y:0 graphic:ImgBomb])) {
 

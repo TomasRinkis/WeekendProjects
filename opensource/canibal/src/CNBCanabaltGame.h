@@ -1,6 +1,6 @@
 //
-//  Canabalt.h
-//  Canabalt
+//  CNBCanabaltGame.h
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -13,8 +13,6 @@
 // THE SOFTWARE.
 //
 
-@interface Canabalt : FlxGame
-{
-}
-- (id) init;
+@interface CNBCanabaltGame : FlxGame
++(instancetype) create;
 @end

@@ -1,6 +1,6 @@
 //
 //  Bomb.h
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -15,20 +15,20 @@
 
 #import <Foundation/Foundation.h>
 
-@class Player;
+@class CNBPlayer;
 @class Sequence;
 
 @interface Bomb : FlxSprite
 {
   CGFloat myY;
-  Player * p;
+  CNBPlayer * p;
   FlxEmitter * e;
   NSArray * en;
   Sequence * s;
 }
 
-+ (id) bombWithOrigin:(CGPoint)origin player:(Player *)player gibs:(NSArray *)entry sequence:(Sequence *)sequence;
-- (id) initWithOrigin:(CGPoint)origin player:(Player *)player gibs:(NSArray *)entry sequence:(Sequence *)sequence;
++ (id) bombWithOrigin:(CGPoint)origin player:(CNBPlayer *)player gibs:(NSArray *)entry sequence:(Sequence *)sequence;
+- (id) initWithOrigin:(CGPoint)origin player:(CNBPlayer *)player gibs:(NSArray *)entry sequence:(Sequence *)sequence;
 
 - (void) add:(FlxEmitter *)gibs;
 

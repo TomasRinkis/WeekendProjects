@@ -1,6 +1,6 @@
 //
 //  Crane.h
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -15,7 +15,7 @@
 
 @class CraneTrigger;
 @class CBlock;
-@class Player;
+@class CNBPlayer;
 
 @interface Crane : FlxObject
 {
@@ -30,6 +30,6 @@
   FlxSprite * antenna3;
 }
 - (id) initWithMaxWidth:(float)maxWidth;
-- (void) createWithX:(float)X y:(float)Y width:(float)Width height:(float)Height player:(Player *)player;
+- (void) createWithX:(float)X y:(float)Y width:(float)Width height:(float)Height player:(CNBPlayer *)player;
 @property (nonatomic,readonly) CraneTrigger * trigger;
 @end

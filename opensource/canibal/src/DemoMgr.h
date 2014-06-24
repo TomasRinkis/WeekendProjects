@@ -1,6 +1,6 @@
 //
 //  DemoMgr.h
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -14,16 +14,16 @@
 //
 
 
-@class Player;
+@class CNBPlayer;
 
 @interface DemoMgr : FlxObject
 {
   NSMutableArray * c;
-  Player * p;
+  CNBPlayer * p;
   BOOL go;
 }
-+ (id) demoMgrWithX:(CGFloat)x player:(Player *)player children:(NSArray *)children;
-- (id) initWithX:(CGFloat)x player:(Player *)player children:(NSArray *)children;
++ (id) demoMgrWithX:(CGFloat)x player:(CNBPlayer *)player children:(NSArray *)children;
+- (id) initWithX:(CGFloat)x player:(CNBPlayer *)player children:(NSArray *)children;
 - (void) add:(FlxObject *)object;
 
 @end

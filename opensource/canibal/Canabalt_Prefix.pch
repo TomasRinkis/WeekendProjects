@@ -1,6 +1,6 @@
 //
-//  Canabalt_Prefix.pch
-//  Canabalt
+//  CNBCanabaltGame_Prefix.pch
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -14,7 +14,7 @@
 //
 
 //
-// Prefix header for all source files of the 'Canabalt' target in the 'Canabalt' project
+// Prefix header for all source files of the 'CNBCanabaltGame' target in the 'CNBCanabaltGame' project
 //
 
 #import <Availability.h>

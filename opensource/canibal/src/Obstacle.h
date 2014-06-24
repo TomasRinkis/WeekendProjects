@@ -1,6 +1,6 @@
 //
 //  Obstacle.h
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -14,14 +14,14 @@
 //
 
 
-@class Player;
+@class CNBPlayer;
 
 @interface Obstacle : FlxManagedSprite
 {
-  Player * p;
+  CNBPlayer * p;
 }
-+ (id) obstacleWithOrigin:(CGPoint)origin player:(Player *)player;
-+ (id) obstacleWithOrigin:(CGPoint)origin player:(Player *)player alt:(BOOL)alt;
-- (id) initWithOrigin:(CGPoint)origin player:(Player *)player;
-- (id) initWithOrigin:(CGPoint)origin player:(Player *)player alt:(BOOL)alt;
++ (id) obstacleWithOrigin:(CGPoint)origin player:(CNBPlayer *)player;
++ (id) obstacleWithOrigin:(CGPoint)origin player:(CNBPlayer *)player alt:(BOOL)alt;
+- (id) initWithOrigin:(CGPoint)origin player:(CNBPlayer *)player;
+- (id) initWithOrigin:(CGPoint)origin player:(CNBPlayer *)player alt:(BOOL)alt;
 @end

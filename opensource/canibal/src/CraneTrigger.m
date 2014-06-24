@@ -1,6 +1,6 @@
 //
 //  CraneTrigger.m
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -14,15 +14,15 @@
 //
 
 #import "CraneTrigger.h"
-#import "Player.h"
+#import "CNBPlayer.h"
 
 @implementation CraneTrigger
 
-+ (id) craneTriggerWithFrame:(CGRect)f player:(Player *)plr
++ (id) craneTriggerWithFrame:(CGRect)f player:(CNBPlayer *)plr
 {
   return [[[self alloc] initWithFrame:f player:plr] autorelease];
 }
-- (id) initWithFrame:(CGRect)f player:(Player *)plr
+- (id) initWithFrame:(CGRect)f player:(CNBPlayer *)plr
 {
   if ((self = [super initWithX:f.origin.x y:f.origin.y width:f.size.width height:f.size.height])) {
     player = [plr retain];

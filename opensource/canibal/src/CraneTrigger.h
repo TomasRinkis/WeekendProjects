@@ -1,6 +1,6 @@
 //
 //  CraneTrigger.h
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -13,14 +13,14 @@
 // THE SOFTWARE.
 //
 
-@class Player;
+@class CNBPlayer;
 
 @interface CraneTrigger : FlxObject
 {
-  Player * player;
+  CNBPlayer * player;
 }
 
-+ (id) craneTriggerWithFrame:(CGRect)frame player:(Player *)player;
-- (id) initWithFrame:(CGRect)frame player:(Player *)player;
++ (id) craneTriggerWithFrame:(CGRect)frame player:(CNBPlayer *)player;
+- (id) initWithFrame:(CGRect)frame player:(CNBPlayer *)player;
 
 @end

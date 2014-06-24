@@ -1,6 +1,6 @@
 //
 //  Sequence.h
-//  Canabalt
+//  CNBCanabaltGame
 //
 //  Copyright Semi Secret Software 2009-2010. All rights reserved.
 //
@@ -15,7 +15,7 @@
 
 
 @class Sequence;
-@class Player;
+@class CNBPlayer;
 //@class RenderTexture;
 
 @class Crane;
@@ -38,7 +38,7 @@
   FlxGroup * backgroundRenderLayer;
   FlxGroup * layerLeg;
   Sequence * seq;
-  Player * player;
+  CNBPlayer * player;
 //   NSArray * shardsA;
 //   NSArray * shardsB;
   FlxEmitter * shardsA;
@@ -61,8 +61,8 @@
   DoveGroup * doveGroup;
 }
 
-+ (id) sequenceWithPlayer:(Player *)player shardsA:(FlxEmitter *)shardsA shardsB:(FlxEmitter *)shardsB;
-- (id) initWithPlayer:(Player *)player shardsA:(FlxEmitter *)shardsA shardsB:(FlxEmitter *)shardsB;
++ (id) sequenceWithPlayer:(CNBPlayer *)player shardsA:(FlxEmitter *)shardsA shardsB:(FlxEmitter *)shardsB;
+- (id) initWithPlayer:(CNBPlayer *)player shardsA:(FlxEmitter *)shardsA shardsB:(FlxEmitter *)shardsB;
 
 + (void) setNextIndex:(int)ni;
 + (void) setNextType:(int)nt;
