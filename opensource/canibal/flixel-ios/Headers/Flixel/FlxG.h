@@ -38,6 +38,9 @@
 @end
 
 
+/*
+ Orentations from game should be moved here
+ */
 
 @interface FlxG : NSObject
 {

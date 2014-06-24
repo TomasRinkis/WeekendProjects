@@ -18,6 +18,9 @@
 
 @class EAGLContext;
 
+/*
+ OpenGL view simmilar to GLKView, quite nice
+ */
 @interface FlxGLView : UIView {
   EAGLContext * context;
   GLuint renderBuffer;

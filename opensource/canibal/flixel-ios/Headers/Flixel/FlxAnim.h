@@ -13,6 +13,9 @@
 //  THE SOFTWARE.
 //
 
+/*
+ Shows sprites/frames in different sequesnces
+ */
 @interface FlxAnim : NSObject
 {
    NSString * name;

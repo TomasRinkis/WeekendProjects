@@ -15,6 +15,9 @@
 
 #import <Flixel/FlxRect.h>
 
+/*
+ Try to mada universal objec for all cases, preaty bad design couse of inheriting FlxRect
+ */
 @interface FlxObject : FlxRect <NSCopying>
 {
   BOOL exists;

@@ -17,6 +17,9 @@
 
 @class FlashFunction;
 
+/*
+ Same story as with Flash
+ */
 @interface FlxFade : FlxSprite
 {
   float _delay;

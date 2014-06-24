@@ -15,7 +15,9 @@
 
 #import <Flixel/FlxGroup.h>
 
-
+/*
+ Container of small sprites, nice!
+ */
 @interface FlxEmitter : FlxGroup
 {
   CGPoint minParticleSpeed;

@@ -15,6 +15,9 @@
 
 #import <Flixel/FlxSprite.h>
 
+/*
+ Better create animation, also inheritance FlxSprite used wrongly
+ */
 @interface FlxFlash : FlxSprite
 {
    float _delay;

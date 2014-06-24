@@ -20,6 +20,10 @@
 // unsigned int bgColor;
 
 //@interface FlxState : Sprite //why a subclass of Sprite? // -> because needs access to Sprite.parent??
+
+/*
+ State, handles update, render, contains group of FlxObjects
+ */
 @interface FlxState : NSObject
 {
   FlxGroup * defaultGroup;

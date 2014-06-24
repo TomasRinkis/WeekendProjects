@@ -15,6 +15,9 @@
 
 #import <Flixel/FlxObject.h>
 
+/*
+ OpenAL wrapper
+ */
 @interface FlxSound : FlxObject
 {
 //    BOOL survive;

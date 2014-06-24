@@ -13,6 +13,9 @@
 //  THE SOFTWARE.
 //
 
+/*
+ Nice!!!! Contains list of file names and data as map
+ */
 @interface FlxSave : NSObject
 {
   //Object * data;

@@ -21,6 +21,9 @@
 @class EAGLContext;
 @class UIWindow;
 
+/*
+ Holds states, but I have doubts if other stuff should be here
+ */
 typedef enum {
   FlxGameOrientationPortrait,
   FlxGameOrientationLandscape,

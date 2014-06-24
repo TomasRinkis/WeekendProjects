@@ -17,11 +17,14 @@
 
 @class FlxStaticBuckets;
 
+/*
+ NSMutableArray wrapper
+ */
 @interface FlxGroup : FlxObject
 {
-  NSMutableArray * members;
-  CGPoint _last;
-  BOOL _first;
+    NSMutableArray * members;
+    CGPoint _last;
+    BOOL _first;
 }
 @property(nonatomic,copy) NSMutableArray * members;
 // - (id) init;

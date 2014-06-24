@@ -14,7 +14,9 @@
 //
 
 #import <Flixel/FlxSprite.h>
-
+/*
+ No comments
+ */
 @interface FlxManagedSprite : FlxSprite
 {
   void * managedEntry;

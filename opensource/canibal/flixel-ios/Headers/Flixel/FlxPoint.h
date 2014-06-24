@@ -13,7 +13,9 @@
 //  THE SOFTWARE.
 //
 
-
+/*
+ Holds state for point
+ */
 @interface FlxPoint : NSObject //<NSCopying>
 {
   float x;

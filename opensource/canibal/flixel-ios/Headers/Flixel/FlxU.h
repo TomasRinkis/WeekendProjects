@@ -20,6 +20,9 @@
 // FlxQuadTree * quadTree;
 // FlxRect * quadTreeBounds;
 
+/*
+ Global object, contains utility methods, and configuration
+ */
 @interface NSArray (LengthProperty)
 @property(nonatomic,readonly) NSUInteger length;
 - (NSUInteger) indexOf:(id)object;

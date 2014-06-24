@@ -13,6 +13,9 @@
 //  THE SOFTWARE.
 //
 
+/*
+ Uses inner pattern for quake
+ */
 @interface FlxQuake : NSObject
 {
    float _zoom;

@@ -18,6 +18,9 @@
 @class FlxList;
 @class FlashFunction;
 
+/*
+ Recursive or not?
+ */
 @interface FlxQuadTree : FlxRect
 {
   BOOL _canSubdivide;

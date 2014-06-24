@@ -20,6 +20,9 @@
 @class FlashFunction;
 @class FlxPoint;
 
+/*
+ Holds states of button, don't like inheritance usage here
+ */
 @interface FlxButton : FlxGroup
 {
    BOOL _onToggle;

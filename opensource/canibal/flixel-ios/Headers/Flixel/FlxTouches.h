@@ -13,6 +13,9 @@
 //  THE SOFTWARE.
 //
 
+/*
+ Handles screen touches
+ */
 @class UITouch;
 
 @interface FlxTouches : NSObject

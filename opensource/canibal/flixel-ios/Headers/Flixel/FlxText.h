@@ -17,6 +17,9 @@
 
 @class SemiSecretText;
 
+/*
+ Based on sprite, contains info about text
+ */
 @interface FlxText : FlxSprite
 {
   SemiSecretText * sstext;

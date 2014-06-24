@@ -15,6 +15,9 @@
 
 #import <Flixel/FlxPoint.h>
 
+/*
+ Tottaly bad design :(
+ */
 @interface FlxRect : FlxPoint
 {
    float width;

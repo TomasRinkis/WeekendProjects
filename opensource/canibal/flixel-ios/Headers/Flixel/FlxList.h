@@ -15,6 +15,9 @@
 
 @class FlxObject;
 
+/*
+ Linked list
+ */
 @interface FlxList : NSObject
 {
    FlxObject * object;

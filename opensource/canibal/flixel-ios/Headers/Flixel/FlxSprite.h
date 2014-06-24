@@ -25,7 +25,9 @@ const unsigned int DOWN;
 @class SemiSecretTexture;
 @class FlxAnim;
 
-
+/*
+ In other words texture, uses openGL for rendering
+ */
 @interface FlxSprite : FlxObject
 {
   CGPoint offset;
