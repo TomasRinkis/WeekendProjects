@@ -225,7 +225,7 @@ NSString *WDShadowKey = @"WDShadowKey";
 
 - (void) adjustColor:(WDColor * (^)(WDColor *color))adjustment scope:(WDColorAdjustmentScope)scope
 {
-    if (self.shadow && scope & WDColorAdjustShadow) {
+    if (self.shadow && scope & WDColorAdjustShadowFlag) {
         if (!self.initialShadow) {
             self.initialShadow = self.shadow;
         }
@@ -304,7 +304,7 @@ NSString *WDShadowKey = @"WDShadowKey";
     [[NSNotificationCenter defaultCenter] postNotificationName:WDElementChanged object:self.drawing userInfo:userInfo];
 }
 
-- (NSSet *) alignToRect:(CGRect)rect alignment:(WDAlignment)align
+- (NSSet *) alignToRect:(CGRect)rect alignment:(WDAlignmentMode)align
 {
     CGRect              bounds = [self bounds];
     CGAffineTransform	translate = CGAffineTransformIdentity;
@@ -315,22 +315,22 @@ NSString *WDShadowKey = @"WDShadowKey";
     CGPoint             bottomRight = CGPointMake(CGRectGetMaxX(rect), CGRectGetMaxY(rect));
     
     switch(align) {
-        case WDAlignLeft:
+        case WDAlignLeftFlag:
             translate = CGAffineTransformMakeTranslation(topLeft.x - CGRectGetMinX(bounds), 0.0f);
             break;
-        case WDAlignCenter:
+        case WDAlignCenterFlag:
             translate = CGAffineTransformMakeTranslation(rectCenter.x - center.x, 0.0f);
             break;
-        case WDAlignRight:
+        case WDAlignRightFlag:
             translate = CGAffineTransformMakeTranslation(bottomRight.x - CGRectGetMaxX(bounds), 0.0f);
             break;
-        case WDAlignTop:
+        case WDAlignTopFlag:
             translate = CGAffineTransformMakeTranslation(0.0f, topLeft.y - CGRectGetMinY(bounds));  
             break;
-        case WDAlignMiddle:
+        case WDAlignMiddleFlag:
             translate = CGAffineTransformMakeTranslation(0.0f, rectCenter.y - center.y);
             break;
-        case WDAlignBottom:          
+        case WDAlignBottomFlag:          
             translate = CGAffineTransformMakeTranslation(0.0f, bottomRight.y - CGRectGetMaxY(bounds));
             break;
     }

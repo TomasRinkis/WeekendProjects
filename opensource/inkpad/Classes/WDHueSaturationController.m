@@ -35,7 +35,7 @@
     [self.drawingController adjustColor:^(WDColor *color) { return [color adjustHue:hueShift_
                                                                     saturation:saturationShift_
                                                                     brightness:brightnessShift_]; }
-                             scope:(WDColorAdjustStroke | WDColorAdjustFill | WDColorAdjustShadow)];
+                             scope:(WDColorAdjustStrokeFlag | WDColorAdjustFillFlag | WDColorAdjustShadowFlag)];
 
 }
 

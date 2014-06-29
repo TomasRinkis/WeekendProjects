@@ -21,19 +21,22 @@
 #import <OpenGL/gl.h>
 #endif
 
-typedef enum {
-    WDAlignLeft,
-    WDAlignCenter,
-    WDAlignRight,
-    WDAlignTop,
-    WDAlignMiddle,
-    WDAlignBottom
-} WDAlignment;
+typedef enum
+{
+    WDAlignLeftFlag,
+    WDAlignCenterFlag,
+    WDAlignRightFlag,
+    WDAlignTopFlag,
+    WDAlignMiddleFlag,
+    WDAlignBottomFlag
+} WDAlignmentMode;
 
-typedef enum {
-    WDColorAdjustStroke = 1 << 0,
-    WDColorAdjustFill   = 1 << 1,
-    WDColorAdjustShadow = 1 << 2
+typedef enum
+{
+    WDColorAdjustStrokeFlag = 1 << 0,
+    WDColorAdjustFillFlag   = 1 << 1,
+    WDColorAdjustShadowFlag = 1 << 2
+
 } WDColorAdjustmentScope;
 
 @class WDGroup;
@@ -91,7 +94,7 @@ typedef enum {
 - (NSSet *) transform:(CGAffineTransform)transform;
 - (void) adjustColor:(WDColor * (^)(WDColor *color))adjustment scope:(WDColorAdjustmentScope)scope;
 
-- (NSSet *) alignToRect:(CGRect)rect alignment:(WDAlignment)align;
+- (NSSet *) alignToRect:(CGRect)rect alignment:(WDAlignmentMode)align;
 
 - (WDPickResult *) hitResultForPoint:(CGPoint)pt viewScale:(float)viewScale snapFlags:(int)flags;
 - (WDPickResult *) snappedPoint:(CGPoint)pt viewScale:(float)viewScale snapFlags:(int)flags;

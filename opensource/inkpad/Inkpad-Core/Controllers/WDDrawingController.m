@@ -1353,7 +1353,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     [self transformSelection:lastAppliedTransform_];
 }
 
-- (void) align:(WDAlignment)alignment
+- (void) align:(WDAlignmentMode)alignment
 {
     CGRect      selectionBounds;
     
@@ -1790,7 +1790,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 {
     for (WDElement *element in [self selectedObjects]) {
         [element adjustColor:^(WDColor *color) { return [color adjustHue:0 saturation:(-1.0f) brightness:0]; }
-                       scope:(WDColorAdjustFill | WDColorAdjustStroke | WDColorAdjustShadow)];
+                       scope:(WDColorAdjustFillFlag | WDColorAdjustStrokeFlag | WDColorAdjustShadowFlag)];
         [element tossCachedColorAdjustmentData];
     }
 }
@@ -1799,7 +1799,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 {
     for (WDElement *element in [self selectedObjects]) {
         [element adjustColor:^(WDColor *color) { return [color inverted]; }
-                       scope:(WDColorAdjustFill | WDColorAdjustStroke | WDColorAdjustShadow)];
+                       scope:(WDColorAdjustFillFlag | WDColorAdjustStrokeFlag | WDColorAdjustShadowFlag)];
         [element tossCachedColorAdjustmentData];
     }
 }

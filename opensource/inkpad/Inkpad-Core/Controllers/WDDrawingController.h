@@ -127,7 +127,7 @@
 - (void) transformSelection:(CGAffineTransform)transform;
 - (void) transformAgain:(id)sender;
 
-- (void) align:(WDAlignment)alignment;
+- (void) align:(WDAlignmentMode)alignment;
 
 - (void) flipHorizontally:(id)sender;
 - (void) flipVertically:(id)sender;

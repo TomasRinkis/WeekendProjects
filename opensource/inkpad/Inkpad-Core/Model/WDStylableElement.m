@@ -476,14 +476,14 @@ NSString *WDMaskedElementsKey = @"WDMaskedElementsKey";
 
 - (void) adjustColor:(WDColor * (^)(WDColor *color))adjustment scope:(WDColorAdjustmentScope)scope
 {
-    if (self.fill && scope & WDColorAdjustFill) {
+    if (self.fill && scope & WDColorAdjustFillFlag) {
         if (!self.initialFill) {
             self.initialFill = self.fill;
         }
         self.fill = [self.initialFill adjustColor:adjustment];
     }
     
-    if (self.strokeStyle && scope & WDColorAdjustStroke) {
+    if (self.strokeStyle && scope & WDColorAdjustStrokeFlag) {
         if (!self.initialStroke) {
             self.initialStroke = self.strokeStyle;
         }

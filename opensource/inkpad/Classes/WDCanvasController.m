@@ -432,19 +432,19 @@
         item = [WDMenuItem itemWithTitle:NSLocalizedString(@"Align Left", @"Align Left")
                                    image:[UIImage imageNamed:@"align_left.png"]
                                   action:@selector(align:) target:self];
-        item.tag = WDAlignLeft;
+        item.tag = WDAlignLeftFlag;
         [menus addObject:item];
         
         item = [WDMenuItem itemWithTitle:NSLocalizedString(@"Align Center", @"Align Center")
                                    image:[UIImage imageNamed:@"align_center.png"]
                                   action:@selector(align:) target:self];
-        item.tag = WDAlignCenter;
+        item.tag = WDAlignCenterFlag;
         [menus addObject:item];
         
         item = [WDMenuItem itemWithTitle:NSLocalizedString(@"Align Right", @"Align Right")
                                    image:[UIImage imageNamed:@"align_right.png"]
                                   action:@selector(align:) target:self];
-        item.tag = WDAlignRight;
+        item.tag = WDAlignRightFlag;
         [menus addObject:item];
         
         [menus addObject:[WDMenuItem separatorItem]];
@@ -452,19 +452,19 @@
         item = [WDMenuItem itemWithTitle:NSLocalizedString(@"Align Top", @"Align Top")
                                    image:[UIImage imageNamed:@"align_top.png"]
                                   action:@selector(align:) target:self];
-        item.tag = WDAlignTop;
+        item.tag = WDAlignTopFlag;
         [menus addObject:item];
         
         item = [WDMenuItem itemWithTitle:NSLocalizedString(@"Align Middle", @"Align Middle")
                                    image:[UIImage imageNamed:@"align_middle.png"]
                                   action:@selector(align:) target:self];
-        item.tag = WDAlignMiddle;
+        item.tag = WDAlignMiddleFlag;
         [menus addObject:item];
         
         item = [WDMenuItem itemWithTitle:NSLocalizedString(@"Align Bottom", @"Align Bottom")
                                    image:[UIImage imageNamed:@"align_bottom.png"]
                                   action:@selector(align:) target:self];
-        item.tag = WDAlignBottom;
+        item.tag = WDAlignBottomFlag;
         [menus addObject:item];
         
         arrangeMenu_ = [[WDMenu alloc] initWithItems:menus];
@@ -822,7 +822,7 @@
 
 - (void) align:(id)sender
 {
-    WDAlignment alignment = ((WDMenuItem *)sender).tag;
+    WDAlignmentMode alignment = ((WDMenuItem *)sender).tag;
     [self.drawingController align:alignment];
 }
 

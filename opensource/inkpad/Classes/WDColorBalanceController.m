@@ -36,7 +36,7 @@
     [self.drawingController adjustColor:^(WDColor *color) { return [color colorBalanceRed:redShift_
                                                                                green:greenShift_
                                                                                 blue:blueShift_]; }
-                             scope:(WDColorAdjustStroke | WDColorAdjustFill | WDColorAdjustShadow)];
+                             scope:(WDColorAdjustStrokeFlag | WDColorAdjustFillFlag | WDColorAdjustShadowFlag)];
 }
 
 - (void) takeShiftFrom:(WDColorSlider *)sender

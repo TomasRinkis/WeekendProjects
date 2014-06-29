@@ -1011,7 +1011,7 @@ NSString *WDClosedKey = @"WDClosedKey";
     return YES;
 }
 
-- (NSSet *) alignToRect:(CGRect)rect alignment:(WDAlignment)align
+- (NSSet *) alignToRect:(CGRect)rect alignment:(WDAlignmentMode)align
 {
     if (![self anyNodesSelected]) {
         return [super alignToRect:rect alignment:align];
@@ -1027,22 +1027,22 @@ NSString *WDClosedKey = @"WDClosedKey";
     for (WDBezierNode *node in nodes_) {
         if (node.selected) {
             switch(align) {
-                case WDAlignLeft:
+                case WDAlignLeftFlag:
                     translate = CGAffineTransformMakeTranslation(topLeft.x - node.anchorPoint.x, 0.0f);
                     break;
-                case WDAlignCenter:
+                case WDAlignCenterFlag:
                     translate = CGAffineTransformMakeTranslation(rectCenter.x - node.anchorPoint.x, 0.0f);
                     break;
-                case WDAlignRight:
+                case WDAlignRightFlag:
                     translate = CGAffineTransformMakeTranslation(bottomRight.x - node.anchorPoint.x, 0.0f);
                     break;
-                case WDAlignTop:
+                case WDAlignTopFlag:
                     translate = CGAffineTransformMakeTranslation(0.0f, topLeft.y - node.anchorPoint.y);  
                     break;
-                case WDAlignMiddle:
+                case WDAlignMiddleFlag:
                     translate = CGAffineTransformMakeTranslation(0.0f, rectCenter.y - node.anchorPoint.y);
                     break;
-                case WDAlignBottom:          
+                case WDAlignBottomFlag:
                     translate = CGAffineTransformMakeTranslation(0.0f, bottomRight.y - node.anchorPoint.y);
                     break;
             }
