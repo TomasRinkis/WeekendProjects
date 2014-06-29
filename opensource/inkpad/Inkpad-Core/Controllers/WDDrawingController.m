@@ -18,7 +18,7 @@
 #import "UIImage+Additions.h"
 #import "WDBezierNode.h"
 #import "WDColor.h"
-#import "WDCompoundPath.h"
+#import "WDCompoundPathElement.h"
 #import "WDDrawingController.h"
 #import "WDDynamicGuideController.h"
 #import "WDFontManager.h"
@@ -29,7 +29,7 @@
 #import "WDPathfinder.h"
 #import "WDPropertyManager.h"
 #import "WDText.h"
-#import "WDTextPath.h"
+#import "WDTextPathElement.h"
 #import "WDUtilities.h"
 
 const float kDuplicateOffset = 20.0f;
@@ -156,7 +156,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     
     NSDictionary *selectionState = @{@"selection": currentSelection,
                                      @"node selection": currentNodeSelection,
-                                     @"active path": (self.activePath ? self.activePath : (WDPath *) [NSNull null]),
+                                     @"active path": (self.activePath ? self.activePath : (WDPathElement *) [NSNull null]),
                                      @"active layer": drawing_.activeLayer};
     
     return selectionState;
@@ -324,7 +324,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     return nil;
 }
 
-- (BOOL) allSiblingsSelected:(WDPath *)path
+- (BOOL) allSiblingsSelected:(WDPathElement *)path
 {
     if (!path.superpath) {
         return NO;
@@ -390,8 +390,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (BOOL) isSelectedOrSubelementIsSelected:(WDElement *)element
 {
-    if ([element isKindOfClass:[WDCompoundPath class]]) {
-        WDCompoundPath  *cp = (WDCompoundPath *) element;
+    if ([element isKindOfClass:[WDCompoundPathElement class]]) {
+        WDCompoundPathElement  *cp = (WDCompoundPathElement *) element;
         NSSet           *subpaths = [NSSet setWithArray:cp.subpaths];
         
         if ([subpaths intersectsSet:selectedObjects_]) {
@@ -429,7 +429,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     NSMutableSet *selectedPaths = [NSMutableSet set];
     
     for (WDElement *element in self.selectedObjects) {
-        if ([element isKindOfClass:[WDPath class]]) {
+        if ([element isKindOfClass:[WDPathElement class]]) {
             [selectedPaths addObject:element];
         }
     }
@@ -439,7 +439,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (BOOL) allSelectedObjectsAreRootObjects
 {
-    for (WDPath *path in self.selectedPaths) {
+    for (WDPathElement *path in self.selectedPaths) {
         if (path.superpath) {
             return NO;
         }
@@ -464,20 +464,20 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (void) selectObject:(WDElement *)element
 {
-    if ([element isKindOfClass:[WDCompoundPath class]])
+    if ([element isKindOfClass:[WDCompoundPathElement class]])
     {
         // if the compound path is selected, its subpaths ain't
-        for (WDPath *path in ((WDCompoundPath *)element).subpaths)
+        for (WDPathElement *path in ((WDCompoundPathElement *)element).subpaths)
         {
             [selectedObjects_ removeObject:path];
         }
-    } else if ([element isKindOfClass:[WDPath class]] && [self allSiblingsSelected:(WDPath *)element])
+    } else if ([element isKindOfClass:[WDPathElement class]] && [self allSiblingsSelected:(WDPathElement *)element])
     {
         // We're selecting the final path in a compound path, which means the compound path should be selected
         // and not its subpaths. This is similar to the above case...
-        element = ((WDPath *) element).superpath;
+        element = ((WDPathElement *) element).superpath;
         
-        for (WDPath *path in ((WDCompoundPath *)element).subpaths)
+        for (WDPathElement *path in ((WDCompoundPathElement *)element).subpaths)
         {
             [selectedObjects_ removeObject:path];
         }
@@ -503,10 +503,10 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (void) deselectObjectAndSubelements:(WDElement *)element
 {
-    if ([element isKindOfClass:[WDCompoundPath class]]) {
-        WDCompoundPath  *cp = (WDCompoundPath *) element;
+    if ([element isKindOfClass:[WDCompoundPathElement class]]) {
+        WDCompoundPathElement  *cp = (WDCompoundPathElement *) element;
         
-        for (WDPath *sp in cp.subpaths) {
+        for (WDPathElement *sp in cp.subpaths) {
             [self deselectObject:sp];
         }
     }
@@ -535,8 +535,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     [self deselectAllNodes];
     
     // if a single path is selected, select the nodes inside the marquee
-    WDPath *singlePath = (WDPath *) [self singleSelection];
-    if ([singlePath isKindOfClass:[WDPath class]]) {
+    WDPathElement *singlePath = (WDPathElement *) [self singleSelection];
+    if ([singlePath isKindOfClass:[WDPathElement class]]) {
         [self setSelectedNodesFromSet:[singlePath nodesInRect:rect]];
         
         // TODO: act as if we tapped the fill, or show node handles?
@@ -623,16 +623,16 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     self.activePath = nil;
     
     for (WDElement *element in self.selectedObjects) {
-        WDPath *path = (WDPath *) element;
+        WDPathElement *path = (WDPathElement *) element;
         
-        if ([path isKindOfClass:[WDPath class]] && path.superpath) {
-            WDCompoundPath *superpath = path.superpath;
+        if ([path isKindOfClass:[WDPathElement class]] && path.superpath) {
+            WDCompoundPathElement *superpath = path.superpath;
             
             [superpath removeSubpath:path];
             
             if (superpath.subpaths.count == 1) {
                 // down to one remaining subpath path, release it
-                WDPath *lastPath = [superpath.subpaths lastObject];
+                WDPathElement *lastPath = [superpath.subpaths lastObject];
                 
                 lastPath.superpath = nil;
                 lastPath.strokeStyle = superpath.strokeStyle;
@@ -850,17 +850,17 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     self.activePath = nil;
     
     for (WDElement *element in [self orderedSelectedObjects]) {
-        if (![element isKindOfClass:[WDAbstractPath class]]) {
+        if (![element isKindOfClass:[WDAbstractPathElement class]]) {
             continue;
         }
         
-        WDAbstractPath *path = (WDAbstractPath *) element;
+        WDAbstractPathElement *path = (WDAbstractPathElement *) element;
         
         if (![path canOutlineStroke]) {
             continue;
         }
         
-        WDAbstractPath *outline = [path outlineStroke];
+        WDAbstractPathElement *outline = [path outlineStroke];
         
         if (outline) {
             outline.fill = path.strokeStyle.color;
@@ -885,8 +885,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     }
     
     NSArray *ordered = [self orderedSelectedObjects];
-    WDPath  *topPath = [ordered lastObject]; // topObject
-    WDPath  *pathToAppend = ordered[0];
+    WDPathElement  *topPath = [ordered lastObject]; // topObject
+    WDPathElement  *pathToAppend = ordered[0];
     
     [topPath appendPath:pathToAppend]; 
     
@@ -895,7 +895,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     [self selectObject:topPath];
 }
 
-- (void) setActivePath:(WDPath *)path
+- (void) setActivePath:(WDPathElement *)path
 {
     if ([path isEqual:[NSNull null]]) {
         activePath_ = nil;
@@ -966,18 +966,18 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     NSMutableArray  *objects = [self orderedSelectedObjects];
     NSMutableArray  *paths = [NSMutableArray array];
     
-    WDCompoundPath *path = [[WDCompoundPath alloc] init];
+    WDCompoundPathElement *path = [[WDCompoundPathElement alloc] init];
     
-    WDPath *topObject = (WDPath *) [objects lastObject];
+    WDPathElement *topObject = (WDPathElement *) [objects lastObject];
     [topObject.layer insertObject:path above:topObject];
     
     [path takeStylePropertiesFrom:topObject];
     
     for (WDElement *element in objects) {
-        if ([element isKindOfClass:[WDPath class]]) {
+        if ([element isKindOfClass:[WDPathElement class]]) {
             [paths addObject:element];
         } else {
-            [paths addObjectsFromArray:((WDCompoundPath *)element).subpaths];
+            [paths addObjectsFromArray:((WDCompoundPathElement *)element).subpaths];
         }
     }
     
@@ -989,7 +989,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     path.subpaths = paths;
 }
 
-- (void) releaseCompoundPathObject:(WDCompoundPath *)cp
+- (void) releaseCompoundPathObject:(WDCompoundPathElement *)cp
 {
     if (cp.maskedElements) {
         [self releaseMaskedObject:cp];
@@ -997,7 +997,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     
     NSMutableArray *subpaths = cp.subpaths;
     
-    for (WDPath *path in subpaths) {
+    for (WDPathElement *path in subpaths) {
         path.superpath = nil;
         
         [path takeStylePropertiesFrom:cp];
@@ -1016,8 +1016,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     NSMutableArray *objects = [self orderedSelectedObjects];
     
     for (WDElement *element in objects) {
-        if ([element isKindOfClass:[WDCompoundPath class]]) {
-            [self releaseCompoundPathObject:(WDCompoundPath *)element];
+        if ([element isKindOfClass:[WDCompoundPathElement class]]) {
+            [self releaseCompoundPathObject:(WDCompoundPathElement *)element];
         }
     }
 }
@@ -1028,7 +1028,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 - (void) makeMask:(id)sender
 {
     NSMutableArray  *objects = [self orderedSelectedObjects];
-    WDAbstractPath  *maskingPath = [objects lastObject];
+    WDAbstractPathElement  *maskingPath = [objects lastObject];
     
     [objects removeLastObject];
     maskingPath.maskedElements = objects;
@@ -1077,7 +1077,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 {
     NSMutableArray  *objects = [self orderedSelectedObjects];
     
-    WDAbstractPath *result = [WDPathfinder combinePaths:objects operation:op];
+    WDAbstractPathElement *result = [WDPathfinder combinePaths:objects operation:op];
     
     if (result) {
         result.fill = [propertyManager_ activeFillStyle];
@@ -1109,9 +1109,9 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 - (void) subtractPaths:(id)sender
 {
     NSMutableArray  *objects = [self orderedSelectedObjects];
-    WDAbstractPath  *bottommost = objects[0];
+    WDAbstractPathElement  *bottommost = objects[0];
     
-    WDAbstractPath *result = [WDPathfinder combinePaths:objects operation:WDPathFinderSubtract];
+    WDAbstractPathElement *result = [WDPathfinder combinePaths:objects operation:WDPathFinderSubtract];
     
     if (result) {
         result.fill = bottommost.fill;
@@ -1132,7 +1132,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     }
 }
 
-- (void) eraseWithPath:(WDAbstractPath *)erasePath
+- (void) eraseWithPath:(WDAbstractPathElement *)erasePath
 {
     NSMutableArray  *objectsToErase = [NSMutableArray array];
     
@@ -1162,12 +1162,12 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         }
     }
     
-    for (WDAbstractPath *ap in objectsToErase) {
+    for (WDAbstractPathElement *ap in objectsToErase) {
         NSArray *result = [ap erase:erasePath];
         
         // if there's anything left, add it to the layer
         if (result) {
-            for (WDAbstractPath *resultPath in result) {
+            for (WDAbstractPathElement *resultPath in result) {
                 [ap.layer insertObject:resultPath above:ap];
             }
         }
@@ -1191,8 +1191,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     NSMutableArray  *objects = [self orderedSelectedObjects];
     WDElement       *topObject = [objects lastObject];
     
-    WDAbstractPath *exclusion = [WDPathfinder combinePaths:objects operation:WDPathFinderExclude];
-    WDAbstractPath *intersection = [WDPathfinder combinePaths:objects operation:WDPathfinderIntersect];
+    WDAbstractPathElement *exclusion = [WDPathfinder combinePaths:objects operation:WDPathFinderExclude];
+    WDAbstractPathElement *intersection = [WDPathfinder combinePaths:objects operation:WDPathfinderIntersect];
     
     if (exclusion) {
         exclusion.fill = [propertyManager_ activeFillStyle];
@@ -1543,7 +1543,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     [self selectObject:text];
 }
 
-- (WDTextPath *) placeTextOnPath:(id)sender shouldStartEditing:(BOOL *)startEditing
+- (WDTextPathElement *) placeTextOnPath:(id)sender shouldStartEditing:(BOOL *)startEditing
 {
     if (![self canPlaceTextOnPath]) {
         return nil;
@@ -1552,8 +1552,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     // be sure to end any active path editing
     self.activePath = nil;
     
-    WDPath          *path = nil;
-    WDTextPath      *typePath = nil;
+    WDPathElement          *path = nil;
+    WDTextPathElement      *typePath = nil;
     WDText          *text = nil;
     NSArray         *orderedSelection = [self orderedSelectedObjects];
     
@@ -1562,8 +1562,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     
     // see if we're in the path+text or path only case
     if (self.selectedObjects.count == 1) {
-        path = (WDPath *) [orderedSelection lastObject];
-        typePath = [WDTextPath textPathWithPath:path];
+        path = (WDPathElement *) [orderedSelection lastObject];
+        typePath = [WDTextPathElement textPathWithPath:path];
         
         typePath.text = @"Text";
         typePath.fontName = [propertyManager_ defaultValueForProperty:WDFontNameProperty];
@@ -1579,15 +1579,15 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         
         *startEditing = YES;
     } else { // path and text object selected
-        if ([orderedSelection[0] isKindOfClass:[WDPath class]]) {
-            path = (WDPath *) orderedSelection[0];
+        if ([orderedSelection[0] isKindOfClass:[WDPathElement class]]) {
+            path = (WDPathElement *) orderedSelection[0];
             text = (WDText *) orderedSelection[1];
         } else {
-            path = (WDPath *) orderedSelection[1];
+            path = (WDPathElement *) orderedSelection[1];
             text = (WDText *) orderedSelection[0];
         }
         
-        typePath = [WDTextPath textPathWithPath:path];
+        typePath = [WDTextPathElement textPathWithPath:path];
         typePath.text = text.text;
         typePath.fontName = text.fontName;
         typePath.fontSize = text.fontSize;
@@ -1620,7 +1620,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
             WDText *text = (WDText *) element;
             paths = [text outlines];
             
-            for (WDAbstractPath *path in paths) {
+            for (WDAbstractPathElement *path in paths) {
                 path.fill = text.fill;
                 path.fillTransform = text.fillTransform;
                 path.strokeStyle = text.strokeStyle;
@@ -1640,7 +1640,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 {
     for (WDElement *element in selectedObjects_) {
         if ([element conformsToProtocol:@protocol(WDTextRenderer)] && [element respondsToSelector:@selector(resetTransform)]) {
-            WDTextPath *textPath =  (WDTextPath *) element;
+            WDTextPathElement *textPath =  (WDTextPathElement *) element;
             [textPath resetTransform];
         }
     }
@@ -2009,8 +2009,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     }
     
     for (WDElement *element in selectedObjects_) {
-        WDPath *path = (WDPath *) element;
-        if (![path isKindOfClass:[WDPath class]] || path.superpath || path.closed || [path conformsToProtocol:@protocol(WDTextRenderer)]) {
+        WDPathElement *path = (WDPathElement *) element;
+        if (![path isKindOfClass:[WDPathElement class]] || path.superpath || path.closed || [path conformsToProtocol:@protocol(WDTextRenderer)]) {
             return NO;
         }
     }
@@ -2024,11 +2024,11 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         NSMutableArray *ordered = [self orderedSelectedObjects];
         
         for (WDElement *element in ordered) {
-            if (![element isKindOfClass:[WDAbstractPath class]]) {
+            if (![element isKindOfClass:[WDAbstractPathElement class]]) {
                 return NO;
             } else {
                 // don't allow masks or text paths to make compound paths
-                WDAbstractPath *path = (WDAbstractPath *) element;
+                WDAbstractPathElement *path = (WDAbstractPathElement *) element;
                 
                 if (path.isMasking || [path conformsToProtocol:@protocol(WDTextRenderer)]) {
                     return NO;
@@ -2045,7 +2045,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 - (BOOL) canReleaseCompoundPath
 {
     for (WDElement *element in selectedObjects_) {
-        if ([element isKindOfClass:[WDCompoundPath class]]) {
+        if ([element isKindOfClass:[WDCompoundPathElement class]]) {
             return YES;
         }
     }
@@ -2100,14 +2100,14 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (BOOL) canAddAnchors
 {
-    WDPath *path = (WDPath *) [self singleSelection];
-    return [path isKindOfClass:[WDPath class]];
+    WDPathElement *path = (WDPathElement *) [self singleSelection];
+    return [path isKindOfClass:[WDPathElement class]];
 }
 
 - (BOOL) canReversePathDirection
 {
     for (WDElement *element in selectedObjects_) {
-        if ([element isKindOfClass:[WDPath class]]) {
+        if ([element isKindOfClass:[WDPathElement class]]) {
             return YES;
         }
     }
@@ -2118,8 +2118,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 - (BOOL) canOutlineStroke
 {
     for (WDElement *element in [self orderedSelectedObjects]) {
-        if ([element isKindOfClass:[WDAbstractPath class]]) {
-            if ([(WDAbstractPath *)element canOutlineStroke]) {
+        if ([element isKindOfClass:[WDAbstractPathElement class]]) {
+            if ([(WDAbstractPathElement *)element canOutlineStroke]) {
                 return YES;
             }
         }
@@ -2130,9 +2130,9 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (BOOL) canDeleteAnchors
 {
-    WDPath *path = (WDPath *) [self singleSelection];
+    WDPathElement *path = (WDPathElement *) [self singleSelection];
     
-    if ([path isKindOfClass:[WDPath class]]) {
+    if ([path isKindOfClass:[WDPathElement class]]) {
         return [path canDeleteAnchors];
     }
     

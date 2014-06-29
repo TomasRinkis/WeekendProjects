@@ -12,13 +12,13 @@
 #import <Foundation/Foundation.h>
 #import "WDTextRenderer.h"
 
-@class WDAbstractPath;
+@class WDAbstractPathElement;
 @class WDColor;
 
 @protocol WDPathPainter <NSObject>
 
 @required
-- (void) paintPath:(WDAbstractPath *)path inContext:(CGContextRef)ctx;
+- (void) paintPath:(WDAbstractPathElement *)path inContext:(CGContextRef)ctx;
 - (BOOL) transformable;
 - (BOOL) wantsCenteredFillTransform;
 - (BOOL) canPaintStroke;

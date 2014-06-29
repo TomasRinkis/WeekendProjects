@@ -1,5 +1,5 @@
 //
-//  WDPath.h
+//  WDPathElement.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -10,15 +10,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WDAbstractPath.h"
+#import "WDAbstractPathElement.h"
 #import "WDPickResult.h"
 
 @class WDBezierNode;
 @class WDColor;
-@class WDCompoundPath;
+@class WDCompoundPathElement;
 @class WDFillTransform;
 
-@interface WDPath : WDAbstractPath <NSCoding, NSCopying> {
+@interface WDPathElement : WDAbstractPathElement <NSCoding, NSCopying>
+{
     NSMutableArray      *nodes_;
     BOOL                closed_;
     BOOL                reversed_;
@@ -46,17 +47,17 @@
 @property (nonatomic, assign) BOOL reversed;
 @property (nonatomic, strong) NSMutableArray *nodes;
 @property (weak, nonatomic, readonly) NSMutableArray *reversedNodes;
-@property (nonatomic, weak) WDCompoundPath *superpath;
+@property (nonatomic, weak) WDCompoundPathElement *superpath;
 
 // to simplify rendering
 @property (nonatomic, strong) NSMutableArray *displayNodes;
 @property (nonatomic, strong) UIColor *displayColor;
 @property (nonatomic, assign) BOOL displayClosed;
 
-+ (WDPath *) pathWithRect:(CGRect)rect;
-+ (WDPath *) pathWithRoundedRect:(CGRect)rect cornerRadius:(float)radius;
-+ (WDPath *) pathWithOvalInRect:(CGRect)rect;
-+ (WDPath *) pathWithStart:(CGPoint)start end:(CGPoint)end;
++ (WDPathElement *) pathWithRect:(CGRect)rect;
++ (WDPathElement *) pathWithRoundedRect:(CGRect)rect cornerRadius:(float)radius;
++ (WDPathElement *) pathWithOvalInRect:(CGRect)rect;
++ (WDPathElement *) pathWithStart:(CGPoint)start end:(CGPoint)end;
 
 - (id) initWithRect:(CGRect)rect;
 - (id) initWithRoundedRect:(CGRect)rect cornerRadius:(float)radius;
@@ -77,7 +78,7 @@
 - (NSDictionary *) splitAtPoint:(CGPoint)pt viewScale:(float)viewScale;
 - (WDBezierNode *) addAnchorAtPoint:(CGPoint)pt viewScale:(float)viewScale;
 - (void) addAnchors;
-- (void) appendPath:(WDPath *)path;
+- (void) appendPath:(WDPathElement *)path;
 
 - (void) replaceFirstNodeWithNode:(WDBezierNode *)node;
 - (void) replaceLastNodeWithNode:(WDBezierNode *)node;

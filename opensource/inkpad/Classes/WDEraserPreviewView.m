@@ -11,7 +11,7 @@
 
 #import "WDCanvasView.h"
 #import "WDEraserPreviewView.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 
 @implementation WDEraserPreviewView
 

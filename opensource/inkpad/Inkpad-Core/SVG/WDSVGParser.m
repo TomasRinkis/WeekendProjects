@@ -13,7 +13,7 @@
 
 #import "NSString+Additions.h"
 #import "WDColor.h"
-#import "WDCompoundPath.h"
+#import "WDCompoundPathElement.h"
 #import "WDFillTransform.h"
 #import "WDGradient.h"
 #import "WDGradientStop.h"
@@ -23,7 +23,7 @@
 #import "WDSVGParser.h"
 #import "WDSVGPathParser.h"
 #import "WDText.h"
-#import "WDTextPath.h"
+#import "WDTextPathElement.h"
 #import "WDUtilities.h"
 
 
@@ -214,7 +214,7 @@
     if ([elements count] == 0) {
         // create empty clipping path
         CGPathRef emptyPath = CGPathCreateMutable();
-        WDAbstractPath *path = [WDAbstractPath pathWithCGPathRef:emptyPath];
+        WDAbstractPathElement *path = [WDAbstractPathElement pathWithCGPathRef:emptyPath];
         CGPathRelease(emptyPath);
         return path;
     } else if ([elements count] == 1) {
@@ -229,10 +229,10 @@
     } else {
         NSMutableArray *paths = [[NSMutableArray alloc] init];
         for (id element in elements) {
-            if ([element isKindOfClass:[WDCompoundPath class]]) {
-                WDCompoundPath *path = element;
+            if ([element isKindOfClass:[WDCompoundPathElement class]]) {
+                WDCompoundPathElement *path = element;
                 [paths addObjectsFromArray:path.subpaths];
-            } else if ([element isKindOfClass:[WDAbstractPath class]]) {
+            } else if ([element isKindOfClass:[WDAbstractPathElement class]]) {
                 [paths addObject:element];
             } else {
                 [state_ reportError:@"unusable element in clipping path: %@", element];
@@ -241,7 +241,7 @@
         for (WDElement *path in paths) {
             path.group = nil;
         }
-        WDCompoundPath *compoundPath = [[WDCompoundPath alloc] init];
+        WDCompoundPathElement *compoundPath = [[WDCompoundPathElement alloc] init];
         [compoundPath setSubpathsQuiet:paths];
         return compoundPath;
     }
@@ -303,7 +303,7 @@
     }
     
     CGPathRef transformedPath = WDCreateTransformedCGPathRef(cgpath, state_.transform);
-    WDAbstractPath *path = [WDPath pathWithCGPathRef:transformedPath];
+    WDAbstractPathElement *path = [WDPathElement pathWithCGPathRef:transformedPath];
     CGPathRelease(transformedPath);
     return [self styleClipAndGroup:path];
 }
@@ -405,7 +405,7 @@
     float r = [state_ length:@"r" withBound:[state_ viewRadius]];
     if (r > 0) {
         CGRect rect = CGRectApplyAffineTransform(CGRectMake(c.x - r, c.y - r, r * 2, r * 2), state_.transform);
-        state_.wdElement = [self styleClipAndGroup:[WDPath pathWithOvalInRect:rect]];
+        state_.wdElement = [self styleClipAndGroup:[WDPathElement pathWithOvalInRect:rect]];
     } else if (r < 0) {
         [state_ reportError:@"circle with negative radius"];
     }
@@ -418,7 +418,7 @@
     if (r.width > 0 && r.height > 0) {
         CGRect rect = CGRectMake(c.x - r.width, c.y - r.height, r.width * 2, r.height * 2);
         // need to transform the ellipse rather than the bounding rectangle, since the effect of rotation is different
-        state_.wdElement = [self styleClipAndGroup:[WDPath pathWithOvalInRect:rect]];
+        state_.wdElement = [self styleClipAndGroup:[WDPathElement pathWithOvalInRect:rect]];
         [state_.wdElement transform:state_.transform];
     } else if (r.width < 0 || r.height < 0) {
         [state_ reportError:@"circle with negative radius"];
@@ -538,11 +538,11 @@
     NSString *pathId = [state_ idFromIRI:@"xlink:href"];
     if (pathId) {
         WDElement *element = [self svgCopy:pathId];
-        if ([element isKindOfClass:[WDPath class]]) {
-            WDPath *path = (WDPath *) element;
+        if ([element isKindOfClass:[WDPathElement class]]) {
+            WDPathElement *path = (WDPathElement *) element;
             path.strokeStyle = nil;
             path.fill = nil;
-            WDTextPath *textPath = [WDTextPath textPathWithPath:path];
+            WDTextPathElement *textPath = [WDTextPathElement textPathWithPath:path];
             state_.wdElement = [self styleClipAndGroup:textPath];
         } else if (element) {
             [state_ reportError:@"textPath href is not usable: %@", [state_ attribute:@"xlink:href"]];
@@ -610,7 +610,7 @@
             if ([element.name isEqualToString:@"line"]) {
                 CGPoint p1 = CGPointApplyAffineTransform([state_ x:@"x1" y:@"y1"], state_.transform);
                 CGPoint p2 = CGPointApplyAffineTransform([state_ x:@"x2" y:@"y2"], state_.transform);
-                state_.wdElement = [self styleClipAndGroup:[WDPath pathWithStart:p1 end:p2]];
+                state_.wdElement = [self styleClipAndGroup:[WDPathElement pathWithStart:p1 end:p2]];
             }
             break;
         case 'p':
@@ -863,7 +863,7 @@
             if ([element.name isEqualToString:@"text"] || [element.name isEqualToString:@"tspan"]) {
                 [self endText];
             } else if ([element.name isEqualToString:@"textPath"]) {
-                WDTextPath *textPath = (WDTextPath *) state_.wdElement;
+                WDTextPathElement *textPath = (WDTextPathElement *) state_.wdElement;
                 textPath.text = state_.svgElement.text;
             } else if ([element.name isEqualToString:@"tref"]) {
                 // TODO

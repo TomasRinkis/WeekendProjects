@@ -14,7 +14,7 @@
 #import "WDDrawingController.h"
 #import "WDFillTransform.h"
 #import "WDInspectableProperties.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDPathPainter.h"
 #import "WDPenTool.h"
 #import "WDPropertyManager.h"
@@ -41,7 +41,7 @@
 {
     CGPoint tap = event.snappedLocation;
     
-    WDPath *activePath = canvas.drawingController.activePath;
+    WDPathElement *activePath = canvas.drawingController.activePath;
     
     updatingOldNode_ = NO;
     closingPath_ = NO;
@@ -75,7 +75,7 @@
                                                                 snapFlags:(kWDSnapNodes | kWDSnapSelectedOnly)];
             
             if (result.type == kWDAnchorPoint && result.nodePosition != kWDMiddleNode && [canvas.drawingController isSelected:result.element]) {
-                WDPath *path = (WDPath *) result.element;
+                WDPathElement *path = (WDPathElement *) result.element;
                 
                 if (result.nodePosition == kWDFirstNode) {
                     path.nodes = [path reversedNodes];
@@ -107,7 +107,7 @@
     
     CGPoint tap = event.snappedLocation;
 
-    WDPath *activePath = canvas.drawingController.activePath;
+    WDPathElement *activePath = canvas.drawingController.activePath;
     
     if (closingPath_) {
         WDBezierNodeReflectionMode mode = [self optionKeyDown] ? WDIndependent : oldNodeMode_;
@@ -139,7 +139,7 @@
 
 - (void) endWithEvent:(WDEvent *)event inCanvas:(WDCanvasView *)canvas
 {
-    WDPath *activePath = canvas.drawingController.activePath;
+    WDPathElement *activePath = canvas.drawingController.activePath;
     
     activePath.displayNodes = nil;
     activePath.displayClosed = NO;
@@ -147,7 +147,7 @@
     
     if (!activePath && self.replacementNode) {
         [canvas.drawingController selectNode:self.replacementNode];
-        WDPath *path = [[WDPath alloc] initWithNode:self.replacementNode];
+        WDPathElement *path = [[WDPathElement alloc] initWithNode:self.replacementNode];
         
         path.fill = [canvas.drawingController.propertyManager activeFillStyle];
         path.strokeStyle = [[canvas.drawingController.propertyManager activeStrokeStyle] strokeStyleSansArrows];

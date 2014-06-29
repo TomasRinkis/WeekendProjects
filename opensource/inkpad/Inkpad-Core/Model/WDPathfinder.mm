@@ -13,16 +13,16 @@
 #import "Shape.h"
 
 #import "WDBezierNode.h"
-#import "WDCompoundPath.h"
-#import "WDPath.h"
+#import "WDCompoundPathElement.h"
+#import "WDPathElement.h"
 #import "WDPathfinder.h"
 #import "WDUtilities.h"
 
-@interface WDPath (Livarot)
+@interface WDPathElement (Livarot)
 - (Path *) convertToLivarotPath;
 @end
 
-@implementation WDPath (Livarot)
+@implementation WDPathElement (Livarot)
 
 - (Path *) convertToLivarotPath
 {    
@@ -70,10 +70,10 @@
 
 @implementation WDPathfinder
 
-+ (WDAbstractPath *) fromLivarotPath:(Path *)path
++ (WDAbstractPathElement *) fromLivarotPath:(Path *)path
 {
     NSMutableArray  *subpaths = [NSMutableArray array];
-    WDPath          *currentPath = [[WDPath alloc] init];
+    WDPathElement          *currentPath = [[WDPathElement alloc] init];
     NSMutableArray  *nodes = [NSMutableArray array];
     
 	for (int i = 0; i <path->descr_nb; i++) {
@@ -104,13 +104,13 @@
             nodes = [NSMutableArray array];
             
             [subpaths addObject:currentPath];
-            currentPath = [[WDPath alloc] init];
+            currentPath = [[WDPathElement alloc] init];
 		}
 	}
     
     
     if (subpaths.count > 1) {
-        WDCompoundPath  *compoundPath = [[WDCompoundPath alloc] init];
+        WDCompoundPathElement  *compoundPath = [[WDCompoundPathElement alloc] init];
         compoundPath.subpaths = subpaths;
         return compoundPath;
     } else {
@@ -118,11 +118,11 @@
     }
 }
 
-+ (WDAbstractPath *) combinePaths:(NSArray *)abstractPaths operation:(WDPathfinderOperation)operation
++ (WDAbstractPathElement *) combinePaths:(NSArray *)abstractPaths operation:(WDPathfinderOperation)operation
 {    
     int     pathCount = 0;
     
-    for (WDAbstractPath *ap in abstractPaths) {
+    for (WDAbstractPathElement *ap in abstractPaths) {
         pathCount += [ap subpathCount];
     }
     
@@ -132,9 +132,9 @@
     Shape   *result;
     int     i = 0, shapeIx = 0;
     
-    for (WDAbstractPath *ap in abstractPaths) {
+    for (WDAbstractPathElement *ap in abstractPaths) {
         if (ap.subpathCount == 1) {
-            paths[i] = [((WDPath *) ap) convertToLivarotPath];
+            paths[i] = [((WDPathElement *) ap) convertToLivarotPath];
             
             temp->Reset();
             paths[i]->Fill(temp, i);
@@ -144,11 +144,11 @@
             shapeIx++;
             
         } else {
-            WDCompoundPath *cp = (WDCompoundPath *) ap;
+            WDCompoundPathElement *cp = (WDCompoundPathElement *) ap;
             
             temp->Reset();
             
-            for (WDPath *sp in cp.subpaths) {
+            for (WDPathElement *sp in cp.subpaths) {
                 paths[i] = [sp convertToLivarotPath];
                 paths[i]->Fill(temp, i, true);
                 i++;
@@ -174,7 +174,7 @@
     
     Path *dest = new Path();
     result->ConvertToForme(dest, pathCount, paths);
-    WDAbstractPath *finalResult = [WDPathfinder fromLivarotPath:dest];
+    WDAbstractPathElement *finalResult = [WDPathfinder fromLivarotPath:dest];
     delete dest;
     delete result;
     

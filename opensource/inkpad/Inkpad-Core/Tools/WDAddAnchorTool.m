@@ -13,7 +13,7 @@
 #import "WDBezierNode.h"
 #import "WDCanvasView.h"
 #import "WDDrawingController.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 
 @implementation WDAddAnchorTool
 
@@ -28,12 +28,12 @@
                                                         viewScale:canvas.viewScale
                                                         snapFlags:(kWDSnapEdges | kWDSnapNodes)];
 
-    if (!result.snapped || ![result.element isKindOfClass:[WDPath class]]) {
+    if (!result.snapped || ![result.element isKindOfClass:[WDPathElement class]]) {
         return;
     }
     
     WDDrawingController *dc = canvas.drawingController;
-    WDPath              *path = (WDPath *) result.element;
+    WDPathElement              *path = (WDPathElement *) result.element;
     
     if (result.type == kWDEdge) {
         if ([dc singleSelection] != path) {

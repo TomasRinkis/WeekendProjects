@@ -1,5 +1,5 @@
 //
-//  WDPath.m
+//  WDPathElement.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -13,11 +13,11 @@
 #import "WDArrowhead.h"
 #import "WDBezierNode.h"
 #import "WDColor.h"
-#import "WDCompoundPath.h"
+#import "WDCompoundPathElement.h"
 #import "WDFillTransform.h"
 #import "WDGLUtilities.h"
 #import "WDLayer.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDPathfinder.h"
 #import "WDShadow.h"
 #import "WDUtilities.h"
@@ -30,7 +30,7 @@ NSString *WDSuperpathKey = @"WDSuperpathKey";
 NSString *WDNodesKey = @"WDNodesKey";
 NSString *WDClosedKey = @"WDClosedKey";
 
-@implementation WDPath
+@implementation WDPathElement
 
 @synthesize closed = closed_;
 @synthesize reversed = reversed_;
@@ -296,27 +296,27 @@ NSString *WDClosedKey = @"WDClosedKey";
     return pathRef_;
 }
 
-+ (WDPath *) pathWithRect:(CGRect)rect
++ (WDPathElement *) pathWithRect:(CGRect)rect
 {
-    WDPath *path = [[WDPath alloc] initWithRect:rect];
+    WDPathElement *path = [[WDPathElement alloc] initWithRect:rect];
     return path;
 }
 
-+ (WDPath *) pathWithRoundedRect:(CGRect)rect cornerRadius:(float)radius
++ (WDPathElement *) pathWithRoundedRect:(CGRect)rect cornerRadius:(float)radius
 {
-    WDPath *path = [[WDPath alloc] initWithRoundedRect:rect cornerRadius:radius];
+    WDPathElement *path = [[WDPathElement alloc] initWithRoundedRect:rect cornerRadius:radius];
     return path;
 }
 
-+ (WDPath *) pathWithOvalInRect:(CGRect)rect
++ (WDPathElement *) pathWithOvalInRect:(CGRect)rect
 {
-    WDPath *path = [[WDPath alloc] initWithOvalInRect:rect];
+    WDPathElement *path = [[WDPathElement alloc] initWithOvalInRect:rect];
     return path;
 }
 
-+ (WDPath *) pathWithStart:(CGPoint)start end:(CGPoint)end
++ (WDPathElement *) pathWithStart:(CGPoint)start end:(CGPoint)end
 {
-    WDPath *path = [[WDPath alloc] initWithStart:start end:end];
+    WDPathElement *path = [[WDPathElement alloc] initWithStart:start end:end];
     return path;
 }
 
@@ -1153,7 +1153,7 @@ NSString *WDClosedKey = @"WDClosedKey";
         [newNodes addObject:[node copy]]; // copy this node since it would otherwise be shared
         
         // create a new path to take the rest of the nodes
-        WDPath *sibling = [[WDPath alloc] init];
+        WDPathElement *sibling = [[WDPathElement alloc] init];
         NSMutableArray  *siblingNodes = [NSMutableArray array];
         for (i = startIx; i < nodes_.count; i++) {
             [siblingNodes addObject:nodes_[i]];
@@ -1325,7 +1325,7 @@ NSString *WDClosedKey = @"WDClosedKey";
     self.nodes = newNodes;
 }
 
-- (void) appendPath:(WDPath *)path
+- (void) appendPath:(WDPathElement *)path
 {
     NSArray     *baseNodes, *nodesToAdd;
     CGPoint     delta;
@@ -1622,7 +1622,7 @@ NSString *WDClosedKey = @"WDClosedKey";
     return result;
 }
 
-- (void) setSuperpath:(WDCompoundPath *)superpath
+- (void) setSuperpath:(WDCompoundPathElement *)superpath
 {
     [[self.undoManager prepareWithInvocationTarget:self] setSuperpath:superpath_];
     
@@ -1660,10 +1660,10 @@ NSString *WDClosedKey = @"WDClosedKey";
     return (!self.superpath && !self.maskedElements);
 }
 
-- (NSArray *) erase:(WDAbstractPath *)erasePath
+- (NSArray *) erase:(WDAbstractPathElement *)erasePath
 {
     if (self.closed) {
-        WDAbstractPath *result = [WDPathfinder combinePaths:@[self, erasePath] operation:WDPathFinderSubtract];
+        WDAbstractPathElement *result = [WDPathfinder combinePaths:@[self, erasePath] operation:WDPathFinderSubtract];
         
         if (!result) {
             return @[];
@@ -1671,8 +1671,8 @@ NSString *WDClosedKey = @"WDClosedKey";
         
         [result takeStylePropertiesFrom:self];
         
-        if (self.superpath && [result isKindOfClass:[WDCompoundPath class]]) {
-            WDCompoundPath *cp = (WDCompoundPath *)result;
+        if (self.superpath && [result isKindOfClass:[WDCompoundPathElement class]]) {
+            WDCompoundPathElement *cp = (WDCompoundPathElement *)result;
             [[cp subpaths] makeObjectsPerformSelector:@selector(setSuperpath:) withObject:nil];
             return cp.subpaths;
         }
@@ -1680,7 +1680,7 @@ NSString *WDClosedKey = @"WDClosedKey";
         return @[result];
     } else {
         if (!CGRectIntersectsRect(self.bounds, erasePath.bounds)) {
-            WDPath *clone = [[WDPath alloc] init];
+            WDPathElement *clone = [[WDPathElement alloc] init];
             [clone takeStylePropertiesFrom:self];
             NSMutableArray *nodes = [self.nodes mutableCopy];
             clone.nodes = nodes;
@@ -1712,7 +1712,7 @@ NSString *WDClosedKey = @"WDClosedKey";
         erasePath = [erasePath pathByFlatteningPath];
         
         WDBezierSegment     L, R;
-        NSArray             *subpaths = [erasePath isKindOfClass:[WDPath class]] ? @[erasePath] : [(WDCompoundPath *)erasePath subpaths];
+        NSArray             *subpaths = [erasePath isKindOfClass:[WDPathElement class]] ? @[erasePath] : [(WDCompoundPathElement *)erasePath subpaths];
         float               smallestT, t;
         BOOL                intersected;
         
@@ -1721,7 +1721,7 @@ NSString *WDClosedKey = @"WDClosedKey";
             intersected = NO;
             
             // split the segments into more segments at every intersection with the erasing path
-            for (WDPath *subpath in subpaths) {
+            for (WDPathElement *subpath in subpaths) {
                 prev = (subpath.nodes)[0];
                 
                 for (int n = 1; n < subpath.nodes.count; n++, prev = curr) {
@@ -1773,7 +1773,7 @@ NSString *WDClosedKey = @"WDClosedKey";
         
         // reassemble segments
         NSMutableArray  *array = [NSMutableArray array];
-        WDPath          *currentPath = [[WDPath alloc] init];
+        WDPathElement          *currentPath = [[WDPathElement alloc] init];
         
         [currentPath takeStylePropertiesFrom:self];
         [array addObject:currentPath];
@@ -1786,7 +1786,7 @@ NSString *WDClosedKey = @"WDClosedKey";
             } else if (CGPointEqualToPoint(lastNode.anchorPoint, newSegments[i].a_)) {
                 [currentPath replaceLastNodeWithNode:[WDBezierNode bezierNodeWithInPoint:lastNode.inPoint anchorPoint:lastNode.anchorPoint outPoint:newSegments[i].out_]];
             } else {
-                currentPath = [[WDPath alloc] init];
+                currentPath = [[WDPathElement alloc] init];
                 [currentPath takeStylePropertiesFrom:self];
                 [array addObject:currentPath];
                 
@@ -1898,9 +1898,9 @@ NSString *WDClosedKey = @"WDClosedKey";
     self.nodes = [self flattenedNodes];
 }
 
-- (WDAbstractPath *) pathByFlatteningPath
+- (WDAbstractPathElement *) pathByFlatteningPath
 {
-    WDPath *flatPath = [[WDPath alloc] init];
+    WDPathElement *flatPath = [[WDPathElement alloc] init];
     
     flatPath.nodes = [self flattenedNodes];
     
@@ -1946,7 +1946,7 @@ NSString *WDClosedKey = @"WDClosedKey";
 
 - (id) copyWithZone:(NSZone *)zone
 {       
-    WDPath *path = [super copyWithZone:zone];
+    WDPathElement *path = [super copyWithZone:zone];
     
     path->nodes_ = [nodes_ mutableCopy];
     path->closed_ = closed_;
@@ -1963,7 +1963,7 @@ NSString *WDClosedKey = @"WDClosedKey";
 
 - (void) addSVGArrowheadPath:(CGPathRef)pathRef toGroup:(WDXMLElement *)group
 {
-    WDAbstractPath  *inkpadPath = [WDAbstractPath pathWithCGPathRef:pathRef];
+    WDAbstractPathElement  *inkpadPath = [WDAbstractPathElement pathWithCGPathRef:pathRef];
     WDStrokeStyle   *stroke = [self effectiveStrokeStyle];
     
     WDXMLElement *arrowPath = [WDXMLElement elementWithName:@"path"];

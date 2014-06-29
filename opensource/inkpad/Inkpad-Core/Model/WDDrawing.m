@@ -19,7 +19,7 @@
 #import "WDImage.h"
 #import "WDImageData.h"
 #import "WDLayer.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDRulerUnit.h"
 #import "WDSVGHelper.h"
 #import "WDUtilities.h"

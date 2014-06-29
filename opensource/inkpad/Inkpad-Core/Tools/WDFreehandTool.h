@@ -11,10 +11,10 @@
 
 #import "WDGenericTool.h"
 
-@class WDPath;
+@class WDPathElement;
 
 @interface WDFreehandTool : WDGenericTool {
-    WDPath          *tempPath_;
+    WDPathElement          *tempPath_;
     BOOL            pathStarted_;
 }
 

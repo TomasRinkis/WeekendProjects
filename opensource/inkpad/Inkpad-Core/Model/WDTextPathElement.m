@@ -1,5 +1,5 @@
 //
-//  WDTextPath.m
+//  WDTextPathElement.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -26,7 +26,7 @@
 #import "WDInspectableProperties.h"
 #import "WDLayer.h"
 #import "WDSVGHelper.h"
-#import "WDTextPath.h"
+#import "WDTextPathElement.h"
 #import "WDUtilities.h"
 
 NSString *WDTextPathMethodKey = @"WDTextPathMethodKey";
@@ -37,13 +37,13 @@ NSString *WDTextPathAlignmentKey = @"WDTextPathAlignmentKey";
 #define kOverflowRadius             4
 #define kMaxOutwardKernAdjustment   (-0.25f)
 
-@interface WDTextPath (WDPrivate)
+@interface WDTextPathElement (WDPrivate)
 - (NSInteger) segmentCount;
 - (void) layout;
 - (void) getStartKnobBase:(CGPoint *)base andTop:(CGPoint *)top viewScale:(float)viewScale;
 @end
 
-@implementation WDTextPath
+@implementation WDTextPathElement
 
 @synthesize text = text_;
 @synthesize fontName = fontName_;
@@ -53,9 +53,9 @@ NSString *WDTextPathAlignmentKey = @"WDTextPathAlignmentKey";
 @synthesize attributedString = attributedString_;
 @synthesize cachedStartOffset = cachedStartOffset_;
 
-+ (WDTextPath *) textPathWithPath:(WDPath *)path
++ (WDTextPathElement *) textPathWithPath:(WDPathElement *)path
 {
-    WDTextPath *typePath = [[WDTextPath alloc] init];
+    WDTextPathElement *typePath = [[WDTextPathElement alloc] init];
 
     NSMutableArray *nodes = [path.nodes copy];
     typePath.nodes = nodes;
@@ -274,7 +274,7 @@ NSString *WDTextPathAlignmentKey = @"WDTextPathAlignmentKey";
 {
     [self cacheDirtyBounds];
     
-    [(WDTextPath *)[self.undoManager prepareWithInvocationTarget:self] setFontSize:fontSize_];
+    [(WDTextPathElement *)[self.undoManager prepareWithInvocationTarget:self] setFontSize:fontSize_];
     
     fontSize_ = size;
     
@@ -298,7 +298,7 @@ NSString *WDTextPathAlignmentKey = @"WDTextPathAlignmentKey";
 {
     [self cacheDirtyBounds];
     
-    [(WDTextPath *)[self.undoManager prepareWithInvocationTarget:self] setAlignment:alignment_];
+    [(WDTextPathElement *)[self.undoManager prepareWithInvocationTarget:self] setAlignment:alignment_];
     
     alignment_ = alignment;
     needsLayout_ = YES;
@@ -572,7 +572,7 @@ done:
 {
     [self cacheDirtyBounds];
     
-    [(WDTextPath *)[self.undoManager prepareWithInvocationTarget:self] setTransform:transform_];
+    [(WDTextPathElement *)[self.undoManager prepareWithInvocationTarget:self] setTransform:transform_];
     
     transform_ = transform;
     [self invalidatePath];
@@ -704,7 +704,7 @@ done:
     
     for (id pathRef in glyphs_) {
         CGPathRef glyphPath = (__bridge CGPathRef) pathRef;
-        [paths addObject:[WDAbstractPath pathWithCGPathRef:glyphPath]];
+        [paths addObject:[WDAbstractPathElement pathWithCGPathRef:glyphPath]];
     }
     
     return paths;
@@ -1053,7 +1053,7 @@ done:
 
 - (id) copyWithZone:(NSZone *)zone
 {
-    WDTextPath *text = [super copyWithZone:zone];
+    WDTextPathElement *text = [super copyWithZone:zone];
     
     text->text_ = [text_ copy];
     text->startOffset_ = startOffset_;

@@ -19,7 +19,7 @@
 @class WDEraserPreviewView;
 @class WDEyedropperView;
 @class WDPaletteView;
-@class WDPath;
+@class WDPathElement;
 @class WDRulerCornerView;
 @class WDRulerView;
 @class WDSelectionView;
@@ -39,8 +39,8 @@
     UIColor                 *isolationColor_;
     
     NSValue                 *marquee_;
-    WDPath                  *shapeUnderConstruction_;
-    WDPath                  *eraserPath_;
+    WDPathElement                  *shapeUnderConstruction_;
+    WDPathElement                  *eraserPath_;
     
     // managing the view scale and visible area
     float                   trueViewScale_;
@@ -81,8 +81,8 @@
 @property (nonatomic, assign) CGPoint pivot;
 @property (nonatomic, assign) BOOL showingPivot;
 @property (nonatomic, strong) NSValue *marquee;
-@property (nonatomic, strong) WDPath *shapeUnderConstruction;
-@property (nonatomic, strong) WDPath *eraserPath;
+@property (nonatomic, strong) WDPathElement *shapeUnderConstruction;
+@property (nonatomic, strong) WDPathElement *eraserPath;
 @property (nonatomic, weak) WDCanvasController *controller;
 @property (weak, nonatomic, readonly) WDDrawingController *drawingController;
 @property (nonatomic, strong, readonly) WDPaletteView *toolPalette;

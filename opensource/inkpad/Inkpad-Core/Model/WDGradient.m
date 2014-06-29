@@ -13,7 +13,7 @@
 #import "WDFillTransform.h"
 #import "WDGradient.h"
 #import "WDGradientStop.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDText.h"
 #import "WDUtilities.h"
 
@@ -347,7 +347,7 @@ NSString *WDGradientStopsKey = @"WDGradientStopsKey";
     CGContextRestoreGState(ctx);
 }
 
-- (void) paintPath:(WDPath *)path inContext:(CGContextRef)ctx
+- (void) paintPath:(WDPathElement *)path inContext:(CGContextRef)ctx
 {   
     WDFillTransform             *fillTransform = path.fillTransform;
     CGGradientDrawingOptions    options = kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation;

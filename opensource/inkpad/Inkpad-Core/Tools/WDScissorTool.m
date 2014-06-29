@@ -12,7 +12,7 @@
 #import "WDBezierNode.h"
 #import "WDCanvasView.h"
 #import "WDDrawingController.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 
 @implementation WDScissorTool
 
@@ -26,9 +26,9 @@
     WDPickResult *result = [canvas.drawingController snappedPoint:theEvent.location
                                                         viewScale:canvas.viewScale
                                                         snapFlags:(kWDSnapEdges | kWDSnapNodes)];
-    WDPath *path = (WDPath *) result.element;
+    WDPathElement *path = (WDPathElement *) result.element;
     
-    if (![path isKindOfClass:[WDPath class]]) {
+    if (![path isKindOfClass:[WDPathElement class]]) {
         return;
     }
     

@@ -12,7 +12,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class WDAbstractPath;
+@class WDAbstractPathElement;
 
 typedef enum {
     WDPathfinderUnite,
@@ -24,5 +24,5 @@ typedef enum {
 
 
 @interface WDPathfinder : NSObject
-+ (WDAbstractPath *) combinePaths:(NSArray *)paths operation:(WDPathfinderOperation)operation;
++ (WDAbstractPathElement *) combinePaths:(NSArray *)paths operation:(WDPathfinderOperation)operation;
 @end

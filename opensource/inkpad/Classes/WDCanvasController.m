@@ -38,7 +38,7 @@
 #import "WDShadowWell.h"
 #import "WDStrokeController.h"
 #import "WDSwatchController.h"
-#import "WDTextPath.h"
+#import "WDTextPathElement.h"
 #import "WDTextController.h"
 #import "WDToolManager.h"
 #import "WDUtilities.h"
@@ -1453,7 +1453,7 @@
 {
     BOOL startEditing = NO;
     
-    WDTextPath *path = [self.drawingController placeTextOnPath:sender shouldStartEditing:&startEditing];
+    WDTextPathElement *path = [self.drawingController placeTextOnPath:sender shouldStartEditing:&startEditing];
     
     if (startEditing) {
         [self editTextObject:(WDText *)path selectAll:YES];

@@ -15,7 +15,7 @@
 #import "WDCurveFit.h"
 #import "WDDrawingController.h"
 #import "WDEraserTool.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDUtilities.h"
 
 NSString *WDEraserToolSize = @"WDEraserToolSize";
@@ -48,7 +48,7 @@ NSString *WDEraserToolSize = @"WDEraserToolSize";
 
 - (void) beginWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {
-    tempPath_ = [[WDPath alloc] initWithNode:[WDBezierNode bezierNodeWithAnchorPoint:theEvent.location]];
+    tempPath_ = [[WDPathElement alloc] initWithNode:[WDBezierNode bezierNodeWithAnchorPoint:theEvent.location]];
     
     tempPath_.strokeStyle = [WDStrokeStyle strokeStyleWithWidth:eraserSize_ cap:kCGLineCapRound
                                                            join:kCGLineJoinRound
@@ -80,7 +80,7 @@ NSString *WDEraserToolSize = @"WDEraserToolSize";
             [points addObject:[NSValue valueWithCGPoint:node.anchorPoint]];
         }
         
-        WDPath *smoothPath = [WDCurveFit smoothPathForPoints:points error:(kMaxError / canvas.viewScale) attemptToClose:NO];
+        WDPathElement *smoothPath = [WDCurveFit smoothPathForPoints:points error:(kMaxError / canvas.viewScale) attemptToClose:NO];
         
         if (smoothPath) {
             smoothPath.strokeStyle = [WDStrokeStyle strokeStyleWithWidth:eraserSize_
@@ -88,7 +88,7 @@ NSString *WDEraserToolSize = @"WDEraserToolSize";
                                                                     join:kCGLineJoinRound
                                                                    color:[WDColor blackColor]
                                                              dashPattern:nil];
-            WDAbstractPath *erasePath = [smoothPath outlineStroke];
+            WDAbstractPathElement *erasePath = [smoothPath outlineStroke];
             
             [canvas.drawingController eraseWithPath:erasePath];
         }

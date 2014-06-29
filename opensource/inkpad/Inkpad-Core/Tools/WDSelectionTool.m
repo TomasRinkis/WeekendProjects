@@ -12,14 +12,14 @@
 #import "WDBezierNode.h"
 #import "WDCanvasView.h"
 #import "WDCanvasController.h"
-#import "WDCompoundPath.h"
+#import "WDCompoundPathElement.h"
 #import "WDDynamicGuide.h"
 #import "WDDynamicGuideController.h"
 #import "WDDrawingController.h"
 #import "WDFillTransform.h"
 #import "WDPropertyManager.h"
 #import "WDSelectionTool.h"
-#import "WDTextPath.h"
+#import "WDTextPathElement.h"
 #import "WDUtilities.h"
 
 @implementation WDSelectionTool
@@ -98,10 +98,10 @@
     WDElement *element = result.element;
     
     if (![controller isSelected:element]) {
-        WDPath *path = nil;
+        WDPathElement *path = nil;
         
-        if ([element isKindOfClass:[WDPath class]]) {
-            path = (WDPath *) element;
+        if ([element isKindOfClass:[WDPathElement class]]) {
+            path = (WDPathElement *) element;
         }
         
         if (!path || !path.superpath || (path.superpath && ![controller isSelected:path.superpath])) {
@@ -116,7 +116,7 @@
     } else if ([controller singleSelection]) {
         // we have a single selection, and the hit element is already selected... it must be the single selection
        
-        if ([element isKindOfClass:[WDPath class]] && result.node) {
+        if ([element isKindOfClass:[WDPathElement class]] && result.node) {
             nodeWasSelected_ = result.node.selected;
             activeNode_ = result.node;
             
@@ -144,7 +144,7 @@
                 self.initialEvent.snappedLocation = result.node.anchorPoint;
                 transformingNodes_ = YES;
             }
-        } else if ([element isKindOfClass:[WDPath class]] && result.type == kWDEdge) {
+        } else if ([element isKindOfClass:[WDPathElement class]] && result.type == kWDEdge) {
             // only allow one node to be selected at a time
             [controller deselectAllNodes];
             
@@ -154,11 +154,11 @@
         } else if ([element isKindOfClass:[WDStylableElement class]] && (result.type == kWDFillEndPoint || result.type == kWDFillStartPoint)) {
             activeGradientHandle_ = result.type;
             transformingGradient_ = YES;
-        } else if ([element isKindOfClass:[WDTextPath class]] && (result.type == kWDTextPathStartKnob)) {
-            activeTextPath_ = (WDTextPath *) element;
+        } else if ([element isKindOfClass:[WDTextPathElement class]] && (result.type == kWDTextPathStartKnob)) {
+            activeTextPath_ = (WDTextPathElement *) element;
             transformingTextPathStartKnob_ = YES;
             [activeTextPath_ cacheOriginalStartOffset];
-        } else if ([element isKindOfClass:[WDAbstractPath class]]) {
+        } else if ([element isKindOfClass:[WDAbstractPathElement class]]) {
             if (result.type == kWDObjectFill) {
                 [controller deselectAllNodes];
                 
@@ -229,7 +229,7 @@
     } else if (transformingHandles_) {
         canvas.transforming = canvas.transformingNode = YES;
         
-        WDPath *path = (WDPath *) [canvas.drawingController singleSelection];
+        WDPathElement *path = (WDPathElement *) [canvas.drawingController singleSelection];
         WDBezierNodeReflectionMode reflect = (self.flags & WDGenericToolOptionKey || self.flags & WDGenericToolSecondaryTouch) ? WDIndependent : originalReflectionMode_;
         
         replacementNode_ = [activeNode_ moveControlHandle:(int)pointToMove_ toPoint:snapped reflectionMode:reflect];
@@ -257,7 +257,7 @@
         canvas.transforming = YES;
         canvas.transformingNode = YES;
         
-        WDPath *path = (WDPath *) [canvas.drawingController.selectedObjects anyObject];
+        WDPathElement *path = (WDPathElement *) [canvas.drawingController.selectedObjects anyObject];
         if (activeGradientHandle_ == kWDFillStartPoint) {
             path.displayFillTransform = [path.fillTransform transformWithTransformedStart:snapped];
         } else {
@@ -273,7 +273,7 @@
         
         [canvas invalidateSelectionView];
     } else if (transformingTextPathStartKnob_) {
-        WDTextPath *path = (WDTextPath *) [canvas.drawingController.selectedObjects anyObject];
+        WDTextPathElement *path = (WDTextPathElement *) [canvas.drawingController.selectedObjects anyObject];
         [path moveStartKnobToNearestPoint:currentPt]; 
         [canvas invalidateSelectionView];
     } else { 
@@ -329,7 +329,7 @@
     
     if (transformingGradient_) {
         if (self.moved) {
-            WDPath *path = ((WDPath *) [canvas.drawingController singleSelection]);
+            WDPathElement *path = ((WDPathElement *) [canvas.drawingController singleSelection]);
             
             path.fillTransform = path.displayFillTransform;
             path.displayFillTransform = nil;
@@ -344,13 +344,13 @@
             transform_ = CGAffineTransformIdentity;
         }
     } else if (convertingNode_ && !self.moved) {
-        WDPath *path = ((WDPath *) [canvas.drawingController singleSelection]);
+        WDPathElement *path = ((WDPathElement *) [canvas.drawingController singleSelection]);
         
         WDBezierNode *node = [path convertNode:activeNode_ whichPoint:(int)pointToConvert_];
         [canvas.drawingController deselectNode:activeNode_];
         [canvas.drawingController selectNode:node];
     } else if (transformingHandles_ && replacementNode_) {
-        WDPath *path = ((WDPath *) [canvas.drawingController singleSelection]);
+        WDPathElement *path = ((WDPathElement *) [canvas.drawingController singleSelection]);
         path.displayNodes = nil;
         NSMutableArray *newNodes = [NSMutableArray array];
         

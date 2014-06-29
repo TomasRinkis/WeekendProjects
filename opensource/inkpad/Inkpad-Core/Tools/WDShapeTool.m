@@ -15,7 +15,7 @@
 #import "WDDrawingController.h"
 #import "WDDynamicGuideController.h"
 #import "WDInspectableProperties.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDPropertyManager.h"
 #import "WDShapeTool.h"
 #import "WDUtilities.h"
@@ -69,24 +69,24 @@ NSString *WDShapeToolSpiralDecay = @"WDShapeToolSpiralDecay";
     [[NSUserDefaults standardUserDefaults] setValue:@(shapeMode_) forKey:WDDefaultShapeTool];
 }
 
-- (WDPath *) pathWithPoint:(CGPoint)pt constrain:(BOOL)constrain
+- (WDPathElement *) pathWithPoint:(CGPoint)pt constrain:(BOOL)constrain
 {
     CGPoint initialPoint = self.initialEvent.snappedLocation;
     
     if (shapeMode_ == WDShapeOval) {
         CGRect rect = WDRectWithPointsConstrained(initialPoint, pt, constrain);
-        return [WDPath pathWithOvalInRect:rect];
+        return [WDPathElement pathWithOvalInRect:rect];
     } else if (shapeMode_ == WDShapeRectangle) {
         CGRect rect = WDRectWithPointsConstrained(initialPoint, pt, constrain);
         
-        return [WDPath pathWithRoundedRect:rect cornerRadius:rectCornerRadius_];
+        return [WDPathElement pathWithRoundedRect:rect cornerRadius:rectCornerRadius_];
     } else if (shapeMode_ == WDShapeLine) {
         if (constrain) {
             CGPoint delta = WDConstrainPoint(WDSubtractPoints(pt, initialPoint));
             pt = WDAddPoints(initialPoint, delta);
         }
         
-        return [WDPath pathWithStart:initialPoint end:pt];
+        return [WDPathElement pathWithStart:initialPoint end:pt];
     } else if (shapeMode_== WDShapePolygon) {
         NSMutableArray  *nodes = [NSMutableArray array];
         CGPoint         delta = WDSubtractPoints(pt, initialPoint);
@@ -103,7 +103,7 @@ NSString *WDShapeToolSpiralDecay = @"WDShapeToolSpiralDecay";
             [nodes addObject:[WDBezierNode bezierNodeWithAnchorPoint:CGPointMake(x + initialPoint.x, y + initialPoint.y)]];
         }
         
-        WDPath *path = [[WDPath alloc] init];
+        WDPathElement *path = [[WDPathElement alloc] init];
         path.nodes = nodes;
         path.closed = YES;
         return path;
@@ -152,7 +152,7 @@ NSString *WDShapeToolSpiralDecay = @"WDShapeToolSpiralDecay";
             [nodes addObject:[WDBezierNode bezierNodeWithAnchorPoint:CGPointMake(x + initialPoint.x, y + initialPoint.y)]];
         }
         
-        WDPath *path = [[WDPath alloc] init];
+        WDPathElement *path = [[WDPathElement alloc] init];
         path.nodes = nodes;
         path.closed = YES;
         return path;
@@ -187,7 +187,7 @@ NSString *WDShapeToolSpiralDecay = @"WDShapeToolSpiralDecay";
             [nodes addObject:[WDBezierNode bezierNodeWithInPoint:P2 anchorPoint:P3 outPoint:P1]];
         }
         
-        WDPath *path = [[WDPath alloc] init];
+        WDPathElement *path = [[WDPathElement alloc] init];
         path.nodes = nodes;
         
         CGAffineTransform transform = CGAffineTransformMakeTranslation(initialPoint.x, initialPoint.y);
@@ -221,7 +221,7 @@ NSString *WDShapeToolSpiralDecay = @"WDShapeToolSpiralDecay";
         [canvas.drawingController selectNone:nil];
     }
     
-    WDPath  *temp = [self pathWithPoint:theEvent.snappedLocation constrain:[self constrain]];
+    WDPathElement  *temp = [self pathWithPoint:theEvent.snappedLocation constrain:[self constrain]];
     
     if (canvas.drawing.dynamicGuides) {
         WDDynamicGuideController *guideController = canvas.drawingController.dynamicGuideController;
@@ -245,7 +245,7 @@ NSString *WDShapeToolSpiralDecay = @"WDShapeToolSpiralDecay";
 {    
     if (self.moved) {
         if (!CGPointEqualToPoint(self.initialEvent.snappedLocation, theEvent.snappedLocation)) {
-            WDPath  *path = [self pathWithPoint:theEvent.snappedLocation constrain:[self constrain]];
+            WDPathElement  *path = [self pathWithPoint:theEvent.snappedLocation constrain:[self constrain]];
             
             WDStrokeStyle *stroke = [canvas.drawingController.propertyManager activeStrokeStyle];
             path.strokeStyle = (shapeMode_ == WDShapeLine) ? stroke : [stroke strokeStyleSansArrows];
@@ -272,7 +272,7 @@ NSString *WDShapeToolSpiralDecay = @"WDShapeToolSpiralDecay";
 
 - (void) flagsChangedInCanvas:(WDCanvasView *)canvas
 {
-    WDPath  *temp = [self pathWithPoint:self.previousEvent.snappedLocation constrain:[self constrain]];
+    WDPathElement  *temp = [self pathWithPoint:self.previousEvent.snappedLocation constrain:[self constrain]];
     canvas.shapeUnderConstruction = temp;
 }
 

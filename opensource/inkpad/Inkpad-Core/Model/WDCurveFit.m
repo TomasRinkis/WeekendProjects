@@ -12,12 +12,12 @@
 #import "FitCurves.h"
 #import "WDBezierNode.h"
 #import "WDCurveFit.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDUtilities.h"
 
 @implementation WDCurveFit
 
-+ (WDPath *) smoothPathForPoints:(NSArray *)inPoints error:(float)epsilon attemptToClose:(BOOL)shouldClose
++ (WDPathElement *) smoothPathForPoints:(NSArray *)inPoints error:(float)epsilon attemptToClose:(BOOL)shouldClose
 {
     NSMutableArray  *points = [inPoints mutableCopy];
     CGPoint         unboxedPts[points.count];
@@ -52,7 +52,7 @@
 //
 // construct a node array from a sequence of bezier segments
 //
-+ (WDPath *) pathFromSegments:(WDBezierSegment *)segments numSegments:(NSUInteger)numSegments closePath:(BOOL)closePath
++ (WDPathElement *) pathFromSegments:(WDBezierSegment *)segments numSegments:(NSUInteger)numSegments closePath:(BOOL)closePath
 {
     NSMutableArray  *nodes = [NSMutableArray array];
     WDBezierNode    *node;
@@ -103,7 +103,7 @@
                                               outPoint:WDAddPoints(node.anchorPoint, newOut)];
     }
     
-    WDPath *path = [[WDPath alloc] init];
+    WDPathElement *path = [[WDPathElement alloc] init];
     path.nodes = nodes;
     path.closed = closePath;
     

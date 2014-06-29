@@ -14,7 +14,7 @@
 #import "WDDrawingController.h"
 #import "WDGLUtilities.h"
 #import "WDLayer.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDSelectionTool.h"
 #import "WDSelectionView.h"
 #import "WDToolManager.h"

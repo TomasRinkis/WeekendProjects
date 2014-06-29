@@ -1,5 +1,5 @@
 //
-//  WDAbstractPath.m
+//  WDAbstractPathElement.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -15,16 +15,16 @@
 
 #import "WDArrowhead.h"
 #import "WDColor.h"
-#import "WDCompoundPath.h"
+#import "WDCompoundPathElement.h"
 #import "WDLayer.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDPathfinder.h"
 #import "WDSVGHelper.h"
 #import "WDUtilities.h"
 
 NSString *WDFillRuleKey = @"WDFillRuleKey";
 
-@implementation WDAbstractPath
+@implementation WDAbstractPathElement
 
 @synthesize fillRule = fillRule_;
 
@@ -210,7 +210,7 @@ NSString *WDFillRuleKey = @"WDFillRuleKey";
             [strokeGroup setAttribute:@"opacity" floatValue:self.strokeStyle.color.alpha];
         }
         
-        WDAbstractPath *inkpadPath = [WDAbstractPath pathWithCGPathRef:self.strokePathRef];
+        WDAbstractPathElement *inkpadPath = [WDAbstractPathElement pathWithCGPathRef:self.strokePathRef];
         [strokePath setAttribute:@"d" value:[inkpadPath nodeSVGRepresentation]];
         [strokeGroup addChild:strokePath];
         
@@ -226,7 +226,7 @@ NSString *WDFillRuleKey = @"WDFillRuleKey";
     return 1;
 }
 
-+ (WDAbstractPath *) pathWithCGPathRef:(CGPathRef)pathRef
++ (WDAbstractPathElement *) pathWithCGPathRef:(CGPathRef)pathRef
 {
     NSMutableArray *subpaths = [NSMutableArray array];
     
@@ -236,7 +236,7 @@ NSString *WDFillRuleKey = @"WDFillRuleKey";
         // single path
         return [subpaths lastObject];
     } else {
-        WDCompoundPath *cp = [[WDCompoundPath alloc] init];
+        WDCompoundPathElement *cp = [[WDCompoundPathElement alloc] init];
         [cp setSubpathsQuiet:subpaths];
         return cp;
     }
@@ -247,7 +247,7 @@ NSString *WDFillRuleKey = @"WDFillRuleKey";
     // subclasses can add more to the outline
 }
 
-- (WDAbstractPath *) outlineStroke
+- (WDAbstractPathElement *) outlineStroke
 {
     if (!self.strokeStyle || ![self.strokeStyle willRender]) {
         return nil;
@@ -280,13 +280,13 @@ NSString *WDFillRuleKey = @"WDFillRuleKey";
     }
 
     [self addElementsToOutlinedStroke:mutableOutline];
-    WDAbstractPath *result = [WDAbstractPath pathWithCGPathRef:mutableOutline];
+    WDAbstractPathElement *result = [WDAbstractPathElement pathWithCGPathRef:mutableOutline];
     [result simplify];
     CGPathRelease(mutableOutline);
     
     // remove self intersections
     if (result) {
-        result = [WDPathfinder combinePaths:@[result, [WDPath pathWithRect:result.styleBounds]] operation:WDPathfinderIntersect];
+        result = [WDPathfinder combinePaths:@[result, [WDPathElement pathWithRect:result.styleBounds]] operation:WDPathfinderIntersect];
     }
     
     return result;
@@ -302,13 +302,13 @@ NSString *WDFillRuleKey = @"WDFillRuleKey";
     // implemented by concrete subclasses
 }
 
-- (WDAbstractPath *) pathByFlatteningPath
+- (WDAbstractPathElement *) pathByFlatteningPath
 {
     // implemented by concrete subclasses
     return nil;
 }
 
-- (NSArray *) erase:(WDAbstractPath *)erasePath
+- (NSArray *) erase:(WDAbstractPathElement *)erasePath
 {
     // implemented by concrete subclasses
     return nil;
@@ -326,7 +326,7 @@ NSString *WDFillRuleKey = @"WDFillRuleKey";
 
 - (id) copyWithZone:(NSZone *)zone
 {       
-    WDAbstractPath *ap = [super copyWithZone:zone];
+    WDAbstractPathElement *ap = [super copyWithZone:zone];
     
     ap->fillRule_ = fillRule_;
     

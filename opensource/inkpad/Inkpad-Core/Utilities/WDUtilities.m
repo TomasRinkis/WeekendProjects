@@ -15,7 +15,7 @@
 
 #import "WDBezierNode.h"
 #import "WDBezierSegment.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDUtilities.h"
 #include <CommonCrypto/CommonHMAC.h>
 
@@ -416,12 +416,12 @@ CGPathRef WDCreateCubicPathFromQuadraticPath(CGPathRef pathRef)
 void WDPathApplyAccumulateElement(void *info, const CGPathElement *element)
 {
     NSMutableArray  *subpaths = (__bridge NSMutableArray *)info;
-    WDPath          *path = [subpaths lastObject];
+    WDPathElement          *path = [subpaths lastObject];
     WDBezierNode    *prev, *node;
     
     switch (element->type) {
         case kCGPathElementMoveToPoint:
-            path = [[WDPath alloc] init];
+            path = [[WDPathElement alloc] init];
             
             node = [[WDBezierNode alloc] initWithAnchorPoint:element->points[0]];
             [path.nodes addObject:node];
@@ -483,7 +483,7 @@ CGRect WDStrokeBoundsForPath(CGPathRef pathRef, WDStrokeStyle *strokeStyle)
         NSMutableArray *subpaths = [NSMutableArray array];
         CGPathApply(pathRef, (__bridge void *)(subpaths), &WDPathApplyAccumulateElement);
         
-        for (WDPath *subpath in subpaths) {
+        for (WDPathElement *subpath in subpaths) {
             NSArray         *nodes = subpath.nodes;
             NSInteger       nodeCount = subpath.closed ? nodes.count + 1 : nodes.count;
             

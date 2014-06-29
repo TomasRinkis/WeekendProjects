@@ -11,11 +11,11 @@
 
 #import "WDGenericTool.h"
 
-@class WDPath;
+@class WDPathElement;
 
 @interface WDEraserTool : WDGenericTool
 {
-    WDPath              *tempPath_;
+    WDPathElement              *tempPath_;
     NSUInteger          eraserSize_;
     
 #if TARGET_OS_IPHONE

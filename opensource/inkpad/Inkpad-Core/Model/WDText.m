@@ -24,7 +24,7 @@
 #import "WDGradient.h"
 #import "WDInspectableProperties.h"
 #import "WDLayer.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDPropertyManager.h"
 #import "WDSVGHelper.h"
 #import "WDText.h"
@@ -983,7 +983,7 @@ NSString *WDAlignmentKey = @"WDAlignmentKey";
     
     for (id pathRef in glyphs_) {
         CGPathRef glyphPath = (__bridge CGPathRef) pathRef;
-        [paths addObject:[WDAbstractPath pathWithCGPathRef:glyphPath]];
+        [paths addObject:[WDAbstractPathElement pathWithCGPathRef:glyphPath]];
     }
     
     return paths;

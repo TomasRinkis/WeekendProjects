@@ -1,5 +1,5 @@
 //
-//  WDCompoundPath.h
+//  WDCompoundPathElement.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -10,11 +10,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WDAbstractPath.h"
+#import "WDAbstractPathElement.h"
 
-@class WDPath;
+@class WDPathElement;
 
-@interface WDCompoundPath : WDAbstractPath <NSCoding, NSCopying> {
+@interface WDCompoundPathElement : WDAbstractPathElement <NSCoding, NSCopying> {
     CGMutablePathRef    pathRef_;
     CGMutablePathRef    strokePathRef_;
 }
@@ -22,8 +22,8 @@
 @property (nonatomic, strong) NSMutableArray *subpaths;
 
 - (void) invalidatePath;
-- (void) addSubpath:(WDPath *)path;
-- (void) removeSubpath:(WDPath *)path;
+- (void) addSubpath:(WDPathElement *)path;
+- (void) removeSubpath:(WDPathElement *)path;
 
 - (void) setSubpathsQuiet:(NSMutableArray *)subpaths;
 

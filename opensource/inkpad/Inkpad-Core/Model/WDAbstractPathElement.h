@@ -1,5 +1,5 @@
 //
-//  WDAbstractPath.h
+//  WDAbstractPathElement.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -23,30 +23,30 @@ typedef enum {
     kWDEvenOddFillRule          = 1
 } WDFillRule;
 
-@interface WDAbstractPath : WDStylableElement <NSCoding, NSCopying>
+@interface WDAbstractPathElement : WDStylableElement <NSCoding, NSCopying>
 
 @property (nonatomic, assign) WDFillRule fillRule;
 @property (nonatomic, readonly) CGPathRef pathRef;
 @property (nonatomic, readonly) CGPathRef strokePathRef;
 
-+ (WDAbstractPath *) pathWithCGPathRef:(CGPathRef)pathRef;
++ (WDAbstractPathElement *) pathWithCGPathRef:(CGPathRef)pathRef;
 
 - (NSUInteger) subpathCount;
 - (NSString *) nodeSVGRepresentation;
 - (void) addSVGArrowheadsToGroup:(WDXMLElement *)group;
 
 - (BOOL) canOutlineStroke;
-- (WDAbstractPath *) outlineStroke;
+- (WDAbstractPathElement *) outlineStroke;
 
 // subclasses can override this to enhance the default outline
 - (void) addElementsToOutlinedStroke:(CGMutablePathRef)pathRef;
 
-- (NSArray *) erase:(WDAbstractPath *)erasePath;
+- (NSArray *) erase:(WDAbstractPathElement *)erasePath;
 
 - (void) simplify;
 - (void) flatten;
 
-- (WDAbstractPath *) pathByFlatteningPath;
+- (WDAbstractPathElement *) pathByFlatteningPath;
 
 // so subclasses can override
 - (void) renderStrokeInContext:(CGContextRef)ctx;

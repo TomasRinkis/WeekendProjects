@@ -1,5 +1,5 @@
 //
-//  WDCompoundPath.m
+//  WDCompoundPathElement.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -10,16 +10,16 @@
 //
 
 #import "WDColor.h"
-#import "WDCompoundPath.h"
+#import "WDCompoundPathElement.h"
 #import "WDFillTransform.h"
 #import "WDLayer.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDPathfinder.h"
 #import "WDUtilities.h"
 
 NSString *WDSubpathsKey = @"WDSubpathsKey";
 
-@implementation WDCompoundPath
+@implementation WDCompoundPathElement
 
 @synthesize subpaths = subpaths_;
 
@@ -53,7 +53,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
 {
     [super setLayer:layer];
     
-    for (WDPath *subpath in subpaths_) {
+    for (WDPathElement *subpath in subpaths_) {
         [subpath setLayer:layer];
     }
 }
@@ -88,7 +88,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
     [subpaths makeObjectsPerformSelector:@selector(setLayer:) withObject:self.layer];
 }
 
-- (void) addSubpath:(WDPath *)path
+- (void) addSubpath:(WDPathElement *)path
 {
     NSMutableArray *paths = [NSMutableArray array];
     
@@ -98,7 +98,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
     self.subpaths = paths;
 }
 
-- (void) removeSubpath:(WDPath *)path
+- (void) removeSubpath:(WDPathElement *)path
 {
     NSMutableArray *paths = [NSMutableArray array];
     
@@ -117,7 +117,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
 {
     CGRect bounds = CGRectNull;
     
-    for (WDPath *path in subpaths_) {
+    for (WDPathElement *path in subpaths_) {
         bounds = CGRectUnion([path bounds], bounds);
     }
     
@@ -128,7 +128,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
 {
     CGRect bounds = CGRectNull;
     
-    for (WDPath *path in subpaths_) {
+    for (WDPathElement *path in subpaths_) {
         bounds = CGRectUnion([path controlBounds], bounds);
     }
     
@@ -148,7 +148,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
 
 - (void) addElementsToOutlinedStroke:(CGMutablePathRef)outline
 {
-    for (WDPath *path in subpaths_) {
+    for (WDPathElement *path in subpaths_) {
         [path addElementsToOutlinedStroke:outline];
     }
 }
@@ -157,7 +157,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
 {
     CGRect bounds = CGRectNull;
     
-    for (WDPath *path in subpaths_) {
+    for (WDPathElement *path in subpaths_) {
         bounds = CGRectUnion([path styleBounds], bounds);
     }
     
@@ -168,7 +168,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
 {
     [self cacheDirtyBounds];
 
-    for (WDPath *path in subpaths_) {
+    for (WDPathElement *path in subpaths_) {
         [path transform:transform];
     }
     
@@ -182,7 +182,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
 
 - (BOOL) intersectsRect:(CGRect)rect
 {
-    for (WDPath *path in [subpaths_ reverseObjectEnumerator]) {
+    for (WDPathElement *path in [subpaths_ reverseObjectEnumerator]) {
         if ([path intersectsRect:rect]) {
             return YES;
         }
@@ -215,7 +215,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
         }
     }
     
-    for (WDPath *path in [subpaths_ reverseObjectEnumerator]) {
+    for (WDPathElement *path in [subpaths_ reverseObjectEnumerator]) {
         WDPickResult *result = [path hitResultForPoint:point viewScale:viewScale snapFlags:kWDSnapEdges];
         
         if (result.type != kWDEther) {
@@ -236,7 +236,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
 
 - (WDPickResult *) snappedPoint:(CGPoint)pt viewScale:(float)viewScale snapFlags:(int)flags
 {
-    for (WDPath *path in [subpaths_ reverseObjectEnumerator]) {
+    for (WDPathElement *path in [subpaths_ reverseObjectEnumerator]) {
         WDPickResult *result = [path snappedPoint:pt viewScale:viewScale snapFlags:flags];
         
         if (result.type != kWDEther) {
@@ -252,7 +252,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
     if (!pathRef_) {
         pathRef_ = CGPathCreateMutable();
         
-        for (WDPath *subpath in subpaths_) {
+        for (WDPathElement *subpath in subpaths_) {
             CGPathAddPath(pathRef_, NULL, subpath.pathRef);
         }
     }
@@ -265,7 +265,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
     if (!strokePathRef_) {
         strokePathRef_ = CGPathCreateMutable();
         
-        for (WDPath *subpath in subpaths_) {
+        for (WDPathElement *subpath in subpaths_) {
             CGPathAddPath(strokePathRef_, NULL, subpath.strokePathRef);
         }
     }
@@ -290,28 +290,28 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
 
 - (void) drawOpenGLZoomOutlineWithViewTransform:(CGAffineTransform)viewTransform visibleRect:(CGRect)visibleRect
 {
-    for (WDPath *subpath in subpaths_) {
+    for (WDPathElement *subpath in subpaths_) {
         [subpath drawOpenGLZoomOutlineWithViewTransform:viewTransform visibleRect:visibleRect];
     }
 }
 
 - (void) drawOpenGLHighlightWithTransform:(CGAffineTransform)transform viewTransform:(CGAffineTransform)viewTransform
 {
-    for (WDPath *subpath in subpaths_) {
+    for (WDPathElement *subpath in subpaths_) {
         [subpath drawOpenGLHighlightWithTransform:transform viewTransform:viewTransform];
     }
 }
 
 - (void) drawOpenGLHandlesWithTransform:(CGAffineTransform)transform viewTransform:(CGAffineTransform)viewTransform
 {
-    for (WDPath *subpath in subpaths_) {
+    for (WDPathElement *subpath in subpaths_) {
         [subpath drawOpenGLAnchorsWithViewTransform:viewTransform];
     }
 }
 
 - (void) drawOpenGLAnchorsWithViewTransform:(CGAffineTransform)transform
 {
-    for (WDPath *subpath in subpaths_) {
+    for (WDPathElement *subpath in subpaths_) {
         [subpath drawOpenGLAnchorsWithViewTransform:transform];
     }
 }
@@ -326,7 +326,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
 {
     NSMutableString *svg = [NSMutableString string];
     
-    for (WDPath *path in self.subpaths) {
+    for (WDPathElement *path in self.subpaths) {
         [svg appendString:[path nodeSVGRepresentation]];
     }
     
@@ -335,15 +335,15 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
 
 - (void) addSVGArrowheadsToGroup:(WDXMLElement *)group
 {
-    for (WDPath *path in self.subpaths) {
+    for (WDPathElement *path in self.subpaths) {
         [path addSVGArrowheadsToGroup:group];
     }
 }
 
-- (NSArray *) erase:(WDAbstractPath *)erasePath
+- (NSArray *) erase:(WDAbstractPathElement *)erasePath
 {
     if (self.fill) {
-        WDAbstractPath *erased = [WDPathfinder combinePaths:@[self, erasePath] operation:WDPathFinderSubtract];
+        WDAbstractPathElement *erased = [WDPathfinder combinePaths:@[self, erasePath] operation:WDPathFinderSubtract];
         
         if (erased) {
             [erased takeStylePropertiesFrom:self];
@@ -353,18 +353,18 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
         NSMutableArray *result = [NSMutableArray array];
         
         // erase each subpath individually
-        for (WDPath *path in subpaths_) {
+        for (WDPathElement *path in subpaths_) {
             [result addObjectsFromArray:[path erase:erasePath]];
         }
         
         if (result.count > 1) {
-            WDCompoundPath *cp = [[WDCompoundPath alloc] init];
+            WDCompoundPathElement *cp = [[WDCompoundPathElement alloc] init];
             [cp takeStylePropertiesFrom:self];
             cp.subpaths = result;
             
             return @[cp];
         } else if (result.count == 1) {
-            WDPath *singlePath = [result lastObject];
+            WDPathElement *singlePath = [result lastObject];
             [singlePath takeStylePropertiesFrom:self];
             
             return @[singlePath];
@@ -384,12 +384,12 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
     [subpaths_ makeObjectsPerformSelector:@selector(flatten)];
 }
 
-- (WDAbstractPath *) pathByFlatteningPath
+- (WDAbstractPathElement *) pathByFlatteningPath
 {
-    WDCompoundPath *cp = [[WDCompoundPath alloc] init];
+    WDCompoundPathElement *cp = [[WDCompoundPathElement alloc] init];
     NSMutableArray *flatPaths = [NSMutableArray array];
     
-    for (WDPath *path in subpaths_) {
+    for (WDPathElement *path in subpaths_) {
         [flatPaths addObject:[path pathByFlatteningPath]];
     }
     
@@ -405,7 +405,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
 
 - (id) copyWithZone:(NSZone *)zone
 {       
-    WDCompoundPath *cp = [super copyWithZone:zone];
+    WDCompoundPathElement *cp = [super copyWithZone:zone];
     
     // copy subpaths
     cp->subpaths_ = [[NSMutableArray alloc] initWithArray:subpaths_ copyItems:YES];
@@ -426,7 +426,7 @@ NSString *WDSubpathsKey = @"WDSubpathsKey";
         return;
     }
     
-    for (WDPath *path in subpaths_) {
+    for (WDPathElement *path in subpaths_) {
         [path renderStrokeInContext:ctx];
     }
 }

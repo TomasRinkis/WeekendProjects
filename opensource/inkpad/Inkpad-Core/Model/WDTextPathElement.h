@@ -1,5 +1,5 @@
 //
-//  WDTextPath.h
+//  WDTextPathElement.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -9,7 +9,7 @@
 //  Copyright (c) 2011-2013 Steve Sprang
 //
 
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDTextRenderer.h"
 
 typedef enum {
@@ -18,7 +18,7 @@ typedef enum {
     kWDTextPathAlignmentVertical  // currently unsupported
 } WDTextPathAlignment;
 
-@interface WDTextPath : WDPath <NSCoding, NSCopying, WDTextRenderer> {
+@interface WDTextPathElement : WDPathElement <NSCoding, NSCopying, WDTextRenderer> {
     NSString                *text_;
     NSString                *fontName_;
     float                   fontSize_;
@@ -47,7 +47,7 @@ typedef enum {
 @property (nonatomic, readonly) NSAttributedString *attributedString;
 @property (nonatomic, strong) NSNumber *cachedStartOffset;
 
-+ (WDTextPath *) textPathWithPath:(WDPath *)path;
++ (WDTextPathElement *) textPathWithPath:(WDPathElement *)path;
 
 - (void) setFontName:(NSString *)fontName;
 - (void) setFontSize:(float)fontSize;

@@ -13,18 +13,18 @@
 #import <Foundation/Foundation.h>
 #import "WDElement.h"
 
-@class WDAbstractPath;
+@class WDAbstractPathElement;
 @class WDBezierNode;
 @class WDColor;
 @class WDDrawing;
 @class WDDynamicGuideController;
 @class WDElement;
 @class WDLayer;
-@class WDPath;
+@class WDPathElement;
 @class WDPickResult;
 @class WDPropertyManager;
 @class WDText;
-@class WDTextPath;
+@class WDTextPathElement;
 
 @interface WDDrawingController : NSObject
 
@@ -32,7 +32,7 @@
 @property (nonatomic, readonly) NSMutableSet *selectedObjects;
 @property (weak, nonatomic, readonly) NSMutableSet *selectedPaths;
 @property (nonatomic, readonly) NSMutableSet *selectedNodes;
-@property (nonatomic, strong) WDPath *activePath;
+@property (nonatomic, strong) WDPathElement *activePath;
 @property (nonatomic, strong) WDBezierNode *tempDisplayNode;
 @property (nonatomic, strong) WDPropertyManager *propertyManager;
 @property (nonatomic, assign) CGAffineTransform lastAppliedTransform;
@@ -90,7 +90,7 @@
 - (void) reversePathDirection:(id)sender;
 - (void) outlineStroke:(id)sender;
 - (void) joinPaths:(id)sender;
-- (void) setActivePath:(WDPath *)path;
+- (void) setActivePath:(WDPathElement *)path;
 
 // grouping
 - (void) group:(id)sender;
@@ -108,7 +108,7 @@
 - (void) unitePaths:(id)sender;
 - (void) intersectPaths:(id)sender;
 - (void) subtractPaths:(id)sender;
-- (void) eraseWithPath:(WDAbstractPath *)erasePath;
+- (void) eraseWithPath:(WDAbstractPathElement *)erasePath;
 - (void) excludePaths:(id)sender;
 
 // image placement
@@ -140,7 +140,7 @@
 // text
 - (WDText *) createTextObjectInRect:(CGRect)rect;
 - (void) createTextObjectWithText:(NSString *)string;
-- (WDTextPath *) placeTextOnPath:(id)sender shouldStartEditing:(BOOL *)startEditing;
+- (WDTextPathElement *) placeTextOnPath:(id)sender shouldStartEditing:(BOOL *)startEditing;
 - (void) createTextOutlines:(id)sender;
 - (void) resetTextTransform:(id)sender;
 

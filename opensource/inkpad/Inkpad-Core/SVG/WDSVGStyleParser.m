@@ -19,7 +19,7 @@
 #import "WDSVGElement.h"
 #import "WDSVGStyleParser.h"
 #import "WDText.h"
-#import "WDTextPath.h"
+#import "WDTextPathElement.h"
 
 #define LOG_STYLE 0
 
@@ -432,8 +432,8 @@ NSArray *tokenizeStyle(NSString *source)
     [self styleOpacityBlendAndShadow:stylable];
     
     // apply clipping rule
-    if ([stylable isKindOfClass:[WDAbstractPath class]]) {
-        WDAbstractPath *path = (WDAbstractPath *) stylable;
+    if ([stylable isKindOfClass:[WDAbstractPathElement class]]) {
+        WDAbstractPathElement *path = (WDAbstractPathElement *) stylable;
         NSString *clipRule = [stack_ style:kWDPropertyClipRule];
         if ([clipRule isEqualToString:@"nonzero"]) {
             path.fillRule = kWDNonZeroWindingFillRule;
@@ -448,8 +448,8 @@ NSArray *tokenizeStyle(NSString *source)
         [text setFontNameQuiet:[self fontName]];
         [text setFontSizeQuiet:[self fontSize]];
         styleLog(@"Font: %@ %f", text.fontName, text.fontSize);
-    } else if ([stylable isKindOfClass:[WDTextPath class]]) {
-        WDTextPath *textPath = (WDTextPath *) stylable;
+    } else if ([stylable isKindOfClass:[WDTextPathElement class]]) {
+        WDTextPathElement *textPath = (WDTextPathElement *) stylable;
         textPath.fontName = [self fontName];
         textPath.fontSize = [self fontSize];
         styleLog(@"Font: %@ %f", textPath.fontName, textPath.fontSize);

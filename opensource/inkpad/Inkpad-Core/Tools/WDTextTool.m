@@ -14,7 +14,7 @@
 #import "WDCanvasController.h"
 #import "WDColor.h"
 #import "WDDrawingController.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDText.h"
 #import "WDTextTool.h"
 #import "WDUtilities.h"
@@ -37,7 +37,7 @@
         [canvas.drawingController selectNone:nil];
     }
     
-    WDPath  *temp = [WDPath pathWithRect:WDRectWithPoints(self.initialEvent.snappedLocation, event.snappedLocation)];
+    WDPathElement  *temp = [WDPathElement pathWithRect:WDRectWithPoints(self.initialEvent.snappedLocation, event.snappedLocation)];
     canvas.shapeUnderConstruction = temp;
 }
 

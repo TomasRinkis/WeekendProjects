@@ -14,7 +14,7 @@
 #endif
 
 #import "WDColor.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDUtilities.h"
 
 NSString *WDHueKey = @"WDHueKey";
@@ -333,7 +333,7 @@ NSString *WDAlphaKey = @"WDAlphaKey";
     return [NSString stringWithFormat:@"#%.2x%.2x%.2x", (int) (r*255 + 0.5f), (int) (g*255 + 0.5f), (int) (b*255 + 0.5f)];
 }
 
-- (void) paintPath:(WDPath *)path inContext:(CGContextRef)ctx
+- (void) paintPath:(WDPathElement *)path inContext:(CGContextRef)ctx
 {    
     CGContextAddPath(ctx, path.pathRef);
     CGContextSetFillColorWithColor(ctx, self.CGColor);

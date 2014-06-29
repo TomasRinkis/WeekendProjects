@@ -13,7 +13,7 @@
 #import "WDText.h"
 
 @class WDBezierNode;
-@class WDTextPath;
+@class WDTextPathElement;
 
 @interface WDSelectionTool : WDGenericTool {
     CGAffineTransform       transform_;
@@ -31,7 +31,7 @@
     BOOL                    transformingTextKnobs_;
     BOOL                    transformingTextPathStartKnob_;
     
-    WDTextPath              *activeTextPath_;
+    WDTextPathElement              *activeTextPath_;
     
     int                     originalReflectionMode_;
     WDBezierNode            *replacementNode_;

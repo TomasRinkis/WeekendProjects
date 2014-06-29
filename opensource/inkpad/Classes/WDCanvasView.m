@@ -19,7 +19,7 @@
 #import "WDEyedropperView.h"
 #import "WDLayer.h"
 #import "WDPaletteView.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDPenTool.h"
 #import "WDRulerView.h"
 #import "WDSelectionView.h"
@@ -1004,7 +1004,7 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
     [self invalidateSelectionView];
 }
 
-- (void) setShapeUnderConstruction:(WDPath *)path
+- (void) setShapeUnderConstruction:(WDPathElement *)path
 {
     shapeUnderConstruction_ = path;
     
@@ -1012,7 +1012,7 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
     [self invalidateSelectionView];
 }
 
-- (void) setEraserPath:(WDPath *)eraserPath
+- (void) setEraserPath:(WDPathElement *)eraserPath
 {
     eraserPath_ = eraserPath;
     

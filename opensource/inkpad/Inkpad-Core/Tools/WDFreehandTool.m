@@ -16,7 +16,7 @@
 #import "WDDrawingController.h"
 #import "WDFreehandTool.h"
 #import "WDInspectableProperties.h"
-#import "WDPath.h"
+#import "WDPathElement.h"
 #import "WDPropertyManager.h"
 #import "WDUtilities.h"
 
@@ -55,7 +55,7 @@ NSString *WDDefaultFreehandTool = @"WDDefaultFreehandTool";
     
     pathStarted_ = YES;
     
-    tempPath_ = [[WDPath alloc] init];
+    tempPath_ = [[WDPathElement alloc] init];
     canvas.shapeUnderConstruction = tempPath_;
     
     [self moveWithEvent:theEvent inCanvas:canvas];
@@ -92,7 +92,7 @@ NSString *WDDefaultFreehandTool = @"WDDefaultFreehandTool";
             }
         }
         
-        WDPath *smoothPath = [WDCurveFit smoothPathForPoints:points error:maxError attemptToClose:YES];
+        WDPathElement *smoothPath = [WDCurveFit smoothPathForPoints:points error:maxError attemptToClose:YES];
         
         if (smoothPath) {
             smoothPath.fill = [canvas.drawingController.propertyManager activeFillStyle];

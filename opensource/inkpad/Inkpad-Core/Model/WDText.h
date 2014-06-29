@@ -67,7 +67,7 @@
 - (void) cacheTransformAndWidth;
 - (void) registerUndoWithCachedTransformAndWidth;
 
-// an array of WDPath objects representing each glyph in the text object
+// an array of WDPathElement objects representing each glyph in the text object
 - (NSArray *) outlines;
 
 - (void) drawOpenGLTextOutlinesWithTransform:(CGAffineTransform)transform viewTransform:(CGAffineTransform)viewTransform;
