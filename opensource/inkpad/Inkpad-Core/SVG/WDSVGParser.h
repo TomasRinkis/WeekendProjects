@@ -27,7 +27,7 @@
 
 - (id) initWithDrawing:(WDDrawing *)drawing;
 - (void) startElement:(WDSVGElement *)element;
-- (WDElement *) endElement;
+- (WDAbstractElement *) endElement;
 - (BOOL) hadErrors;
 - (BOOL) hadMemoryWarning;
 

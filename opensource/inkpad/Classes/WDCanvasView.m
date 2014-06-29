@@ -1076,7 +1076,7 @@ NSString *WDCanvasBeganTrackingTouches = @"WDCanvasBeganTrackingTouches";
     frame = [self convertRect:frame fromView:nil];
     
     if (self.drawingController.selectedObjects.count == 1) {
-        WDElement *selectedObject = [self.drawingController.selectedObjects anyObject];
+        WDAbstractElement *selectedObject = [self.drawingController.selectedObjects anyObject];
         
         if ([selectedObject hasEditableText]) {
             CGPoint top = WDCenterOfRect(selectedObject.bounds);

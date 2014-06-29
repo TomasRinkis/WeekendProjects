@@ -11,14 +11,14 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "WDElement.h"
+#import "WDAbstractElement.h"
 
 @class WDAbstractPathElement;
 @class WDBezierNode;
 @class WDColor;
 @class WDDrawing;
 @class WDDynamicGuideController;
-@class WDElement;
+@class WDAbstractElement;
 @class WDLayer;
 @class WDPathElement;
 @class WDPickResult;
@@ -47,13 +47,13 @@
 - (BOOL) isNodeSelected:(WDBezierNode *)node;
 
 // querying selection state
-- (WDElement *) singleSelection;
+- (WDAbstractElement *) singleSelection;
 - (NSMutableArray *) orderedSelectedObjects;
 - (NSArray *) sortedSelectionForLayer:(WDLayer *)layer;
 - (NSArray *) guideGeneratingObjects;
 
-- (BOOL) isSelected:(WDElement *)element;
-- (BOOL) isSelectedOrSubelementIsSelected:(WDElement *)element;
+- (BOOL) isSelected:(WDAbstractElement *)element;
+- (BOOL) isSelectedOrSubelementIsSelected:(WDAbstractElement *)element;
 
 - (CGRect) selectionBounds;
 - (CGRect) selectionStyleBounds;
@@ -65,10 +65,10 @@
 - (void) notifySelectionChanged;
 
 // actions
-- (void) selectObject:(WDElement *)element;
+- (void) selectObject:(WDAbstractElement *)element;
 - (void) selectObjects:(NSArray *)elements;
-- (void) deselectObject:(WDElement *)element;
-- (void) deselectObjectAndSubelements:(WDElement *)element;
+- (void) deselectObject:(WDAbstractElement *)element;
+- (void) deselectObjectAndSubelements:(WDAbstractElement *)element;
 - (void) selectObjectsInRect:(CGRect)rect;
 
 - (void) selectNone:(id)sender;

@@ -222,7 +222,7 @@
             
             [l.highlightColor openGLSet];
             
-            for (WDElement *e in [l elements]) {
+            for (WDAbstractElement *e in [l elements]) {
                 [e drawOpenGLZoomOutlineWithViewTransform:effective visibleRect:visibleRect];
             }
         }
@@ -237,7 +237,7 @@
     }   
     
     WDDrawingController *controller = self.canvas.drawingController;
-    WDElement           *singleSelection = [controller singleSelection];
+    WDAbstractElement           *singleSelection = [controller singleSelection];
     
     if (singleSelection && !self.canvas.transforming && !self.canvas.transformingNode) {
         if ([[WDToolManager sharedInstance].activeTool isKindOfClass:[WDSelectionTool class]]) {
@@ -246,13 +246,13 @@
     }
     
     // draw all object outlines, using the selection transform if applicable
-    for (WDElement *e in controller.selectedObjects) {
+    for (WDAbstractElement *e in controller.selectedObjects) {
         [e drawOpenGLHighlightWithTransform:self.canvas.selectionTransform viewTransform:effective];
     }
     
     // if we're not transforming, draw filled anchors on all paths
     if (!self.canvas.transforming && !singleSelection) {        
-        for (WDElement *e in controller.selectedObjects) {
+        for (WDAbstractElement *e in controller.selectedObjects) {
             [e drawOpenGLAnchorsWithViewTransform:effective];
         }
     }

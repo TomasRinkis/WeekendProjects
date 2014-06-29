@@ -40,7 +40,7 @@
 
     BOOL                    nodeWasSelected_;
     BOOL                    objectWasSelected_;
-    WDElement               *lastTappedObject_;
+    WDAbstractElement               *lastTappedObject_;
 }
 
 @property (nonatomic, assign) BOOL groupSelect;

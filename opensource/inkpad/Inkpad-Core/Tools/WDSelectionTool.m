@@ -95,7 +95,7 @@
         return;
     }
     
-    WDElement *element = result.element;
+    WDAbstractElement *element = result.element;
     
     if (![controller isSelected:element]) {
         WDPathElement *path = nil;

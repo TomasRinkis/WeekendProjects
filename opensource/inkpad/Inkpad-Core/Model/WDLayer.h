@@ -13,7 +13,7 @@
 #import <UIKit/UIKit.h>
 #import "WDDrawing.h"
 
-@class WDElement;
+@class WDAbstractElement;
 @class WDXMLElement;
 
 @interface WDLayer : NSObject <NSCoding, NSCopying>
@@ -41,7 +41,7 @@
 - (void) addObject:(id)obj;
 - (void) addObjects:(NSArray *)objects;
 - (void) removeObject:(id)obj;
-- (void) insertObject:(WDElement *)element above:(WDElement *)above;
+- (void) insertObject:(WDAbstractElement *)element above:(WDAbstractElement *)above;
 
 - (void) addElementsToArray:(NSMutableArray *)elements;
 

@@ -26,13 +26,13 @@ NSString *WDShadowAngleKey = @"WDShadowAngleKey";
 @synthesize angle = angle_;
 
 
-+ (WDShadow *) shadowWithColor:(WDColor *)color radius:(float)radius offset:(float)offset angle:(float)angle
++ (instancetype) shadowWithColor:(WDColor *)color radius:(float)radius offset:(float)offset angle:(float)angle
 {
     WDShadow *shadow = [[WDShadow alloc] initWithColor:color radius:radius offset:offset angle:angle];
     return shadow;
 }
 
-- (id) initWithColor:(WDColor *)color radius:(float)radius offset:(float)offset angle:(float)angle
+- (instancetype) initWithColor:(WDColor *)color radius:(float)radius offset:(float)offset angle:(float)angle
 {
     self = [super init];
     
@@ -56,7 +56,7 @@ NSString *WDShadowAngleKey = @"WDShadowAngleKey";
     [coder encodeFloat:angle_ forKey:WDShadowAngleKey];
 }
 
-- (id)initWithCoder:(NSCoder *)coder
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super init];
     

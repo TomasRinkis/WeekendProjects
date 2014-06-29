@@ -10,7 +10,7 @@
 //
 
 #import "UIColor+Additions.h"
-#import "WDElement.h"
+#import "WDAbstractElement.h"
 #import "WDLayer.h"
 #import "WDSVGHelper.h"
 #import "WDUtilities.h"
@@ -139,7 +139,7 @@ NSString *WDOpacityKey = @"WDOpacityKey";
         CGContextBeginTransparencyLayer(ctx, NULL);
     }
     
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         if (CGRectIntersectsRect([element styleBounds], clip)) {
             [element renderInContext:ctx metaData:metaData];
         }
@@ -192,7 +192,7 @@ NSString *WDOpacityKey = @"WDOpacityKey";
         [layer setAttribute:@"opacity" floatValue:opacity_];
     }
     
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         [layer addChild:[element SVGElement]];
     }
     
@@ -204,7 +204,7 @@ NSString *WDOpacityKey = @"WDOpacityKey";
     [elements_ makeObjectsPerformSelector:@selector(addElementsToArray:) withObject:elements];
 }
 
-- (void) addObject:(WDElement *)obj
+- (void) addObject:(WDAbstractElement *)obj
 {
     [[self.drawing.undoManager prepareWithInvocationTarget:self] removeObject:obj];
      
@@ -225,12 +225,12 @@ NSString *WDOpacityKey = @"WDOpacityKey";
 
 - (void) addObjects:(NSArray *)objects
 {
-    for (WDElement *element in objects) {
+    for (WDAbstractElement *element in objects) {
         [self addObject:element];
     }
 }
 
-- (void) removeObject:(WDElement *)obj
+- (void) removeObject:(WDAbstractElement *)obj
 {
     [[self.drawing.undoManager prepareWithInvocationTarget:self] insertObject:obj atIndex:[elements_ indexOfObject:obj]];
     
@@ -248,7 +248,7 @@ NSString *WDOpacityKey = @"WDOpacityKey";
     }
 }
 
-- (void) insertObject:(WDElement *)element atIndex:(NSUInteger)index
+- (void) insertObject:(WDAbstractElement *)element atIndex:(NSUInteger)index
 {
     [[self.drawing.undoManager prepareWithInvocationTarget:self] removeObject:element];
     
@@ -267,7 +267,7 @@ NSString *WDOpacityKey = @"WDOpacityKey";
     }
 }
 
-- (void) insertObject:(WDElement *)element above:(WDElement *)above
+- (void) insertObject:(WDAbstractElement *)element above:(WDAbstractElement *)above
 {
     [self insertObject:element atIndex:[elements_ indexOfObject:above]];
 }
@@ -278,8 +278,8 @@ NSString *WDOpacityKey = @"WDOpacityKey";
     
     [elements_ exchangeObjectAtIndex:src withObjectAtIndex:dest];
     
-    WDElement *srcElement = elements_[src];
-    WDElement *destElement = elements_[dest];
+    WDAbstractElement *srcElement = elements_[src];
+    WDAbstractElement *destElement = elements_[dest];
     
     CGRect dirtyRect = CGRectIntersection(srcElement.styleBounds, destElement.styleBounds);
     
@@ -300,8 +300,8 @@ NSString *WDOpacityKey = @"WDOpacityKey";
     NSInteger top = [elements_ count];
     
     for (int i = 1; i < top; i++) {
-        WDElement *curr = (WDElement *) elements_[i];
-        WDElement *below = (WDElement *) elements_[i-1];
+        WDAbstractElement *curr = (WDAbstractElement *) elements_[i];
+        WDAbstractElement *below = (WDAbstractElement *) elements_[i-1];
         
         if ([elements containsObject:curr] && ![elements containsObject:below]) {
             [self exchangeObjectAtIndex:i withObjectAtIndex:(i-1)];
@@ -311,7 +311,7 @@ NSString *WDOpacityKey = @"WDOpacityKey";
 
 - (void) sendToBack:(NSArray *)sortedElements
 {
-    for (WDElement *e in [sortedElements reverseObjectEnumerator]) {
+    for (WDAbstractElement *e in [sortedElements reverseObjectEnumerator]) {
         [self removeObject:e];
         [self insertObject:e atIndex:0];
     }
@@ -322,8 +322,8 @@ NSString *WDOpacityKey = @"WDOpacityKey";
     NSInteger top = [elements_ count] - 1;
     
     for (NSInteger i = top - 1; i >= 0; i--) {
-        WDElement *curr = (WDElement *) elements_[i];
-        WDElement *above = (WDElement *) elements_[i+1];
+        WDAbstractElement *curr = (WDAbstractElement *) elements_[i];
+        WDAbstractElement *above = (WDAbstractElement *) elements_[i+1];
         
         if ([elements containsObject:curr] && ![elements containsObject:above]) {
             [self exchangeObjectAtIndex:i withObjectAtIndex:(i+1)];
@@ -335,7 +335,7 @@ NSString *WDOpacityKey = @"WDOpacityKey";
 {
     NSInteger top = [elements_ count] - 1;
     
-    for (WDElement *e in sortedElements) {
+    for (WDAbstractElement *e in sortedElements) {
         [self removeObject:e];
         [self insertObject:e atIndex:top];
     }
@@ -345,7 +345,7 @@ NSString *WDOpacityKey = @"WDOpacityKey";
 {
     CGRect styleBounds = CGRectNull;
     
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         styleBounds = CGRectUnion(styleBounds, element.styleBounds);
     }
     
@@ -410,7 +410,7 @@ NSString *WDOpacityKey = @"WDOpacityKey";
     CGContextScaleCTM(ctx, scaleFactor, scaleFactor);
     CGContextTranslateCTM(ctx, -contentBounds.origin.x, -contentBounds.origin.y);
     
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         [element renderInContext:ctx metaData:WDRenderingMetaDataMake(scaleFactor, WDRenderThumbnailFlag)];   
     }
     CGContextRestoreGState(ctx);

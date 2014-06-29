@@ -122,7 +122,7 @@ NSString *WDMaskedElementsKey = @"WDMaskedElementsKey";
 {
     self.fillTransform = [fillTransform_ transform:transform];
     
-    for (WDElement *element in self.maskedElements) {
+    for (WDAbstractElement *element in self.maskedElements) {
         [element transform:transform];
     }
     
@@ -465,7 +465,7 @@ NSString *WDMaskedElementsKey = @"WDMaskedElementsKey";
         return YES;
     }
     
-    for (WDElement *element in self.maskedElements) {
+    for (WDAbstractElement *element in self.maskedElements) {
         if ([element canAdjustColor]) {
             return YES;
         }
@@ -490,7 +490,7 @@ NSString *WDMaskedElementsKey = @"WDMaskedElementsKey";
         self.strokeStyle = [self.initialStroke adjustColor:adjustment];
     }
     
-    for (WDElement *element in self.maskedElements) {
+    for (WDAbstractElement *element in self.maskedElements) {
         [element adjustColor:adjustment scope:scope];
     }
     

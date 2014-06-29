@@ -75,7 +75,7 @@
 #pragma mark -
 #pragma mark SVG element walk/copy
 
-- (WDElement *) visitElement:(WDSVGElement *)element
+- (WDAbstractElement *) visitElement:(WDSVGElement *)element
 {
     if ([self hadMemoryWarning]) {
         return nil;
@@ -88,13 +88,13 @@
     return [self endElement];
 }
 
-- (WDElement *) svgCopy:(NSString *)xmlid {
+- (WDAbstractElement *) svgCopy:(NSString *)xmlid {
     WDSVGElement *element = defs_[xmlid];
     if (!element) {
         [state_ reportError:@"Could not find referenced element: #%@", xmlid];
         return nil;
     } else {
-        WDElement *copy = [self visitElement:element];
+        WDAbstractElement *copy = [self visitElement:element];
         [state_.group removeObject:copy];
         return copy;
     }
@@ -204,7 +204,7 @@
 #pragma mark -
 #pragma mark Clipping
 
-- (WDElement *) combineClippingPaths:(WDElement *)element
+- (WDAbstractElement *) combineClippingPaths:(WDAbstractElement *)element
 {
     if (![element isKindOfClass:[WDGroup class]]) {
         return element;
@@ -220,7 +220,7 @@
     } else if ([elements count] == 1) {
         id element = [elements lastObject];
         if ([element isKindOfClass:[WDStylableElement class]]) {
-            ((WDElement *) element).group = nil;
+            ((WDAbstractElement *) element).group = nil;
             return element;
         } else {
             [state_ reportError:@"unusable element in clipping path: %@", element];
@@ -238,7 +238,7 @@
                 [state_ reportError:@"unusable element in clipping path: %@", element];
             }
         }
-        for (WDElement *path in paths) {
+        for (WDAbstractElement *path in paths) {
             path.group = nil;
         }
         WDCompoundPathElement *compoundPath = [[WDCompoundPathElement alloc] init];
@@ -247,14 +247,14 @@
     }
 }
 
-- (WDElement *) clip:(WDElement *)element
+- (WDAbstractElement *) clip:(WDAbstractElement *)element
 {
     NSString *clipPathId = [state_ idFromFuncIRI:@"clip-path"];
     if (!clipPathId || [clipPathId isEqualToString:@"none"]) {
         return element;
     } else {
-        WDElement *clipCopy = [self svgCopy:clipPathId];
-        WDElement *combinedClipPath = [self combineClippingPaths:clipCopy];
+        WDAbstractElement *clipCopy = [self svgCopy:clipPathId];
+        WDAbstractElement *combinedClipPath = [self combineClippingPaths:clipCopy];
         if (clipCopy) {
             if (![combinedClipPath isKindOfClass:[WDStylableElement class]]) {
                 [state_ reportError:@"clip-path not stylable: %@", clipPathId];
@@ -272,9 +272,9 @@
     }
 }
 
-- (WDElement *) clipAndGroup:(WDElement *)element
+- (WDAbstractElement *) clipAndGroup:(WDAbstractElement *)element
 {
-    WDElement *clippedElement = [self clip:element];
+    WDAbstractElement *clippedElement = [self clip:element];
 #ifdef WD_DEBUG
     if ([state_.group containsObject:clippedElement]) {
         NSLog(@"Duplicate element! %@", clippedElement);
@@ -284,7 +284,7 @@
     return clippedElement;
 }
 
-- (WDElement *) styleClipAndGroup:(WDStylableElement *)stylable
+- (WDAbstractElement *) styleClipAndGroup:(WDStylableElement *)stylable
 {
     [styleParser_ style:stylable];
     return [self clipAndGroup:stylable];
@@ -293,7 +293,7 @@
 #pragma mark -
 #pragma mark Utility methods
 
-- (WDElement *) addPath:(NSString *)source
+- (WDAbstractElement *) addPath:(NSString *)source
 {
     WDSVGPathParser *parser = [[WDSVGPathParser alloc] init];
     CGPathRef cgpath = [parser parse:source];
@@ -317,7 +317,7 @@
     [svgElement.text appendString:string];
 }
 
-- (WDElement *) addTextAtX:(float)x andY:(float)y rotate:(float)r alignment:(NSTextAlignment)alignment
+- (WDAbstractElement *) addTextAtX:(float)x andY:(float)y rotate:(float)r alignment:(NSTextAlignment)alignment
 {
     WDText *text = [[WDText alloc] init];
     text.alignment = alignment;
@@ -344,7 +344,7 @@
     CGAffineTransform position = CGAffineTransformRotate(translate, r / 180 * M_PI);
     [text setTransformQuiet:CGAffineTransformConcat(position, state_.transform)];
     [text setTextQuiet:@""]; // clear before collecting actual text
-    WDElement *clippedText = [self clipAndGroup:text];
+    WDAbstractElement *clippedText = [self clipAndGroup:text];
     
     CFRelease(frame);
     
@@ -537,7 +537,7 @@
 {
     NSString *pathId = [state_ idFromIRI:@"xlink:href"];
     if (pathId) {
-        WDElement *element = [self svgCopy:pathId];
+        WDAbstractElement *element = [self svgCopy:pathId];
         if ([element isKindOfClass:[WDPathElement class]]) {
             WDPathElement *path = (WDPathElement *) element;
             path.strokeStyle = nil;
@@ -563,12 +563,12 @@
             [state_ reportError:@"negative size for <use>: width=%f height=%f", box.size.width, box.size.height];
         } else if (isnan(box.size.width) || isnan(box.size.height)) {
             state_.transform = CGAffineTransformTranslate(state_.transform, box.origin.x, box.origin.y);
-            WDElement *copy = [self svgCopy:iri];
+            WDAbstractElement *copy = [self svgCopy:iri];
             state_.wdElement = [self clipAndGroup:copy];
         } else if ((box.size.width != 0) && (box.size.height != 0)) {
             state_.viewport = CGRectMake(0, 0, box.size.width, box.size.height);
             state_.transform = CGAffineTransformTranslate(state_.transform, box.origin.x, box.origin.y);
-            WDElement *copy = [self svgCopy:iri];
+            WDAbstractElement *copy = [self svgCopy:iri];
             if (copy) {
                 state_.wdElement = [self clipAndGroup:copy];
             }    
@@ -674,7 +674,7 @@
         NSString *mask = [state_ idFromIRI:@"inkpad:mask"];
         if (mask) {
             NSMutableArray *maskedElements = nil;
-            for (WDElement *element in elements) {
+            for (WDAbstractElement *element in elements) {
                 if ([element isKindOfClass:[WDStylableElement class]]) {
                     maskedElements = [((WDStylableElement *) element).maskedElements mutableCopy];
                     while ([maskedElements count] == 1 && [[maskedElements lastObject] isKindOfClass:[WDGroup class]]) {
@@ -823,7 +823,7 @@
     }
 }
 
-- (WDElement *) endElement
+- (WDAbstractElement *) endElement
 {
     WDSVGElement *element = state_.svgElement;
 

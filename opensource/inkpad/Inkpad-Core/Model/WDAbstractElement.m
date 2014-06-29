@@ -1,5 +1,5 @@
 //
-//  WDElement.m
+//  WDAbstractElement.m
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -43,7 +43,7 @@ NSString *WDShadowKey = @"WDShadowKey";
 
 #define kAnchorRadius 4
 
-@implementation WDElement
+@implementation WDAbstractElement
 
 @synthesize layer = layer_;
 @synthesize group = group_;
@@ -219,7 +219,7 @@ NSString *WDShadowKey = @"WDShadowKey";
         return;
     }
     
-    [(WDElement *)[self.undoManager prepareWithInvocationTarget:self] setShadow:self.initialShadow];
+    [(WDAbstractElement *)[self.undoManager prepareWithInvocationTarget:self] setShadow:self.initialShadow];
     self.initialShadow = nil;
 }
 
@@ -406,7 +406,7 @@ NSString *WDShadowKey = @"WDShadowKey";
     
     [self cacheDirtyBounds];
     
-    [(WDElement *)[self.undoManager prepareWithInvocationTarget:self] setShadow:shadow_];
+    [(WDAbstractElement *)[self.undoManager prepareWithInvocationTarget:self] setShadow:shadow_];
     
     NSSet *changedProperties = [self changedShadowPropertiesFrom:shadow_ to:shadow];
     
@@ -632,7 +632,7 @@ NSString *WDShadowKey = @"WDShadowKey";
 
 - (id) copyWithZone:(NSZone *)zone
 {       
-    WDElement *element = [[[self class] allocWithZone:zone] init];
+    WDAbstractElement *element = [[[self class] allocWithZone:zone] init];
     
     element->shadow_ = [shadow_ copy];
     element->opacity_ = opacity_;

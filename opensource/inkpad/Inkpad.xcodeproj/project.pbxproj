@@ -238,7 +238,7 @@
 		6BABD9B1141ED30100F7E0A9 /* WDCompoundPathElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD8F0141ED30100F7E0A9 /* WDCompoundPathElement.m */; };
 		6BABD9B2141ED30100F7E0A9 /* WDCurveFit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD8F2141ED30100F7E0A9 /* WDCurveFit.m */; };
 		6BABD9B3141ED30100F7E0A9 /* WDDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD8F4141ED30100F7E0A9 /* WDDrawing.m */; };
-		6BABD9B4141ED30100F7E0A9 /* WDElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD8F6141ED30100F7E0A9 /* WDElement.m */; };
+		6BABD9B4141ED30100F7E0A9 /* WDAbstractElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD8F6141ED30100F7E0A9 /* WDAbstractElement.m */; };
 		6BABD9B5141ED30100F7E0A9 /* WDFillTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD8F8141ED30100F7E0A9 /* WDFillTransform.m */; };
 		6BABD9B6141ED30100F7E0A9 /* WDGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD8FA141ED30100F7E0A9 /* WDGradient.m */; };
 		6BABD9B7141ED30100F7E0A9 /* WDGradientStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BABD8FC141ED30100F7E0A9 /* WDGradientStop.m */; };
@@ -690,8 +690,8 @@
 		6BABD8F2141ED30100F7E0A9 /* WDCurveFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDCurveFit.m; sourceTree = "<group>"; };
 		6BABD8F3141ED30100F7E0A9 /* WDDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDDrawing.h; sourceTree = "<group>"; };
 		6BABD8F4141ED30100F7E0A9 /* WDDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDDrawing.m; sourceTree = "<group>"; };
-		6BABD8F5141ED30100F7E0A9 /* WDElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDElement.h; sourceTree = "<group>"; };
-		6BABD8F6141ED30100F7E0A9 /* WDElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDElement.m; sourceTree = "<group>"; };
+		6BABD8F5141ED30100F7E0A9 /* WDAbstractElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDAbstractElement.h; sourceTree = "<group>"; };
+		6BABD8F6141ED30100F7E0A9 /* WDAbstractElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDAbstractElement.m; sourceTree = "<group>"; };
 		6BABD8F7141ED30100F7E0A9 /* WDFillTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDFillTransform.h; sourceTree = "<group>"; };
 		6BABD8F8141ED30100F7E0A9 /* WDFillTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDFillTransform.m; sourceTree = "<group>"; };
 		6BABD8F9141ED30100F7E0A9 /* WDGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDGradient.h; sourceTree = "<group>"; };
@@ -1396,8 +1396,8 @@
 				6BABD8F4141ED30100F7E0A9 /* WDDrawing.m */,
 				6B83973B18A5BA60001D5985 /* WDDynamicGuide.h */,
 				6B83973C18A5BA60001D5985 /* WDDynamicGuide.m */,
-				6BABD8F5141ED30100F7E0A9 /* WDElement.h */,
-				6BABD8F6141ED30100F7E0A9 /* WDElement.m */,
+				6BABD8F5141ED30100F7E0A9 /* WDAbstractElement.h */,
+				6BABD8F6141ED30100F7E0A9 /* WDAbstractElement.m */,
 				6BABD8F7141ED30100F7E0A9 /* WDFillTransform.h */,
 				6BABD8F8141ED30100F7E0A9 /* WDFillTransform.m */,
 				6BABD8F9141ED30100F7E0A9 /* WDGradient.h */,
@@ -2173,7 +2173,7 @@
 				6BABD9B1141ED30100F7E0A9 /* WDCompoundPathElement.m in Sources */,
 				6BABD9B2141ED30100F7E0A9 /* WDCurveFit.m in Sources */,
 				6BABD9B3141ED30100F7E0A9 /* WDDrawing.m in Sources */,
-				6BABD9B4141ED30100F7E0A9 /* WDElement.m in Sources */,
+				6BABD9B4141ED30100F7E0A9 /* WDAbstractElement.m in Sources */,
 				6BABD9B5141ED30100F7E0A9 /* WDFillTransform.m in Sources */,
 				6BABD9B6141ED30100F7E0A9 /* WDGradient.m in Sources */,
 				6BABD9B7141ED30100F7E0A9 /* WDGradientStop.m in Sources */,

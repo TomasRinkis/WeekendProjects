@@ -775,15 +775,15 @@
             
             if (item.action == @selector(blendColorHorizontally:)) {
                 sorted = [blendables sortedArrayUsingComparator:^(id a, id b) {
-                    CGPoint centerA = WDCenterOfRect(((WDElement *) a).bounds);
-                    CGPoint centerB = WDCenterOfRect(((WDElement *) b).bounds);
+                    CGPoint centerA = WDCenterOfRect(((WDAbstractElement *) a).bounds);
+                    CGPoint centerB = WDCenterOfRect(((WDAbstractElement *) b).bounds);
                     float delta = centerA.x - centerB.x;
                     return (delta < 0 ? NSOrderedAscending : (delta > 0 ? NSOrderedDescending : NSOrderedSame));
                 }];
             } else if (item.action == @selector(blendColorVertically:)) {
                 sorted = [blendables sortedArrayUsingComparator:^(id a, id b) {
-                    CGPoint centerA = WDCenterOfRect(((WDElement *) a).bounds);
-                    CGPoint centerB = WDCenterOfRect(((WDElement *) b).bounds);
+                    CGPoint centerA = WDCenterOfRect(((WDAbstractElement *) a).bounds);
+                    CGPoint centerB = WDCenterOfRect(((WDAbstractElement *) b).bounds);
                     float delta = centerA.y - centerB.y;
                     return (delta < 0 ? NSOrderedAscending : (delta > 0 ? NSOrderedDescending : NSOrderedSame));
                 }];

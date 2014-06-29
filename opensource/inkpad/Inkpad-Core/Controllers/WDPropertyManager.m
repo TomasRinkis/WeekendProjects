@@ -116,7 +116,7 @@ NSString *WDInvalidPropertiesKey = @"WDInvalidPropertiesKey";
 {
     // the default value for each property comes from the topmost selected object that has that property
     for (NSString *property in invalidProperties_) {
-        for (WDElement *element in [[drawingController_ orderedSelectedObjects] reverseObjectEnumerator]) {
+        for (WDAbstractElement *element in [[drawingController_ orderedSelectedObjects] reverseObjectEnumerator]) {
             if ([element valueForProperty:property]) {
                 [self setDefaultValue:[element valueForProperty:property] forProperty:property];
                 break;
@@ -164,7 +164,7 @@ NSString *WDInvalidPropertiesKey = @"WDInvalidPropertiesKey";
     
     NSArray *selected = [drawingController_ orderedSelectedObjects];
     
-    WDElement *topSelected = [selected lastObject];
+    WDAbstractElement *topSelected = [selected lastObject];
     
     if (topSelected) {
         for (NSString *property in [topSelected inspectableProperties]) {

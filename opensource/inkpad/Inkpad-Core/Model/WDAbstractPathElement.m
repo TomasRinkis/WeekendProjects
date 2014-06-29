@@ -87,7 +87,7 @@ NSString *WDFillRuleKey = @"WDFillRuleKey";
             CGContextClip(ctx);
             
             // draw all the elements inside the mask
-            for (WDElement *element in self.maskedElements) {
+            for (WDAbstractElement *element in self.maskedElements) {
                 [element renderInContext:ctx metaData:metaData];
             }
             
@@ -177,7 +177,7 @@ NSString *WDFillRuleKey = @"WDFillRuleKey";
         
         WDXMLElement *elements = [WDXMLElement elementWithName:@"g"];
         [elements setAttribute:@"clip-path" value:[NSString stringWithFormat:@"url(#%@)", uniqueClip]];
-        for (WDElement *element in self.maskedElements) {
+        for (WDAbstractElement *element in self.maskedElements) {
             [elements addChild:[element SVGElement]];
         }
         [group addChild:elements];

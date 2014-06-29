@@ -1,5 +1,5 @@
 //
-//  WDElement.h
+//  WDAbstractElement.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -46,7 +46,8 @@ typedef enum
 @class WDShadow;
 @class WDXMLElement;
 
-@interface WDElement : NSObject <NSCoding, NSCopying> {
+@interface WDAbstractElement : NSObject <NSCoding, NSCopying>
+{
     CGRect      dirtyBounds_;
 }
 

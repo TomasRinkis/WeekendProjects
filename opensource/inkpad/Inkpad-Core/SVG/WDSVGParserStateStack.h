@@ -34,10 +34,10 @@
 @property (nonatomic, assign) CGAffineTransform transform;
 @property (nonatomic, assign) CGAffineTransform viewBoxTransform;
 @property (nonatomic, assign) CGRect viewport;
-@property (nonatomic, strong) WDElement *wdElement;
+@property (nonatomic, strong) WDAbstractElement *wdElement;
 
 - (void) startElement:(WDSVGElement *)element;
-- (WDElement *) endElement;
+- (WDAbstractElement *) endElement;
 - (WDSVGParserState *) stateAtDepth:(int)depth;
 
 - (float) viewWidth;

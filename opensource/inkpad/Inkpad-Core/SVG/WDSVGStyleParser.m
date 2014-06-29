@@ -394,13 +394,13 @@ NSArray *tokenizeStyle(NSString *source)
     styleLog(@"Fill: %@ %@", fillSource, stylable.fill);
 }
 
-- (void) styleOpacityBlendAndShadow:(WDElement *)element
+- (void) styleOpacityBlendAndShadow:(WDAbstractElement *)element
 {
     NSString *opacity = [stack_ style:kWDPropertyOpacity];
     NSString *visibility = [stack_ style:kWDPropertyVisibility];
     NSString *display= [stack_ style:kWDPropertyDisplay];
     if ([display isEqualToString:@"none"] || [visibility isEqualToString:@"hidden"]) {
-        element.opacity = 0; // TODO: add visibility property to WDElement
+        element.opacity = 0; // TODO: add visibility property to WDAbstractElement
     } else {
         element.opacity = opacity ? [opacity floatValue] : 1.0;
     }

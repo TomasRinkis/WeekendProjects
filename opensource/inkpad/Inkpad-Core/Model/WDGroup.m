@@ -56,7 +56,7 @@ NSString *WDGroupElements = @"WDGroupElements";
 
 - (BOOL) canAdjustColor
 {
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         if ([element canAdjustColor]) {
             return YES;
         }
@@ -67,7 +67,7 @@ NSString *WDGroupElements = @"WDGroupElements";
 
 - (void) adjustColor:(WDColor * (^)(WDColor *color))adjustment scope:(WDColorAdjustmentScope)scope
 {
-    for (WDElement *element in self.elements) {
+    for (WDAbstractElement *element in self.elements) {
         [element adjustColor:adjustment scope:scope];
     }
 }
@@ -76,7 +76,7 @@ NSString *WDGroupElements = @"WDGroupElements";
 {
     [self cacheDirtyBounds];
     
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         [element transform:transform];
     }
     
@@ -110,7 +110,7 @@ NSString *WDGroupElements = @"WDGroupElements";
         [self beginTransparencyLayer:ctx metaData:metaData];
     }
         
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         [element renderInContext:ctx metaData:metaData];
     }
 
@@ -123,7 +123,7 @@ NSString *WDGroupElements = @"WDGroupElements";
 {
     CGRect bounds = CGRectNull;
     
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         bounds = CGRectUnion([element bounds], bounds);
     }
     
@@ -134,7 +134,7 @@ NSString *WDGroupElements = @"WDGroupElements";
 {
     CGRect bounds = CGRectNull;
     
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         bounds = CGRectUnion([element styleBounds], bounds);
     }
     
@@ -143,7 +143,7 @@ NSString *WDGroupElements = @"WDGroupElements";
 
 - (BOOL) intersectsRect:(CGRect)rect
 {
-    for (WDElement *element in [elements_ reverseObjectEnumerator]) {
+    for (WDAbstractElement *element in [elements_ reverseObjectEnumerator]) {
         if ([element intersectsRect:rect]) {
             return YES;
         }
@@ -156,28 +156,28 @@ NSString *WDGroupElements = @"WDGroupElements";
 
 - (void) drawOpenGLZoomOutlineWithViewTransform:(CGAffineTransform)viewTransform visibleRect:(CGRect)visibleRect
 {
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         [element drawOpenGLZoomOutlineWithViewTransform:viewTransform visibleRect:visibleRect];
     }
 }
 
 - (void) drawOpenGLHighlightWithTransform:(CGAffineTransform)transform viewTransform:(CGAffineTransform)viewTransform
 {
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         [element drawOpenGLHighlightWithTransform:transform viewTransform:viewTransform];
     }
 }
 
 - (void) drawOpenGLHandlesWithTransform:(CGAffineTransform)transform viewTransform:(CGAffineTransform)viewTransform
 {
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         [element drawOpenGLAnchorsWithViewTransform:viewTransform];
     }
 }
 
 - (void) drawOpenGLAnchorsWithViewTransform:(CGAffineTransform)transform
 {
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         [element drawOpenGLAnchorsWithViewTransform:transform];
     }
 }
@@ -186,7 +186,7 @@ NSString *WDGroupElements = @"WDGroupElements";
 {
     flags = flags | kWDSnapEdges;
     
-    for (WDElement *element in [elements_ reverseObjectEnumerator]) {
+    for (WDAbstractElement *element in [elements_ reverseObjectEnumerator]) {
         WDPickResult *result = [element hitResultForPoint:pt viewScale:viewScale snapFlags:flags];
         
         if (result.type != kWDEther) {
@@ -203,7 +203,7 @@ NSString *WDGroupElements = @"WDGroupElements";
 - (WDPickResult *) snappedPoint:(CGPoint)pt viewScale:(float)viewScale snapFlags:(int)flags
 {
     if (flags & kWDSnapSubelement) {
-        for (WDElement *element in [elements_ reverseObjectEnumerator]) {
+        for (WDAbstractElement *element in [elements_ reverseObjectEnumerator]) {
             WDPickResult *result = [element snappedPoint:pt viewScale:viewScale snapFlags:flags];
             
             if (result.type != kWDEther) {
@@ -231,7 +231,7 @@ NSString *WDGroupElements = @"WDGroupElements";
     NSMutableSet *properties = [NSMutableSet set];
     
     // we can inspect anything one of our sub-elements can inspect
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         [properties unionSet:element.inspectableProperties];
     }
     
@@ -243,7 +243,7 @@ NSString *WDGroupElements = @"WDGroupElements";
     if ([[super inspectableProperties] containsObject:property]) {
         [super setValue:value forProperty:property propertyManager:propertyManager]; 
     } else {
-        for (WDElement *element in elements_) {
+        for (WDAbstractElement *element in elements_) {
             [element setValue:value forProperty:property propertyManager:propertyManager];
         }
     }
@@ -258,7 +258,7 @@ NSString *WDGroupElements = @"WDGroupElements";
     }
     
     // return the value for the top most object that can inspect it
-    for (WDElement *element in [elements_ reverseObjectEnumerator]) {
+    for (WDAbstractElement *element in [elements_ reverseObjectEnumerator]) {
         value = [element valueForProperty:property];
         if (value) {
             break;
@@ -273,7 +273,7 @@ NSString *WDGroupElements = @"WDGroupElements";
     WDXMLElement *group = [WDXMLElement elementWithName:@"g"];
     [self addSVGOpacityAndShadowAttributes:group];
     
-    for (WDElement *element in elements_) {
+    for (WDAbstractElement *element in elements_) {
         [group addChild:[element SVGElement]];
     }
     

@@ -46,12 +46,12 @@ enum {
 
 extern const float kNodeSelectionTolerance;
 
-@class WDElement;
+@class WDAbstractElement;
 @class WDBezierNode;
 
 @interface WDPickResult : NSObject
 
-@property (nonatomic, weak) WDElement *element;         // the element in which the tap occurred
+@property (nonatomic, weak) WDAbstractElement *element;         // the element in which the tap occurred
 @property (nonatomic, weak) WDBezierNode *node;         // the node hit by the tap -- could be nil
 @property (nonatomic, assign) CGPoint snappedPoint;
 @property (nonatomic, assign) WDPickResultType type;

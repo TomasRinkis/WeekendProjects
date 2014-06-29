@@ -51,7 +51,7 @@ const float kDynamicGuideSnappingTolerance = 10.0f;
                                 horizontalGuides:horizontal verticalGuides:vertical];
     
     // add guides for all unselected drawing elements
-    for (WDElement *element in [self.drawingController guideGeneratingObjects]) {
+    for (WDAbstractElement *element in [self.drawingController guideGeneratingObjects]) {
         [WDDynamicGuide generateGuidesForBoundingBox:element.bounds
                                     horizontalGuides:horizontal verticalGuides:vertical];
     }

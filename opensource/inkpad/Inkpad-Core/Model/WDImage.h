@@ -9,12 +9,12 @@
 //  Copyright (c) 2009-2013 Steve Sprang
 //
 
-#import "WDElement.h"
+#import "WDAbstractElement.h"
 
 @class WDImageData;
 @class WDDrawing;
 
-@interface WDImage : WDElement <NSCoding, NSCopying> {
+@interface WDImage : WDAbstractElement <NSCoding, NSCopying> {
     CGMutablePathRef    pathRef_;
     CGPoint             corner_[4];
 }

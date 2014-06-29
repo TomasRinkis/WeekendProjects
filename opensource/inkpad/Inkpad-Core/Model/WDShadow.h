@@ -15,6 +15,9 @@
 @class WDColor;
 @class WDXMLElement;
 
+/*
+ Holds state of shadow for propably using Core Graphic rendering
+ */
 @interface WDShadow : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, readonly) WDColor *color;
@@ -22,12 +25,12 @@
 @property (nonatomic, readonly) float offset;
 @property (nonatomic, readonly) float angle;
 
-+ (WDShadow *) shadowWithColor:(WDColor *)color radius:(float)radius offset:(float)offset angle:(float)angle;
-- (id) initWithColor:(WDColor *)color radius:(float)radius offset:(float)offset angle:(float)angle;
++ (instancetype) shadowWithColor:(WDColor *)color radius:(float)radius offset:(float)offset angle:(float)angle;
+- (instancetype) initWithColor:(WDColor *)color radius:(float)radius offset:(float)offset angle:(float)angle;
 
 - (void) applyInContext:(CGContextRef)ctx metaData:(WDRenderingMetaData)metaData;
 
-- (WDShadow *) adjustColor:(WDColor * (^)(WDColor *color))adjustment;
+- (instancetype) adjustColor:(WDColor * (^)(WDColor *color))adjustment;
 
 - (void) addSVGAttributes:(WDXMLElement *)element;
 

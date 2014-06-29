@@ -10,9 +10,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WDElement.h"
+#import "WDAbstractElement.h"
 
-@interface WDGroup : WDElement <NSCoding, NSCopying>
+@interface WDGroup : WDAbstractElement <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSMutableArray *elements;
 

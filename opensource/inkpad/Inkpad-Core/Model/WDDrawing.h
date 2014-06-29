@@ -17,7 +17,7 @@
 
 @class WDColor;
 @class WDDrawing;
-@class WDElement;
+@class WDAbstractElement;
 @class WDGradient;
 @class WDImageData;
 @class WDLayer;

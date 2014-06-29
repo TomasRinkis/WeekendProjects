@@ -315,7 +315,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 #pragma mark -
 #pragma mark Querying Selection State
 
-- (WDElement *) singleSelection
+- (WDAbstractElement *) singleSelection
 {
     if (selectedObjects_.count == 1) {
         return [selectedObjects_ anyObject];
@@ -383,12 +383,12 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     }];
 }
 
-- (BOOL) isSelected:(WDElement *)element
+- (BOOL) isSelected:(WDAbstractElement *)element
 {
     return [selectedObjects_ containsObject:element];
 }
 
-- (BOOL) isSelectedOrSubelementIsSelected:(WDElement *)element
+- (BOOL) isSelectedOrSubelementIsSelected:(WDAbstractElement *)element
 {
     if ([element isKindOfClass:[WDCompoundPathElement class]]) {
         WDCompoundPathElement  *cp = (WDCompoundPathElement *) element;
@@ -406,7 +406,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 {
     CGRect bounds = CGRectNull;
     
-    for (WDElement *element in selectedObjects_) {
+    for (WDAbstractElement *element in selectedObjects_) {
         bounds = CGRectUnion(bounds, element.bounds);
     }
     
@@ -417,7 +417,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 {
     CGRect bounds = CGRectNull;
     
-    for (WDElement *element in selectedObjects_) {
+    for (WDAbstractElement *element in selectedObjects_) {
         bounds = CGRectUnion(bounds, element.styleBounds);
     }
     
@@ -428,7 +428,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 {
     NSMutableSet *selectedPaths = [NSMutableSet set];
     
-    for (WDElement *element in self.selectedObjects) {
+    for (WDAbstractElement *element in self.selectedObjects) {
         if ([element isKindOfClass:[WDPathElement class]]) {
             [selectedPaths addObject:element];
         }
@@ -462,7 +462,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     [self performSelector:@selector(delayedSelectionNotification:) withObject:nil afterDelay:0];
 }
 
-- (void) selectObject:(WDElement *)element
+- (void) selectObject:(WDAbstractElement *)element
 {
     if ([element isKindOfClass:[WDCompoundPathElement class]])
     {
@@ -495,13 +495,13 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     [self deselectAllNodes];
 }
 
-- (void) deselectObject:(WDElement *)element
+- (void) deselectObject:(WDAbstractElement *)element
 {
     [selectedObjects_ removeObject:element];
     [self notifySelectionChanged];
 }
 
-- (void) deselectObjectAndSubelements:(WDElement *)element
+- (void) deselectObjectAndSubelements:(WDAbstractElement *)element
 {
     if ([element isKindOfClass:[WDCompoundPathElement class]]) {
         WDCompoundPathElement  *cp = (WDCompoundPathElement *) element;
@@ -525,7 +525,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
             continue;
         }
         
-        for (WDElement *element in [layer.elements reverseObjectEnumerator]) {
+        for (WDAbstractElement *element in [layer.elements reverseObjectEnumerator]) {
             if ([element intersectsRect:rect]) {
                 [selectedObjects_ addObject:element];
             }
@@ -622,7 +622,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     // be sure to end any active path editing
     self.activePath = nil;
     
-    for (WDElement *element in self.selectedObjects) {
+    for (WDAbstractElement *element in self.selectedObjects) {
         WDPathElement *path = (WDPathElement *) element;
         
         if ([path isKindOfClass:[WDPathElement class]] && path.superpath) {
@@ -649,7 +649,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         }
     }
     
-    for (WDElement *element in objectsToRemove) {
+    for (WDAbstractElement *element in objectsToRemove) {
         [element.layer removeObject:element];
     }
     
@@ -727,7 +727,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     
     if (!layer.editable)
     {
-        WDElement *element = (WDElement *) [[self orderedSelectedObjects] lastObject];
+        WDAbstractElement *element = (WDAbstractElement *) [[self orderedSelectedObjects] lastObject];
         layer = element.layer;
     }
     
@@ -849,7 +849,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     // be sure to end any active path editing
     self.activePath = nil;
     
-    for (WDElement *element in [self orderedSelectedObjects]) {
+    for (WDAbstractElement *element in [self orderedSelectedObjects]) {
         if (![element isKindOfClass:[WDAbstractPathElement class]]) {
             continue;
         }
@@ -920,7 +920,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     
     WDGroup *group = [[WDGroup alloc] init];
     
-    WDElement *topObject = [objects lastObject];
+    WDAbstractElement *topObject = [objects lastObject];
     [topObject.layer insertObject:group above:topObject];
     
     // get rid of the old selected objects
@@ -935,7 +935,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 {
     NSMutableArray *newElements = group.elements;
     
-    for (WDElement *element in newElements) {
+    for (WDAbstractElement *element in newElements) {
         [group.layer insertObject:element above:group];
         element.group = nil;
     }
@@ -951,7 +951,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 {
     NSMutableArray *objects = [self orderedSelectedObjects];
     
-    for (WDElement *element in objects) {
+    for (WDAbstractElement *element in objects) {
         if ([element isKindOfClass:[WDGroup class]]) {
             [self releaseGroupedObject:(WDGroup *)element];
         }
@@ -973,7 +973,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     
     [path takeStylePropertiesFrom:topObject];
     
-    for (WDElement *element in objects) {
+    for (WDAbstractElement *element in objects) {
         if ([element isKindOfClass:[WDPathElement class]]) {
             [paths addObject:element];
         } else {
@@ -1015,7 +1015,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 {
     NSMutableArray *objects = [self orderedSelectedObjects];
     
-    for (WDElement *element in objects) {
+    for (WDAbstractElement *element in objects) {
         if ([element isKindOfClass:[WDCompoundPathElement class]]) {
             [self releaseCompoundPathObject:(WDCompoundPathElement *)element];
         }
@@ -1045,7 +1045,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 {
     NSArray *elements = mask.maskedElements;
     
-    for (WDElement *element in elements) {
+    for (WDAbstractElement *element in elements) {
         [mask.layer insertObject:element above:mask];
     }
     
@@ -1059,7 +1059,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 {
     NSMutableArray *objects = [self orderedSelectedObjects];
     
-    for (WDElement *element in objects) {
+    for (WDAbstractElement *element in objects) {
         if ([element canMaskElements]) {
             WDStylableElement *stylable = (WDStylableElement *) element;
             
@@ -1085,7 +1085,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         result.opacity = [[propertyManager_ defaultValueForProperty:WDOpacityProperty] floatValue];
         result.shadow = [propertyManager_ activeShadow];
         
-        WDElement *topObject = [objects lastObject];
+        WDAbstractElement *topObject = [objects lastObject];
         [topObject.layer insertObject:result above:topObject];
         
         // get rid of the old selected objects
@@ -1137,7 +1137,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     NSMutableArray  *objectsToErase = [NSMutableArray array];
     
     if (self.selectedObjects.count != 0) {
-        for (WDElement *element in [self orderedSelectedObjects]) {
+        for (WDAbstractElement *element in [self orderedSelectedObjects]) {
             if ([element isErasable] && CGRectIntersectsRect(erasePath.bounds, element.bounds)) {
                 [objectsToErase addObject:element];
             }
@@ -1154,7 +1154,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
                 continue;
             }
             
-            for (WDElement *element in layer.elements) {
+            for (WDAbstractElement *element in layer.elements) {
                 if ([element isErasable] && CGRectIntersectsRect(erasePath.bounds, element.bounds)) {
                     [objectsToErase addObject:element];
                 }
@@ -1189,7 +1189,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 - (void) dividePaths:(id)sender
 {
     NSMutableArray  *objects = [self orderedSelectedObjects];
-    WDElement       *topObject = [objects lastObject];
+    WDAbstractElement       *topObject = [objects lastObject];
     
     WDAbstractPathElement *exclusion = [WDPathfinder combinePaths:objects operation:WDPathFinderExclude];
     WDAbstractPathElement *intersection = [WDPathfinder combinePaths:objects operation:WDPathfinderIntersect];
@@ -1263,7 +1263,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (BOOL) canAnySelectedObjectInspectProperty:(NSString *)property
 {
-    for (WDElement *element in [self.selectedObjects objectEnumerator]) {
+    for (WDAbstractElement *element in [self.selectedObjects objectEnumerator]) {
         if ([element canInspectProperty:property]) {
             return YES;
         }
@@ -1281,7 +1281,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         [propertyManager_ addToInvalidProperties:property];
     }
     
-    for (WDElement *element in [self.selectedObjects objectEnumerator]) {
+    for (WDAbstractElement *element in [self.selectedObjects objectEnumerator]) {
         [element setValue:value forProperty:property propertyManager:propertyManager_];
     }
 }
@@ -1339,7 +1339,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     
     lastAppliedTransform_ = transform;
     
-    for (WDElement *element in selectedObjects_) {
+    for (WDAbstractElement *element in selectedObjects_) {
         NSSet *replacedNodes = [element transform:transform];
         
         if (replacedNodes && replacedNodes.count) {
@@ -1361,13 +1361,13 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     self.activePath = nil;
     
     if (self.selectedObjects.count == 1) {
-        WDElement *soleSelection = [self.selectedObjects anyObject];
+        WDAbstractElement *soleSelection = [self.selectedObjects anyObject];
         selectionBounds = [soleSelection subselectionBounds];
     } else {
         selectionBounds = self.selectionBounds;
     }
     
-    for (WDElement *element in self.selectedObjects) {
+    for (WDAbstractElement *element in self.selectedObjects) {
         NSSet *newSelectedNodes = [element alignToRect:selectionBounds alignment:alignment];
         [self setSelectedNodesFromSet:newSelectedNodes];
     }
@@ -1378,15 +1378,15 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     NSArray *selected = [self.selectedObjects allObjects];
     
     selected = [selected sortedArrayUsingComparator:^(id a, id b) {
-        CGPoint centerA = WDCenterOfRect(((WDElement *) a).bounds);
-        CGPoint centerB = WDCenterOfRect(((WDElement *) b).bounds);
+        CGPoint centerA = WDCenterOfRect(((WDAbstractElement *) a).bounds);
+        CGPoint centerB = WDCenterOfRect(((WDAbstractElement *) b).bounds);
         float delta = centerA.x - centerB.x;
         NSComparisonResult result = (delta < 0 ? NSOrderedAscending : (delta > 0 ? NSOrderedDescending : NSOrderedSame));
         return result;
     }];
     
-    WDElement *firstObj = (WDElement *) selected[0];
-    WDElement *lastObj = (WDElement *) [selected lastObject];
+    WDAbstractElement *firstObj = (WDAbstractElement *) selected[0];
+    WDAbstractElement *lastObj = (WDAbstractElement *) [selected lastObject];
     
     float startX = WDCenterOfRect(firstObj.bounds).x;
     float endX = WDCenterOfRect(lastObj.bounds).x;
@@ -1395,7 +1395,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     float step = distance / (selected.count - 1);
     float offset = startX;
     
-    for (WDElement *obj in selected) {
+    for (WDAbstractElement *obj in selected) {
         [obj transform:CGAffineTransformMakeTranslation(offset - WDCenterOfRect(obj.bounds).x, 0)];
         offset += step;
     }
@@ -1406,15 +1406,15 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     NSArray *selected = [self.selectedObjects allObjects];
     
     selected = [selected sortedArrayUsingComparator:^(id a, id b) {
-        CGPoint centerA = WDCenterOfRect(((WDElement *) a).bounds);
-        CGPoint centerB = WDCenterOfRect(((WDElement *) b).bounds);
+        CGPoint centerA = WDCenterOfRect(((WDAbstractElement *) a).bounds);
+        CGPoint centerB = WDCenterOfRect(((WDAbstractElement *) b).bounds);
         float delta = centerA.y - centerB.y;
         NSComparisonResult result = (delta < 0 ? NSOrderedAscending : (delta > 0 ? NSOrderedDescending : NSOrderedSame));
         return result;
     }];
     
-    WDElement *firstObj = (WDElement *) selected[0];
-    WDElement *lastObj = (WDElement *) [selected lastObject];
+    WDAbstractElement *firstObj = (WDAbstractElement *) selected[0];
+    WDAbstractElement *lastObj = (WDAbstractElement *) [selected lastObject];
     
     float startY = WDCenterOfRect(firstObj.bounds).y;
     float endY = WDCenterOfRect(lastObj.bounds).y;
@@ -1423,7 +1423,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     float step = distance / (selected.count - 1);
     float offset = startY;
     
-    for (WDElement *obj in selected) {
+    for (WDAbstractElement *obj in selected) {
         [obj transform:CGAffineTransformMakeTranslation(0, offset - WDCenterOfRect(obj.bounds).y)];
         offset += step;
     }
@@ -1615,7 +1615,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     
     NSArray *paths = nil;
     
-    for (WDElement *element in selectedObjects_) {
+    for (WDAbstractElement *element in selectedObjects_) {
         if ([element conformsToProtocol:@protocol(WDTextRenderer)]) {
             WDText *text = (WDText *) element;
             paths = [text outlines];
@@ -1638,7 +1638,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (void) resetTextTransform:(id)sender
 {
-    for (WDElement *element in selectedObjects_) {
+    for (WDAbstractElement *element in selectedObjects_) {
         if ([element conformsToProtocol:@protocol(WDTextRenderer)] && [element respondsToSelector:@selector(resetTransform)]) {
             WDTextPathElement *textPath =  (WDTextPathElement *) element;
             [textPath resetTransform];
@@ -1651,28 +1651,28 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (void) tossCachedColorAdjustmentData
 {
-    for (WDElement *element in [self selectedObjects]) {
+    for (WDAbstractElement *element in [self selectedObjects]) {
         [element tossCachedColorAdjustmentData];
     }
 }
 
 - (void) restoreCachedColorAdjustmentData
 {
-    for (WDElement *element in [self selectedObjects]) {
+    for (WDAbstractElement *element in [self selectedObjects]) {
         [element restoreCachedColorAdjustmentData];
     }
 }
 
 - (void) registerUndoWithCachedColorAdjustmentData
 {
-    for (WDElement *element in [self selectedObjects]) {
+    for (WDAbstractElement *element in [self selectedObjects]) {
         [element registerUndoWithCachedColorAdjustmentData];
     }
 }
 
 - (void) adjustColor:(WDColor * (^)(WDColor *color))adjustment scope:(WDColorAdjustmentScope)scope
 {
-    for (WDElement *element in [self selectedObjects]) {
+    for (WDAbstractElement *element in [self selectedObjects]) {
         [element adjustColor:adjustment scope:scope];
     }
 }
@@ -1682,7 +1682,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     NSArray *ordered = [self orderedSelectedObjects];
     NSMutableArray *blendables = [NSMutableArray array];
     
-    for (WDElement *element in ordered) {
+    for (WDAbstractElement *element in ordered) {
         [element addBlendablesToArray:blendables];
     }
     
@@ -1721,8 +1721,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     }
     
     blendables = [blendables sortedArrayUsingComparator:^(id a, id b) {
-        CGPoint centerA = WDCenterOfRect(((WDElement *) a).bounds);
-        CGPoint centerB = WDCenterOfRect(((WDElement *) b).bounds);
+        CGPoint centerA = WDCenterOfRect(((WDAbstractElement *) a).bounds);
+        CGPoint centerB = WDCenterOfRect(((WDAbstractElement *) b).bounds);
         float delta = centerA.x - centerB.x;
         NSComparisonResult result = delta < 0 ? NSOrderedAscending : (delta > 0 ? NSOrderedDescending : NSOrderedSame);
         return result;
@@ -1758,8 +1758,8 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     }
     
     blendables = [blendables sortedArrayUsingComparator:^(id a, id b) {
-        CGPoint centerA = WDCenterOfRect(((WDElement *) a).bounds);
-        CGPoint centerB = WDCenterOfRect(((WDElement *) b).bounds);
+        CGPoint centerA = WDCenterOfRect(((WDAbstractElement *) a).bounds);
+        CGPoint centerB = WDCenterOfRect(((WDAbstractElement *) b).bounds);
         float delta = centerA.y - centerB.y;
         NSComparisonResult result = (delta < 0 ? NSOrderedAscending : (delta > 0 ? NSOrderedDescending : NSOrderedSame));
         return result;
@@ -1788,7 +1788,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (void) desaturate:(id)sender
 {
-    for (WDElement *element in [self selectedObjects]) {
+    for (WDAbstractElement *element in [self selectedObjects]) {
         [element adjustColor:^(WDColor *color) { return [color adjustHue:0 saturation:(-1.0f) brightness:0]; }
                        scope:(WDColorAdjustFillFlag | WDColorAdjustStrokeFlag | WDColorAdjustShadowFlag)];
         [element tossCachedColorAdjustmentData];
@@ -1797,7 +1797,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (void) invertColors:(id)sender
 {
-    for (WDElement *element in [self selectedObjects]) {
+    for (WDAbstractElement *element in [self selectedObjects]) {
         [element adjustColor:^(WDColor *color) { return [color inverted]; }
                        scope:(WDColorAdjustFillFlag | WDColorAdjustStrokeFlag | WDColorAdjustShadowFlag)];
         [element tossCachedColorAdjustmentData];
@@ -1831,7 +1831,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         }
         
         if (drawing_.isolateActiveLayer) {
-            for (WDElement *element in [drawing_.activeLayer.elements reverseObjectEnumerator]) {
+            for (WDAbstractElement *element in [drawing_.activeLayer.elements reverseObjectEnumerator]) {
                 pickResult = [element snappedPoint:pt viewScale:viewScale snapFlags:flags];
                 
                 if (pickResult.type != kWDEther) {
@@ -1848,7 +1848,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
                     continue;
                 }
                 
-                for (WDElement *element in [layer.elements reverseObjectEnumerator]) {
+                for (WDAbstractElement *element in [layer.elements reverseObjectEnumerator]) {
                     if ((flags & kWDSnapSelectedOnly) && ![self isSelectedOrSubelementIsSelected:element]) {
                         continue;
                     }
@@ -1917,7 +1917,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
             continue;
         }
         
-        for (WDElement *element in [layer.elements reverseObjectEnumerator]) {
+        for (WDAbstractElement *element in [layer.elements reverseObjectEnumerator]) {
             pickResult = [element hitResultForPoint:pt viewScale:viewScale snapFlags:(int)flags];
             
             if (pickResult.type != kWDEther) {
@@ -1966,7 +1966,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
             continue;
         }
         
-        for (WDElement *element in [layer.elements reverseObjectEnumerator]) {
+        for (WDAbstractElement *element in [layer.elements reverseObjectEnumerator]) {
             pickResult = [element hitResultForPoint:pt viewScale:viewScale snapFlags:(int)flags];
             
             if (pickResult.type != kWDEther) {
@@ -2008,7 +2008,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         return NO;
     }
     
-    for (WDElement *element in selectedObjects_) {
+    for (WDAbstractElement *element in selectedObjects_) {
         WDPathElement *path = (WDPathElement *) element;
         if (![path isKindOfClass:[WDPathElement class]] || path.superpath || path.closed || [path conformsToProtocol:@protocol(WDTextRenderer)]) {
             return NO;
@@ -2023,7 +2023,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     if ([self orderedSelectedObjects].count > 1) {
         NSMutableArray *ordered = [self orderedSelectedObjects];
         
-        for (WDElement *element in ordered) {
+        for (WDAbstractElement *element in ordered) {
             if (![element isKindOfClass:[WDAbstractPathElement class]]) {
                 return NO;
             } else {
@@ -2044,7 +2044,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (BOOL) canReleaseCompoundPath
 {
-    for (WDElement *element in selectedObjects_) {
+    for (WDAbstractElement *element in selectedObjects_) {
         if ([element isKindOfClass:[WDCompoundPathElement class]]) {
             return YES;
         }
@@ -2056,7 +2056,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 - (BOOL) canMakeMask
 {
     if ((self.selectedObjects.count > 1) && [self allSelectedObjectsAreRootObjects]) {
-        WDElement *element = [[self orderedSelectedObjects] lastObject];
+        WDAbstractElement *element = [[self orderedSelectedObjects] lastObject];
         
         if (element && [element canMaskElements]) {
             return YES;
@@ -2068,7 +2068,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (BOOL) canReleaseMask
 {
-    for (WDElement *element in selectedObjects_) {
+    for (WDAbstractElement *element in selectedObjects_) {
         if ([element canMaskElements]) {
             WDStylableElement *stylable = (WDStylableElement *) element;
             
@@ -2089,7 +2089,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (BOOL) canUngroup
 {
-    for (WDElement *element in selectedObjects_) {
+    for (WDAbstractElement *element in selectedObjects_) {
         if ([element isKindOfClass:[WDGroup class]]) {
             return YES;
         }
@@ -2106,7 +2106,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (BOOL) canReversePathDirection
 {
-    for (WDElement *element in selectedObjects_) {
+    for (WDAbstractElement *element in selectedObjects_) {
         if ([element isKindOfClass:[WDPathElement class]]) {
             return YES;
         }
@@ -2117,7 +2117,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 
 - (BOOL) canOutlineStroke
 {
-    for (WDElement *element in [self orderedSelectedObjects]) {
+    for (WDAbstractElement *element in [self orderedSelectedObjects]) {
         if ([element isKindOfClass:[WDAbstractPathElement class]]) {
             if ([(WDAbstractPathElement *)element canOutlineStroke]) {
                 return YES;
@@ -2145,7 +2145,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         return NO;
     }
     
-    for (WDElement *element in selectedObjects_) {
+    for (WDAbstractElement *element in selectedObjects_) {
         if (![element conformsToProtocol:@protocol(WDTextRenderer)]) {
             return NO;
         }
@@ -2161,7 +2161,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         BOOL oneIsText = NO;
         BOOL oneCanPlace = NO;
         
-        for (WDElement *element in selectedObjects_) {
+        for (WDAbstractElement *element in selectedObjects_) {
             if ([element canPlaceText]) {
                 oneCanPlace = YES;
             } else if ([element isKindOfClass:[WDText class]]) {
@@ -2177,13 +2177,13 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
         return NO;
     }
     
-    WDElement *element = (WDElement *) [selectedObjects_ anyObject];
+    WDAbstractElement *element = (WDAbstractElement *) [selectedObjects_ anyObject];
     return [element canPlaceText];
 }
 
 - (BOOL) canAdjustColor
 {
-    for (WDElement *element in self.selectedObjects) {
+    for (WDAbstractElement *element in self.selectedObjects) {
         if ([element canAdjustColor]) {
             return YES;
         }

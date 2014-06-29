@@ -56,7 +56,7 @@
     newState.viewport = oldState.viewport;
 }
 
-- (WDElement *) endElement
+- (WDAbstractElement *) endElement
 {
     WDSVGParserState *oldState = self.state;
     [stack_ removeLastObject];
@@ -64,7 +64,7 @@
     // move any remaining group objects down a level
     [[self state].group addObjectsFromArray:oldState.group];
 
-    WDElement *element = oldState.wdElement;
+    WDAbstractElement *element = oldState.wdElement;
     return element;
 }
 
@@ -124,12 +124,12 @@
     return self.state.svgElement;
 }
 
-- (WDElement *) wdElement
+- (WDAbstractElement *) wdElement
 {
     return self.state.wdElement;
 }
 
-- (void) setWdElement:(WDElement *)wdElement
+- (void) setWdElement:(WDAbstractElement *)wdElement
 {
     self.state.wdElement = wdElement;
 }

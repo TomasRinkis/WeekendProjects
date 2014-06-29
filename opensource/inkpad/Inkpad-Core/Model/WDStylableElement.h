@@ -10,7 +10,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WDElement.h"
+#import "WDAbstractElement.h"
 
 @class WDFillTransform;
 @class WDStrokeStyle;
@@ -18,7 +18,7 @@
 
 @protocol WDPathPainter;
 
-@interface WDStylableElement : WDElement <NSCoding, NSCopying>
+@interface WDStylableElement : WDAbstractElement <NSCoding, NSCopying>
 
 @property (nonatomic, strong) id<WDPathPainter> fill;
 @property (nonatomic, strong) WDFillTransform *fillTransform;

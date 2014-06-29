@@ -12,12 +12,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WDElement.h"
+#import "WDAbstractElement.h"
 #import "WDSVGElement.h"
 
 @interface WDSVGParserState : NSObject {
     WDSVGElement        *svgElement_;
-    WDElement           *wdElement_;
+    WDAbstractElement           *wdElement_;
     NSMutableArray      *group_;
     CGAffineTransform   transform_;
     CGAffineTransform   viewBoxTransform_;
@@ -25,7 +25,7 @@
 }
 
 @property (nonatomic, readonly) WDSVGElement *svgElement;
-@property (nonatomic, strong) WDElement *wdElement;
+@property (nonatomic, strong) WDAbstractElement *wdElement;
 @property (nonatomic, readonly) NSMutableArray *group;
 @property (nonatomic, assign) CGAffineTransform transform;
 @property (nonatomic, assign) CGAffineTransform viewBoxTransform;

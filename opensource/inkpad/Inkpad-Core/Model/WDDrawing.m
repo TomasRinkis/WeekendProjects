@@ -654,7 +654,7 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData)
 + (UIImage *) createImageForElements:(NSArray *)elements scale:(float)scaleFactor
 {
     CGRect contentBounds = CGRectNull;
-    for (WDElement *element in elements) {
+    for (WDAbstractElement *element in elements) {
         contentBounds = CGRectUnion(contentBounds, element.styleBounds);
     }
     
@@ -674,7 +674,7 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData)
     CGPoint origin = WDMultiplyPointScalar(contentBounds.origin, -scaleFactor);
     CGContextTranslateCTM(ctx, origin.x, origin.y);
     CGContextScaleCTM(ctx, scaleFactor, scaleFactor);
-    for (WDElement *element in elements) {
+    for (WDAbstractElement *element in elements) {
         [element renderInContext:ctx metaData:WDRenderingMetaDataMake(scaleFactor, WDRenderDefaultFlag)];
     }
     

@@ -57,7 +57,7 @@
 - (void) endWithEvent:(WDEvent *)theEvent inCanvas:(WDCanvasView *)canvas
 {    
 #if TARGET_OS_IPHONE
-    WDElement *element = self.lastPickResult.element;
+    WDAbstractElement *element = self.lastPickResult.element;
     if (element) {
         for (NSString *property in [element inspectableProperties]) {
             [canvas.drawingController setValue:[element valueForProperty:property] forProperty:property];
