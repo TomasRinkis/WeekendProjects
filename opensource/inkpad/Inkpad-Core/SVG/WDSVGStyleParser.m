@@ -436,9 +436,9 @@ NSArray *tokenizeStyle(NSString *source)
         WDAbstractPathElement *path = (WDAbstractPathElement *) stylable;
         NSString *clipRule = [stack_ style:kWDPropertyClipRule];
         if ([clipRule isEqualToString:@"nonzero"]) {
-            path.fillRule = kWDNonZeroWindingFillRule;
+            path.fillRule = kWDNonZeroWindingFillRuleFlag;
         } else if ([clipRule isEqualToString:@"evenodd"]) {
-            path.fillRule = kWDEvenOddFillRule;
+            path.fillRule = kWDEvenOddFillRuleFlag;
         }
     }
     

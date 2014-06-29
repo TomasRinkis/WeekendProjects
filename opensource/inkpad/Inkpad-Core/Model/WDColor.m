@@ -338,7 +338,7 @@ NSString *WDAlphaKey = @"WDAlphaKey";
     CGContextAddPath(ctx, path.pathRef);
     CGContextSetFillColorWithColor(ctx, self.CGColor);
     
-    if (path.fillRule == kWDEvenOddFillRule) {
+    if (path.fillRule == kWDEvenOddFillRuleFlag) {
         CGContextEOFillPath(ctx);
     } else {
         CGContextFillPath(ctx);

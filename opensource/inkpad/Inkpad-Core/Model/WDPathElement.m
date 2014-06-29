@@ -324,7 +324,8 @@ NSString *WDClosedKey = @"WDClosedKey";
 {
     self = [self init];
     
-    if (!self) {
+    if (!self)
+    {
         return nil;
     }
     

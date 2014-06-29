@@ -117,7 +117,7 @@ NSString *WDFillRuleKey = @"WDFillRuleKey";
 
     WDXMLElement *basePath = [WDXMLElement elementWithName:@"path"];
     [basePath setAttribute:@"d" value:[self nodeSVGRepresentation]];
-    if (self.fill && self.fillRule == kWDEvenOddFillRule) {
+    if (self.fill && self.fillRule == kWDEvenOddFillRuleFlag) {
         [basePath setAttribute:@"fill-rule" value:@"evenodd"];
     }
     
@@ -226,7 +226,7 @@ NSString *WDFillRuleKey = @"WDFillRuleKey";
     return 1;
 }
 
-+ (WDAbstractPathElement *) pathWithCGPathRef:(CGPathRef)pathRef
++ (instancetype) pathWithCGPathRef:(CGPathRef)pathRef
 {
     NSMutableArray *subpaths = [NSMutableArray array];
     
@@ -247,7 +247,7 @@ NSString *WDFillRuleKey = @"WDFillRuleKey";
     // subclasses can add more to the outline
 }
 
-- (WDAbstractPathElement *) outlineStroke
+- (instancetype) outlineStroke
 {
     if (!self.strokeStyle || ![self.strokeStyle willRender]) {
         return nil;
@@ -302,7 +302,7 @@ NSString *WDFillRuleKey = @"WDFillRuleKey";
     // implemented by concrete subclasses
 }
 
-- (WDAbstractPathElement *) pathByFlatteningPath
+- (instancetype) pathByFlatteningPath
 {
     // implemented by concrete subclasses
     return nil;

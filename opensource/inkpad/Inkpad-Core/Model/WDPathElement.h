@@ -20,7 +20,7 @@
 
 @interface WDPathElement : WDAbstractPathElement <NSCoding, NSCopying>
 {
-    NSMutableArray      *nodes_;
+    NSMutableArray      *nodes_;//<holds Bazier nodes
     BOOL                closed_;
     BOOL                reversed_;
     

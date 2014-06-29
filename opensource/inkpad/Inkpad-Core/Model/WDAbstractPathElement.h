@@ -18,25 +18,26 @@
 @class WDStrokeStyle;
 
 // the fill rule can be passed directly to functions that take a bool indicating EO fill
-typedef enum {
-    kWDNonZeroWindingFillRule   = 0, 
-    kWDEvenOddFillRule          = 1
-} WDFillRule;
+typedef enum
+{
+    kWDNonZeroWindingFillRuleFlag   = 0,
+    kWDEvenOddFillRuleFlag          = 1
+} WDFillRuleMode;
 
 @interface WDAbstractPathElement : WDStylableElement <NSCoding, NSCopying>
 
-@property (nonatomic, assign) WDFillRule fillRule;
+@property (nonatomic, assign) WDFillRuleMode fillRule;
 @property (nonatomic, readonly) CGPathRef pathRef;
 @property (nonatomic, readonly) CGPathRef strokePathRef;
 
-+ (WDAbstractPathElement *) pathWithCGPathRef:(CGPathRef)pathRef;
++ (instancetype) pathWithCGPathRef:(CGPathRef)pathRef;
 
 - (NSUInteger) subpathCount;
 - (NSString *) nodeSVGRepresentation;
 - (void) addSVGArrowheadsToGroup:(WDXMLElement *)group;
 
 - (BOOL) canOutlineStroke;
-- (WDAbstractPathElement *) outlineStroke;
+- (instancetype) outlineStroke;
 
 // subclasses can override this to enhance the default outline
 - (void) addElementsToOutlinedStroke:(CGMutablePathRef)pathRef;
@@ -46,7 +47,7 @@ typedef enum {
 - (void) simplify;
 - (void) flatten;
 
-- (WDAbstractPathElement *) pathByFlatteningPath;
+- (instancetype) pathByFlatteningPath;
 
 // so subclasses can override
 - (void) renderStrokeInContext:(CGContextRef)ctx;

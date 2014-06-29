@@ -355,7 +355,7 @@ NSString *WDGradientStopsKey = @"WDGradientStopsKey";
     CGContextSaveGState(ctx);
     CGContextAddPath(ctx, path.pathRef);
     
-    if (path.fillRule == kWDEvenOddFillRule) {
+    if (path.fillRule == kWDEvenOddFillRuleFlag) {
         CGContextEOClip(ctx);
     } else {
         CGContextClip(ctx);

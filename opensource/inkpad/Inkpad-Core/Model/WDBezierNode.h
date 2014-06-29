@@ -16,19 +16,22 @@
 #import <UIKit/UIKit.h>
 #endif
 
-typedef enum {
+typedef enum
+{
     WDReflect,
     WDIndependent,
     WDReflectIndependent
 } WDBezierNodeReflectionMode;
 
-typedef enum {
+typedef enum
+{
     kWDBezierNodeRenderOpen,
     kWDBezierNodeRenderClosed,
     kWDBezierNodeRenderSelected
 } WDBezierNodeRenderMode;
 
-@interface WDBezierNode : NSObject <NSCoding, NSCopying> {
+@interface WDBezierNode : NSObject <NSCoding, NSCopying>
+{
     CGPoint     inPoint_;
     CGPoint     anchorPoint_;
     CGPoint     outPoint_;
