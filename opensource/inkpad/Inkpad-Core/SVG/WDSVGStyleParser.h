@@ -52,8 +52,8 @@ extern NSString * const kWDPropertyVisibility;
 - (void) style:(WDStylableElement *)stylable;
 - (NSDictionary *) defaultStyle;
 
-- (void) setPainter:(id<WDPathPainter>)painter withTransform:(WDFillTransform *)transform forId:(NSString *)painterId;
-- (id<WDPathPainter>) painterForId:(NSString *)painterId;
+- (void) setPainter:(id<WDPathPainterProtocol>)painter withTransform:(WDFillTransform *)transform forId:(NSString *)painterId;
+- (id<WDPathPainterProtocol>) painterForId:(NSString *)painterId;
 - (WDFillTransform *) transformForId:(NSString *)painterId;
     
 - (void) registerGradient:(NSString *)gradient forForwardReference:(NSString *)forwardReference;

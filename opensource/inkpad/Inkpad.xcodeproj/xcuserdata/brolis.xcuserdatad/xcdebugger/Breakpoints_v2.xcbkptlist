@@ -41,7 +41,7 @@
                   symbolName = "-[WDAppDelegate application:openURL:sourceApplication:annotation:]"
                   moduleName = "Inkpad"
                   urlString = "file://localhost/Users/brolis/Documents/WeekendProjects/opensource/inkpad/Classes/WDAppDelegate.m"
-                  timestampString = "425714005.848801"
+                  timestampString = "425716634.472778"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "102"
@@ -55,7 +55,7 @@
                   symbolName = "__66-[WDAppDelegate application:openURL:sourceApplication:annotation:]_block_invoke"
                   moduleName = "Inkpad"
                   urlString = "file://localhost/Users/brolis/Documents/WeekendProjects/opensource/inkpad/Classes/WDAppDelegate.m"
-                  timestampString = "425714005.849183"
+                  timestampString = "425716634.473192"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "109"
@@ -63,38 +63,6 @@
                   offsetFromSymbolStart = "24">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/WDBrowserController.m"
-            timestampString = "424462433.358211"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "477"
-            endingLineNumber = "477"
-            landmarkName = "-showDeleteMenu:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/WDBrowserController.m"
-            timestampString = "424462433.358211"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "499"
-            endingLineNumber = "499"
-            landmarkName = "-actionSheet:didDismissWithButtonIndex:"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -286,6 +254,286 @@
             startingLineNumber = "72"
             endingLineNumber = "72"
             landmarkName = "-setEnabled:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Inkpad-Core/Model/WDCompoundPathElement.m"
+            timestampString = "425716215.554338"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "-drawOpenGLAnchorsWithViewTransform:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WDCompoundPathElement drawOpenGLAnchorsWithViewTransform:]"
+                  moduleName = "Inkpad"
+                  urlString = "file://localhost/Users/brolis/Documents/WeekendProjects/opensource/inkpad/Inkpad-Core/Model/WDCompoundPathElement.m"
+                  timestampString = "425716634.478573"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "314"
+                  endingLineNumber = "314"
+                  offsetFromSymbolStart = "63">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WDCompoundPathElement drawOpenGLAnchorsWithViewTransform:]"
+                  moduleName = "Inkpad"
+                  urlString = "file://localhost/Users/brolis/Documents/WeekendProjects/opensource/inkpad/Inkpad-Core/Model/WDCompoundPathElement.m"
+                  timestampString = "425716634.478915"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "314"
+                  endingLineNumber = "314"
+                  offsetFromSymbolStart = "515">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Inkpad-Core/Model/WDCompoundPathElement.m"
+            timestampString = "425716218.90513"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
+            landmarkName = "-drawOpenGLHandlesWithTransform:viewTransform:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WDCompoundPathElement drawOpenGLHandlesWithTransform:viewTransform:]"
+                  moduleName = "Inkpad"
+                  urlString = "file://localhost/Users/brolis/Documents/WeekendProjects/opensource/inkpad/Inkpad-Core/Model/WDCompoundPathElement.m"
+                  timestampString = "425716634.479289"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "307"
+                  endingLineNumber = "307"
+                  offsetFromSymbolStart = "63">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WDCompoundPathElement drawOpenGLHandlesWithTransform:viewTransform:]"
+                  moduleName = "Inkpad"
+                  urlString = "file://localhost/Users/brolis/Documents/WeekendProjects/opensource/inkpad/Inkpad-Core/Model/WDCompoundPathElement.m"
+                  timestampString = "425716634.479638"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "307"
+                  endingLineNumber = "307"
+                  offsetFromSymbolStart = "515">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Inkpad-Core/Model/WDCompoundPathElement.m"
+            timestampString = "425716220.606462"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
+            landmarkName = "-drawOpenGLHighlightWithTransform:viewTransform:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WDCompoundPathElement drawOpenGLHighlightWithTransform:viewTransform:]"
+                  moduleName = "Inkpad"
+                  urlString = "file://localhost/Users/brolis/Documents/WeekendProjects/opensource/inkpad/Inkpad-Core/Model/WDCompoundPathElement.m"
+                  timestampString = "425716634.479951"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "300"
+                  endingLineNumber = "300"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WDCompoundPathElement drawOpenGLHighlightWithTransform:viewTransform:]"
+                  moduleName = "Inkpad"
+                  urlString = "file://localhost/Users/brolis/Documents/WeekendProjects/opensource/inkpad/Inkpad-Core/Model/WDCompoundPathElement.m"
+                  timestampString = "425716634.480155"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "300"
+                  endingLineNumber = "300"
+                  offsetFromSymbolStart = "559">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Inkpad-Core/Model/WDCompoundPathElement.m"
+            timestampString = "425716223.41504"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
+            landmarkName = "-drawOpenGLZoomOutlineWithViewTransform:visibleRect:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WDCompoundPathElement drawOpenGLZoomOutlineWithViewTransform:visibleRect:]"
+                  moduleName = "Inkpad"
+                  urlString = "file://localhost/Users/brolis/Documents/WeekendProjects/opensource/inkpad/Inkpad-Core/Model/WDCompoundPathElement.m"
+                  timestampString = "425716634.48039"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "293"
+                  endingLineNumber = "293"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WDCompoundPathElement drawOpenGLZoomOutlineWithViewTransform:visibleRect:]"
+                  moduleName = "Inkpad"
+                  urlString = "file://localhost/Users/brolis/Documents/WeekendProjects/opensource/inkpad/Inkpad-Core/Model/WDCompoundPathElement.m"
+                  timestampString = "425716634.480606"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "293"
+                  endingLineNumber = "293"
+                  offsetFromSymbolStart = "549">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Inkpad-Core/Model/WDCompoundPathElement.m"
+            timestampString = "425716231.422656"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "-hitResultForPoint:viewScale:snapFlags:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Inkpad-Core/Model/WDBezierSegment.m"
+            timestampString = "425716283.342592"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "WDBezierSegmentIntersectsRect()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Inkpad-Core/Model/WDPathElement.m"
+            timestampString = "425716455.857099"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "847"
+            endingLineNumber = "847"
+            landmarkName = "-drawOpenGLZoomOutlineWithViewTransform:visibleRect:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Inkpad-Core/Model/WDPathElement.m"
+            timestampString = "425716493.271154"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "902"
+            endingLineNumber = "902"
+            landmarkName = "-drawOpenGLHighlightWithTransform:viewTransform:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Inkpad-Core/Model/WDPathElement.m"
+            timestampString = "425716496.976776"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "969"
+            endingLineNumber = "969"
+            landmarkName = "-drawOpenGLAnchorsWithViewTransform:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Inkpad-Core/Model/WDPathElement.m"
+            timestampString = "425716498.367004"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "979"
+            endingLineNumber = "979"
+            landmarkName = "-drawOpenGLHandlesWithTransform:viewTransform:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

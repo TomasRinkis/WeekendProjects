@@ -133,19 +133,23 @@ NSString *WDOpacityKey = @"WDOpacityKey";
 {
     BOOL useTransparencyLayer = (!WDRenderingMetaDataOutlineOnly(metaData) && opacity_ != 1.0f) ? YES : NO;
     
-    if (useTransparencyLayer) {
+    if (useTransparencyLayer)
+    {
         CGContextSaveGState(ctx);
         CGContextSetAlpha(ctx, opacity_);
         CGContextBeginTransparencyLayer(ctx, NULL);
     }
     
-    for (WDAbstractElement *element in elements_) {
-        if (CGRectIntersectsRect([element styleBounds], clip)) {
+    for (WDAbstractElement *element in elements_)
+    {
+        if (CGRectIntersectsRect([element styleBounds], clip))
+        {
             [element renderInContext:ctx metaData:metaData];
         }
     }
     
-    if (useTransparencyLayer) {
+    if (useTransparencyLayer)
+    {
         CGContextEndTransparencyLayer(ctx);
         CGContextRestoreGState(ctx);
     }

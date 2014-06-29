@@ -46,6 +46,10 @@ typedef enum
 @class WDShadow;
 @class WDXMLElement;
 
+/*
+ Absract drawing element, belongs to layer, group (if any) and to drawing
+ If selected uses openGL for drawing bounds 
+ */
 @interface WDAbstractElement : NSObject <NSCoding, NSCopying>
 {
     CGRect      dirtyBounds_;

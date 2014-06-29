@@ -45,7 +45,7 @@ WDRenderingMetaData WDRenderingMetaDataMake(float scale, UInt32 flags);
 BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData);
 
 @protocol WDDocumentProtocol;
-@protocol WDPathPainter;
+@protocol WDPathPainterProtocol;
 
 @interface WDDrawing : NSObject <NSCoding, NSCopying>
 

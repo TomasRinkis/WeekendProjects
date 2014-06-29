@@ -15,7 +15,7 @@
 @class WDShadow;
 @class WDStrokeStyle;
 
-@protocol WDPathPainter;
+@protocol WDPathPainterProtocol;
 
 @interface WDPropertyManager : NSObject {
 @private
@@ -34,8 +34,8 @@
 - (WDStrokeStyle *) activeStrokeStyle;
 - (WDStrokeStyle *) defaultStrokeStyle;
 
-- (id<WDPathPainter>) activeFillStyle;
-- (id<WDPathPainter>) defaultFillStyle;
+- (id<WDPathPainterProtocol>) activeFillStyle;
+- (id<WDPathPainterProtocol>) defaultFillStyle;
 
 - (WDShadow *) activeShadow;
 - (WDShadow *) defaultShadow;

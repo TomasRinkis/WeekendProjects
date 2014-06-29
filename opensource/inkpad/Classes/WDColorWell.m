@@ -35,7 +35,7 @@
 	return self;
 }
 
-- (void) setPainter:(id<WDPathPainter>)painter
+- (void) setPainter:(id<WDPathPainterProtocol>)painter
 {
     if (painter == painter_) {
         return;

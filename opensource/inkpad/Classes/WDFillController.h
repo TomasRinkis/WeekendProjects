@@ -10,7 +10,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WDPathPainter.h"
+#import "WDPathPainterProtocol.h"
 
 @class WDColorController;
 @class WDDrawingController;
@@ -27,7 +27,7 @@ typedef enum {
     WDGradientController    *gradientController_;
     WDFillMode              fillMode_;
     UISegmentedControl      *modeSegment_;
-    id<WDPathPainter>       fill_;
+    id<WDPathPainterProtocol>       fill_;
 }
 
 @property (nonatomic, weak) WDDrawingController *drawingController;

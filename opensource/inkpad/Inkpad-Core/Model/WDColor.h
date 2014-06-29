@@ -10,9 +10,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WDPathPainter.h"
+#import "WDPathPainterProtocol.h"
 
-@interface WDColor : NSObject <NSCoding, NSCopying, WDPathPainter>
+@interface WDColor : NSObject <NSCoding, NSCopying, WDPathPainterProtocol>
 
 @property (nonatomic, readonly) CGFloat hue;
 @property (nonatomic, readonly) CGFloat saturation;

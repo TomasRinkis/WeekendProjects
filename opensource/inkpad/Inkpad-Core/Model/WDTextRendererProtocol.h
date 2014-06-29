@@ -1,5 +1,5 @@
 //
-//  WDTextRenderer.h
+//  WDTextRendererProtocol.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 
 
-@protocol WDTextRenderer <NSObject>
+@protocol WDTextRendererProtocol <NSObject>
 
 @required
 - (void) drawTextInContext:(CGContextRef)ctx drawingMode:(CGTextDrawingMode)mode;

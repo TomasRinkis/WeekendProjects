@@ -148,7 +148,7 @@
             // only allow one node to be selected at a time
             [controller deselectAllNodes];
             
-            if (event.count == 2 && [element conformsToProtocol:@protocol(WDTextRenderer)]) {
+            if (event.count == 2 && [element conformsToProtocol:@protocol(WDTextRendererProtocol)]) {
                 [canvas.controller editTextObject:(WDText *)element selectAll:NO];
             }
         } else if ([element isKindOfClass:[WDStylableElement class]] && (result.type == kWDFillEndPoint || result.type == kWDFillStartPoint)) {
@@ -162,7 +162,7 @@
             if (result.type == kWDObjectFill) {
                 [controller deselectAllNodes];
                 
-                if (event.count == 2 && [element conformsToProtocol:@protocol(WDTextRenderer)]) {
+                if (event.count == 2 && [element conformsToProtocol:@protocol(WDTextRendererProtocol)]) {
                     [canvas.controller editTextObject:(WDText *)element selectAll:NO];
                 }
             }

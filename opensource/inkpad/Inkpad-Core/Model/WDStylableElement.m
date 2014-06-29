@@ -261,7 +261,7 @@ NSString *WDMaskedElementsKey = @"WDMaskedElementsKey";
     [self propertiesChanged:changedProperties];
 } 
 
-- (void) setFillQuiet:(id<WDPathPainter>)fill
+- (void) setFillQuiet:(id<WDPathPainterProtocol>)fill
 {
     BOOL wasDefaultFillTransform = NO;
     
@@ -281,7 +281,7 @@ NSString *WDMaskedElementsKey = @"WDMaskedElementsKey";
     }
 }
 
-- (void) setFill:(id<WDPathPainter>)fill
+- (void) setFill:(id<WDPathPainterProtocol>)fill
 {
     if ([fill isEqual:fill_]) {
         return;

@@ -10,7 +10,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WDPathPainter.h"
+#import "WDPathPainterProtocol.h"
 
 typedef enum {
     kWDLinearGradient,
@@ -22,7 +22,7 @@ typedef enum {
 @class WDFillTransform;
 @class WDXMLElement;
 
-@interface WDGradient : NSObject <NSCopying, NSCoding, WDPathPainter> {
+@interface WDGradient : NSObject <NSCopying, NSCoding, WDPathPainterProtocol> {
     CGGradientRef       gradientRef_; // for rendering
 }
 

@@ -712,7 +712,7 @@
 		6BABD908141ED30100F7E0A9 /* WDPathElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDPathElement.m; sourceTree = "<group>"; };
 		6BABD909141ED30100F7E0A9 /* WDPathfinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDPathfinder.h; sourceTree = "<group>"; };
 		6BABD90A141ED30100F7E0A9 /* WDPathfinder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WDPathfinder.mm; sourceTree = "<group>"; };
-		6BABD90B141ED30100F7E0A9 /* WDPathPainter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDPathPainter.h; sourceTree = "<group>"; };
+		6BABD90B141ED30100F7E0A9 /* WDPathPainterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDPathPainterProtocol.h; sourceTree = "<group>"; };
 		6BABD90C141ED30100F7E0A9 /* WDPickResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDPickResult.h; sourceTree = "<group>"; };
 		6BABD90D141ED30100F7E0A9 /* WDPickResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDPickResult.m; sourceTree = "<group>"; };
 		6BABD90E141ED30100F7E0A9 /* WDRulerUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDRulerUnit.h; sourceTree = "<group>"; };
@@ -727,7 +727,7 @@
 		6BABD917141ED30100F7E0A9 /* WDText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDText.m; sourceTree = "<group>"; };
 		6BABD918141ED30100F7E0A9 /* WDTextPathElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDTextPathElement.h; sourceTree = "<group>"; };
 		6BABD919141ED30100F7E0A9 /* WDTextPathElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDTextPathElement.m; sourceTree = "<group>"; };
-		6BABD91A141ED30100F7E0A9 /* WDTextRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDTextRenderer.h; sourceTree = "<group>"; };
+		6BABD91A141ED30100F7E0A9 /* WDTextRendererProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDTextRendererProtocol.h; sourceTree = "<group>"; };
 		6BABD91B141ED30100F7E0A9 /* WDXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDXMLElement.h; sourceTree = "<group>"; };
 		6BABD91C141ED30100F7E0A9 /* WDXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDXMLElement.m; sourceTree = "<group>"; };
 		6BABD933141ED30100F7E0A9 /* WDAddAnchorTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDAddAnchorTool.h; sourceTree = "<group>"; };
@@ -1418,7 +1418,7 @@
 				6BABD908141ED30100F7E0A9 /* WDPathElement.m */,
 				6BABD909141ED30100F7E0A9 /* WDPathfinder.h */,
 				6BABD90A141ED30100F7E0A9 /* WDPathfinder.mm */,
-				6BABD90B141ED30100F7E0A9 /* WDPathPainter.h */,
+				6BABD90B141ED30100F7E0A9 /* WDPathPainterProtocol.h */,
 				6BABD90C141ED30100F7E0A9 /* WDPickResult.h */,
 				6BABD90D141ED30100F7E0A9 /* WDPickResult.m */,
 				6BABD90E141ED30100F7E0A9 /* WDRulerUnit.h */,
@@ -1433,7 +1433,7 @@
 				6BABD917141ED30100F7E0A9 /* WDText.m */,
 				6BABD918141ED30100F7E0A9 /* WDTextPathElement.h */,
 				6BABD919141ED30100F7E0A9 /* WDTextPathElement.m */,
-				6BABD91A141ED30100F7E0A9 /* WDTextRenderer.h */,
+				6BABD91A141ED30100F7E0A9 /* WDTextRendererProtocol.h */,
 				6BABD91B141ED30100F7E0A9 /* WDXMLElement.h */,
 				6BABD91C141ED30100F7E0A9 /* WDXMLElement.m */,
 			);

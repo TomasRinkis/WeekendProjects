@@ -374,7 +374,7 @@ NSString *WDAlphaKey = @"WDAlphaKey";
     return YES;
 }
 
-- (void) paintText:(id<WDTextRenderer>)text inContext:(CGContextRef)ctx
+- (void) paintText:(id<WDTextRendererProtocol>)text inContext:(CGContextRef)ctx
 {
     [self set];
     [text drawTextInContext:ctx drawingMode:kCGTextFill];

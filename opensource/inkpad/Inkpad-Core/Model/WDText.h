@@ -15,13 +15,13 @@
 
 #import <CoreText/CoreText.h>
 #import "WDStylableElement.h"
-#import "WDTextRenderer.h"
+#import "WDTextRendererProtocol.h"
 
 @class WDStrokeStyle;
 
-@protocol WDPathPainter;
+@protocol WDPathPainterProtocol;
 
-@interface WDText : WDStylableElement <NSCoding, NSCopying, WDTextRenderer> {
+@interface WDText : WDStylableElement <NSCoding, NSCopying, WDTextRendererProtocol> {
     float               width_;
     CGAffineTransform   transform_;
     NSString            *text_;

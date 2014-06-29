@@ -56,21 +56,25 @@ NSString *WDShadowKey = @"WDShadowKey";
 {
     [coder encodeConditionalObject:layer_ forKey:WDLayerKey];
     
-    if (group_) {
+    if (group_)
+    {
         [coder encodeConditionalObject:group_ forKey:WDGroupKey];
     }
     
-    if (shadow_) {
+    if (shadow_)
+    {
         // If there's an initial shadow, we should save that. The user hasn't committed to the color shift yet.
         WDShadow *shadowToSave = initialShadow_ ? initialShadow_ : shadow_;
         [coder encodeObject:shadowToSave forKey:WDShadowKey];
     }
     
-    if (opacity_ != 1.0f) {
+    if (opacity_ != 1.0f)
+    {
         [coder encodeFloat:opacity_ forKey:WDObjectOpacityKey];
     }
 	
-	if (blendMode_ != kCGBlendModeNormal) {
+	if (blendMode_ != kCGBlendModeNormal)
+    {
 		[coder encodeInt:blendMode_ forKey:WDBlendModeKey];
 	}
 }
@@ -99,7 +103,8 @@ NSString *WDShadowKey = @"WDShadowKey";
 {
     self = [super init];
     
-    if (!self) {
+    if (!self)
+    {
         return nil;
     }
 
@@ -124,7 +129,8 @@ NSString *WDShadowKey = @"WDShadowKey";
 
 - (void) setGroup:(WDGroup *)group
 {
-    if (group == group_) {
+    if (group == group_)
+    {
         return;
     }
     

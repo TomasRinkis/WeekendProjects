@@ -11,14 +11,14 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol WDPathPainter;
+@protocol WDPathPainterProtocol;
 
 @interface WDSwatchCell : UICollectionViewCell {
     UIView          *highlightView;
     UIImageView     *selectedIndicator_;
 }
 
-@property (nonatomic, strong) id<WDPathPainter> swatch;
+@property (nonatomic, strong) id<WDPathPainterProtocol> swatch;
 @property (nonatomic, assign) BOOL shouldShowSelectionIndicator;
 
 @end

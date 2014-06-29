@@ -1,5 +1,5 @@
 //
-//  WDPathPainter.h
+//  WDPathPainterProtocol.h
 //  Inkpad
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public
@@ -10,12 +10,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WDTextRenderer.h"
+#import "WDTextRendererProtocol.h"
 
 @class WDAbstractPathElement;
 @class WDColor;
 
-@protocol WDPathPainter <NSObject>
+@protocol WDPathPainterProtocol <NSObject>
 
 @required
 - (void) paintPath:(WDAbstractPathElement *)path inContext:(CGContextRef)ctx;
@@ -24,6 +24,6 @@
 - (BOOL) canPaintStroke;
 - (void) drawSwatchInRect:(CGRect)rect;
 - (void) drawEyedropperSwatchInRect:(CGRect)rect;
-- (void) paintText:(id<WDTextRenderer>)text inContext:(CGContextRef)ctx;
+- (void) paintText:(id<WDTextRendererProtocol>)text inContext:(CGContextRef)ctx;
 - (id) adjustColor:(WDColor * (^)(WDColor *color))adjustment;
 @end

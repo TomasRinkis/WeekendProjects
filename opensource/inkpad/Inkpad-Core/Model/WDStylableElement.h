@@ -16,11 +16,11 @@
 @class WDStrokeStyle;
 @class WDXMLElement;
 
-@protocol WDPathPainter;
+@protocol WDPathPainterProtocol;
 
 @interface WDStylableElement : WDAbstractElement <NSCoding, NSCopying>
 
-@property (nonatomic, strong) id<WDPathPainter> fill;
+@property (nonatomic, strong) id<WDPathPainterProtocol> fill;
 @property (nonatomic, strong) WDFillTransform *fillTransform;
 @property (nonatomic, strong) WDStrokeStyle *strokeStyle;
 @property (nonatomic, strong) NSArray *maskedElements;
@@ -42,7 +42,7 @@
 - (void) addSVGFillAndStrokeAttributes:(WDXMLElement *)element;
 - (void) addSVGFillAttributes:(WDXMLElement *)element;
 
-- (void) setFillQuiet:(id<WDPathPainter>)fill;
+- (void) setFillQuiet:(id<WDPathPainterProtocol>)fill;
 - (void) setStrokeStyleQuiet:(WDStrokeStyle *)strokeStyle;
 
 @end

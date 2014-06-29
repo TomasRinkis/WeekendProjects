@@ -314,7 +314,7 @@ NSString *WDInvalidPropertiesKey = @"WDInvalidPropertiesKey";
                                angle:[[self defaultValueForProperty:WDShadowAngleProperty] floatValue]];
 }
 
-- (id<WDPathPainter>) activeFillStyle
+- (id<WDPathPainterProtocol>) activeFillStyle
 {
     id value = [self defaultValueForProperty:WDFillProperty];
     
@@ -325,7 +325,7 @@ NSString *WDInvalidPropertiesKey = @"WDInvalidPropertiesKey";
     return value;
 }
 
-- (id<WDPathPainter>) defaultFillStyle
+- (id<WDPathPainterProtocol>) defaultFillStyle
 {
     id value = [self defaultValueForProperty:WDFillProperty];
     

@@ -11,14 +11,14 @@
 
 #import "UIView+Additions.h"
 #import "WDSwatchCell.h"
-#import "WDPathPainter.h"
+#import "WDPathPainterProtocol.h"
 
 @implementation WDSwatchCell
 
 @synthesize swatch = swatch_;
 @synthesize shouldShowSelectionIndicator;
 
-- (void) setSwatch:(id<WDPathPainter>)swatch
+- (void) setSwatch:(id<WDPathPainterProtocol>)swatch
 {
     if ([swatch isEqual:swatch_]) {
         return;

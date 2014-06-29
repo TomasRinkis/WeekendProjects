@@ -10,7 +10,7 @@
 //
 
 #import "WDPathElement.h"
-#import "WDTextRenderer.h"
+#import "WDTextRendererProtocol.h"
 
 typedef enum {
     kWDTextPathAlignmentBaseline,
@@ -18,7 +18,7 @@ typedef enum {
     kWDTextPathAlignmentVertical  // currently unsupported
 } WDTextPathAlignment;
 
-@interface WDTextPathElement : WDPathElement <NSCoding, NSCopying, WDTextRenderer> {
+@interface WDTextPathElement : WDPathElement <NSCoding, NSCopying, WDTextRendererProtocol> {
     NSString                *text_;
     NSString                *fontName_;
     float                   fontSize_;

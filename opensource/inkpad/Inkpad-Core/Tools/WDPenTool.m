@@ -15,7 +15,7 @@
 #import "WDFillTransform.h"
 #import "WDInspectableProperties.h"
 #import "WDPathElement.h"
-#import "WDPathPainter.h"
+#import "WDPathPainterProtocol.h"
 #import "WDPenTool.h"
 #import "WDPropertyManager.h"
 #import "WDUtilities.h"

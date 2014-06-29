@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 #import "WDStylableElement.h"
 
-@protocol WDPathPainter;
+@protocol WDPathPainterProtocol;
 
 @class WDFillTransform;
 @class WDStrokeStyle;

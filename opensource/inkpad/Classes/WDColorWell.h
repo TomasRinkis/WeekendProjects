@@ -10,7 +10,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WDPathPainter.h"
+#import "WDPathPainterProtocol.h"
 
 @class WDGradientStopIndicatorView;
 
@@ -19,7 +19,7 @@
     UIView                      *shadowView_;
 }
 
-@property (nonatomic, strong) id<WDPathPainter> painter;
+@property (nonatomic, strong) id<WDPathPainterProtocol> painter;
 @property (nonatomic, weak) UIBarButtonItem *barButtonItem;
 @property (nonatomic, assign) BOOL strokeMode;
 @property (nonatomic, assign) BOOL gradientStopMode;

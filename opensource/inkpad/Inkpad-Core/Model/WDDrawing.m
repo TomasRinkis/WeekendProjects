@@ -569,8 +569,10 @@ BOOL WDRenderingMetaDataOutlineOnly(WDRenderingMetaData metaData)
     // make sure blending modes behave correctly
     CGContextBeginTransparencyLayer(ctx, NULL);
     
-    for (WDLayer *layer in layers_) {
-        if (!layer.hidden) {
+    for (WDLayer *layer in layers_)
+    {
+        if (!layer.hidden)
+        {
             [layer renderInContext:ctx clipRect:clip metaData:metaData];
         }
     }

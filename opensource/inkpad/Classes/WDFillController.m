@@ -133,7 +133,7 @@
     self.preferredContentSize = self.view.frame.size;
 }
 
-- (void) configureUIWithFill:(id<WDPathPainter>)fill
+- (void) configureUIWithFill:(id<WDPathPainterProtocol>)fill
 {
     if (!fill || [fill isEqual:[NSNull null]]) {
         gradientController_.inactive = YES;
@@ -161,7 +161,7 @@
     NSSet *properties = [aNotification userInfo][WDInvalidPropertiesKey];
     
     if ([properties containsObject:WDFillProperty]) {
-        id<WDPathPainter> fill = [drawingController_.propertyManager defaultValueForProperty:WDFillProperty];
+        id<WDPathPainterProtocol> fill = [drawingController_.propertyManager defaultValueForProperty:WDFillProperty];
         [self configureUIWithFill:fill];
     }
 }
@@ -175,7 +175,7 @@
     gradientController_.gradient =  [drawingController_.propertyManager defaultValueForProperty:WDFillGradientProperty];
     
     // configure the UI
-    id<WDPathPainter> fill = [drawingController_.propertyManager activeFillStyle];
+    id<WDPathPainterProtocol> fill = [drawingController_.propertyManager activeFillStyle];
     
     [self configureUIWithFill:fill];
 }

@@ -121,7 +121,7 @@ NSString *WDSwatchPanelModeKey = @"WDSwatchPanelModeKey";
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:WDSwatches];
 }
 
-- (void) addSwatch:(id<WDPathPainter>)swatch
+- (void) addSwatch:(id<WDPathPainterProtocol>)swatch
 {
     [self.swatches addObject:swatch];
     
@@ -275,7 +275,7 @@ NSString *WDSwatchPanelModeKey = @"WDSwatchPanelModeKey";
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (!self.isEditing) {
-        id<WDPathPainter> swatch = (self.swatches)[indexPath.item];
+        id<WDPathPainterProtocol> swatch = (self.swatches)[indexPath.item];
         
         if (![swatch canPaintStroke] || mode_ == kWDFillSwatchMode) {
             // can't stroke, so set fill no matter what

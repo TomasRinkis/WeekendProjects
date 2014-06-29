@@ -10,7 +10,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WDPathPainter.h"
+#import "WDPathPainterProtocol.h"
 
 @class WDDrawingController;
 

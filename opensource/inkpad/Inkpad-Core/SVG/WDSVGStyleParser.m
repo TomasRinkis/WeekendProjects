@@ -456,7 +456,7 @@ NSArray *tokenizeStyle(NSString *source)
     }
 }
 
-- (void) setPainter:(id<WDPathPainter>)painter withTransform:(WDFillTransform *)transform forId:(NSString *)painterId
+- (void) setPainter:(id<WDPathPainterProtocol>)painter withTransform:(WDFillTransform *)transform forId:(NSString *)painterId
 {
     NSString *referrer = [forwardReferences_ objectForKey:painterId];
     if (referrer && [painter isKindOfClass:[WDGradient class]]) {
@@ -475,7 +475,7 @@ NSArray *tokenizeStyle(NSString *source)
     painters_[[@"#" stringByAppendingString:painterId]] = prototype;
 }
 
-- (id<WDPathPainter>) painterForId:(NSString *)painterId
+- (id<WDPathPainterProtocol>) painterForId:(NSString *)painterId
 {
     WDStylableElement *painter = painters_[[@"#" stringByAppendingString:painterId]];
     return painter.fill;

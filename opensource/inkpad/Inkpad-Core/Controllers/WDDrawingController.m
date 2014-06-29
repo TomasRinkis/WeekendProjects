@@ -1616,7 +1616,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     NSArray *paths = nil;
     
     for (WDAbstractElement *element in selectedObjects_) {
-        if ([element conformsToProtocol:@protocol(WDTextRenderer)]) {
+        if ([element conformsToProtocol:@protocol(WDTextRendererProtocol)]) {
             WDText *text = (WDText *) element;
             paths = [text outlines];
             
@@ -1639,7 +1639,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
 - (void) resetTextTransform:(id)sender
 {
     for (WDAbstractElement *element in selectedObjects_) {
-        if ([element conformsToProtocol:@protocol(WDTextRenderer)] && [element respondsToSelector:@selector(resetTransform)]) {
+        if ([element conformsToProtocol:@protocol(WDTextRendererProtocol)] && [element respondsToSelector:@selector(resetTransform)]) {
             WDTextPathElement *textPath =  (WDTextPathElement *) element;
             [textPath resetTransform];
         }
@@ -2010,7 +2010,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     
     for (WDAbstractElement *element in selectedObjects_) {
         WDPathElement *path = (WDPathElement *) element;
-        if (![path isKindOfClass:[WDPathElement class]] || path.superpath || path.closed || [path conformsToProtocol:@protocol(WDTextRenderer)]) {
+        if (![path isKindOfClass:[WDPathElement class]] || path.superpath || path.closed || [path conformsToProtocol:@protocol(WDTextRendererProtocol)]) {
             return NO;
         }
     }
@@ -2030,7 +2030,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
                 // don't allow masks or text paths to make compound paths
                 WDAbstractPathElement *path = (WDAbstractPathElement *) element;
                 
-                if (path.isMasking || [path conformsToProtocol:@protocol(WDTextRenderer)]) {
+                if (path.isMasking || [path conformsToProtocol:@protocol(WDTextRendererProtocol)]) {
                     return NO;
                 }
             }
@@ -2146,7 +2146,7 @@ NSString *WDSelectionChangedNotification = @"WDSelectionChangedNotification";
     }
     
     for (WDAbstractElement *element in selectedObjects_) {
-        if (![element conformsToProtocol:@protocol(WDTextRenderer)]) {
+        if (![element conformsToProtocol:@protocol(WDTextRendererProtocol)]) {
             return NO;
         }
     }
