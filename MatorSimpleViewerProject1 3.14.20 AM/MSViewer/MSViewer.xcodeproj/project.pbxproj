@@ -1,0 +1,748 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A36707D19726D1E00CC6FA6 /* MSVShadowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A36707C19726D1E00CC6FA6 /* MSVShadowController.m */; };
+		3A36707F1972714B00CC6FA6 /* MSVShadow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A36707E1972714B00CC6FA6 /* MSVShadow.xib */; };
+		3A367091197297A900CC6FA6 /* MSVZoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A367090197297A900CC6FA6 /* MSVZoomController.m */; };
+		3A3670931972983A00CC6FA6 /* MSVZoom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A3670921972983A00CC6FA6 /* MSVZoom.xib */; };
+		3A84EB0C1970BCAC00080A1C /* MSVScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB0B1970BCAC00080A1C /* MSVScreen.m */; };
+		3A84EB0F1970C8DA00080A1C /* MSVAbstractToolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB0E1970C8DA00080A1C /* MSVAbstractToolButton.m */; };
+		3A84EB121970C8EF00080A1C /* MSVSelectToolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB111970C8EF00080A1C /* MSVSelectToolButton.m */; };
+		3A84EB171970CBC100080A1C /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A84EB161970CBC100080A1C /* select.png */; };
+		3A84EB1A1970CE9400080A1C /* MSVToolInventory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB191970CE9400080A1C /* MSVToolInventory.m */; };
+		3A84EB1D1970D02500080A1C /* MSVToolsInventoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB1C1970D02500080A1C /* MSVToolsInventoryView.m */; };
+		3A84EB201970D04500080A1C /* MSVToolsInventoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB1F1970D04500080A1C /* MSVToolsInventoryController.m */; };
+		3A84EB241970D6BE00080A1C /* MSVNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB231970D6BE00080A1C /* MSVNotifications.m */; };
+		3A84EB281970DA3600080A1C /* MSVCanvasSelectState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB271970DA3600080A1C /* MSVCanvasSelectState.m */; };
+		3A84EB2A1970F2D100080A1C /* crop.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A84EB291970F2D100080A1C /* crop.png */; };
+		3A84EB2D1970F30500080A1C /* MSVCanvasCropState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB2C1970F30500080A1C /* MSVCanvasCropState.m */; };
+		3A84EB301970F47700080A1C /* MSVCropToolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB2F1970F47700080A1C /* MSVCropToolButton.m */; };
+		3A84EB351970FDA700080A1C /* MSVCanvasDeleteState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB341970FDA700080A1C /* MSVCanvasDeleteState.m */; };
+		3A84EB381970FDBE00080A1C /* MSVDeleteToolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB371970FDBE00080A1C /* MSVDeleteToolButton.m */; };
+		3A8568AA1970347E00C664A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8568A91970347E00C664A0 /* Foundation.framework */; };
+		3A8568AC1970347E00C664A0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8568AB1970347E00C664A0 /* CoreGraphics.framework */; };
+		3A8568AE1970347E00C664A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8568AD1970347E00C664A0 /* UIKit.framework */; };
+		3A8568B01970347E00C664A0 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8568AF1970347E00C664A0 /* GLKit.framework */; };
+		3A8568B21970347E00C664A0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8568B11970347E00C664A0 /* OpenGLES.framework */; };
+		3A8568B81970347E00C664A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A8568B61970347E00C664A0 /* InfoPlist.strings */; };
+		3A8568BA1970347E00C664A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8568B91970347E00C664A0 /* main.m */; };
+		3A8568BE1970347E00C664A0 /* MSVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8568BD1970347E00C664A0 /* MSVAppDelegate.m */; };
+		3A8568C11970347E00C664A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8568BF1970347E00C664A0 /* Main.storyboard */; };
+		3A8568C81970347E00C664A0 /* MSVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8568C71970347E00C664A0 /* MSVViewController.m */; };
+		3A8568CA1970347E00C664A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8568C91970347E00C664A0 /* Images.xcassets */; };
+		3A8568D11970347E00C664A0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8568D01970347E00C664A0 /* XCTest.framework */; };
+		3A8568D21970347E00C664A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8568A91970347E00C664A0 /* Foundation.framework */; };
+		3A8568D31970347E00C664A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8568AD1970347E00C664A0 /* UIKit.framework */; };
+		3A8568DB1970347E00C664A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A8568D91970347E00C664A0 /* InfoPlist.strings */; };
+		3A8568DD1970347E00C664A0 /* MSViewerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8568DC1970347E00C664A0 /* MSViewerTests.m */; };
+		3A8568E71970359600C664A0 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8568E61970359600C664A0 /* CoreImage.framework */; };
+		3A8568F61970409C00C664A0 /* MSVCanvasModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8568F51970409C00C664A0 /* MSVCanvasModel.m */; };
+		3A8568F9197040E600C664A0 /* MSVCanvasAbstractState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8568F8197040E600C664A0 /* MSVCanvasAbstractState.m */; };
+		3A8568FC1970410700C664A0 /* MSVCanvasAbstractElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8568FB1970410700C664A0 /* MSVCanvasAbstractElement.m */; };
+		3A8568FF1970412000C664A0 /* MSVCanvasImageElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8568FE1970412000C664A0 /* MSVCanvasImageElement.m */; };
+		3AE62BA11972299C0022FDD4 /* PrimitivesFragShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 3AE62B951972299B0022FDD4 /* PrimitivesFragShader.glsl */; };
+		3AE62BA21972299C0022FDD4 /* PrimitivesVertShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 3AE62B961972299B0022FDD4 /* PrimitivesVertShader.glsl */; };
+		3AE62BA31972299C0022FDD4 /* MSVhaderProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE62B981972299B0022FDD4 /* MSVhaderProgram.m */; };
+		3AE62BA41972299C0022FDD4 /* MSVShaderUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE62B9A1972299B0022FDD4 /* MSVShaderUtils.m */; };
+		3AE62BA51972299C0022FDD4 /* MSVShaderConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE62B9C1972299B0022FDD4 /* MSVShaderConstants.m */; };
+		3AE62BA61972299C0022FDD4 /* ShaderContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE62B9E1972299B0022FDD4 /* ShaderContainer.m */; };
+		3AE62BA9197229B70022FDD4 /* MSVGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE62BA8197229B70022FDD4 /* MSVGraphics.m */; };
+		3AE62BAF19722BD00022FDD4 /* MSVPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE62BAE19722BD00022FDD4 /* MSVPath.m */; };
+		3AE62BB11972509B0022FDD4 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AE62BB01972509B0022FDD4 /* delete.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3A8568D41970347E00C664A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A85689E1970347D00C664A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A8568A51970347E00C664A0;
+			remoteInfo = MSViewer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3A36707B19726D1E00CC6FA6 /* MSVShadowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVShadowController.h; sourceTree = "<group>"; };
+		3A36707C19726D1E00CC6FA6 /* MSVShadowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVShadowController.m; sourceTree = "<group>"; };
+		3A36707E1972714B00CC6FA6 /* MSVShadow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MSVShadow.xib; path = ../MSVShadow.xib; sourceTree = "<group>"; };
+		3A36708F197297A900CC6FA6 /* MSVZoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVZoomController.h; sourceTree = "<group>"; };
+		3A367090197297A900CC6FA6 /* MSVZoomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVZoomController.m; sourceTree = "<group>"; };
+		3A3670921972983A00CC6FA6 /* MSVZoom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MSVZoom.xib; path = ../MSVZoom.xib; sourceTree = "<group>"; };
+		3A84EB0A1970BCAC00080A1C /* MSVScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVScreen.h; sourceTree = "<group>"; };
+		3A84EB0B1970BCAC00080A1C /* MSVScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVScreen.m; sourceTree = "<group>"; };
+		3A84EB0D1970C8DA00080A1C /* MSVAbstractToolButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVAbstractToolButton.h; sourceTree = "<group>"; };
+		3A84EB0E1970C8DA00080A1C /* MSVAbstractToolButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVAbstractToolButton.m; sourceTree = "<group>"; };
+		3A84EB101970C8EF00080A1C /* MSVSelectToolButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVSelectToolButton.h; sourceTree = "<group>"; };
+		3A84EB111970C8EF00080A1C /* MSVSelectToolButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVSelectToolButton.m; sourceTree = "<group>"; };
+		3A84EB161970CBC100080A1C /* select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select.png; sourceTree = "<group>"; };
+		3A84EB181970CE9400080A1C /* MSVToolInventory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVToolInventory.h; sourceTree = "<group>"; };
+		3A84EB191970CE9400080A1C /* MSVToolInventory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVToolInventory.m; sourceTree = "<group>"; };
+		3A84EB1B1970D02500080A1C /* MSVToolsInventoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSVToolsInventoryView.h; path = MSViewer/views/MSVToolsInventoryView.h; sourceTree = SOURCE_ROOT; };
+		3A84EB1C1970D02500080A1C /* MSVToolsInventoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSVToolsInventoryView.m; path = MSViewer/views/MSVToolsInventoryView.m; sourceTree = SOURCE_ROOT; };
+		3A84EB1E1970D04500080A1C /* MSVToolsInventoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVToolsInventoryController.h; sourceTree = "<group>"; };
+		3A84EB1F1970D04500080A1C /* MSVToolsInventoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVToolsInventoryController.m; sourceTree = "<group>"; };
+		3A84EB221970D6BE00080A1C /* MSVNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVNotifications.h; sourceTree = "<group>"; };
+		3A84EB231970D6BE00080A1C /* MSVNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVNotifications.m; sourceTree = "<group>"; };
+		3A84EB251970D7CC00080A1C /* MSVCanvasStateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSVCanvasStateProtocol.h; sourceTree = "<group>"; };
+		3A84EB261970DA3600080A1C /* MSVCanvasSelectState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVCanvasSelectState.h; sourceTree = "<group>"; };
+		3A84EB271970DA3600080A1C /* MSVCanvasSelectState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVCanvasSelectState.m; sourceTree = "<group>"; };
+		3A84EB291970F2D100080A1C /* crop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crop.png; sourceTree = "<group>"; };
+		3A84EB2B1970F30500080A1C /* MSVCanvasCropState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVCanvasCropState.h; sourceTree = "<group>"; };
+		3A84EB2C1970F30500080A1C /* MSVCanvasCropState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVCanvasCropState.m; sourceTree = "<group>"; };
+		3A84EB2E1970F47700080A1C /* MSVCropToolButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVCropToolButton.h; sourceTree = "<group>"; };
+		3A84EB2F1970F47700080A1C /* MSVCropToolButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVCropToolButton.m; sourceTree = "<group>"; };
+		3A84EB331970FDA700080A1C /* MSVCanvasDeleteState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVCanvasDeleteState.h; sourceTree = "<group>"; };
+		3A84EB341970FDA700080A1C /* MSVCanvasDeleteState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVCanvasDeleteState.m; sourceTree = "<group>"; };
+		3A84EB361970FDBE00080A1C /* MSVDeleteToolButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVDeleteToolButton.h; sourceTree = "<group>"; };
+		3A84EB371970FDBE00080A1C /* MSVDeleteToolButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVDeleteToolButton.m; sourceTree = "<group>"; };
+		3A8568A61970347E00C664A0 /* MSViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A8568A91970347E00C664A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3A8568AB1970347E00C664A0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3A8568AD1970347E00C664A0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3A8568AF1970347E00C664A0 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		3A8568B11970347E00C664A0 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		3A8568B51970347E00C664A0 /* MSViewer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MSViewer-Info.plist"; sourceTree = "<group>"; };
+		3A8568B71970347E00C664A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3A8568B91970347E00C664A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3A8568BB1970347E00C664A0 /* MSViewer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSViewer-Prefix.pch"; sourceTree = "<group>"; };
+		3A8568BC1970347E00C664A0 /* MSVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSVAppDelegate.h; sourceTree = "<group>"; };
+		3A8568BD1970347E00C664A0 /* MSVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSVAppDelegate.m; sourceTree = "<group>"; };
+		3A8568C01970347E00C664A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3A8568C61970347E00C664A0 /* MSVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSVViewController.h; sourceTree = "<group>"; };
+		3A8568C71970347E00C664A0 /* MSVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSVViewController.m; sourceTree = "<group>"; };
+		3A8568C91970347E00C664A0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3A8568CF1970347E00C664A0 /* MSViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MSViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A8568D01970347E00C664A0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3A8568D81970347E00C664A0 /* MSViewerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MSViewerTests-Info.plist"; sourceTree = "<group>"; };
+		3A8568DA1970347E00C664A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3A8568DC1970347E00C664A0 /* MSViewerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSViewerTests.m; sourceTree = "<group>"; };
+		3A8568E61970359600C664A0 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		3A8568F41970409C00C664A0 /* MSVCanvasModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVCanvasModel.h; sourceTree = "<group>"; };
+		3A8568F51970409C00C664A0 /* MSVCanvasModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVCanvasModel.m; sourceTree = "<group>"; };
+		3A8568F7197040E600C664A0 /* MSVCanvasAbstractState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVCanvasAbstractState.h; sourceTree = "<group>"; };
+		3A8568F8197040E600C664A0 /* MSVCanvasAbstractState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVCanvasAbstractState.m; sourceTree = "<group>"; };
+		3A8568FA1970410700C664A0 /* MSVCanvasAbstractElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVCanvasAbstractElement.h; sourceTree = "<group>"; };
+		3A8568FB1970410700C664A0 /* MSVCanvasAbstractElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVCanvasAbstractElement.m; sourceTree = "<group>"; };
+		3A8568FD1970412000C664A0 /* MSVCanvasImageElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVCanvasImageElement.h; sourceTree = "<group>"; };
+		3A8568FE1970412000C664A0 /* MSVCanvasImageElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVCanvasImageElement.m; sourceTree = "<group>"; };
+		3A856900197041A000C664A0 /* MSVCanvasElementProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSVCanvasElementProtocol.h; sourceTree = "<group>"; };
+		3AE62B951972299B0022FDD4 /* PrimitivesFragShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PrimitivesFragShader.glsl; sourceTree = "<group>"; };
+		3AE62B961972299B0022FDD4 /* PrimitivesVertShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PrimitivesVertShader.glsl; sourceTree = "<group>"; };
+		3AE62B971972299B0022FDD4 /* MSVShaderProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVShaderProgram.h; sourceTree = "<group>"; };
+		3AE62B981972299B0022FDD4 /* MSVhaderProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVhaderProgram.m; sourceTree = "<group>"; };
+		3AE62B991972299B0022FDD4 /* MSVShaderUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVShaderUtils.h; sourceTree = "<group>"; };
+		3AE62B9A1972299B0022FDD4 /* MSVShaderUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVShaderUtils.m; sourceTree = "<group>"; };
+		3AE62B9B1972299B0022FDD4 /* MSVShaderConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVShaderConstants.h; sourceTree = "<group>"; };
+		3AE62B9C1972299B0022FDD4 /* MSVShaderConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVShaderConstants.m; sourceTree = "<group>"; };
+		3AE62B9D1972299B0022FDD4 /* MSVShaderContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVShaderContainer.h; sourceTree = "<group>"; };
+		3AE62B9E1972299B0022FDD4 /* ShaderContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShaderContainer.m; sourceTree = "<group>"; };
+		3AE62BA7197229B70022FDD4 /* MSVGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVGraphics.h; sourceTree = "<group>"; };
+		3AE62BA8197229B70022FDD4 /* MSVGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVGraphics.m; sourceTree = "<group>"; };
+		3AE62BAD19722BD00022FDD4 /* MSVPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVPath.h; sourceTree = "<group>"; };
+		3AE62BAE19722BD00022FDD4 /* MSVPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVPath.m; sourceTree = "<group>"; };
+		3AE62BB01972509B0022FDD4 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A8568A31970347E00C664A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A8568E71970359600C664A0 /* CoreImage.framework in Frameworks */,
+				3A8568B21970347E00C664A0 /* OpenGLES.framework in Frameworks */,
+				3A8568AC1970347E00C664A0 /* CoreGraphics.framework in Frameworks */,
+				3A8568AE1970347E00C664A0 /* UIKit.framework in Frameworks */,
+				3A8568B01970347E00C664A0 /* GLKit.framework in Frameworks */,
+				3A8568AA1970347E00C664A0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A8568CC1970347E00C664A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A8568D11970347E00C664A0 /* XCTest.framework in Frameworks */,
+				3A8568D31970347E00C664A0 /* UIKit.framework in Frameworks */,
+				3A8568D21970347E00C664A0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A84EB211970D67800080A1C /* common */ = {
+			isa = PBXGroup;
+			children = (
+				3A84EB221970D6BE00080A1C /* MSVNotifications.h */,
+				3A84EB231970D6BE00080A1C /* MSVNotifications.m */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		3A85689D1970347D00C664A0 = {
+			isa = PBXGroup;
+			children = (
+				3A8568B31970347E00C664A0 /* MSViewer */,
+				3A8568D61970347E00C664A0 /* MSViewerTests */,
+				3A8568A81970347E00C664A0 /* Frameworks */,
+				3A8568A71970347E00C664A0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3A8568A71970347E00C664A0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A8568A61970347E00C664A0 /* MSViewer.app */,
+				3A8568CF1970347E00C664A0 /* MSViewerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3A8568A81970347E00C664A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A8568E61970359600C664A0 /* CoreImage.framework */,
+				3A8568A91970347E00C664A0 /* Foundation.framework */,
+				3A8568AB1970347E00C664A0 /* CoreGraphics.framework */,
+				3A8568AD1970347E00C664A0 /* UIKit.framework */,
+				3A8568AF1970347E00C664A0 /* GLKit.framework */,
+				3A8568B11970347E00C664A0 /* OpenGLES.framework */,
+				3A8568D01970347E00C664A0 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A8568B31970347E00C664A0 /* MSViewer */ = {
+			isa = PBXGroup;
+			children = (
+				3A84EB211970D67800080A1C /* common */,
+				3A8568EB19703FFF00C664A0 /* controllers */,
+				3A8568F219703FFF00C664A0 /* views */,
+				3A8568EC19703FFF00C664A0 /* graphics */,
+				3A8568ED19703FFF00C664A0 /* images */,
+				3A8568EE19703FFF00C664A0 /* model */,
+				3A8568EF19703FFF00C664A0 /* protocols */,
+				3A8568F019703FFF00C664A0 /* shaders */,
+				3A8568F119703FFF00C664A0 /* tools */,
+				3A8568BC1970347E00C664A0 /* MSVAppDelegate.h */,
+				3A8568BD1970347E00C664A0 /* MSVAppDelegate.m */,
+				3A3670921972983A00CC6FA6 /* MSVZoom.xib */,
+				3A36707E1972714B00CC6FA6 /* MSVShadow.xib */,
+				3A8568BF1970347E00C664A0 /* Main.storyboard */,
+				3A8568C61970347E00C664A0 /* MSVViewController.h */,
+				3A8568C71970347E00C664A0 /* MSVViewController.m */,
+				3A8568C91970347E00C664A0 /* Images.xcassets */,
+				3A8568B41970347E00C664A0 /* Supporting Files */,
+			);
+			path = MSViewer;
+			sourceTree = "<group>";
+		};
+		3A8568B41970347E00C664A0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A8568B51970347E00C664A0 /* MSViewer-Info.plist */,
+				3A8568B61970347E00C664A0 /* InfoPlist.strings */,
+				3A8568B91970347E00C664A0 /* main.m */,
+				3A8568BB1970347E00C664A0 /* MSViewer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A8568D61970347E00C664A0 /* MSViewerTests */ = {
+			isa = PBXGroup;
+			children = (
+				3A8568DC1970347E00C664A0 /* MSViewerTests.m */,
+				3A8568D71970347E00C664A0 /* Supporting Files */,
+			);
+			path = MSViewerTests;
+			sourceTree = "<group>";
+		};
+		3A8568D71970347E00C664A0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A8568D81970347E00C664A0 /* MSViewerTests-Info.plist */,
+				3A8568D91970347E00C664A0 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A8568EB19703FFF00C664A0 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3A84EB1E1970D04500080A1C /* MSVToolsInventoryController.h */,
+				3A84EB1F1970D04500080A1C /* MSVToolsInventoryController.m */,
+				3A36707B19726D1E00CC6FA6 /* MSVShadowController.h */,
+				3A36707C19726D1E00CC6FA6 /* MSVShadowController.m */,
+				3A36708F197297A900CC6FA6 /* MSVZoomController.h */,
+				3A367090197297A900CC6FA6 /* MSVZoomController.m */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		3A8568EC19703FFF00C664A0 /* graphics */ = {
+			isa = PBXGroup;
+			children = (
+				3AE62BAD19722BD00022FDD4 /* MSVPath.h */,
+				3AE62BAE19722BD00022FDD4 /* MSVPath.m */,
+				3AE62BA7197229B70022FDD4 /* MSVGraphics.h */,
+				3AE62BA8197229B70022FDD4 /* MSVGraphics.m */,
+				3A84EB0A1970BCAC00080A1C /* MSVScreen.h */,
+				3A84EB0B1970BCAC00080A1C /* MSVScreen.m */,
+			);
+			path = graphics;
+			sourceTree = "<group>";
+		};
+		3A8568ED19703FFF00C664A0 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				3A8568F31970406700C664A0 /* icons */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		3A8568EE19703FFF00C664A0 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				3A8568F41970409C00C664A0 /* MSVCanvasModel.h */,
+				3A8568F51970409C00C664A0 /* MSVCanvasModel.m */,
+				3A8568F7197040E600C664A0 /* MSVCanvasAbstractState.h */,
+				3A8568F8197040E600C664A0 /* MSVCanvasAbstractState.m */,
+				3A8568FA1970410700C664A0 /* MSVCanvasAbstractElement.h */,
+				3A8568FB1970410700C664A0 /* MSVCanvasAbstractElement.m */,
+				3A8568FD1970412000C664A0 /* MSVCanvasImageElement.h */,
+				3A8568FE1970412000C664A0 /* MSVCanvasImageElement.m */,
+				3A84EB261970DA3600080A1C /* MSVCanvasSelectState.h */,
+				3A84EB271970DA3600080A1C /* MSVCanvasSelectState.m */,
+				3A84EB2B1970F30500080A1C /* MSVCanvasCropState.h */,
+				3A84EB2C1970F30500080A1C /* MSVCanvasCropState.m */,
+				3A84EB331970FDA700080A1C /* MSVCanvasDeleteState.h */,
+				3A84EB341970FDA700080A1C /* MSVCanvasDeleteState.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		3A8568EF19703FFF00C664A0 /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3A856900197041A000C664A0 /* MSVCanvasElementProtocol.h */,
+				3A84EB251970D7CC00080A1C /* MSVCanvasStateProtocol.h */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
+		3A8568F019703FFF00C664A0 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				3AE62B951972299B0022FDD4 /* PrimitivesFragShader.glsl */,
+				3AE62B961972299B0022FDD4 /* PrimitivesVertShader.glsl */,
+				3AE62B971972299B0022FDD4 /* MSVShaderProgram.h */,
+				3AE62B981972299B0022FDD4 /* MSVhaderProgram.m */,
+				3AE62B991972299B0022FDD4 /* MSVShaderUtils.h */,
+				3AE62B9A1972299B0022FDD4 /* MSVShaderUtils.m */,
+				3AE62B9B1972299B0022FDD4 /* MSVShaderConstants.h */,
+				3AE62B9C1972299B0022FDD4 /* MSVShaderConstants.m */,
+				3AE62B9D1972299B0022FDD4 /* MSVShaderContainer.h */,
+				3AE62B9E1972299B0022FDD4 /* ShaderContainer.m */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		3A8568F119703FFF00C664A0 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				3A84EB0D1970C8DA00080A1C /* MSVAbstractToolButton.h */,
+				3A84EB0E1970C8DA00080A1C /* MSVAbstractToolButton.m */,
+				3A84EB101970C8EF00080A1C /* MSVSelectToolButton.h */,
+				3A84EB111970C8EF00080A1C /* MSVSelectToolButton.m */,
+				3A84EB181970CE9400080A1C /* MSVToolInventory.h */,
+				3A84EB191970CE9400080A1C /* MSVToolInventory.m */,
+				3A84EB2E1970F47700080A1C /* MSVCropToolButton.h */,
+				3A84EB2F1970F47700080A1C /* MSVCropToolButton.m */,
+				3A84EB361970FDBE00080A1C /* MSVDeleteToolButton.h */,
+				3A84EB371970FDBE00080A1C /* MSVDeleteToolButton.m */,
+			);
+			path = tools;
+			sourceTree = "<group>";
+		};
+		3A8568F219703FFF00C664A0 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				3A84EB1B1970D02500080A1C /* MSVToolsInventoryView.h */,
+				3A84EB1C1970D02500080A1C /* MSVToolsInventoryView.m */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		3A8568F31970406700C664A0 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				3AE62BB01972509B0022FDD4 /* delete.png */,
+				3A84EB291970F2D100080A1C /* crop.png */,
+				3A84EB161970CBC100080A1C /* select.png */,
+			);
+			path = icons;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A8568A51970347E00C664A0 /* MSViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A8568E01970347E00C664A0 /* Build configuration list for PBXNativeTarget "MSViewer" */;
+			buildPhases = (
+				3A8568A21970347E00C664A0 /* Sources */,
+				3A8568A31970347E00C664A0 /* Frameworks */,
+				3A8568A41970347E00C664A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MSViewer;
+			productName = MSViewer;
+			productReference = 3A8568A61970347E00C664A0 /* MSViewer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3A8568CE1970347E00C664A0 /* MSViewerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A8568E31970347E00C664A0 /* Build configuration list for PBXNativeTarget "MSViewerTests" */;
+			buildPhases = (
+				3A8568CB1970347E00C664A0 /* Sources */,
+				3A8568CC1970347E00C664A0 /* Frameworks */,
+				3A8568CD1970347E00C664A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A8568D51970347E00C664A0 /* PBXTargetDependency */,
+			);
+			name = MSViewerTests;
+			productName = MSViewerTests;
+			productReference = 3A8568CF1970347E00C664A0 /* MSViewerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3A85689E1970347D00C664A0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MSV;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = MSV;
+				TargetAttributes = {
+					3A8568CE1970347E00C664A0 = {
+						TestTargetID = 3A8568A51970347E00C664A0;
+					};
+				};
+			};
+			buildConfigurationList = 3A8568A11970347D00C664A0 /* Build configuration list for PBXProject "MSViewer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3A85689D1970347D00C664A0;
+			productRefGroup = 3A8568A71970347E00C664A0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3A8568A51970347E00C664A0 /* MSViewer */,
+				3A8568CE1970347E00C664A0 /* MSViewerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A8568A41970347E00C664A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A8568CA1970347E00C664A0 /* Images.xcassets in Resources */,
+				3A36707F1972714B00CC6FA6 /* MSVShadow.xib in Resources */,
+				3A84EB2A1970F2D100080A1C /* crop.png in Resources */,
+				3AE62BA21972299C0022FDD4 /* PrimitivesVertShader.glsl in Resources */,
+				3A84EB171970CBC100080A1C /* select.png in Resources */,
+				3A8568B81970347E00C664A0 /* InfoPlist.strings in Resources */,
+				3A3670931972983A00CC6FA6 /* MSVZoom.xib in Resources */,
+				3AE62BA11972299C0022FDD4 /* PrimitivesFragShader.glsl in Resources */,
+				3A8568C11970347E00C664A0 /* Main.storyboard in Resources */,
+				3AE62BB11972509B0022FDD4 /* delete.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A8568CD1970347E00C664A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A8568DB1970347E00C664A0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3A8568A21970347E00C664A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AE62BA61972299C0022FDD4 /* ShaderContainer.m in Sources */,
+				3A84EB381970FDBE00080A1C /* MSVDeleteToolButton.m in Sources */,
+				3A36707D19726D1E00CC6FA6 /* MSVShadowController.m in Sources */,
+				3A84EB121970C8EF00080A1C /* MSVSelectToolButton.m in Sources */,
+				3A84EB0F1970C8DA00080A1C /* MSVAbstractToolButton.m in Sources */,
+				3A84EB281970DA3600080A1C /* MSVCanvasSelectState.m in Sources */,
+				3A8568BA1970347E00C664A0 /* main.m in Sources */,
+				3A8568BE1970347E00C664A0 /* MSVAppDelegate.m in Sources */,
+				3AE62BA41972299C0022FDD4 /* MSVShaderUtils.m in Sources */,
+				3A8568F9197040E600C664A0 /* MSVCanvasAbstractState.m in Sources */,
+				3A84EB2D1970F30500080A1C /* MSVCanvasCropState.m in Sources */,
+				3A8568FC1970410700C664A0 /* MSVCanvasAbstractElement.m in Sources */,
+				3A84EB0C1970BCAC00080A1C /* MSVScreen.m in Sources */,
+				3A8568F61970409C00C664A0 /* MSVCanvasModel.m in Sources */,
+				3A84EB301970F47700080A1C /* MSVCropToolButton.m in Sources */,
+				3AE62BAF19722BD00022FDD4 /* MSVPath.m in Sources */,
+				3A367091197297A900CC6FA6 /* MSVZoomController.m in Sources */,
+				3A84EB1A1970CE9400080A1C /* MSVToolInventory.m in Sources */,
+				3A84EB201970D04500080A1C /* MSVToolsInventoryController.m in Sources */,
+				3A8568C81970347E00C664A0 /* MSVViewController.m in Sources */,
+				3AE62BA9197229B70022FDD4 /* MSVGraphics.m in Sources */,
+				3A84EB1D1970D02500080A1C /* MSVToolsInventoryView.m in Sources */,
+				3AE62BA31972299C0022FDD4 /* MSVhaderProgram.m in Sources */,
+				3A8568FF1970412000C664A0 /* MSVCanvasImageElement.m in Sources */,
+				3AE62BA51972299C0022FDD4 /* MSVShaderConstants.m in Sources */,
+				3A84EB241970D6BE00080A1C /* MSVNotifications.m in Sources */,
+				3A84EB351970FDA700080A1C /* MSVCanvasDeleteState.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A8568CB1970347E00C664A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A8568DD1970347E00C664A0 /* MSViewerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3A8568D51970347E00C664A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A8568A51970347E00C664A0 /* MSViewer */;
+			targetProxy = 3A8568D41970347E00C664A0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3A8568B61970347E00C664A0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A8568B71970347E00C664A0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3A8568BF1970347E00C664A0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A8568C01970347E00C664A0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3A8568D91970347E00C664A0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A8568DA1970347E00C664A0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3A8568DE1970347E00C664A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		3A8568DF1970347E00C664A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3A8568E11970347E00C664A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MSViewer/MSViewer-Prefix.pch";
+				INFOPLIST_FILE = "MSViewer/MSViewer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3A8568E21970347E00C664A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MSViewer/MSViewer-Prefix.pch";
+				INFOPLIST_FILE = "MSViewer/MSViewer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		3A8568E41970347E00C664A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MSViewer.app/MSViewer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MSViewer/MSViewer-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MSViewerTests/MSViewerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		3A8568E51970347E00C664A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MSViewer.app/MSViewer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MSViewer/MSViewer-Prefix.pch";
+				INFOPLIST_FILE = "MSViewerTests/MSViewerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A8568A11970347D00C664A0 /* Build configuration list for PBXProject "MSViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A8568DE1970347E00C664A0 /* Debug */,
+				3A8568DF1970347E00C664A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A8568E01970347E00C664A0 /* Build configuration list for PBXNativeTarget "MSViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A8568E11970347E00C664A0 /* Debug */,
+				3A8568E21970347E00C664A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A8568E31970347E00C664A0 /* Build configuration list for PBXNativeTarget "MSViewerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A8568E41970347E00C664A0 /* Debug */,
+				3A8568E51970347E00C664A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3A85689E1970347D00C664A0 /* Project object */;
+}
