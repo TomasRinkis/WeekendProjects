@@ -7,43 +7,36 @@
 //
 
 #import "MSVZoomController.h"
-#import "MSVViewController.h"
-
-//<state
-float _zoomFacotor = 0.f;
+#import "MSVScreen.h"
 
 @implementation MSVZoomController
 
-@synthesize rootViewController = _rootViewController;
-
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andRootController:(MSVViewController*) rootController
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-
-    if (self)
-    {
-        _rootViewController = rootController;
-    }
-    return self;
-}
-
-+ (instancetype) createWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andRootController:(MSVViewController*) rootController
-{
-    return [[MSVZoomController alloc] initWithNibName:nibNameOrNil bundle:nibBundleOrNil andRootController:rootController];
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    [self.ZoomSlider setValue:_zoomFacotor animated:true];
     
+    [self.ZoomSlider setMinimumValue:1.f];
+    [self.ZoomSlider setMaximumValue:1600.f];
+    
+    self.ZoomValueLabel.text = [NSString stringWithFormat:@"%d", [self scaleToZoom:[MSVScreen scale]]];
+    self.ZoomSlider.value = [self scaleToZoom:[MSVScreen scale]];
 }
 
-- (IBAction)ZoomAction:(id)sender
+-(int) scaleToZoom:(float) scale
 {
-    _zoomFacotor = (((UISlider*)sender).value);
-    [_rootViewController scaleToolView:_zoomFacotor];
+    return scale * 100.f;
+}
+
+-(float) zoomToScale:(float) zoom
+{
+    return zoom/100.f;
+}
+
+- (IBAction)ZoomSliderValueChanged:(UISlider *)sender
+{
+    self.ZoomValueLabel.text = [NSString stringWithFormat:@"%d", (int)sender.value];
+    [MSVScreen setScale:[self zoomToScale:sender.value]];
 }
 
 @end

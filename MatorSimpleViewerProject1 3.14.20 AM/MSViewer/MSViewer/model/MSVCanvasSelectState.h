@@ -11,6 +11,11 @@
 
 @interface MSVCanvasSelectState : MSVCanvasAbstractState
 
+@end
+
+
+@interface MSVCanvasSelectState(MSVCanvasSelectStateCreation)
+
 +(instancetype) createWithCanvasModel:(MSVCanvasModel*)canvasModel;
 
 @end

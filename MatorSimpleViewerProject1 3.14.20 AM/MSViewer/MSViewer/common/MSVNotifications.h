@@ -10,6 +10,11 @@
 
 @interface MSVNotification : NSObject
 
+@end
+
+
+@interface MSVNotification(MSVNotificationCanvasStateSelection)
+
 +(NSString*) CanvasSelectState;
 +(NSString*) CanvasCropState;
 +(NSString*) CanvasDeleteState;

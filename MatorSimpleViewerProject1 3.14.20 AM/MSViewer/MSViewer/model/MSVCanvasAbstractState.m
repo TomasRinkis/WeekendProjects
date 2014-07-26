@@ -12,6 +12,8 @@
 
 
 @synthesize touchBeginPos = _touchBeginPos;
+@synthesize touchMovePos = _touchMovePos;
+
 @synthesize canvasModel = _canvasModel;
 
 -(instancetype) initWithCanvasModel:(MSVCanvasModel*) canvasModel
@@ -21,6 +23,7 @@
     if(self)
     {
         self.touchBeginPos = CGPointZero;
+        self.touchMovePos = CGPointZero;
         self.canvasModel = canvasModel;
     }
     
@@ -38,16 +41,19 @@
 
 - (void)touchesMovedInPos:(CGPoint) pos
 {
+    self.touchMovePos = pos;
 }
 
 - (void)touchesEndedInPos:(CGPoint) pos
 {
     self.touchBeginPos = CGPointZero;
+    self.touchMovePos = CGPointZero;
 }
 
 - (void)touchesCancelledInPos:(CGPoint) pos
 {
     self.touchBeginPos = CGPointZero;
+    self.touchMovePos = CGPointZero;
 }
 
 -(void) drawSelection

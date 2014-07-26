@@ -14,6 +14,8 @@
 @interface MSVCanvasAbstractState : NSObject<MSVCanvasStateProtocol>
 
 @property (nonatomic) CGPoint touchBeginPos;
+@property (nonatomic) CGPoint touchMovePos;
+
 @property (weak, nonatomic) MSVCanvasModel *canvasModel;
 
 -(instancetype) initWithCanvasModel:(MSVCanvasModel*) canvasModel;

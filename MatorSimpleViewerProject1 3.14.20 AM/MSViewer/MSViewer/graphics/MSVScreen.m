@@ -83,7 +83,7 @@ float _scale = 0.f;
 
 +(float) fatFingerOffset
 {
-    return 30.f;
+    return 70.f;
 }
 
 //normalized
@@ -143,11 +143,20 @@ float _scale = 0.f;
     const float screen_wd = [MSVScreen width];
     const float screen_ht = [MSVScreen height];
     const float aspect    = [MSVScreen aspect];
+    const float magicNumber = 0.89f;
     
-    ns.width = fabsf(size.width/(screen_wd * (aspect * 0.89f)));//<magic fix for now
+    ns.width = fabsf(size.width/(screen_wd * (aspect * magicNumber)));
     ns.height = fabsf(2.f * size.height/(screen_ht));
     
     return ns;
+}
+
+
++(CGRect)  rectInNS:(CGRect) rect
+{
+    CGPoint nsOrigin = [MSVScreen pointInNS:rect.origin];
+    CGSize  nsSize   = [MSVScreen sizeInNS:rect.size];    
+    return CGRectMake(nsOrigin.x, nsOrigin.y, nsSize.width, nsSize.height);
 }
 
 

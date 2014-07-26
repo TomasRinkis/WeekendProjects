@@ -11,20 +11,29 @@
 #import "MSVCanvasStateProtocol.h"
 
 //<fowards
-@class MSVCanvasAbstractElement;
+@class MSVCanvasImageElement;
 
 @interface MSVCanvasModel : NSObject<MSVCanvasElementProtocol, MSVCanvasStateProtocol>
 
-@property(weak, nonatomic) MSVCanvasAbstractElement *selectedElement;
+@property(weak, nonatomic) MSVCanvasImageElement *selectedElement;
 @property(strong, nonatomic) NSMutableArray *elementArray;
 
 
--(void) addElelemet:(MSVCanvasAbstractElement*) element;
--(void) deleteElement:(MSVCanvasAbstractElement*) element;
+-(void) tryPerformCropOnSelectedElement;
+-(void) addElelemet:(MSVCanvasImageElement*) element;
+-(void) deleteElement:(MSVCanvasImageElement*) element;
 
 -(void) unselectAllElements;
 
-//<factory
+-(void) setFloatValue:(float) value forProperty:(NSString*) property;
+-(void) setBoolValue:(bool) value forProperty:(NSString*) property;
+-(void) setIntValue:(int) value forProperty:(NSString *) property;
+
+@end
+
+
+@interface MSVCanvasModel(MSVCanvasModelCreation)
+
 +(instancetype) create;
 
 @end

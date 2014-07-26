@@ -12,7 +12,10 @@
 
 @property(strong, nonatomic, readonly) CIImage *image;
 
-//<factory
-+(instancetype) createWithCIImage:(CIImage*) image atPos:(CGPoint) pos withSize:(CGSize) size;
+@end
 
+
+@interface MSVCanvasImageElement(MSVCanvasImageElementCreation)
+
++(instancetype) createWithCIImage:(CIImage*) image atPos:(CGPoint) pos withSize:(CGSize) size;
 @end

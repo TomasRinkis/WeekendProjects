@@ -11,6 +11,10 @@
 		3A36707F1972714B00CC6FA6 /* MSVShadow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A36707E1972714B00CC6FA6 /* MSVShadow.xib */; };
 		3A367091197297A900CC6FA6 /* MSVZoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A367090197297A900CC6FA6 /* MSVZoomController.m */; };
 		3A3670931972983A00CC6FA6 /* MSVZoom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A3670921972983A00CC6FA6 /* MSVZoom.xib */; };
+		3A83FFD31980BCE3009AE5AB /* MSVAnglePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A83FFD21980BCE3009AE5AB /* MSVAnglePickerView.m */; };
+		3A83FFD51980C3E3009AE5AB /* zoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A83FFD41980C3E3009AE5AB /* zoom.png */; };
+		3A83FFD81980C426009AE5AB /* MSVZoomToolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A83FFD71980C426009AE5AB /* MSVZoomToolButton.m */; };
+		3A83FFDB1980C513009AE5AB /* MSVCanvasZoomState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A83FFDA1980C513009AE5AB /* MSVCanvasZoomState.m */; };
 		3A84EB0C1970BCAC00080A1C /* MSVScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB0B1970BCAC00080A1C /* MSVScreen.m */; };
 		3A84EB0F1970C8DA00080A1C /* MSVAbstractToolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB0E1970C8DA00080A1C /* MSVAbstractToolButton.m */; };
 		3A84EB121970C8EF00080A1C /* MSVSelectToolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A84EB111970C8EF00080A1C /* MSVSelectToolButton.m */; };
@@ -46,6 +50,9 @@
 		3A8568F9197040E600C664A0 /* MSVCanvasAbstractState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8568F8197040E600C664A0 /* MSVCanvasAbstractState.m */; };
 		3A8568FC1970410700C664A0 /* MSVCanvasAbstractElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8568FB1970410700C664A0 /* MSVCanvasAbstractElement.m */; };
 		3A8568FF1970412000C664A0 /* MSVCanvasImageElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8568FE1970412000C664A0 /* MSVCanvasImageElement.m */; };
+		3A895ED81983A73000F6E39B /* MSVCropController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A895ED71983A73000F6E39B /* MSVCropController.m */; };
+		3A895EDA1983A75F00F6E39B /* MSVCrop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A895ED91983A75F00F6E39B /* MSVCrop.xib */; };
+		3ADBD50E1983BD500072A6AC /* MSVCrop.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADBD50D1983BD500072A6AC /* MSVCrop.m */; };
 		3AE62BA11972299C0022FDD4 /* PrimitivesFragShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 3AE62B951972299B0022FDD4 /* PrimitivesFragShader.glsl */; };
 		3AE62BA21972299C0022FDD4 /* PrimitivesVertShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 3AE62B961972299B0022FDD4 /* PrimitivesVertShader.glsl */; };
 		3AE62BA31972299C0022FDD4 /* MSVhaderProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE62B981972299B0022FDD4 /* MSVhaderProgram.m */; };
@@ -55,6 +62,9 @@
 		3AE62BA9197229B70022FDD4 /* MSVGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE62BA8197229B70022FDD4 /* MSVGraphics.m */; };
 		3AE62BAF19722BD00022FDD4 /* MSVPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE62BAE19722BD00022FDD4 /* MSVPath.m */; };
 		3AE62BB11972509B0022FDD4 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AE62BB01972509B0022FDD4 /* delete.png */; };
+		3AF9FD701980DE3B002AFE84 /* MSVCanvasController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF9FD6F1980DE3B002AFE84 /* MSVCanvasController.m */; };
+		3AF9FD7819811942002AFE84 /* MSVShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF9FD7719811942002AFE84 /* MSVShadow.m */; };
+		3AF9FD7B19811CE8002AFE84 /* MSVProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF9FD7A19811CE8002AFE84 /* MSVProperties.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +84,13 @@
 		3A36708F197297A900CC6FA6 /* MSVZoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVZoomController.h; sourceTree = "<group>"; };
 		3A367090197297A900CC6FA6 /* MSVZoomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVZoomController.m; sourceTree = "<group>"; };
 		3A3670921972983A00CC6FA6 /* MSVZoom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MSVZoom.xib; path = ../MSVZoom.xib; sourceTree = "<group>"; };
+		3A83FFD11980BCE3009AE5AB /* MSVAnglePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVAnglePickerView.h; sourceTree = "<group>"; };
+		3A83FFD21980BCE3009AE5AB /* MSVAnglePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVAnglePickerView.m; sourceTree = "<group>"; };
+		3A83FFD41980C3E3009AE5AB /* zoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zoom.png; sourceTree = "<group>"; };
+		3A83FFD61980C426009AE5AB /* MSVZoomToolButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVZoomToolButton.h; sourceTree = "<group>"; };
+		3A83FFD71980C426009AE5AB /* MSVZoomToolButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVZoomToolButton.m; sourceTree = "<group>"; };
+		3A83FFD91980C513009AE5AB /* MSVCanvasZoomState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVCanvasZoomState.h; sourceTree = "<group>"; };
+		3A83FFDA1980C513009AE5AB /* MSVCanvasZoomState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVCanvasZoomState.m; sourceTree = "<group>"; };
 		3A84EB0A1970BCAC00080A1C /* MSVScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVScreen.h; sourceTree = "<group>"; };
 		3A84EB0B1970BCAC00080A1C /* MSVScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVScreen.m; sourceTree = "<group>"; };
 		3A84EB0D1970C8DA00080A1C /* MSVAbstractToolButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVAbstractToolButton.h; sourceTree = "<group>"; };
@@ -132,6 +149,11 @@
 		3A8568FD1970412000C664A0 /* MSVCanvasImageElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVCanvasImageElement.h; sourceTree = "<group>"; };
 		3A8568FE1970412000C664A0 /* MSVCanvasImageElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVCanvasImageElement.m; sourceTree = "<group>"; };
 		3A856900197041A000C664A0 /* MSVCanvasElementProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSVCanvasElementProtocol.h; sourceTree = "<group>"; };
+		3A895ED61983A73000F6E39B /* MSVCropController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVCropController.h; sourceTree = "<group>"; };
+		3A895ED71983A73000F6E39B /* MSVCropController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVCropController.m; sourceTree = "<group>"; };
+		3A895ED91983A75F00F6E39B /* MSVCrop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSVCrop.xib; sourceTree = "<group>"; };
+		3ADBD50C1983BD500072A6AC /* MSVCrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVCrop.h; sourceTree = "<group>"; };
+		3ADBD50D1983BD500072A6AC /* MSVCrop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVCrop.m; sourceTree = "<group>"; };
 		3AE62B951972299B0022FDD4 /* PrimitivesFragShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PrimitivesFragShader.glsl; sourceTree = "<group>"; };
 		3AE62B961972299B0022FDD4 /* PrimitivesVertShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PrimitivesVertShader.glsl; sourceTree = "<group>"; };
 		3AE62B971972299B0022FDD4 /* MSVShaderProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVShaderProgram.h; sourceTree = "<group>"; };
@@ -147,6 +169,12 @@
 		3AE62BAD19722BD00022FDD4 /* MSVPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVPath.h; sourceTree = "<group>"; };
 		3AE62BAE19722BD00022FDD4 /* MSVPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVPath.m; sourceTree = "<group>"; };
 		3AE62BB01972509B0022FDD4 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		3AF9FD6E1980DE3B002AFE84 /* MSVCanvasController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVCanvasController.h; sourceTree = "<group>"; };
+		3AF9FD6F1980DE3B002AFE84 /* MSVCanvasController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVCanvasController.m; sourceTree = "<group>"; };
+		3AF9FD7619811942002AFE84 /* MSVShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVShadow.h; sourceTree = "<group>"; };
+		3AF9FD7719811942002AFE84 /* MSVShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVShadow.m; sourceTree = "<group>"; };
+		3AF9FD7919811CE8002AFE84 /* MSVProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSVProperties.h; sourceTree = "<group>"; };
+		3AF9FD7A19811CE8002AFE84 /* MSVProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSVProperties.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +209,8 @@
 			children = (
 				3A84EB221970D6BE00080A1C /* MSVNotifications.h */,
 				3A84EB231970D6BE00080A1C /* MSVNotifications.m */,
+				3AF9FD7919811CE8002AFE84 /* MSVProperties.h */,
+				3AF9FD7A19811CE8002AFE84 /* MSVProperties.m */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -234,6 +264,7 @@
 				3A8568BD1970347E00C664A0 /* MSVAppDelegate.m */,
 				3A3670921972983A00CC6FA6 /* MSVZoom.xib */,
 				3A36707E1972714B00CC6FA6 /* MSVShadow.xib */,
+				3A895ED91983A75F00F6E39B /* MSVCrop.xib */,
 				3A8568BF1970347E00C664A0 /* Main.storyboard */,
 				3A8568C61970347E00C664A0 /* MSVViewController.h */,
 				3A8568C71970347E00C664A0 /* MSVViewController.m */,
@@ -281,6 +312,10 @@
 				3A36707C19726D1E00CC6FA6 /* MSVShadowController.m */,
 				3A36708F197297A900CC6FA6 /* MSVZoomController.h */,
 				3A367090197297A900CC6FA6 /* MSVZoomController.m */,
+				3AF9FD6E1980DE3B002AFE84 /* MSVCanvasController.h */,
+				3AF9FD6F1980DE3B002AFE84 /* MSVCanvasController.m */,
+				3A895ED61983A73000F6E39B /* MSVCropController.h */,
+				3A895ED71983A73000F6E39B /* MSVCropController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -323,6 +358,12 @@
 				3A84EB2C1970F30500080A1C /* MSVCanvasCropState.m */,
 				3A84EB331970FDA700080A1C /* MSVCanvasDeleteState.h */,
 				3A84EB341970FDA700080A1C /* MSVCanvasDeleteState.m */,
+				3A83FFD91980C513009AE5AB /* MSVCanvasZoomState.h */,
+				3A83FFDA1980C513009AE5AB /* MSVCanvasZoomState.m */,
+				3AF9FD7619811942002AFE84 /* MSVShadow.h */,
+				3AF9FD7719811942002AFE84 /* MSVShadow.m */,
+				3ADBD50C1983BD500072A6AC /* MSVCrop.h */,
+				3ADBD50D1983BD500072A6AC /* MSVCrop.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -366,6 +407,8 @@
 				3A84EB2F1970F47700080A1C /* MSVCropToolButton.m */,
 				3A84EB361970FDBE00080A1C /* MSVDeleteToolButton.h */,
 				3A84EB371970FDBE00080A1C /* MSVDeleteToolButton.m */,
+				3A83FFD61980C426009AE5AB /* MSVZoomToolButton.h */,
+				3A83FFD71980C426009AE5AB /* MSVZoomToolButton.m */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -373,6 +416,8 @@
 		3A8568F219703FFF00C664A0 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				3A83FFD11980BCE3009AE5AB /* MSVAnglePickerView.h */,
+				3A83FFD21980BCE3009AE5AB /* MSVAnglePickerView.m */,
 				3A84EB1B1970D02500080A1C /* MSVToolsInventoryView.h */,
 				3A84EB1C1970D02500080A1C /* MSVToolsInventoryView.m */,
 			);
@@ -385,6 +430,7 @@
 				3AE62BB01972509B0022FDD4 /* delete.png */,
 				3A84EB291970F2D100080A1C /* crop.png */,
 				3A84EB161970CBC100080A1C /* select.png */,
+				3A83FFD41980C3E3009AE5AB /* zoom.png */,
 			);
 			path = icons;
 			sourceTree = "<group>";
@@ -471,10 +517,12 @@
 				3A84EB2A1970F2D100080A1C /* crop.png in Resources */,
 				3AE62BA21972299C0022FDD4 /* PrimitivesVertShader.glsl in Resources */,
 				3A84EB171970CBC100080A1C /* select.png in Resources */,
+				3A83FFD51980C3E3009AE5AB /* zoom.png in Resources */,
 				3A8568B81970347E00C664A0 /* InfoPlist.strings in Resources */,
 				3A3670931972983A00CC6FA6 /* MSVZoom.xib in Resources */,
 				3AE62BA11972299C0022FDD4 /* PrimitivesFragShader.glsl in Resources */,
 				3A8568C11970347E00C664A0 /* Main.storyboard in Resources */,
+				3A895EDA1983A75F00F6E39B /* MSVCrop.xib in Resources */,
 				3AE62BB11972509B0022FDD4 /* delete.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,17 +544,23 @@
 			files = (
 				3AE62BA61972299C0022FDD4 /* ShaderContainer.m in Sources */,
 				3A84EB381970FDBE00080A1C /* MSVDeleteToolButton.m in Sources */,
+				3AF9FD7819811942002AFE84 /* MSVShadow.m in Sources */,
 				3A36707D19726D1E00CC6FA6 /* MSVShadowController.m in Sources */,
 				3A84EB121970C8EF00080A1C /* MSVSelectToolButton.m in Sources */,
+				3AF9FD7B19811CE8002AFE84 /* MSVProperties.m in Sources */,
 				3A84EB0F1970C8DA00080A1C /* MSVAbstractToolButton.m in Sources */,
 				3A84EB281970DA3600080A1C /* MSVCanvasSelectState.m in Sources */,
+				3AF9FD701980DE3B002AFE84 /* MSVCanvasController.m in Sources */,
+				3A83FFD31980BCE3009AE5AB /* MSVAnglePickerView.m in Sources */,
 				3A8568BA1970347E00C664A0 /* main.m in Sources */,
 				3A8568BE1970347E00C664A0 /* MSVAppDelegate.m in Sources */,
 				3AE62BA41972299C0022FDD4 /* MSVShaderUtils.m in Sources */,
 				3A8568F9197040E600C664A0 /* MSVCanvasAbstractState.m in Sources */,
+				3A83FFD81980C426009AE5AB /* MSVZoomToolButton.m in Sources */,
 				3A84EB2D1970F30500080A1C /* MSVCanvasCropState.m in Sources */,
 				3A8568FC1970410700C664A0 /* MSVCanvasAbstractElement.m in Sources */,
 				3A84EB0C1970BCAC00080A1C /* MSVScreen.m in Sources */,
+				3A83FFDB1980C513009AE5AB /* MSVCanvasZoomState.m in Sources */,
 				3A8568F61970409C00C664A0 /* MSVCanvasModel.m in Sources */,
 				3A84EB301970F47700080A1C /* MSVCropToolButton.m in Sources */,
 				3AE62BAF19722BD00022FDD4 /* MSVPath.m in Sources */,
@@ -518,7 +572,9 @@
 				3A84EB1D1970D02500080A1C /* MSVToolsInventoryView.m in Sources */,
 				3AE62BA31972299C0022FDD4 /* MSVhaderProgram.m in Sources */,
 				3A8568FF1970412000C664A0 /* MSVCanvasImageElement.m in Sources */,
+				3A895ED81983A73000F6E39B /* MSVCropController.m in Sources */,
 				3AE62BA51972299C0022FDD4 /* MSVShaderConstants.m in Sources */,
+				3ADBD50E1983BD500072A6AC /* MSVCrop.m in Sources */,
 				3A84EB241970D6BE00080A1C /* MSVNotifications.m in Sources */,
 				3A84EB351970FDA700080A1C /* MSVCanvasDeleteState.m in Sources */,
 			);

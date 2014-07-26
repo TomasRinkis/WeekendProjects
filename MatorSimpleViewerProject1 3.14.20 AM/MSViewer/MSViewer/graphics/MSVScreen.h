@@ -35,12 +35,6 @@
 +(float) topNS;
 +(float) botNS;
 
-+(CGPoint) pointInNS:(CGPoint)p;
-+(CGSize)  sizeInNS:(CGSize)size;
-
-+(CGPoint) convertToNS:(float) x : (float) y;
-+(CGPoint) convertUITouchEventToNS:(UITouch *) touchEvent;
-
 +(CGPoint) scaledPoint:(CGPoint) point;
 +(CGSize) scaledSize:(CGSize) size;
 
@@ -48,5 +42,17 @@
 +(CGPoint) ciImageSpacePoint:(const CGPoint) point;
 
 +(CGRect) makeRect:(CGPoint) posA :(CGPoint) posB;
+
+@end
+
+
+@interface MSVScreen(MSVScreenConvertion)
+
++(CGPoint) convertToNS:(float) x : (float) y;
++(CGPoint) convertUITouchEventToNS:(UITouch *) touchEvent;
+
++(CGRect)  rectInNS:(CGRect) rect;
++(CGPoint) pointInNS:(CGPoint)p;
++(CGSize)  sizeInNS:(CGSize)size;
 
 @end

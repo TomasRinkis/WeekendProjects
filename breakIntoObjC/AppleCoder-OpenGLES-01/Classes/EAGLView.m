@@ -13,6 +13,11 @@
 
 #import "EAGLView.h"
 
+#include "cNSObject.h"
+#include "cNSAutoReleasePool.h"
+#include "cNSCoder.h"
+#include "cNSNumber.h"
+
 #define USE_DEPTH_BUFFER 1
 #define DEGREES_TO_RADIANS(__ANGLE) ((__ANGLE) / 180.0 * M_PI)
 
@@ -66,19 +71,39 @@
     return self;
 }
 
-- (void)drawView {
+- (void)drawView
+{
+    using namespace custom;
     
-/*	const GLfloat triangleVertices[] = {
-        0.0, 1.0, -6.0,				// Triangle top centre
-        -1.0, -1.0, -6.0,			// bottom left		
-        1.0, -1.0, -6.0,			// bottom right
-    };
-	const GLfloat triangleColours[] = {
-		1.0, 0.0, 0.0, 1.0,
-		1.0, 1.0, 0.0, 1.0,
-		0.0, 0.0, 1.0, 0.0
-	};
-	*/
+    {//<testing
+        static int i = 0;
+        
+        if(i == 0)
+        {
+            i = 1;
+            
+            NSNumberPtr n = CNSNumber::createWithInt(100);
+           
+            
+            NSLog(@"%d", n->boolValue());
+            NSLog(@"%c",n->charValue());
+            
+            
+        }
+    }
+    
+    
+    /*	const GLfloat triangleVertices[] = {
+     0.0, 1.0, -6.0,				// Triangle top centre
+     -1.0, -1.0, -6.0,			// bottom left
+     1.0, -1.0, -6.0,			// bottom right
+     };
+     const GLfloat triangleColours[] = {
+     1.0, 0.0, 0.0, 1.0,
+     1.0, 1.0, 0.0, 1.0,
+     0.0, 0.0, 1.0, 0.0
+     };
+     */
 	const GLfloat squareVerts[] = {
 		-0.057735, 1.0, 0.0,
 		-0.057735, -1.0, 0.0,
@@ -86,10 +111,10 @@
 		0.057735, 1.0, 0.0
 	};
 	
-    [EAGLContext setCurrentContext:context];    
+    [EAGLContext setCurrentContext:context];
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
     glViewport(0, 0, backingWidth, backingHeight);
-
+    
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glColor4f(1.0, 0.0, 0.0, 1.0);
 	glVertexPointer(3, GL_FLOAT, 0, squareVerts);
@@ -99,23 +124,23 @@
 	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 	glPopMatrix();
 	/*
-	glColor4f(1.0, 1.0, 1.0, 1.0);
-	glVertexPointer(3, GL_FLOAT, 0, triangleVertices);
-	glPushMatrix();
-	glTranslatef(0.5, -0.5, -0.5);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-	glPopMatrix();
-	
-	rota += 0.5;
-	glPushMatrix();
-	glRotatef(rota, 0.0, 0.0, 1.0);
-	glColorPointer(4, GL_FLOAT, 0, triangleColours);
-	glEnableClientState(GL_COLOR_ARRAY);
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-    glDisableClientState(GL_COLOR_ARRAY);
-	glPopMatrix();
-	*/
+     glColor4f(1.0, 1.0, 1.0, 1.0);
+     glVertexPointer(3, GL_FLOAT, 0, triangleVertices);
+     glPushMatrix();
+     glTranslatef(0.5, -0.5, -0.5);
+     glDrawArrays(GL_TRIANGLES, 0, 3);
+     glPopMatrix();
+     
+     rota += 0.5;
+     glPushMatrix();
+     glRotatef(rota, 0.0, 0.0, 1.0);
+     glColorPointer(4, GL_FLOAT, 0, triangleColours);
+     glEnableClientState(GL_COLOR_ARRAY);
+     glEnableClientState(GL_VERTEX_ARRAY);
+     glDrawArrays(GL_TRIANGLES, 0, 3);
+     glDisableClientState(GL_COLOR_ARRAY);
+     glPopMatrix();
+     */
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
     [context presentRenderbuffer:GL_RENDERBUFFER_OES];
 	
@@ -173,7 +198,7 @@
     glFrustumf(-size, size, -size / (rect.size.width / rect.size.height), size / (rect.size.width / rect.size.height), zNear, zFar);
     glViewport(0, 0, rect.size.width, rect.size.height);
 	
-    glClearColor(0.0f, 1.0f, 0.0f, 1.0f);	
+    glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
 }
 
 - (void)destroyFramebuffer {

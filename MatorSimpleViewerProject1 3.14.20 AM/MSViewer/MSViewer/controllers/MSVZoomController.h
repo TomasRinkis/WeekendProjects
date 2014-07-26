@@ -8,15 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class MSVViewController;
 @interface MSVZoomController : UIViewController
 
-@property(nonatomic, weak, readonly) MSVViewController *rootViewController;
 @property (weak, nonatomic) IBOutlet UISlider *ZoomSlider;
+@property (weak, nonatomic) IBOutlet UILabel *ZoomValueLabel;
 
-- (IBAction)ZoomAction:(id)sender;
-
-
-+ (instancetype) createWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andRootController:(MSVViewController*) rootController;
+- (IBAction)ZoomSliderValueChanged:(UISlider *)sender;
 
 @end

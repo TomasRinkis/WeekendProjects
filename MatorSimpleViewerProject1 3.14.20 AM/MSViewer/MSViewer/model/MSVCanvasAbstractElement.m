@@ -8,6 +8,9 @@
 
 #import "MSVCanvasAbstractElement.h"
 #import "MSVScreen.h"
+#import "MSVShadow.h"
+#import "MSVCrop.h"
+#import "MSVProperties.h"
 
 @implementation MSVCanvasAbstractElement
 
@@ -24,6 +27,9 @@
         self.pos    = CGPointZero;
         self.size   = CGSizeZero;
         self.selected = FALSE;
+        
+        self.shadow = [MSVShadow create];
+        self.crop   = [MSVCrop createWithHeight:0 andWidth:0];
     }
     
     return self;
@@ -37,6 +43,9 @@
     {
         self.pos    = pos;
         self.size   = size;
+        
+        self.shadow = [MSVShadow create];
+        self.crop   = [MSVCrop createWithHeight:0 andWidth:0];
     }
     
     return self;
@@ -55,6 +64,54 @@
     CGRect rectB = CGRectMake(self.pos.x, self.pos.y, self.size.width, self.size.height);
     
     return CGRectIntersectsRect(rectA, rectB);
+}
+
+-(void) setFloatValue:(float)value forProperty:(NSString *)property
+{
+    if([property isEqualToString:[MSVProperties ShadowRed]])
+    {
+        self.shadow.red = value;
+    }
+    else if([property isEqualToString:[MSVProperties ShadowGreen]])
+    {
+        self.shadow.green = value;
+    }
+    else if([property isEqualToString:[MSVProperties ShadowBlue]])
+    {
+        self.shadow.blue = value;
+    }
+    else if([property isEqualToString:[MSVProperties ShadowAngle]])
+    {
+        self.shadow.angle = value;
+    }
+    else if([property isEqualToString:[MSVProperties ShadowOffset]])
+    {
+        self.shadow.offset = value;
+    }
+    else if([property isEqualToString:[MSVProperties ShadowBlur]])
+    {
+        self.shadow.blur = value;
+    }
+}
+
+-(void) setBoolValue:(bool)value forProperty:(NSString *)property
+{
+    if([property isEqualToString:[MSVProperties ShadowOn]])
+    {
+        self.shadow.on = value;
+    }
+}
+
+-(void) setIntValue:(int) value forProperty:(NSString *) property
+{
+    if([property isEqualToString:[MSVProperties CropWidth]])
+    {
+        self.crop.width = value;
+    }
+    else if([property isEqualToString:[MSVProperties CropHeight]])
+    {
+        self.crop.height = value;
+    }
 }
 
 @end

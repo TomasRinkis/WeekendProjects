@@ -13,8 +13,6 @@
 @property(nonatomic, readonly, strong) UIImage *icon;
 @property(nonatomic, readonly, strong) NSString *iconName;
 
--(instancetype) initWithBounds:(CGRect)bounds;
-
 -(void) useButtonReleasedBackground;
 -(void) useButtonPressedBackground;
 
@@ -24,5 +22,11 @@
 +(int) dimension;
 +(int) halfDimension;
 
+@end
+
+
+@interface MSVAbstractToolButton(MSVAbstractToolButtonCreation)
+
+-(instancetype) initWithBounds:(CGRect)bounds;
 
 @end

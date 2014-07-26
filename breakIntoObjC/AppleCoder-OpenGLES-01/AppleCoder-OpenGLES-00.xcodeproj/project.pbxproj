@@ -15,6 +15,12 @@
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		3A83E9BE1976184B0010D1F2 /* cNSCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A83E9BC1976184B0010D1F2 /* cNSCoder.cpp */; };
+		3A84166D1977682800A29316 /* cNSRange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A84166B1977682800A29316 /* cNSRange.cpp */; };
+		3A84167019776CBC00A29316 /* cNSNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A84166E19776CBC00A29316 /* cNSNumber.cpp */; };
+		3A85287919757E080088C0B3 /* cNSObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A85287719757E080088C0B3 /* cNSObject.cpp */; };
+		3A85287C197588140088C0B3 /* cNSAutoReleasePool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A85287A197588140088C0B3 /* cNSAutoReleasePool.cpp */; };
+		3A85287F19758BB00088C0B3 /* cNSMemWatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A85287D19758BB00088C0B3 /* cNSMemWatch.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,18 @@
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* AppleCoder_OpenGLES_00_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleCoder_OpenGLES_00_Prefix.pch; sourceTree = "<group>"; };
+		3A83E9BC1976184B0010D1F2 /* cNSCoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cNSCoder.cpp; sourceTree = "<group>"; };
+		3A83E9BD1976184B0010D1F2 /* cNSCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cNSCoder.h; sourceTree = "<group>"; };
+		3A84166B1977682800A29316 /* cNSRange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cNSRange.cpp; sourceTree = "<group>"; };
+		3A84166C1977682800A29316 /* cNSRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cNSRange.h; sourceTree = "<group>"; };
+		3A84166E19776CBC00A29316 /* cNSNumber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cNSNumber.cpp; sourceTree = "<group>"; };
+		3A84166F19776CBC00A29316 /* cNSNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cNSNumber.h; sourceTree = "<group>"; };
+		3A85287719757E080088C0B3 /* cNSObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cNSObject.cpp; sourceTree = "<group>"; };
+		3A85287819757E080088C0B3 /* cNSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cNSObject.h; sourceTree = "<group>"; };
+		3A85287A197588140088C0B3 /* cNSAutoReleasePool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cNSAutoReleasePool.cpp; sourceTree = "<group>"; };
+		3A85287B197588140088C0B3 /* cNSAutoReleasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cNSAutoReleasePool.h; sourceTree = "<group>"; };
+		3A85287D19758BB00088C0B3 /* cNSMemWatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cNSMemWatch.cpp; sourceTree = "<group>"; };
+		3A85287E19758BB00088C0B3 /* cNSMemWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cNSMemWatch.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +130,18 @@
 		3A85287619757DDD0088C0B3 /* CustomNS */ = {
 			isa = PBXGroup;
 			children = (
+				3A85287719757E080088C0B3 /* cNSObject.cpp */,
+				3A85287819757E080088C0B3 /* cNSObject.h */,
+				3A85287A197588140088C0B3 /* cNSAutoReleasePool.cpp */,
+				3A85287B197588140088C0B3 /* cNSAutoReleasePool.h */,
+				3A85287D19758BB00088C0B3 /* cNSMemWatch.cpp */,
+				3A85287E19758BB00088C0B3 /* cNSMemWatch.h */,
+				3A83E9BC1976184B0010D1F2 /* cNSCoder.cpp */,
+				3A83E9BD1976184B0010D1F2 /* cNSCoder.h */,
+				3A84166B1977682800A29316 /* cNSRange.cpp */,
+				3A84166C1977682800A29316 /* cNSRange.h */,
+				3A84166E19776CBC00A29316 /* cNSNumber.cpp */,
+				3A84166F19776CBC00A29316 /* cNSNumber.h */,
 			);
 			path = CustomNS;
 			sourceTree = "<group>";
@@ -175,7 +205,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A85287F19758BB00088C0B3 /* cNSMemWatch.cpp in Sources */,
+				3A83E9BE1976184B0010D1F2 /* cNSCoder.cpp in Sources */,
+				3A84166D1977682800A29316 /* cNSRange.cpp in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				3A85287919757E080088C0B3 /* cNSObject.cpp in Sources */,
+				3A84167019776CBC00A29316 /* cNSNumber.cpp in Sources */,
+				3A85287C197588140088C0B3 /* cNSAutoReleasePool.cpp in Sources */,
 				1D3623260D0F684500981E51 /* AppleCoder_OpenGLES_00AppDelegate.m in Sources */,
 				28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */,
 			);
@@ -215,7 +251,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -229,7 +266,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;

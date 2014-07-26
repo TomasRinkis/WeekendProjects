@@ -10,7 +10,4 @@
 #import <GLKit/GLKit.h>
 
 @interface MSVViewController : GLKViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-
--(void) scaleToolView:(float) scale;
-
 @end

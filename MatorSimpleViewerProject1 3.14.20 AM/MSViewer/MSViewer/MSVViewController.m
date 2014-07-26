@@ -12,13 +12,16 @@
 #import "MSVShadowController.h"
 #import "MSVScreen.h"
 #import "MSVGraphics.h"
-#import "MSVCanvasModel.h"
 #import "MSVCanvasImageElement.h"
 #import "MSVToolsInventoryView.h"
 #import "MSVToolsInventoryController.h"
 #import "MSVToolInventory.h"
 #import "MSVZoomController.h"
+#import "MSVCropController.h"
+#import "MSVNotifications.h"
+#import "MSVCanvasModel.h"
 
+#import "MSVCanvasController.h"
 #import "MSVShaderConstants.h"
 #import "MSVShaderContainer.h"
 
@@ -29,15 +32,21 @@
 {
     EAGLContext *_contextEAGL;
     CIContext   *_contextCI;
-    MSVCanvasModel *_canvasModel;
     
     MSVToolsInventoryView *_toolView;
     MSVToolsInventoryController *_toolViewController;
     MSVZoomController *_zoomController;
     MSVShadowController *_shadowController;
+    MSVCropController *_cropController;
     UIPopoverController *_popoverController;
     
-    CIImage *_checkerBoardImage;
+    MSVCanvasController *_canvasController;
+    GLKView *_canvasView;
+    
+    UIBarButtonItem *_zoomItem;
+    UIBarButtonItem *_shadowFilterItem;
+    UIBarButtonItem *_cropItem;
+    UIBarButtonItem *_photoAlbumItem;
 }
 
 - (void)setupGL;
@@ -49,20 +58,22 @@
 
 -(instancetype) init
 {
-    self = [super self];
+    self = [super init];
     
     if(self)
     {
+        _canvasController = nil;
+        _canvasView = nil;
+        
         _contextEAGL = nil;
         _contextCI  = nil;
-        _canvasModel = nil;
         
         _toolView = nil;
         _toolViewController = nil;
-        _checkerBoardImage = nil;
         _popoverController = nil;
         _shadowController = nil;
         _zoomController = nil;
+        _cropController = nil;
     }
     
     return self;
@@ -77,13 +88,14 @@
         [EAGLContext setCurrentContext:nil];
     }
     
+    _canvasController = nil;
+    _canvasView = nil;
+    
     _contextEAGL = nil;
     _contextCI  = nil;
-    _canvasModel = nil;
     
     _toolView = nil;
     _toolViewController = nil;
-    _checkerBoardImage = nil;
     _popoverController = nil;
     _shadowController = nil;
     _zoomController = nil;
@@ -93,10 +105,19 @@
 {
     [super viewDidLoad];
     
+    [self setupContext];
+    [self setupGL];
+    [self setupShaderGraphics];
+    
+    [self setupSubViews];
+    [self setupNotifications];
+}
+
+-(void) setupContext
+{
     _contextEAGL = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     
     NSDictionary *options = @{ kCIContextWorkingColorSpace : [NSNull null] };
-    
     _contextCI = [CIContext contextWithEAGLContext:_contextEAGL
                                            options:options];
     
@@ -111,21 +132,31 @@
     
     self.preferredFramesPerSecond = 60;
     self.paused = NO;
-    
-    [self setupGL];
-    [self setupToolBar];
-    [self setupSubViews];
-    [self setupCheckerBoardImage];
-    
+}
+
+-(void) setupShaderGraphics
+{
     [MSVScreen initWithScreenBounds:self.view.bounds];
-    
     [MSVGraphics init];
     [MSVGraphics loadDefaultMatrixes];
-    
-    _canvasModel = [MSVCanvasModel create];
+}
+
+-(void) setupNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleZoomStateNotification:)
+                                                 name:[MSVNotification CanvasZoomState]
+                                               object:nil];
 }
 
 -(void) setupSubViews
+{
+    [self setupCanvasSubView];
+    [self setupToolSubView];
+    [self setupToolBarSubView];
+}
+
+-(void) setupToolSubView
 {
     _toolView = [MSVToolsInventoryView createWithFrame:CGRectMake(20.f, 50.f, 60.f, 400.f)];
     _toolViewController = [MSVToolsInventoryController createWithView:_toolView];
@@ -134,39 +165,40 @@
     [[MSVToolInventory sharedInstance] fillToolButtonsInView:_toolView];
 }
 
--(void) setupCheckerBoardImage
+-(void) setupCanvasSubView
 {
-    CIFilter *checkerBoardFilter = [CIFilter filterWithName:@"CICheckerboardGenerator"];
-    
-    [checkerBoardFilter setDefaults];
-    [checkerBoardFilter setValue:[NSNumber numberWithInt:10] forKey:@"inputWidth"];
-    [checkerBoardFilter setValue:[CIColor colorWithRed:0.8f green:0.8f blue:0.8f alpha:1.f] forKey:@"inputColor0"];
-    [checkerBoardFilter setValue:[CIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f]  forKey:@"inputColor1"];
-    
-    _checkerBoardImage = [checkerBoardFilter valueForKey:@"outputImage"];
+    _canvasView = [[GLKView alloc] initWithFrame:self.view.bounds context:_contextEAGL];
+    _canvasController = [MSVCanvasController createWithGLKView:_canvasView];
+    [self.view addSubview:_canvasView];
 }
 
--(void) setupToolBar
+-(void) setupToolBarSubView
 {
     //<tool bar
-    UIBarButtonItem *photoAlbumItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Photo Album", @"Photo Album")
-                                                                       style:UIBarButtonItemStyleDone
-                                                                      target:self
-                                                                      action:@selector(openPhotoAlbum:)];
+    _photoAlbumItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Photo Album", @"Photo Album")
+                                                       style:UIBarButtonItemStyleDone
+                                                      target:self
+                                                      action:@selector(openPhotoAlbum:)];
     
     
-    UIBarButtonItem *shadowFilterItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Shadow Filter", @"Shadow Filter")
-                                                                         style:UIBarButtonItemStyleDone
-                                                                        target:self
-                                                                        action:@selector(openShadowFilter:)];
+    _shadowFilterItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Shadow Filter", @"Shadow Filter")
+                                                         style:UIBarButtonItemStyleDone
+                                                        target:self
+                                                        action:@selector(openShadowFilter:)];
     
-    UIBarButtonItem *zoomItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Zoom", @"Zoom")
-                                                                         style:UIBarButtonItemStyleDone
-                                                                        target:self
-                                                                        action:@selector(openZoomWindow:)];
+    _zoomItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Zoom", @"Zoom")
+                                                 style:UIBarButtonItemStyleDone
+                                                target:self
+                                                action:@selector(openZoomWindow:)];
     
     
-    NSArray *toolbarItems = [NSArray arrayWithObjects: photoAlbumItem, shadowFilterItem, zoomItem, nil];
+    
+    _cropItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Crop", @"Crop")
+                                                 style:UIBarButtonItemStyleDone
+                                                target:self
+                                                action:@selector(openCropWindow:)];
+    
+    NSArray *toolbarItems = [NSArray arrayWithObjects: _photoAlbumItem, _shadowFilterItem, _zoomItem, _cropItem, nil];
     
     UIToolbar *toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 1024-50, 768, 50)];
     
@@ -203,7 +235,6 @@
 
 - (void)setupGL
 {
-    [EAGLContext setCurrentContext:_contextEAGL];
 }
 
 - (void)tearDownGL
@@ -213,53 +244,26 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UITouch * touch     = (UITouch*)[touches anyObject];
-    CGPoint pos = [touch locationInView: [UIApplication sharedApplication].keyWindow];
-    
-    [_canvasModel touchesBeganInPos:pos];
-    
-    /*
-    {
-        CGFloat s = 1.5f;
-        CGAffineTransform tr = CGAffineTransformScale(_toolView.transform, s, s);
-        CGFloat h = _toolView.frame.size.height;
-        CGFloat w = _toolView.frame.size.width;
-        
-        _toolView.transform = tr;
-        
-        [UIView animateWithDuration:2.5 delay:0 options:0 animations:^{
-            _toolView.transform = tr;
-            _toolView.center = CGPointMake(w-w*s/2,h*s/2);
-        
-        } completion:^(BOOL finished) {}];
-
-    }
-    */
-
+    //    UITouch * touch     = (UITouch*)[touches anyObject];
+    //    CGPoint pos = [touch locationInView: [UIApplication sharedApplication].keyWindow];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UITouch * touch     = (UITouch*)[touches anyObject];
-    CGPoint pos = [touch locationInView: [UIApplication sharedApplication].keyWindow];
-    
-    [_canvasModel touchesMovedInPos:pos];
+    //    UITouch * touch     = (UITouch*)[touches anyObject];
+    //    CGPoint pos = [touch locationInView: [UIApplication sharedApplication].keyWindow];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UITouch * touch     = (UITouch*)[touches anyObject];
-    CGPoint pos = [touch locationInView: [UIApplication sharedApplication].keyWindow];
-    
-    [_canvasModel touchesEndedInPos:pos];
+    //    UITouch * touch     = (UITouch*)[touches anyObject];
+    //    CGPoint pos = [touch locationInView: [UIApplication sharedApplication].keyWindow];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-    UITouch * touch     = (UITouch*)[touches anyObject];
-    CGPoint pos = [touch locationInView: [UIApplication sharedApplication].keyWindow];
-    
-    [_canvasModel touchesCancelledInPos:pos];
+    //    UITouch * touch     = (UITouch*)[touches anyObject];
+    //    CGPoint pos = [touch locationInView: [UIApplication sharedApplication].keyWindow];
 }
 
 #pragma mark tool bar items
@@ -271,23 +275,6 @@
     [self presentViewController:pickerC animated:YES completion:nil];
 }
 
--(void) openShadowFilter:(id)sender
-{
-    _shadowController = [[MSVShadowController alloc] initWithNibName:@"MSVShadow" bundle:nil];
-    
-    _popoverController = [[UIPopoverController alloc] initWithContentViewController:_shadowController];
-    [_popoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-}
-
-
--(void) openZoomWindow:(id)sender
-{
-    _zoomController = [MSVZoomController createWithNibName:@"MSVZoom" bundle:nil andRootController:self];
-    
-    _popoverController = [[UIPopoverController alloc] initWithContentViewController:_zoomController];
-    [_popoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-}
-
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -296,12 +283,11 @@
     
     const CGRect extentRect = [ciImage extent];
     
-    //<synchronize with camera
     const CGPoint imageElementPos = [MSVScreen centerPoint];
     const CGSize imageElementSize = extentRect.size;
     
     MSVCanvasImageElement *imageElement = [MSVCanvasImageElement createWithCIImage:ciImage atPos:imageElementPos withSize:imageElementSize];
-    [_canvasModel addElelemet:imageElement];
+    [_canvasController.canvasModel addElelemet:imageElement];
     
     //<some unknown hack it will pause controller :(
     self.paused = NO;
@@ -312,23 +298,66 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void) scaleToolView:(float) scale
+-(void) openShadowFilter:(id)sender
 {
-    //<I am sorry :(
-    CGFloat s = 1.05f;
-    CGAffineTransform tr = CGAffineTransformScale(_toolView.transform, s, s);
-    CGFloat h = _toolView.frame.size.height;
-    CGFloat w = _toolView.frame.size.width;
-    
-    _toolView.transform = tr;
-    
-    [UIView animateWithDuration:2.5 delay:0 options:0 animations:^{
-        _toolView.transform = tr;
-        _toolView.center = CGPointMake(w-w*s/2,h*s/2);
+    if(_canvasController.canvasModel.selectedElement)
+    {
+        _shadowController = [[MSVShadowController alloc] initWithNibName:@"MSVShadow" bundle:nil];
+        _shadowController.canvasModel = _canvasController.canvasModel;
         
-    } completion:^(BOOL finished) {}];
+        _popoverController = [[UIPopoverController alloc] initWithContentViewController:_shadowController];
+        [_popoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+        [[MSVToolInventory sharedInstance] pressButtonWithType:MSVToolTypeSelect];
+    }
+    else
+    {
+        [self showSelectElementAlertView];
+    }
 }
 
+-(void) handleZoomStateNotification:(NSNotification *)aNotification
+{
+    [self openZoomWindow:_zoomItem];
+}
+
+-(void) openZoomWindow:(id)sender
+{
+    _zoomController = [[MSVZoomController alloc]initWithNibName:@"MSVZoom" bundle:nil];
+    
+    _popoverController = [[UIPopoverController alloc] initWithContentViewController:_zoomController];
+    [_popoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+    [[MSVToolInventory sharedInstance] pressButtonWithType:MSVToolTypeSelect];
+}
+
+-(void) openCropWindow:(id)sender
+{
+    if(_canvasController.canvasModel.selectedElement)
+    {
+        _cropController = [[MSVCropController alloc]initWithNibName:@"MSVCrop" bundle:nil];
+        _cropController.canvasModel = _canvasController.canvasModel;
+        
+        _popoverController = [[UIPopoverController alloc] initWithContentViewController:_cropController];
+        [_popoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+        [[NSNotificationCenter defaultCenter] postNotificationName:[MSVNotification CanvasCropState] object:self];
+    }
+    else
+    {
+        [self showSelectElementAlertView];
+    }
+}
+
+-(void) showSelectElementAlertView
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Info", @"Info")
+                                                    message:NSLocalizedString(@"Please select an image", @"Please select an image")
+                                                   delegate:nil
+                                          cancelButtonTitle:NSLocalizedString(@"Ok", @"Ok")
+                                          otherButtonTitles:nil, nil];
+    [alert show];
+}
 
 #pragma mark - GLKView and GLKViewController delegate methods
 - (void)update
@@ -339,28 +368,6 @@
 {
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-    
-    [self drawCheckerBoard];
-    [_canvasModel drawWithCIContext:_contextCI];
-}
-
--(void) drawCheckerBoard
-{
-    //CILanczosScaleTransform for scaling
-    //<https://developer.apple.com/library/ios/documentation/graphicsimaging/Conceptual/CoreImaging/ci_custom_filters/ci_custom_filters.html
-    //https://gist.github.com/jad/105640
-    //<http://en.wikipedia.org/wiki/Quartz_Composer
-    
-    
-    //<render
-    CGPoint ciImagePos = CGPointZero;
-    CGSize ciImageSize = CGSizeMake([MSVScreen width], [MSVScreen height]);
-    
-    ciImagePos  = [MSVScreen scaledPoint:ciImagePos];
-    ciImageSize = [MSVScreen scaledSize:ciImageSize];
-    
-    CGRect inRect = CGRectMake(ciImagePos.x, ciImagePos.y, ciImageSize.width, ciImageSize.height);
-    [_contextCI drawImage:_checkerBoardImage inRect:inRect fromRect:inRect];
 }
 
 @end

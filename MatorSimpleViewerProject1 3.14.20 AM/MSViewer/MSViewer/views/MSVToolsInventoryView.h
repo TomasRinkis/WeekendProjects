@@ -10,6 +10,11 @@
 
 @interface MSVToolsInventoryView : UIView
 
+@end
+
+
+@interface MSVToolsInventoryView(MSVToolsInventoryViewCreation)
+
 +(instancetype) createWithFrame:(CGRect) frame;
 
 @end
